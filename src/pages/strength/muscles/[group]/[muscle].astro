@@ -55,7 +55,11 @@ const next = siblings[index + 1];
       <dt>Actions</dt>
       <dd><ul>{m.anatomy.actions.map(a => <li>{a}</li>)}</ul></dd>
     </dl>
-    <p class="muted small">Structural anatomy follows standard textbook descriptions (see <a href={`${url.sources}#gray-1918`}>Gray, 1918</a>) and is awaiting review against a modern atlas by a qualified reviewer.</p>
+    <p class="muted small">
+      The original draft used <a href={`${url.sources}#gray-1918`}>Gray, 1918</a>.
+      {group.data.anatomySources.length > 0 && <> For a modern regional overview, see {group.data.anatomySources.map((source, i) => <>{i > 0 && ', '}<a href={`${url.sources}#${source.id}`}>{d.sourceById.get(source.id)!.data.title}</a></>)}.</>}
+      These regional references do not verify every detail or nerve supply on this page. Individual anatomy and safety details still need review by a qualified professional.
+    </p>
   </section>
 
   <section aria-labelledby="role">

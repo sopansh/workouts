@@ -55,7 +55,7 @@ const spinalTone = { none: 'good', low: 'good', moderate: 'warn', high: 'bad' } 
     <p class="lede">How the exercises are distributed across the week for an experienced lifter: what you train each day, how many hard sets each muscle gets, how far apart the sessions are, and how the load on the spine and the clock are managed.</p>
     <div class="badges">
       <span class="badge" data-tone="info">{p.daysPerWeek} training days</span>
-      <span class="badge">Up to {p.sessionMinutes} min per session</span>
+      <span class="badge">{p.sessionMinutes} min planning allowance</span>
       <span class="badge">{p.level}</span>
       <StatusBadge status={p.status} />
     </div>
@@ -152,7 +152,7 @@ const spinalTone = { none: 'good', low: 'good', moderate: 'warn', high: 'bad' } 
         </tbody>
       </table>
     </div>
-    <p class="muted small">A hard session means at least 2 direct sets in one day. Whether training a muscle twice a week beats once is <a href={`${url.evidence}#claim-frequency-contested`}>contested</a>; here the main aim is to spread the weekly sets over two sessions.</p>
+    <p class="muted small">A hard session means at least 2 direct sets in one day; helper work is not counted as a direct session. Whether training a muscle twice a week beats once is <a href={`${url.evidence}#claim-frequency-contested`}>contested</a>. See the table for this program's actual distribution.</p>
   </section>
 
   <section aria-labelledby="spine">
@@ -174,7 +174,7 @@ const spinalTone = { none: 'good', low: 'good', moderate: 'warn', high: 'bad' } 
 
   <section aria-labelledby="time">
     <h2 id="time">Time budget</h2>
-    <p class="prose">Estimated from the prescribed sets: {SECONDS_PER_SET} seconds of work per set plus the rest, {SECONDS_BETWEEN_EXERCISES} seconds to set up each exercise and a {WARM_UP_MINUTES}-minute warm-up. The build fails if a session goes over {p.sessionMinutes} minutes.</p>
+    <p class="prose">Estimated from the prescribed sets: {SECONDS_PER_SET} seconds of work per set plus the rest, {SECONDS_BETWEEN_EXERCISES} seconds to set up each exercise and a {WARM_UP_MINUTES}-minute warm-up. The build checks the estimate against the {p.sessionMinutes}-minute allowance, not actual duration. Extra warm-up sets, equipment queues and work performed separately on each side can make sessions longer.</p>
     <ul class="bars">
       {scheduled.map(w => {
         const minutes = estimateMinutes(w.plain!);
@@ -204,7 +204,7 @@ const spinalTone = { none: 'good', low: 'good', moderate: 'warn', high: 'bad' } 
     <h2 id="adjust">When the week changes</h2>
     <p class="muted small">Plan conventions (practitioner practice, not graded evidence).</p>
     <ul class="prose">
-      <li><b>You miss a day.</b> Do not double up. Pick the plan up on the next scheduled day, or, if two days are lost, swap to the <a href={url.weekly(otherPrograms[0]?.id ?? program.id)}>shorter plan</a> for the week.</li>
+      <li><b>You miss a day.</b> Do not double up. Resume with the missed session, adjusting the rest days as needed{program.id !== 'upper-lower' && <>, or consider the <a href={url.weekly('upper-lower')}>four-day upper / lower plan</a> for a shorter week</>}.</li>
       <li><b>You are short on time.</b> Cut the last one or two exercises of each session first. They are the small-muscle finishers.</li>
       <li><b>Your lower back flares.</b> Apply the <a href={`${url.exercises}back-squat/#safety`}>lower-back pain rule</a>, use the listed substitutions (supported or machine versions) and skip the high spinal-load exercises until it settles. See a clinician if the red flags apply or it is not improving after 2 to 3 weeks.</li>
       <li><b>A muscle is lagging.</b> Add 2 to 4 sets for that muscle over several weeks, one muscle at a time, staying inside the {VOLUME_FLOOR} to {VOLUME_CEILING} range.</li>

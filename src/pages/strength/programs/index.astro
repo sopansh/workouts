@@ -6,7 +6,7 @@ import { loadAll, url, DEFAULT_PROGRAM } from '../../../lib/content';
 
 const d = await loadAll();
 ---
-<Base title="Programs" description="Push, pull, legs six-day plan and a four-day upper, lower alternative, each with a page for every session." accent="p1">
+<Base title="Programs" description="Compare push, pull, legs; upper, lower; and paired-muscle programs, each with a page for every session." accent="p1">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Programs' }]} />
   <section class="hero page-head">
     <p class="eyebrow">Programs</p>
@@ -19,7 +19,7 @@ const d = await loadAll();
         <a class="card" href={url.program(p.id)} data-accent={p.id === DEFAULT_PROGRAM ? 'p1' : 'p2'}>
           <h3>{p.data.name}</h3>
           <p>{p.data.summary}</p>
-          <div class="badges"><span class="badge" data-tone="info">{p.data.daysPerWeek} days a week</span><span class="badge">~{p.data.sessionMinutes} min</span><StatusBadge status={p.data.status} />{p.id === DEFAULT_PROGRAM && <span class="badge" data-tone="good">Your plan</span>}</div>
+          <div class="badges"><span class="badge" data-tone="info">{p.data.daysPerWeek} days a week</span><span class="badge">{p.data.sessionMinutes} min allowance</span><StatusBadge status={p.data.status} />{p.id === DEFAULT_PROGRAM && <span class="badge" data-tone="good">Default example</span>}</div>
           <span class="card__meta">{p.data.days.length} sessions</span>
         </a>
       </li>

@@ -1,4 +1,118 @@
 # Programs. Day pages and the weekly plan are generated from this file; volume, frequency and time are calculated, not typed.
+- id: paired-muscle-split
+  name: Paired muscle split, five days
+  summary: Back and biceps, quad-led legs, chest and triceps, shoulders and abs, then hip-led legs. A draft for an experienced lifter using a full gym; the days and 90-minute planning allowance are examples, not a personalised prescription.
+  level: Upper-intermediate to advanced
+  daysPerWeek: 5
+  sessionMinutes: 90
+  status: draft
+  principles: [volume, frequency, load-and-reps, proximity-to-failure, rest-intervals, progression, deloads]
+  rationale:
+    - Back and biceps share pulling work; chest and triceps share pressing work. Shoulders and abs have their own session, while legs are split into quad-led and hip-led days.
+    - Direct upper-body work is concentrated on one day per muscle, with additional helper work on other days. Leg work is spread across two sessions. Once-weekly direct work is a deliberate trade-off; see the linked frequency evidence rather than assuming it is superior.
+    - The main squat and hinge are separated by several days, including across the week boundary. Supported rows reduce the amount of unsupported hinging on back day, but spinal-load labels are rough planning categories, not a safety guarantee.
+    - Calves, adductors, side hips, rear shoulders, the rotator cuff, forearms and trunk are included alongside the larger groups. Some smaller muscles receive helper work rather than dedicated isolation.
+    - Starting loads, full-gym access, recovery and session length need checking against your circumstances. If squats, glute work or lower-back work are unfamiliar, use the linked regressions and fewer sets before progressing.
+  week:
+    - { day: Monday, dayId: back-biceps, note: "Back and biceps; supported rows follow the leg day at the end of the previous week." }
+    - { day: Tuesday, dayId: legs-quad, note: "Quad-led legs, with hamstrings and calves." }
+    - { day: Wednesday, note: "Rest or easy walking." }
+    - { day: Thursday, dayId: chest-triceps, note: "Chest and triceps." }
+    - { day: Friday, note: "Rest or easy walking before shoulders and legs." }
+    - { day: Saturday, dayId: shoulders-abs, note: "Shoulders and trunk; choose a supported press if needed." }
+    - { day: Sunday, dayId: legs-hip, note: "Hip-led legs, with hamstrings, calves and supported quad work." }
+  block:
+    - { week: Week 1, rir: '3-4', volume: As listed or fewer sets for unfamiliar movements, note: "Choose manageable loads and practise the movement. For unfamiliar squats, glute and lower-back work, start with the listed regression and fewer sets if needed." }
+    - { week: Weeks 2 to 3, rir: '1-3', volume: As listed, note: "Add reps within the range; once all sets reach the top with the planned RIR, increase load in a small step. Keep unfamiliar squat and hinge work at least 2-3 reps from failure." }
+    - { week: Week 4, rir: '1-3', volume: As listed, note: "Continue only if recovery and technique are holding up. Do not force failure on squats, hinges or other demanding lifts." }
+    - { week: Week 5 (deload), rir: '4+', volume: About half the working sets, note: "Reduce training stress; timing and design are practitioner convention rather than a proven fixed schedule." }
+  days:
+    - id: back-biceps
+      name: Back and biceps
+      focus: Lats, upper back, elbow flexors and forearms
+      intro: Begin with vertical and supported horizontal pulling, then finish with curls and forearm work. This session follows the previous week's hip-led leg day.
+      muscles: [latissimus-dorsi, trapezius, rhomboids, biceps-brachii, brachialis, brachioradialis, forearm-flexors, forearm-extensors]
+      order: Start with the demanding pull-up and supported row; add a pulldown before curls and forearm isolation.
+      exercises:
+        - { exercise: pull-up, sets: 3, reps: 6-10, rir: '1-3', rest: 150 }
+        - { exercise: chest-supported-row, sets: 4, reps: 8-12, rir: '1-3', rest: 120 }
+        - { exercise: lat-pulldown, sets: 3, reps: 10-12, rir: '1-2', rest: 90 }
+        - { exercise: barbell-curl, sets: 3, reps: 8-12, rir: '1-2', rest: 75 }
+        - { exercise: incline-dumbbell-curl, sets: 3, reps: 8-12, rir: '1-2', rest: 75 }
+        - { exercise: hammer-curl, sets: 3, reps: 10-12, rir: '1-2', rest: 75 }
+        - { exercise: reverse-wrist-curl, sets: 2, reps: 12-20, rir: '1-2', rest: 60 }
+      substitutions:
+        - Use lat pulldowns or assisted pull-ups if full pull-ups do not fit the prescribed range.
+        - Use a seated cable row if a chest-supported row is unavailable; keep the load and position comfortable.
+    - id: legs-quad
+      name: Legs A - quad-led
+      focus: Quadriceps, glutes, hamstrings, calves and shins
+      intro: Practise the squat first, then use supported knee-dominant work, a curl and lower-leg work. Choose a squat variation appropriate to your own experience.
+      muscles: [quadriceps, gluteus-maximus, hamstrings, adductors, gastrocnemius, soleus, tibialis-anterior]
+      order: Squat before the supported machine exercises; finish with hamstring and lower-leg work.
+      primer:
+        - { exercise: goblet-squat, sets: 2, reps: 8, rir: '4-5', rest: 45, note: "Practise a comfortable, controlled depth." }
+      exercises:
+        - { exercise: back-squat, sets: 3, reps: 5-8, rir: '2-3', rest: 180 }
+        - { exercise: hack-squat, sets: 3, reps: 8-12, rir: '1-3', rest: 120 }
+        - { exercise: leg-extension, sets: 3, reps: 10-15, rir: '1-2', rest: 75 }
+        - { exercise: seated-leg-curl, sets: 3, reps: 10-15, rir: '1-2', rest: 90 }
+        - { exercise: standing-calf-raise, sets: 4, reps: 8-15, rir: '1-2', rest: 75 }
+        - { exercise: tibialis-raise, sets: 2, reps: 12-20, rir: '1-2', rest: 60 }
+      substitutions:
+        - For an unfamiliar squat, use a goblet squat or box squat with a manageable load; add sets gradually.
+        - Use a leg press instead of the hack squat if needed. Follow the exercise pain rules rather than pushing through symptoms.
+    - id: chest-triceps
+      name: Chest and triceps
+      focus: Chest and elbow extension
+      intro: Two presses and a fly supply chest work; triceps extensions follow. Pressing also involves the front of the shoulder.
+      muscles: [pectoralis-major, deltoid, triceps-brachii, serratus-anterior]
+      order: Put the barbell press first, then the incline press and fly. Finish with two triceps movements.
+      exercises:
+        - { exercise: barbell-bench-press, sets: 4, reps: 5-8, rir: '1-3', rest: 180 }
+        - { exercise: incline-dumbbell-press, sets: 3, reps: 8-12, rir: '1-2', rest: 120 }
+        - { exercise: cable-fly, sets: 3, reps: 10-15, rir: '1-2', rest: 75 }
+        - { exercise: triceps-pushdown, sets: 3, reps: 10-15, rir: '1-2', rest: 75 }
+        - { exercise: overhead-cable-triceps-extension, sets: 3, reps: 10-15, rir: '1-2', rest: 75 }
+      substitutions:
+        - Use a dumbbell or machine chest press if the barbell press is uncomfortable.
+        - Use a lighter pushdown instead of overhead extensions if the overhead position is uncomfortable.
+    - id: shoulders-abs
+      name: Shoulders and abs
+      focus: Front, side and rear shoulders, rotator cuff and trunk
+      intro: A seated shoulder press is followed by side and rear shoulder work and two trunk movements. Thursday's chest pressing also involves the front deltoids.
+      muscles: [deltoid, rotator-cuff, trapezius, rectus-abdominis, obliques, transversus-abdominis, hip-flexors]
+      order: Press first, then raises and face pulls. Finish with the leg raise and anti-rotation press.
+      exercises:
+        - { exercise: seated-dumbbell-press, sets: 3, reps: 8-12, rir: '1-3', rest: 120 }
+        - { exercise: dumbbell-lateral-raise, sets: 3, reps: 12-20, rir: '1-2', rest: 75 }
+        - { exercise: reverse-pec-deck, sets: 3, reps: 12-20, rir: '1-2', rest: 75 }
+        - { exercise: face-pull, sets: 2, reps: 12-20, rir: '2', rest: 60 }
+        - { exercise: hanging-leg-raise, sets: 3, reps: 8-12, rir: '1-3', rest: 75 }
+        - { exercise: pallof-press, sets: 3, reps: 8-12, rir: '2-3', rest: 60, note: "Each side." }
+      substitutions:
+        - Use a lighter or supported shoulder press if the overhead position is uncomfortable.
+        - Use a side plank instead of hanging leg raises if the latter aggravate the back; follow the linked pain rule.
+    - id: legs-hip
+      name: Legs B - hip-led
+      focus: Glutes, hamstrings, lower back, adductors, side hips, quads and calves
+      intro: A hinge and hip thrust lead, followed by leg and hip accessories. Use a lighter hinge or bridge when learning the movements or if the prescribed lift is not comfortable.
+      muscles: [gluteus-maximus, hamstrings, erector-spinae, quadriceps, adductors, gluteus-medius-minimus, gastrocnemius, soleus]
+      order: Perform the hinge before fatigue accumulates, then the hip thrust, supported leg work and smaller-muscle accessories.
+      primer:
+        - { exercise: glute-bridge, sets: 2, reps: 10, rir: '4-5', rest: 45, note: "Practise controlled hip extension." }
+      exercises:
+        - { exercise: romanian-deadlift, sets: 3, reps: 6-10, rir: '2-3', rest: 150 }
+        - { exercise: hip-thrust, sets: 3, reps: 8-12, rir: '2-3', rest: 120 }
+        - { exercise: leg-press, sets: 3, reps: 10-15, rir: '1-3', rest: 90 }
+        - { exercise: lying-leg-curl, sets: 3, reps: 10-15, rir: '1-2', rest: 90 }
+        - { exercise: back-extension-45, sets: 2, reps: 10-15, rir: '2-3', rest: 75 }
+        - { exercise: hip-abduction-machine, sets: 2, reps: 12-20, rir: '1-2', rest: 60 }
+        - { exercise: adductor-machine, sets: 2, reps: 12-20, rir: '1-2', rest: 60 }
+        - { exercise: seated-calf-raise, sets: 3, reps: 10-15, rir: '1-2', rest: 60 }
+      substitutions:
+        - Practise a dowel hip hinge or use a light dumbbell Romanian deadlift before progressing the hinge; use a glute bridge for an unfamiliar hip thrust.
+        - If back extension is not tolerated, omit it and follow the lower-back pain rule. Seek clinical advice for symptoms or red flags described there.
 - id: push-pull-legs
   name: Push / Pull / Legs, six days
   summary: Each muscle is trained twice a week across six sessions, with the push, pull and leg days built differently so the same lift is not repeated back to back. Written for an experienced lifter with a full gym and about 90 minutes per session.

@@ -15,7 +15,7 @@
     actions:
       - Elbow flexion
       - Forearm supination
-      - Long head assists shoulder flexion
+      - Assists shoulder flexion
   role: Elbow flexion in every pulling movement, trained directly by curls.
   synergists: [brachialis, brachioradialis, latissimus-dorsi]
   claims: [biceps-initial-range]

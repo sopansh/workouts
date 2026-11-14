@@ -25,7 +25,7 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Done, live** (8 exercises, 3 phases) |
 | Shared design system (`site/shared/`) | **Done** |
 | Custom 404 page | **Done** |
-| `/strength/` Strength / Hypertrophy | **Built as drafts, not deployed yet** (Astro, plan phases 1 to 3 and 7 in skeleton form): weekly plan, 2 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups. See section 3a |
+| `/strength/` Strength / Hypertrophy | **Built as drafts** (Astro, plan phases 1 to 3 and 7 in skeleton form): weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups. See section 3a |
 | `/plyometrics/` | Not started (tile "Coming soon") |
 | `/nutrition/` Health & Nutrition | Not started (tile "Coming soon"). Out of scope for the current plan |
 | Cricket-specific tracks (in strength, plyometrics, isometrics) | Planned only (plan section 12) |
@@ -105,8 +105,9 @@ The weekly-plan page is computed from `programs.yml` + each exercise's `primary`
 sets, effective sets (direct + half of helper sets), session spacing, spinal load per day and time per session. Change the
 program and the page follows.
 
-Personal context used to build it: 10+ years training (upper-intermediate to advanced), full commercial gym, 6 days a week,
-90-minute sessions, lower back fully recovered (still spread heavy spinal loading), cricket track requested as stubs.
+User-provided context: 10+ years training, with beginner options limited to squats, glutes and lower-back work. Full commercial
+gym access, training days, session length and lower-back recovery are unconfirmed assumptions, not a personalised prescription.
+The paired-muscle split uses five days and a 90-minute planning allowance as examples.
 
 ## 4. Architecture and the reasoning behind it
 
@@ -150,6 +151,7 @@ Needs Node 22.23.4 or newer (Astro 7). Notes:
 
 - **Content validator:** `npm run check:content` (also the first step of `npm run build`). Add `-- --report` to print weekly
   sets per muscle, spacing, time and spinal load for each program: use it when changing `programs.yml`.
+- **Paired split coverage:** `node --test tests/paired-muscle-split.test.mjs` checks major muscles and the two leg sessions.
 - **Sources:** `npm run verify:sources` re-checks every DOI against Crossref; `-- --write` stamps `verifiedOn`. A new source
   must be looked up (Crossref / PubMed / Europe PMC) and read before any claim is written from it. Never cite from memory.
 - **Syntax check JS in `site/`:** `for f in $(find site -name '*.js'); do node --input-type=module --check < "$f"; done`
@@ -223,15 +225,16 @@ glow, cycle, poses start/end, steps, mistakes). Nothing else needs editing; the 
 
 ## 10. What to build next
 
-Decisions already made (this session): stack = Astro; audience = the owner (experienced lifter, full gym, 6 days, 90 minutes,
-back recovered); cricket = stub pages; chest and legs are the detailed groups. Still open from plan section 14: named
-reviewers (everything is labelled draft), cricket role/level/format, and whether `/isometrics/` becomes a hub for `/core/`.
+The existing draft uses Astro, cricket stub pages and detailed chest and leg groups. Explicit approval of the Astro build
+change was not recorded. Still open: gym access, schedule, session length, back-recovery stage, named reviewers (everything
+is labelled draft), cricket role/level/format, and whether `/isometrics/` becomes a hub for `/core/`.
 
 Suggested next steps, in order:
 1. **Review pass** of the drafts (physiotherapist for anatomy, contraindications and pain rules; a CSCS coach for the program).
 2. **Deepen the other groups** (back, shoulders, arms, core) to the chest and legs standard: full setup/cues/variation tables,
    muscle growth claims with verified sources.
-3. **Anatomy sources:** replace the Gray 1918 reference with a modern atlas or textbook and verify each muscle page.
+3. **Anatomy sources:** modern OpenStax regional references are linked alongside the original Gray 1918 draft source; verify
+   each individual muscle page, including nerve supply, against current references with a qualified reviewer.
 4. **Cricket research** (plan section 12): role demands, injury epidemiology, workload evidence, then prescriptions.
 5. **Visuals:** per-muscle glow and tier-2 3D demos on the existing rig (plan section 10); a tighter muscle-map drawing.
 6. **Search and CI:** Pagefind for site search, and a GitHub Action that runs `check:content` and a link check.

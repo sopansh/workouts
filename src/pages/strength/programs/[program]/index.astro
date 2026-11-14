@@ -22,7 +22,7 @@ const p = program.data;
     <p class="lede">{p.summary}</p>
     <div class="badges">
       <span class="badge" data-tone="info">{p.daysPerWeek} days a week</span>
-      <span class="badge">Up to {p.sessionMinutes} min per session</span>
+      <span class="badge">{p.sessionMinutes} min planning allowance</span>
       <span class="badge">{p.level}</span>
       <StatusBadge status={p.status} />
     </div>

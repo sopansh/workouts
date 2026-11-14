@@ -3,34 +3,40 @@
   order: 1
   accent: p2
   detail: full
+  anatomySources: [openstax-upper-2022]
   summary: Pectoralis major and minor and serratus anterior. Pressing, flyes and the scapular work that keeps the shoulder healthy.
 - id: back
   name: Back
   order: 2
   accent: p1
   detail: overview
+  anatomySources: [openstax-upper-2022, openstax-back-2022, openstax-trunk-2022]
   summary: Lats, upper-back muscles and the lower-back erectors. Rowing, pulling and the hinge-support muscles that matter after a back strain.
 - id: shoulders
   name: Shoulders
   order: 3
   accent: p3
   detail: overview
+  anatomySources: [openstax-upper-2022]
   summary: The three heads of the deltoid and the rotator cuff.
 - id: arms
   name: Arms
   order: 4
   accent: p4
   detail: overview
+  anatomySources: [openstax-upper-2022]
   summary: Biceps, brachialis, triceps and the forearm.
 - id: legs
   name: Legs and glutes
   order: 5
   accent: p1
   detail: full
+  anatomySources: [openstax-lower-2022]
   summary: Quadriceps, hamstrings, glutes, adductors and calves. Squat, hinge and single-leg work, including the foundation-level options.
 - id: core
   name: Core
   order: 6
   accent: p3
   detail: overview
+  anatomySources: [openstax-trunk-2022]
   summary: Abdominals and obliques. Deeper isometric and back-safe core work lives in the existing core guide.

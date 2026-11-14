@@ -376,7 +376,37 @@
   title: Anatomy of the Human Body (20th edition, public domain)
   venue: Lea and Febiger
   url: https://www.bartleby.com/107/
-  note: Used for the structural anatomy (origin, insertion, nerve supply, action)
-    on muscle pages. Terminology is dated; a modern atlas or textbook should
-    replace it at review. Not a DOI source, so it is not checked by the
-    verifier.
+  note: Historical reference for the original draft muscle descriptions. Terminology
+    is dated; individual pages still need modern anatomical and clinical review.
+- id: openstax-upper-2022
+  type: textbook
+  authors: Betts JG, et al.
+  year: 2022
+  title: "Anatomy and Physiology 2e, section 11.5: Muscles of the Pectoral Girdle and Upper Limbs"
+  venue: OpenStax, Rice University
+  url: https://openstax.org/books/anatomy-and-physiology-2e/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs
+  note: Modern regional reference for upper-body muscles and movements; not a source for training outcomes. Individual draft details and nerve supply still need review.
+- id: openstax-lower-2022
+  type: textbook
+  authors: Betts JG, et al.
+  year: 2022
+  title: "Anatomy and Physiology 2e, section 11.6: Appendicular Muscles of the Pelvic Girdle and Lower Limbs"
+  venue: OpenStax, Rice University
+  url: https://openstax.org/books/anatomy-and-physiology-2e/pages/11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs
+  note: Modern regional reference for lower-body muscles and movements; not a source for training outcomes. Individual draft details and nerve supply still need review.
+- id: openstax-trunk-2022
+  type: textbook
+  authors: Betts JG, et al.
+  year: 2022
+  title: "Anatomy and Physiology 2e, section 11.4: Axial Muscles of the Abdominal Wall, and Thorax"
+  venue: OpenStax, Rice University
+  url: https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax
+  note: Modern regional reference for the abdominal wall and thorax; not a source for training outcomes. Individual draft details and nerve supply still need review.
+- id: openstax-back-2022
+  type: textbook
+  authors: Betts JG, et al.
+  year: 2022
+  title: "Anatomy and Physiology 2e, section 11.3: Axial Muscles of the Head, Neck, and Back"
+  venue: OpenStax, Rice University
+  url: https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back
+  note: Modern regional reference for intrinsic back muscles; not a source for training outcomes. Individual draft details and nerve supply still need review.

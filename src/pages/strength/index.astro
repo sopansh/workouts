@@ -7,7 +7,7 @@ const d = await loadAll();
 const main = d.programById.get(DEFAULT_PROGRAM)!;
 const tiles = [
   { href: url.weekly(), title: 'Weekly plan', blurb: 'The full week laid out: which exercises go on which day, sets per muscle, spacing, spinal load and time.', accent: 'p2', meta: 'Start here' },
-  { href: url.programs, title: 'Programs', blurb: 'Push / pull / legs six-day plan and a four-day upper / lower alternative, with a page for every session.', accent: 'p1', meta: `${d.programs.length} programs` },
+  { href: url.programs, title: 'Programs', blurb: 'Compare push / pull / legs, upper / lower and paired-muscle splits, with a page for every session.', accent: 'p1', meta: `${d.programs.length} programs` },
   { href: url.exercises, title: 'Exercises', blurb: 'Every exercise with setup, execution, errors, contraindications, regression, progression and pain rule. Filter by muscle, equipment and level.', accent: 'p3', meta: `${d.exercises.length} exercises` },
   { href: url.muscles, title: 'Muscles', blurb: 'An interactive muscle map and a page for every muscle: anatomy, function, injuries and the evidence behind the exercises.', accent: 'p4', meta: `${d.muscles.length} muscles` },
   { href: url.principles, title: 'Principles', blurb: 'How muscles grow, and what the evidence says about volume, frequency, load, failure, rest, range of motion and deloads.', accent: 'p2', meta: `${d.principles.length} principles` },
@@ -24,7 +24,7 @@ const tiles = [
   </section>
 
   <aside class="note" role="note">
-    <p><b>Your plan:</b> {main.data.name}, about {main.data.sessionMinutes} minutes per session. See the <a href={url.weekly()}>weekly plan</a> for the week at a glance, or the <a href={url.program(main.id)}>program page</a> for the reasoning.</p>
+    <p><b>Example plan:</b> {main.data.name}, with a {main.data.sessionMinutes}-minute planning allowance. See its <a href={url.weekly()}>weekly plan</a>, the <a href={url.weekly('paired-muscle-split')}>five-day paired-muscle split</a>, or <a href={url.programs}>compare all programs</a>.</p>
   </aside>
 
   <ul class="grid" aria-label="Strength sections">
@@ -62,7 +62,7 @@ const tiles = [
   <h2>What is built and what is next</h2>
   <div class="panel prose">
     <ul>
-      <li><b>Built (draft):</b> the weekly plan, two programs with a page per session, {d.exercises.length} exercises, {d.muscles.length} muscle pages, {d.principles.length} principle pages, an evidence register and cricket stubs.</li>
+      <li><b>Built (draft):</b> weekly plans, {d.programs.length} programs with a page per session, {d.exercises.length} exercises, {d.muscles.length} muscle pages, {d.principles.length} principle pages, an evidence register and cricket stubs.</li>
       <li><b>Chest and legs are the detailed sections</b> (full setup, execution cues, errors and variation tables). Other groups have shorter pages and will be deepened one group at a time.</li>
       <li><b>Not yet done:</b> physiotherapist and strength-coach review, 3D exercise demos, cricket prescriptions, plyometrics and nutrition sections.</li>
     </ul>

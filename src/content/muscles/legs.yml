@@ -12,7 +12,7 @@
     - { id: vastus-intermedius, label: Vastus intermedius, note: "Lies deep, under rectus femoris." }
   anatomy:
     origin: Rectus femoris from the anterior inferior iliac spine and above the hip socket. The three vasti from the shaft of the femur.
-    insertion: The patella, and through the patellar tendon the tibial tuberosity.
+    insertion: The quadriceps tendon attaches to the patella; the patellar ligament continues to the tibial tuberosity.
     innervation: Femoral nerve (roots L2 to L4).
     actions:
       - Knee extension (all four)

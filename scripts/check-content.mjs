@@ -60,7 +60,10 @@ for (const c of claims) {
   if (c.grade === 'Mixed' && !/(whereas|while|but|found|however|argues|concluded?)/i.test(c.statement)) warn(`Claim ${c.id}: a Mixed grade should state both sides`);
   if (c.sources.some(s => sources.find(x => x.id === s)?.type === 'preprint') && ['A', 'B'].includes(c.grade) && c.sources.length === 1) fail(`Claim ${c.id}: a preprint alone cannot support grade ${c.grade}`);
 }
-for (const s of sources) if (!usedSources.has(s.id) && s.id !== 'gray-1918') warn(`Source ${s.id} is not used by any claim`);
+for (const g of groups) {
+  for (const s of g.anatomySources ?? []) { ref('source', s, `Group ${g.id}`); usedSources.add(s); }
+}
+for (const s of sources) if (!usedSources.has(s.id) && s.id !== 'gray-1918') warn(`Source ${s.id} is not used by any claim or anatomy reference`);
 
 // Muscles.
 for (const m of muscles) {

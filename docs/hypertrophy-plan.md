@@ -509,8 +509,8 @@ in search and in the relevant index.
 
 | Question | Decision |
 |---|---|
-| 3. Stack | Astro 7, static output; `home/` and `core/` carried over unchanged as static files |
-| 5. Personal context | 10+ years training (upper-intermediate to advanced), full commercial gym, 6 days a week, 90-minute sessions, lower back fully recovered |
+| 3. Stack | Draft implemented in Astro 7; explicit approval of the build change was not recorded |
+| 5. Personal context | 10+ years training. Gym access, days per week, session length and lower-back recovery remain unconfirmed assumptions |
 | 6. Cricket | Stub pages for every role and topic; no prescriptions until researched |
 | 8. Pilot | Chest and legs (including glutes and lower back) are the detailed groups |
 | Level | No beginner-level programming. `foundation` exercises exist only for squat, glute and lower-back work |
@@ -526,7 +526,7 @@ in search and in the relevant index.
 | 4. Review | Not started: needs named reviewers |
 | 5. Visual tooling | Not started (no 3D demos for strength yet) |
 | 6. Roll-out | Muscle pages and exercises exist for every group; only chest and legs are at full detail |
-| 7. Principles and programs | Built: 10 principles, push/pull/legs six-day and upper/lower four-day programs, weekly-plan page |
+| 7. Principles and programs | Built as drafts: 10 principles, six-day push/pull/legs, four-day upper/lower and five-day paired-muscle programs, each with a weekly plan |
 | 8. Cricket (strength) | Stubs only |
 | 9, 10 | Not started |
 

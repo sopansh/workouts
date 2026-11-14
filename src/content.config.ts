@@ -15,6 +15,7 @@ const groups = defineCollection({
     summary: z.string(),
     detail: z.enum(['full', 'overview']),
     accent: z.enum(['p1', 'p2', 'p3', 'p4']),
+    anatomySources: z.array(reference('sources')).default([]),
   }),
 });
 
