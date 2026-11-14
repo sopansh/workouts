@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { rule: CollectionEntry<'painRules'>; }
+const { rule } = Astro.props;
+---
+<aside class="note note--warn" role="note">
+  <h3>{rule.data.title}</h3>
+  <p>{rule.data.rule}</p>
+  <p><b>See a clinician if:</b></p>
+  <ul>
+    {rule.data.seeClinician.map(item => <li>{item}</li>)}
+  </ul>
+</aside>

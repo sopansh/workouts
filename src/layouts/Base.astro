@@ -1,0 +1,80 @@
+---
+import '../styles/strength.css';
+import { url } from '../lib/content';
+
+interface Props {
+  title: string;
+  description: string;
+  accent?: 'p1' | 'p2' | 'p3' | 'p4';
+  noindex?: boolean;
+}
+
+const { title, description, accent = 'p2', noindex = false } = Astro.props;
+const path = Astro.url.pathname;
+
+const nav = [
+  { href: url.principles, label: 'Principles' },
+  { href: url.muscles, label: 'Muscles' },
+  { href: url.exercises, label: 'Exercises' },
+  { href: url.programs, label: 'Programs' },
+  { href: url.weekly(), label: 'Weekly plan' },
+  { href: url.cricket, label: 'Cricket' },
+  { href: url.evidence, label: 'Evidence' },
+];
+const isCurrent = (href: string) => path === href || (href !== url.hub && path.startsWith(href) && !(href === url.programs && path.startsWith(url.weekly())));
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title} · Strength · Workouts</title>
+<meta name="description" content={description}>
+<meta name="color-scheme" content="light dark">
+{noindex && <meta name="robots" content="noindex">}
+<script is:inline src="/shared/js/theme-init.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/styles/tokens.css">
+<link rel="stylesheet" href="/shared/styles/base.css">
+<link rel="stylesheet" href="/shared/styles/chrome.css">
+</head>
+<body data-accent={accent}>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="toolbar">
+  <div class="wrap toolbar__inner">
+    <a class="toolbar__brand" href="/home/" aria-label="Back to all workouts">
+      <span aria-hidden="true">←</span><span class="brand-text--wide">Workouts</span>
+    </a>
+    <nav class="toolbar__nav" aria-label="Strength sections">
+      <a href={url.hub} aria-current={path === url.hub ? 'page' : undefined}>Strength</a>
+      {nav.map(item => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
+    </nav>
+    <div class="toolbar__controls">
+      <button id="theme" class="btn btn--icon" type="button" aria-label="Switch theme">
+        <span class="icon" aria-hidden="true">◐</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <slot />
+</main>
+
+<footer class="wrap footer">
+  <p>Draft content: not yet reviewed by a physiotherapist, doctor or strength and conditioning coach. General education, not medical advice. If something hurts, stop and see a qualified professional. <a href={url.evidence}>How claims are graded</a> · <a href={url.sources}>Sources</a> · <a href={url.glossary}>Glossary</a></p>
+</footer>
+
+<script is:inline type="module">
+  import { isDark, onThemeChange, toggleTheme } from '/shared/js/theme.js';
+  const button = document.getElementById('theme');
+  const sync = () => button.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme');
+  button.addEventListener('click', toggleTheme);
+  onThemeChange(sync);
+  sync();
+</script>
+</body>
+</html>

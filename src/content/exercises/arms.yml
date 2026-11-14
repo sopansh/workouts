@@ -1,0 +1,277 @@
+- id: barbell-curl
+  name: EZ-bar curl
+  group: arms
+  primary: [biceps-brachii, brachialis]
+  secondary: [brachioradialis, forearm-flexors]
+  pattern: curl
+  equipment: [barbell]
+  level: intermediate
+  spinalLoad: low
+  summary: A standing curl with a cambered bar that is easier on the wrists.
+  setup: Stand holding the bar with a shoulder-width underhand grip, elbows at the sides.
+  steps:
+    - Curl the bar to the shoulders without letting the elbows drift forwards.
+    - Lower slowly to full extension.
+  mistakes:
+    - Swinging with the trunk
+    - Letting the elbows travel forward
+  contraindications:
+    - Elbow or biceps tendon pain not cleared for loading
+  regression: Dumbbell or cable curl with lighter load.
+  progression: Slower lowering and a longer pause.
+  painRule: elbow
+  variations: []
+  dose: 3 sets of 8 to 12 reps, 90 seconds rest
+  alternatives: [incline-dumbbell-curl]
+  status: draft
+- id: incline-dumbbell-curl
+  name: Incline dumbbell curl
+  group: arms
+  primary: [biceps-brachii]
+  secondary: [brachialis, brachioradialis]
+  pattern: curl
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: none
+  summary: A curl on an incline bench with the arms behind the body, which lengthens the long head of the biceps.
+  setup: Set the bench at 45 to 60 degrees. Sit back with the arms hanging behind the body.
+  steps:
+    - Curl the dumbbells up without moving the upper arms forwards.
+    - Lower slowly to a full stretch.
+  mistakes:
+    - Moving the elbows forward
+    - Swinging the weights
+  contraindications:
+    - Pain at the front of the shoulder in the stretched position
+  regression: Lighter dumbbells or a smaller range.
+  progression: Slower lowering and a pause at the stretch.
+  painRule: elbow
+  variations:
+    - name: Stretched-position bias
+      change: Train the lower half of the range.
+      emphasis: In a within-participant trial the initial (stretched) range grew the distal biceps more than the final range, but the summed growth was not different.
+      claim: biceps-initial-range
+  claims: [biceps-initial-range]
+  dose: 3 sets of 8 to 12 reps, 90 seconds rest
+  alternatives: [barbell-curl]
+  status: draft
+- id: preacher-curl
+  name: Preacher curl
+  group: arms
+  primary: [biceps-brachii, brachialis]
+  secondary: [brachioradialis]
+  pattern: curl
+  equipment: [machine, dumbbell]
+  level: intermediate
+  spinalLoad: none
+  summary: A supported curl that removes body swing.
+  setup: Set the pad so the arms rest on it with the elbows just below the shoulders.
+  steps:
+    - Curl up without lifting the elbows off the pad.
+    - Lower slowly without hyperextending the elbow.
+  mistakes:
+    - Dropping quickly into the bottom
+    - Lifting the elbows off the pad
+  contraindications:
+    - Elbow pain at the bottom of the range
+  regression: A lighter load or a shorter range.
+  progression: Slower lowering and pauses.
+  painRule: elbow
+  variations:
+    - name: Initial-range emphasis
+      change: Train the lower half of the preacher range.
+      emphasis: See the incline curl evidence; the preacher trial compared initial against final range.
+      claim: biceps-initial-range
+  claims: [biceps-initial-range]
+  dose: 3 sets of 8 to 12 reps, 90 seconds rest
+  alternatives: [incline-dumbbell-curl]
+  status: draft
+- id: hammer-curl
+  name: Hammer curl
+  group: arms
+  primary: [brachialis, brachioradialis]
+  secondary: [biceps-brachii, forearm-flexors]
+  pattern: curl
+  equipment: [dumbbell, cable]
+  level: intermediate
+  spinalLoad: none
+  summary: A neutral-grip curl that adds brachialis and brachioradialis work.
+  setup: Stand holding dumbbells with the palms facing each other.
+  steps:
+    - Curl up without rotating the forearms.
+    - Lower slowly.
+  mistakes:
+    - Swinging
+    - Letting the elbows move forwards
+  contraindications:
+    - Elbow pain not cleared for loading
+  regression: Lighter dumbbells.
+  progression: Slower tempo.
+  painRule: elbow
+  variations: []
+  dose: 2 to 3 sets of 8 to 12 reps, 60 to 90 seconds rest
+  alternatives: [barbell-curl]
+  status: draft
+- id: overhead-cable-triceps-extension
+  name: Overhead cable triceps extension
+  group: arms
+  primary: [triceps-brachii]
+  secondary: []
+  pattern: triceps-extension
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A triceps extension with the arm overhead, which lengthens the long head.
+  setup: Face away from a low pulley, rope in both hands, elbows pointing forwards.
+  steps:
+    - Extend the elbows until the arms are straight overhead.
+    - Lower under control until the triceps are stretched.
+  mistakes:
+    - Flaring the elbows out wide
+    - Arching the lower back
+  contraindications:
+    - Elbow pain not cleared for loading
+    - Shoulder pain with the arm overhead
+  regression: Lighter weight, or a pushdown.
+  progression: Slower lowering and a pause at the stretch.
+  painRule: elbow
+  variations:
+    - name: Overhead versus neutral
+      change: Arm overhead versus arm at the side.
+      emphasis: In a within-participant MRI trial, overhead extension grew the triceps more than extension with the arm at the side, mainly in the long head.
+      claim: triceps-overhead
+  claims: [triceps-overhead]
+  dose: 3 sets of 8 to 15 reps, 60 to 90 seconds rest
+  alternatives: [triceps-pushdown, skull-crusher]
+  status: draft
+- id: triceps-pushdown
+  name: Triceps pushdown
+  group: arms
+  primary: [triceps-brachii]
+  secondary: []
+  pattern: triceps-extension
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A simple, easy-to-load triceps extension.
+  setup: Face a high pulley with a bar or rope, elbows at the sides.
+  steps:
+    - Press the handle down until the arms are straight.
+    - Return until the forearms are just above parallel.
+  mistakes:
+    - Moving the elbows forwards
+    - Leaning over the stack
+  contraindications:
+    - Elbow pain not cleared for loading
+  regression: Lighter weight.
+  progression: Slower lowering and pauses.
+  painRule: elbow
+  variations: []
+  claims: [triceps-overhead]
+  dose: 2 to 3 sets of 10 to 15 reps, 60 seconds rest
+  alternatives: [overhead-cable-triceps-extension]
+  status: draft
+- id: skull-crusher
+  name: EZ-bar skull crusher
+  group: arms
+  primary: [triceps-brachii]
+  secondary: []
+  pattern: triceps-extension
+  equipment: [barbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A lying triceps extension with a cambered bar.
+  setup: Lie on a bench holding the bar over the chest with the arms straight.
+  steps:
+    - Bend only at the elbows to lower the bar to just above the forehead or behind the head.
+    - Extend until the arms are straight.
+  mistakes:
+    - Letting the elbows flare
+    - Letting the upper arms drift
+  contraindications:
+    - Elbow pain not cleared for loading
+  regression: A lighter bar or a cable version.
+  progression: Slower lowering.
+  painRule: elbow
+  variations: []
+  dose: 3 sets of 8 to 12 reps, 90 seconds rest
+  alternatives: [overhead-cable-triceps-extension]
+  status: draft
+- id: close-grip-bench-press
+  name: Close-grip bench press
+  group: arms
+  primary: [triceps-brachii]
+  secondary: [pectoralis-major, deltoid]
+  pattern: horizontal-press
+  equipment: [barbell, bench, rack]
+  level: intermediate
+  spinalLoad: low
+  summary: A bench press with a narrower grip to put more load on the triceps.
+  setup: Lie as for a bench press and take a grip about shoulder width.
+  steps:
+    - Lower the bar to the lower chest with the elbows tucked.
+    - Press back up in a straight line.
+  mistakes:
+    - Going too narrow, which stresses the wrists
+    - Flaring the elbows
+  contraindications:
+    - Wrist or elbow pain not cleared for loading
+  regression: A lighter bar.
+  progression: Add load.
+  painRule: elbow
+  variations: []
+  dose: 3 sets of 6 to 10 reps, 2 minutes rest
+  alternatives: [triceps-pushdown]
+  status: draft
+- id: wrist-curl
+  name: Wrist curl
+  group: arms
+  primary: [forearm-flexors]
+  secondary: []
+  pattern: forearm
+  equipment: [dumbbell, barbell]
+  level: intermediate
+  spinalLoad: none
+  summary: A wrist-flexion curl for the forearm flexors.
+  setup: Sit with the forearms resting on the thighs, hands off the end, holding a barbell or dumbbells palms up.
+  steps:
+    - Curl the wrists up through a full range.
+    - Lower slowly.
+  mistakes:
+    - Using too much weight with a short range
+    - Lifting the forearms off the thighs
+  contraindications:
+    - Wrist or medial elbow pain not cleared for loading
+  regression: Lighter weight.
+  progression: Slower lowering.
+  painRule: elbow
+  variations: []
+  dose: 2 sets of 12 to 20 reps
+  alternatives: []
+  status: draft
+- id: reverse-wrist-curl
+  name: Reverse wrist curl
+  group: arms
+  primary: [forearm-extensors]
+  secondary: []
+  pattern: forearm
+  equipment: [dumbbell, barbell]
+  level: intermediate
+  spinalLoad: none
+  summary: A wrist-extension curl for the forearm extensors.
+  setup: Sit with the forearms resting on the thighs, palms down, hands off the end holding light dumbbells.
+  steps:
+    - Extend the wrists up through a full range.
+    - Lower slowly.
+  mistakes:
+    - Using too much weight with a short range
+    - Lifting the forearms off the thighs
+  contraindications:
+    - Wrist or lateral elbow pain not cleared for loading
+  regression: Lighter weight.
+  progression: Slower lowering.
+  painRule: elbow
+  variations: []
+  dose: 2 sets of 12 to 20 reps
+  alternatives: [wrist-curl]
+  status: draft

@@ -15,7 +15,8 @@ export const sections = [
     blurb: 'Build muscle and strength, muscle group by muscle group, with the exercise variations that target each one.',
     image: '/assets/img/strength.svg',
     accent: 'p2',
-    status: 'soon',
+    status: 'live',
+    href: '/strength/',
   },
   {
     id: 'plyometrics',

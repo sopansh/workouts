@@ -1,0 +1,396 @@
+- id: barbell-bench-press
+  name: Barbell bench press
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, triceps-brachii]
+  pattern: horizontal-press
+  equipment: [barbell, bench, rack]
+  level: intermediate
+  spinalLoad: low
+  summary: The heaviest chest press most lifters can load, and a benchmark of upper-body strength.
+  setup: Lie with eyes under the bar, feet flat and planted under the knees. Squeeze the shoulder blades back and down and hold them there. Take a grip about 1.5 times shoulder width so the forearms are vertical at the bottom. Unrack with straight arms over the shoulders.
+  steps:
+    - Take a breath and brace, then lower the bar under control to the lower chest or sternum over 2 to 3 seconds.
+    - Touch or stop just above the chest with the forearms vertical and elbows about 45 to 70 degrees from the torso.
+    - Press the bar up and slightly back to a position over the shoulders while keeping the shoulder blades pinned.
+  cues:
+    - Pull the bar apart as you lower it
+    - Keep the wrists stacked over the elbows
+    - Drive the feet into the floor
+  mistakes:
+    - Flaring the elbows to 90 degrees, which loads the front of the shoulder
+    - Bouncing the bar off the chest
+    - Letting the shoulder blades slide forwards as the bar rises
+    - Lifting the hips off the bench to grind through a rep
+  contraindications:
+    - Recent pectoralis major, biceps tendon or shoulder injury not cleared for loading
+    - Painful shoulder at the bottom position
+  regression: Dumbbell bench press with a lighter load and a neutral grip, or a machine chest press.
+  progression: Add load while keeping a pause on the chest, then use tempo or a longer pause for difficulty.
+  painRule: shoulder
+  variations:
+    - name: Flat bench
+      change: Bench at 0 degrees, bar to the lower chest.
+      emphasis: The reference lift. A flat bench activates both upper and lower chest.
+      claim: bench-angle-emg
+    - name: Close grip
+      change: Hands about shoulder width apart.
+      emphasis: More triceps involvement; no reliable evidence of a chest-region shift.
+    - name: Paused
+      change: A one-second pause with the bar still on the chest.
+      emphasis: Removes the bounce and tests control; useful as a technique check.
+  claims: [bench-angle-emg, emg-not-growth]
+  dose: 4 sets of 5 to 8 reps, 2 to 3 minutes rest
+  alternatives: [dumbbell-bench-press, machine-chest-press]
+  status: draft
+- id: dumbbell-bench-press
+  name: Dumbbell bench press
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, triceps-brachii]
+  pattern: horizontal-press
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A press with a deeper stretch and independent arms, kinder to the shoulders for many people.
+  setup: Sit with the dumbbells on the thighs, lie back and kick them up as you go. Set the shoulder blades back and down. Start with the dumbbells over the shoulders with a neutral or slightly turned-in grip.
+  steps:
+    - Lower the dumbbells in an arc to the sides of the chest, elbows about 45 to 70 degrees from the torso.
+    - Stop when the upper arms are level with the torso or when you feel a good chest stretch without shoulder pain.
+    - Press back up and slightly together without letting the dumbbells touch.
+  cues:
+    - Keep the forearms vertical
+    - Pull the shoulder blades into the bench
+  mistakes:
+    - Lowering too deep so the shoulders roll forwards
+    - Bringing the dumbbells down to the armpits instead of the chest line
+    - Dropping the dumbbells on the floor instead of putting them on the thighs
+  contraindications:
+    - Recent pectoralis major or shoulder injury not cleared for loading
+    - Painful shoulder at the stretch position
+  regression: A lighter pair with a neutral grip, a shorter range, or a machine chest press.
+  progression: Heavier pairs, a slow lowering phase, or single-arm presses.
+  painRule: shoulder
+  variations:
+    - name: Neutral grip
+      change: Palms face each other.
+      emphasis: Often friendlier on the shoulder; keeps the elbows closer to the body.
+    - name: Slight incline (15 degrees)
+      change: Bench raised a little.
+      emphasis: See the incline press page for the evidence on bench angle.
+      claim: bench-angle-emg
+  claims: [emg-not-growth]
+  dose: 3 to 4 sets of 8 to 12 reps, 2 minutes rest
+  alternatives: [barbell-bench-press, machine-chest-press]
+  status: draft
+- id: incline-barbell-press
+  name: Incline barbell press
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, triceps-brachii]
+  pattern: incline-press
+  equipment: [barbell, bench, rack]
+  level: intermediate
+  spinalLoad: low
+  summary: A barbell press at a raised bench angle that adds front-shoulder work to the chest press.
+  setup: Set the bench at 30 degrees. Lie back with the shoulder blades set and the bar over the upper chest. Plant the feet and keep the lower back in a natural arch without lifting the hips.
+  steps:
+    - Lower the bar to the upper chest just below the collarbone with forearms vertical.
+    - Pause briefly, then press back up in a straight line to arms-length.
+  mistakes:
+    - Setting the bench too steep (45 degrees or higher), which shifts the work to the shoulders
+    - Flaring the elbows and letting the bar drift up to the neck
+  contraindications:
+    - Recent pectoralis major, biceps tendon or shoulder injury not cleared for loading
+    - Shoulder pain overhead or at the bottom position
+  regression: Incline dumbbell press with a lighter load.
+  progression: Add load, add a pause, or move to a deficit tempo.
+  painRule: shoulder
+  variations:
+    - name: 15 to 30 degrees
+      change: Low incline.
+      emphasis: Plausible extra upper-chest involvement; evidence is EMG only and does not show greater growth.
+      claim: bench-angle-emg
+    - name: 45 degrees
+      change: Steep incline.
+      emphasis: Reported lower lower-pec activation and more shoulder involvement; no evidence of better upper-chest growth.
+      claim: bench-angle-emg
+  claims: [bench-angle-emg, emg-not-growth]
+  dose: 3 to 4 sets of 6 to 10 reps, 2 to 3 minutes rest
+  alternatives: [incline-dumbbell-press, machine-chest-press]
+  status: draft
+- id: incline-dumbbell-press
+  name: Incline dumbbell press
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, triceps-brachii]
+  pattern: incline-press
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A raised-bench dumbbell press that allows a deep stretch and a natural arc.
+  setup: Set the bench at 30 degrees. Bring the dumbbells to the shoulders as you sit back, set the shoulder blades back and down, and start over the upper chest.
+  steps:
+    - Lower the dumbbells to the sides of the upper chest, forearms vertical, elbows about 45 to 70 degrees from the torso.
+    - Press up and slightly together to arms-length.
+  mistakes:
+    - Bench too steep so the shoulders do most of the work
+    - Rotating the wrists back so the weight drifts behind the elbows
+  contraindications:
+    - Recent pectoralis major or shoulder injury not cleared for loading
+    - Painful shoulder at the stretch position
+  regression: Lighter dumbbells, a neutral grip, or the machine incline press.
+  progression: Heavier dumbbells and slower lowering.
+  painRule: shoulder
+  variations:
+    - name: 30 degrees
+      change: Low to moderate incline.
+      emphasis: Plausible extra upper-chest involvement; EMG evidence only.
+      claim: bench-angle-emg
+  claims: [bench-angle-emg, emg-not-growth]
+  dose: 3 to 4 sets of 8 to 12 reps, 2 minutes rest
+  alternatives: [incline-barbell-press, machine-chest-press]
+  status: draft
+- id: machine-chest-press
+  name: Machine chest press
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, triceps-brachii]
+  pattern: horizontal-press
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A guided press with a fixed path. Easy to load safely close to failure.
+  setup: Adjust the seat so the handles are level with the mid-chest. Sit with the shoulder blades back and the feet flat.
+  steps:
+    - Press the handles forwards until the arms are almost straight, without shrugging.
+    - Return under control until you feel a stretch across the chest, without letting the shoulders roll forwards.
+  mistakes:
+    - Seat too low or too high so the shoulders take over
+    - Locking the elbows hard at the top
+  contraindications:
+    - Painful shoulder in the stretched position
+  regression: Lighter stack and a shorter range.
+  progression: Slower lowering, longer pauses at the stretch, or add a drop set.
+  painRule: shoulder
+  variations:
+    - name: Converging handles
+      change: Handles travel inwards as they press.
+      emphasis: Matches the fibre line of the chest through the press; no evidence this grows more than a free press.
+  claims: [emg-not-growth]
+  dose: 3 sets of 8 to 12 reps, 90 to 120 seconds rest
+  alternatives: [dumbbell-bench-press]
+  status: draft
+- id: cable-fly
+  name: Cable fly
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, serratus-anterior]
+  pattern: fly
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A constant-tension fly that trains the chest through its inner range, where free weights offer little load.
+  setup: Set both pulleys. Stand in a split stance with a slight forward lean and a soft bend at the elbows. Hold the handles with the shoulder blades set.
+  steps:
+    - Sweep the hands together in a wide arc, keeping the elbow bend fixed.
+    - Squeeze at the point where the hands meet, then return under control until the chest is stretched.
+  cues:
+    - Think of hugging a tree
+    - Do not let the shoulders roll forwards at the stretch
+  mistakes:
+    - Turning the fly into a press by bending and straightening the elbows
+    - Stretching so far that the front of the shoulder aches
+  contraindications:
+    - Recent pectoralis major or shoulder injury not cleared for loading
+    - Anterior shoulder instability
+  regression: Lighter stack with a shorter range, or a pec deck.
+  progression: Slower lowering, pauses at the stretch, or a drop set.
+  painRule: shoulder
+  variations:
+    - name: High to low
+      change: Pulleys above the shoulders, hands finish at the hips.
+      emphasis: Plausible bias to the lower chest; no growth evidence found yet.
+    - name: Mid
+      change: Pulleys at shoulder height.
+      emphasis: Horizontal alignment through the sternocostal fibres; the reference version.
+    - name: Low to high
+      change: Pulleys at the floor, hands finish at upper-chest height.
+      emphasis: Plausible bias to the clavicular fibres; no growth evidence found yet.
+  claims: [emg-not-growth]
+  dose: 3 sets of 10 to 15 reps, 60 to 90 seconds rest
+  alternatives: [pec-deck-fly, dumbbell-fly]
+  status: draft
+- id: pec-deck-fly
+  name: Pec deck fly
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid]
+  pattern: fly
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A guided fly with the back supported. Very easy to push hard with stable form.
+  setup: Adjust the seat so the handles are at chest height and the shoulders are not pulled back behind the body. Sit back, with the upper back supported.
+  steps:
+    - Bring the handles together in front of the chest without shrugging.
+    - Return slowly until you feel a stretch, stopping before the arms go behind the body line.
+  mistakes:
+    - Seat too low so the shoulders are pulled forwards
+    - Over-stretching at the start of each rep
+  contraindications:
+    - Painful shoulder in the stretched position
+  regression: Lighter stack and a shorter range.
+  progression: Slower lowering, pauses at the stretch, or a drop set.
+  painRule: shoulder
+  variations: []
+  claims: [emg-not-growth]
+  dose: 3 sets of 10 to 15 reps, 60 to 90 seconds rest
+  alternatives: [cable-fly, dumbbell-fly]
+  status: draft
+- id: dumbbell-fly
+  name: Dumbbell fly
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid]
+  pattern: fly
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A free-weight fly that loads the chest hardest at the stretched position.
+  setup: Lie on a flat or slight-incline bench with the dumbbells over the chest, palms facing in and a soft bend at the elbows.
+  steps:
+    - Lower the dumbbells in a wide arc until the elbows are about level with the torso.
+    - Reverse the arc, bringing the dumbbells back together over the chest.
+  mistakes:
+    - Lowering too deep so the shoulders roll forwards
+    - Using weights so heavy the movement becomes a press
+  contraindications:
+    - Recent pectoralis major or shoulder injury not cleared for loading
+    - Anterior shoulder instability or pain in the stretched position
+  regression: Lighter dumbbells and a shorter range, or the cable or pec deck fly.
+  progression: Slower lowering and a pause at the stretch.
+  painRule: shoulder
+  variations: []
+  claims: [emg-not-growth]
+  dose: 3 sets of 10 to 15 reps, 90 seconds rest
+  alternatives: [cable-fly, pec-deck-fly]
+  status: draft
+- id: push-up
+  name: Push-up
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [deltoid, triceps-brachii, serratus-anterior, rectus-abdominis]
+  pattern: push-up
+  equipment: [bodyweight]
+  level: intermediate
+  spinalLoad: low
+  summary: A closed-chain press with the trunk as a plank. Easy to add load or change leverage.
+  setup: Hands slightly wider than the shoulders, body in one line from head to heels with the glutes and abdomen tight.
+  steps:
+    - Lower the chest between the hands with the elbows about 45 degrees from the torso.
+    - Press the floor away until the arms are straight, finishing with the shoulder blades spread.
+  mistakes:
+    - Sagging at the hips so the lower back arches
+    - Flaring the elbows wide to 90 degrees
+  contraindications:
+    - Wrist pain in the extended position
+    - Painful shoulder at the bottom
+  regression: Hands on a raised surface, or a slower lowering phase.
+  progression: Feet elevated, weighted vest, deficit on handles, or slow tempo.
+  painRule: shoulder
+  variations:
+    - name: Deficit
+      change: Hands on raised handles so the chest drops lower.
+      emphasis: A larger stretch under load; the cost-benefit versus a normal range is not established here.
+    - name: Feet elevated
+      change: Feet on a bench.
+      emphasis: More load through the upper chest and shoulders.
+    - name: Weighted
+      change: Plate or vest on the back.
+      emphasis: Adds load once bodyweight reps pass about 15 to 20.
+  dose: 3 sets of 10 to 20 reps (or to 1 to 3 reps short of failure), 90 seconds rest
+  alternatives: [machine-chest-press]
+  status: draft
+- id: chest-dip
+  name: Chest dip
+  group: chest
+  primary: [pectoralis-major]
+  secondary: [triceps-brachii, deltoid]
+  pattern: dip
+  equipment: [bodyweight, dip bars]
+  level: advanced
+  spinalLoad: low
+  summary: A heavy bodyweight press with a forward lean that adds lower-chest and shoulder load.
+  setup: Take a firm grip on the bars with the arms straight and shoulders down. Lean the trunk forwards about 20 to 30 degrees and cross the ankles behind you.
+  steps:
+    - Lower with control until the upper arms are about parallel to the floor, elbows pointing slightly out.
+    - Press up to straight arms, keeping the shoulders away from the ears.
+  mistakes:
+    - Dropping too deep so the shoulder rolls forwards under load
+    - Swinging or kipping through the reps
+  contraindications:
+    - Any shoulder pain, pec or biceps tendon injury not cleared for loading
+    - Anterior shoulder instability
+  regression: Machine-assisted dips or a push-up with a heavier plate.
+  progression: Add load on a belt and slow the tempo.
+  painRule: shoulder
+  variations:
+    - name: Upright torso
+      change: Torso vertical, elbows close.
+      emphasis: Shifts the work toward the triceps.
+  dose: 3 sets of 6 to 12 reps, 2 minutes rest
+  alternatives: [machine-chest-press, dumbbell-bench-press]
+  status: draft
+- id: push-up-plus
+  name: Push-up plus
+  group: chest
+  primary: [serratus-anterior]
+  secondary: [pectoralis-major, pectoralis-minor]
+  pattern: scapular
+  equipment: [bodyweight]
+  level: intermediate
+  spinalLoad: low
+  summary: A push-up that finishes with extra shoulder-blade protraction to train serratus anterior.
+  setup: Set up as for a push-up, body in a straight line.
+  steps:
+    - Press to straight arms, then push the floor away further so the upper back rounds slightly and the shoulder blades spread.
+    - Return the shoulder blades to neutral and lower under control.
+  mistakes:
+    - Letting the lower back sag while reaching
+    - Rushing the reach so there is no pause at the top
+  contraindications:
+    - Wrist pain in the extended position
+  regression: Hands on a raised surface or wall.
+  progression: Slow the reach and hold for 2 seconds, or put the feet on a bench.
+  painRule: shoulder
+  variations: []
+  dose: 2 sets of 10 to 15 reps as a warm-up or finisher
+  alternatives: [cable-punch]
+  status: draft
+- id: cable-punch
+  name: Cable punch
+  group: chest
+  primary: [serratus-anterior]
+  secondary: [pectoralis-major, deltoid]
+  pattern: scapular
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A forward reach with a cable handle that trains scapular protraction.
+  setup: Set the pulley at chest height. Stand in a split stance facing away from the stack with the handle at the shoulder.
+  steps:
+    - Punch forwards until the arm is straight and then reach further by spreading the shoulder blade.
+    - Return slowly to the start without letting the shoulder blade snap back.
+  mistakes:
+    - Rotating the trunk to create the reach
+    - Shrugging the shoulder up as you reach
+  contraindications:
+    - Painful shoulder in the end range
+  regression: Lighter weight and a shorter reach, or the push-up plus on a wall.
+  progression: A longer hold at the end of the reach.
+  painRule: shoulder
+  variations: []
+  dose: 2 sets of 10 to 15 reps per side
+  alternatives: [push-up-plus]
+  status: draft

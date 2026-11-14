@@ -1,0 +1,38 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import MuscleMap from '../../../components/MuscleMap.astro';
+import { loadAll, url } from '../../../lib/content';
+
+const d = await loadAll();
+---
+<Base title="Muscles" description="An interactive muscle map and a page for every muscle: anatomy, function, injuries and the evidence behind exercise variations." accent="p4">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Muscles' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Muscles</p>
+    <h1>Pick a muscle</h1>
+    <p class="lede">Tap a region on the map, or choose from the list. Each muscle page links to the exercises that train it and the evidence behind each variation.</p>
+  </section>
+
+  <div class="panel"><MuscleMap muscleById={d.muscleById} /></div>
+  <ul class="chip-list" aria-label="Colour key">
+    {d.groups.map(g => <li><span class="chip"><span class="swatch" data-group={g.id}></span>{g.data.name}</span></li>)}
+  </ul>
+  <p class="muted small">The figure is a schematic, not an anatomical drawing. Every region is also listed below.</p>
+
+  <h2>All muscles by group</h2>
+  <div class="cols">
+    {d.groups.map(g => {
+      const list = d.muscles.filter(m => m.data.group.id === g.id);
+      return (
+        <section class="panel" aria-labelledby={`g-${g.id}`}>
+          <h3 id={`g-${g.id}`} style="margin-top:0"><a href={url.group(g.id)}>{g.data.name}</a></h3>
+          <p class="muted small">{g.data.summary}</p>
+          <ul class="chip-list">
+            {list.map(m => <li><a class="chip" href={url.muscle(g.id, m.id)}>{m.data.name}</a></li>)}
+          </ul>
+        </section>
+      );
+    })}
+  </div>
+</Base>

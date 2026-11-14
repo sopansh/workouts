@@ -1,0 +1,28 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import StatusBadge from '../../../components/StatusBadge.astro';
+import { loadAll, url, DEFAULT_PROGRAM } from '../../../lib/content';
+
+const d = await loadAll();
+---
+<Base title="Programs" description="Push, pull, legs six-day plan and a four-day upper, lower alternative, each with a page for every session." accent="p1">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Programs' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Programs</p>
+    <h1>Programs and sessions</h1>
+    <p class="lede">A program page explains the reasoning. A day page lists the exercises in order with sets, reps, reps in reserve and rest. The <a href={url.weekly()}>weekly plan</a> shows how a whole week fits together.</p>
+  </section>
+  <ul class="grid">
+    {d.programs.map(p => (
+      <li>
+        <a class="card" href={url.program(p.id)} data-accent={p.id === DEFAULT_PROGRAM ? 'p1' : 'p2'}>
+          <h3>{p.data.name}</h3>
+          <p>{p.data.summary}</p>
+          <div class="badges"><span class="badge" data-tone="info">{p.data.daysPerWeek} days a week</span><span class="badge">~{p.data.sessionMinutes} min</span><StatusBadge status={p.data.status} />{p.id === DEFAULT_PROGRAM && <span class="badge" data-tone="good">Your plan</span>}</div>
+          <span class="card__meta">{p.data.days.length} sessions</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,26 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { loadAll, url } from '../../../lib/content';
+
+const d = await loadAll();
+---
+<Base title="Principles" description="How muscles grow and what the evidence says about volume, frequency, load, proximity to failure, rest, range of motion, progression and deloads." accent="p2">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Principles' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Principles</p>
+    <h1>How muscles grow, and what to do about it</h1>
+    <p class="lede">Each page states a practical rule, the evidence behind it with a grade, and its limits. Every programming number in the plans links back here.</p>
+  </section>
+  <ol class="grid plain">
+    {d.principles.map((p, i) => (
+      <li>
+        <a class="card" href={url.principle(p.id)} data-accent={['p1', 'p2', 'p3', 'p4'][i % 4]}>
+          <h3>{p.data.title}</h3>
+          <p>{p.data.summary}</p>
+          <span class="card__meta">{p.data.rules.length} rules · {p.data.claims.length} claims</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</Base>

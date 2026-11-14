@@ -1,0 +1,137 @@
+- id: latissimus-dorsi
+  tracked: true
+  group: back
+  name: Latissimus dorsi
+  latin: Musculus latissimus dorsi
+  detail: basic
+  summary: The broad muscle of the mid and lower back that pulls the arm down and back.
+  anatomy:
+    origin: The spinous processes of the lower six thoracic vertebrae, the thoracolumbar fascia, the iliac crest and the lower three or four ribs.
+    insertion: The floor of the intertubercular (bicipital) groove of the humerus.
+    innervation: Thoracodorsal nerve (roots C6 to C8).
+    actions:
+      - Shoulder extension (pulling the arm down and back)
+      - Shoulder adduction
+      - Shoulder internal rotation
+  role: The main mover in pull-ups, pulldowns and rows. It is linked to the pelvis through the thoracolumbar fascia.
+  synergists: [teres-major, rhomboids, biceps-brachii]
+  injuries:
+    - Strains are uncommon; most lat discomfort in training comes from the shoulder or elbow attachment points.
+  status: draft
+- id: trapezius
+  tracked: true
+  group: back
+  name: Trapezius
+  latin: Musculus trapezius
+  detail: basic
+  summary: A kite-shaped muscle across the upper back and neck that positions the shoulder blade.
+  regions:
+    - { id: upper, label: Upper trapezius, note: "Elevates the shoulder blade (shrugging) and extends the neck." }
+    - { id: middle, label: Middle trapezius, note: "Retracts the shoulder blade towards the spine." }
+    - { id: lower, label: Lower trapezius, note: "Depresses and upwardly rotates the shoulder blade." }
+  anatomy:
+    origin: The occipital bone, the ligamentum nuchae and the spinous processes of C7 to T12.
+    insertion: The lateral third of the clavicle, the acromion and the spine of the scapula.
+    innervation: Spinal accessory nerve (cranial nerve XI) with branches from C3 and C4.
+    actions:
+      - Scapular elevation (upper), retraction (middle), depression and upward rotation (lower)
+  role: Stabilises the shoulder blade during rows, presses and overhead work.
+  synergists: [rhomboids, deltoid]
+  status: draft
+- id: rhomboids
+  group: back
+  name: Rhomboids
+  latin: Musculi rhomboidei major et minor
+  detail: basic
+  summary: Two small muscles between the shoulder blades that pull them toward the spine.
+  anatomy:
+    origin: The spinous processes of C7 to T5 and the ligamentum nuchae.
+    insertion: The medial border of the scapula.
+    innervation: Dorsal scapular nerve (roots C4 and C5).
+    actions:
+      - Scapular retraction
+      - Downward rotation of the scapula
+  role: Hold the shoulder blades back during rows and resist forward pull in pressing.
+  synergists: [trapezius]
+  status: draft
+- id: teres-major
+  group: back
+  name: Teres major
+  latin: Musculus teres major
+  detail: basic
+  summary: A thick muscle under the armpit that works with the lats.
+  anatomy:
+    origin: The posterior surface of the inferior angle of the scapula.
+    insertion: The medial lip of the intertubercular groove of the humerus.
+    innervation: Lower subscapular nerve (roots C5 and C6).
+    actions:
+      - Shoulder extension
+      - Shoulder adduction
+      - Shoulder internal rotation
+  role: Assists the lats in pulling the arm down and back.
+  synergists: [latissimus-dorsi]
+  status: draft
+- id: erector-spinae
+  group: back
+  name: Erector spinae
+  latin: Musculus erector spinae (iliocostalis, longissimus, spinalis)
+  detail: full
+  summary: Three columns of muscle that run along each side of the spine from the pelvis to the skull. Together they extend the spine and, more importantly in lifting, resist it being pulled into flexion.
+  regions:
+    - { id: lumbar, label: Lumbar erectors, note: "The thick lower part that resists bending forwards during hinging and squatting." }
+    - { id: thoracic, label: Thoracic erectors, note: "The middle and upper part that holds the upper back extended under load in rows and deadlifts." }
+  anatomy:
+    origin: The sacrum, the iliac crest, the spinous processes of the lumbar vertebrae and the thoracolumbar fascia (a common tendon).
+    insertion: The ribs, the transverse processes of the vertebrae and, for the highest fibres, the skull base.
+    innervation: Dorsal rami of the spinal nerves.
+    actions:
+      - Spinal extension (both sides together)
+      - Lateral flexion of the spine (one side)
+      - In lifting, mostly an isometric brace that stops the spine flexing under load
+  role: Holds the trunk position during squats, deadlifts, rows and carries. Much of its work is isometric, which is why it is trained here with hinges, back extensions and loaded carries.
+  synergists: [multifidus, quadratus-lumborum, gluteus-maximus, hamstrings]
+  claims: [cricket-back-injuries]
+  injuries:
+    - Muscle strains and spasm can follow heavy or fatigued lifting, particularly with a flexed or rotated spine.
+  redFlags:
+    - Pain below the knee, numbness or tingling, leg weakness, saddle numbness or any bladder or bowel change
+    - Night pain that does not ease, or pain that does not improve after 2 to 3 weeks
+  prerequisites: A neutral-spine hinge pattern. Learn it with the bodyweight and foundation-level hinge drills before loading it.
+  cricket: Lumbar stress injuries are the central back concern in fast bowlers (see the cricket section for the evidence and its limits).
+  status: draft
+- id: multifidus
+  group: back
+  name: Multifidus
+  latin: Musculus multifidus
+  detail: full
+  summary: Short, deep muscle slips that span one to three vertebrae each. They control individual spinal segments.
+  anatomy:
+    origin: The sacrum, the posterior iliac spine and the transverse processes of the vertebrae below.
+    insertion: The spinous processes two to four vertebrae higher.
+    innervation: Dorsal rami of the spinal nerves.
+    actions:
+      - Extends the spine and controls segmental movement
+      - Resists rotation and shear between vertebrae
+  role: Works as a fine stabiliser rather than a prime mover. It is trained indirectly by controlled stabilisation work (bird-dog) and by bracing in loaded lifts, so it is not given isolation exercises here.
+  synergists: [erector-spinae, transversus-abdominis]
+  prerequisites: See the isometrics core guide for stabilisation drills.
+  status: draft
+- id: quadratus-lumborum
+  group: back
+  name: Quadratus lumborum
+  latin: Musculus quadratus lumborum
+  detail: full
+  summary: A flat quadrilateral muscle at the side of the lower back between the pelvis and the bottom rib.
+  anatomy:
+    origin: The iliac crest and the iliolumbar ligament.
+    insertion: The twelfth rib and the transverse processes of L1 to L4.
+    innervation: Ventral rami of T12 to L4.
+    actions:
+      - Lateral flexion of the trunk (one side)
+      - Fixes the twelfth rib during breathing
+      - Stabilises the pelvis and lumbar spine against side bend
+  role: Resists side bend when carrying a load on one side and during single-leg stance. Trained by side planks and suitcase carries.
+  synergists: [erector-spinae, obliques]
+  injuries:
+    - Common site of one-sided lower-back tightness and spasm after sustained asymmetric load or bending and twisting.
+  status: draft

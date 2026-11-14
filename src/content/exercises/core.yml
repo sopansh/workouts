@@ -1,0 +1,133 @@
+- id: cable-crunch
+  name: Cable crunch
+  group: core
+  primary: [rectus-abdominis]
+  secondary: [obliques, hip-flexors]
+  pattern: trunk-flexion
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: moderate
+  summary: A loaded trunk-flexion exercise that lets the abdominals be overloaded progressively.
+  setup: Kneel facing a high pulley with a rope at the head. Hips stay fixed.
+  steps:
+    - Curl the ribs toward the pelvis, rounding the upper trunk, without moving the hips back.
+    - Return slowly to a long trunk position without arching.
+  mistakes:
+    - Using the hips to pull the weight down
+    - Over-extending the lower back at the top
+  contraindications:
+    - Acute low-back pain
+    - Back pain provoked by trunk flexion under load
+  regression: Bodyweight crunch.
+  progression: Heavier stack or slower reps.
+  painRule: lower-back
+  variations: []
+  dose: 2 to 3 sets of 10 to 15 reps
+  alternatives: [hanging-leg-raise]
+  status: draft
+- id: hanging-leg-raise
+  name: Hanging leg raise
+  group: core
+  primary: [rectus-abdominis, hip-flexors]
+  secondary: [obliques, forearm-flexors]
+  pattern: trunk-flexion
+  equipment: [pull-up bar]
+  level: advanced
+  spinalLoad: low
+  summary: A leg raise from a hang. The hip flexors do a lot of the work unless the pelvis is curled up.
+  setup: Hang from a bar with the shoulders engaged and the legs straight.
+  steps:
+    - Raise the knees or straight legs, curling the pelvis up at the top.
+    - Lower slowly without swinging.
+  mistakes:
+    - Swinging
+    - Lifting only with the hip flexors and leaving the pelvis neutral
+  contraindications:
+    - Shoulder, elbow or grip problems in the hanging position
+    - Back pain provoked by hip-flexor loading
+  regression: Bent-knee raises or a captain's chair.
+  progression: Straight legs or toes to bar.
+  painRule: lower-back
+  variations: []
+  dose: 2 to 3 sets of 8 to 15 reps
+  alternatives: [cable-crunch]
+  status: draft
+- id: ab-wheel-rollout
+  name: Ab wheel rollout
+  group: core
+  primary: [rectus-abdominis]
+  secondary: [obliques, latissimus-dorsi, transversus-abdominis]
+  pattern: core-stability
+  equipment: [ab wheel]
+  level: advanced
+  spinalLoad: moderate
+  summary: "An anti-extension drill: the trunk resists the lower back arching as the wheel rolls out."
+  setup: Kneel holding the wheel with the arms straight and the pelvis tucked.
+  steps:
+    - Roll out as far as you can keep the lower back from arching.
+    - Roll back by pulling with the abs and lats.
+  mistakes:
+    - Letting the lower back arch
+    - Going out too far too soon
+  contraindications:
+    - Acute low-back pain
+    - Shoulder pain overhead
+  regression: Roll out from a standing position against a wall, or from an incline.
+  progression: Longer range of motion or a standing rollout.
+  painRule: lower-back
+  variations: []
+  dose: 2 to 3 sets of 6 to 10 reps
+  alternatives: [pallof-press]
+  status: draft
+- id: pallof-press
+  name: Pallof press
+  group: core
+  primary: [obliques, transversus-abdominis]
+  secondary: [rectus-abdominis]
+  pattern: anti-rotation
+  equipment: [cable, band]
+  level: intermediate
+  spinalLoad: low
+  summary: "An anti-rotation press: the trunk resists being twisted by the cable."
+  setup: Stand side-on to a cable at chest height, holding the handle at the chest with both hands.
+  steps:
+    - Press the handle straight out in front of the chest and hold for a moment.
+    - Return slowly without rotating.
+  mistakes:
+    - Letting the trunk turn toward the cable
+    - Leaning away from the stack
+  contraindications:
+    - Acute low-back pain provoked by the position
+  regression: A lighter band.
+  progression: A longer hold, a split stance or a half-kneeling position.
+  painRule: lower-back
+  variations: []
+  dose: 2 to 3 sets of 8 to 12 reps each side
+  alternatives: [side-plank]
+  status: draft
+- id: side-plank
+  name: Side plank
+  group: core
+  primary: [obliques, quadratus-lumborum]
+  secondary: [gluteus-medius-minimus]
+  pattern: core-stability
+  equipment: [bodyweight]
+  level: intermediate
+  spinalLoad: low
+  summary: An isometric side hold. This is also part of the core guide.
+  setup: Lie on one side with the forearm under the shoulder and the feet stacked or staggered.
+  steps:
+    - Lift the hips until the body forms a straight line from the head to the feet.
+    - Hold, breathing normally, then lower and switch sides.
+  mistakes:
+    - Letting the hips sag
+    - Rotating the trunk forwards or backwards
+  contraindications:
+    - Shoulder or hip pain in the position
+  regression: A bent-knee side plank.
+  progression: A longer hold or a leg lift.
+  painRule: lower-back
+  variations: []
+  dose: 2 to 3 holds of 20 to 45 seconds each side. See the core guide for more.
+  alternatives: [pallof-press, bird-dog]
+  status: draft

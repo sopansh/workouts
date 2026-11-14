@@ -1,0 +1,30 @@
+---
+import EvidenceBadge from './EvidenceBadge.astro';
+import { sourceCite, url, type Data } from '../lib/content';
+
+interface Props { claims: string[]; claimById: Data['claimById']; sourceById: Data['sourceById']; heading?: string; }
+const { claims, claimById, sourceById } = Astro.props;
+const list = claims.map(id => claimById.get(id)).filter(Boolean);
+---
+<ul class="claims">
+  {list.map(claim => (
+    <li id={`claim-${claim!.id}`}>
+      <article class="claim">
+        <div class="head">
+          <EvidenceBadge grade={claim!.data.grade} />
+          {claim!.data.emgOnly && <span class="badge" data-tone="warn" title="Muscle electrical activity only. Does not show a difference in growth.">EMG only</span>}
+        </div>
+        <p>{claim!.data.statement}</p>
+        {claim!.data.population && <p class="muted small">Population: {claim!.data.population}</p>}
+        <p class="caveat">Caveats: {claim!.data.caveats}</p>
+        <p class="cite">
+          Sources:
+          {claim!.data.sources.map((ref, i) => {
+            const s = sourceById.get(ref.id)!;
+            return <>{i > 0 && '; '} <a href={`${url.sources}#${s.id}`}>{sourceCite(s.data)}</a>{s.data.type === 'preprint' ? ' (preprint)' : ''}</>;
+          })}
+        </p>
+      </article>
+    </li>
+  ))}
+</ul>

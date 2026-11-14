@@ -1,0 +1,67 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../components/ClaimList.astro';
+import EvidenceBadge from '../../../components/EvidenceBadge.astro';
+import { loadAll, url } from '../../../lib/content';
+
+const d = await loadAll();
+const kinds: Array<[string, string]> = [['programming', 'Programming'], ['mechanism', 'Mechanisms'], ['emphasis', 'Exercise emphasis'], ['safety', 'Safety'], ['nutrition', 'Nutrition'], ['cricket', 'Cricket']];
+const rubric = [
+  ['A', 'A systematic review or meta-analysis, or several concordant trials, with growth or strength outcomes.'],
+  ['B', 'At least one good randomised trial with growth or strength outcomes, or strong convergent evidence.'],
+  ['C', 'Mechanistic, EMG, biomechanical or observational evidence only. Plausible, not proven to change growth.'],
+  ['D', 'Expert consensus or practice-based. Never presented as proven.'],
+  ['Mixed', 'Credible sources disagree. Both sides are shown.'],
+];
+---
+<Base title="Evidence" description="How claims on this site are graded, every claim in one place, and how sources are verified." accent="p1">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Evidence' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Evidence</p>
+    <h1>How claims are graded</h1>
+    <p class="lede">Every emphasis, benefit or programming claim carries a grade and at least one source. A grade is assigned from the sources, never chosen to fit a conclusion.</p>
+  </section>
+
+  <section aria-labelledby="rubric">
+    <h2 id="rubric">The grades</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Grade</th><th scope="col">Meaning</th></tr></thead>
+        <tbody>{rubric.map(([g, text]) => <tr><th scope="row"><EvidenceBadge grade={g} /></th><td>{text}</td></tr>)}</tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p><b>EMG is not growth.</b> Muscle electrical activity (EMG) shows how much a muscle is active in a movement. It does not show that the movement grows the muscle more, so EMG-only claims are capped at grade C and labelled.</p>
+      <p><b>No growth evidence.</b> Where a variation is listed with no claim, no study with a growth outcome was found. It is a hypothesis.</p>
+      <p><b>Preprints.</b> A preprint alone cannot support grade A or B.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="status">
+    <h2 id="status">Page status</h2>
+    <p class="prose">Every page is a <b>draft</b>. A page moves to <b>verified</b> when its sources are checked and its claims graded, and to <b>expert reviewed</b> only after a physiotherapist or doctor (anatomy, safety) and a certified strength and conditioning coach (programming) have signed it off. No page has reached either stage yet.</p>
+    <p class="prose"><b>Spinal load.</b> The none, low, moderate and high labels on exercises are our own planning classification by exercise type, not measurements.</p>
+  </section>
+
+  <section aria-labelledby="verify">
+    <h2 id="verify">How sources are checked</h2>
+    <ul class="prose">
+      <li>Sources are looked up on PubMed, Europe PMC and Crossref. Nothing is cited from memory.</li>
+      <li>Every DOI is checked on Crossref: it resolves, the title and year match, and no retraction notice points at it.</li>
+      <li>Claims paraphrase the abstract of the source. The build fails if a claim has no source, if a DOI is unverified or if a reference does not resolve.</li>
+    </ul>
+    <p>See the <a href={url.sources}>source register</a>.</p>
+  </section>
+
+  <h2>All claims</h2>
+  {kinds.map(([kind, label]) => {
+    const list = d.claims.filter(c => c.data.kind === kind).map(c => c.id);
+    return list.length > 0 && (
+      <section aria-labelledby={`k-${kind}`}>
+        <h3 id={`k-${kind}`}>{label}</h3>
+        <ClaimList claims={list} claimById={d.claimById} sourceById={d.sourceById} />
+      </section>
+    );
+  })}
+</Base>

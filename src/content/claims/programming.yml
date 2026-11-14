@@ -1,0 +1,93 @@
+# Programming claims. Statements paraphrase the abstracts of the cited sources; grades follow the rubric on /strength/evidence/.
+- id: volume-dose-response
+  kind: programming
+  grade: A
+  statement: Weekly set volume has a graded dose-response relationship with muscle growth. More sets per muscle per week produce more hypertrophy, with diminishing returns at higher volumes.
+  sources: [schoenfeld-2017-volume, pelland-2025-dose-response]
+  population: Mostly young adults (79% male in the 2025 meta-regression); training status varied.
+  caveats: Counting rules differ between papers. Returns diminish, so the best volume for one person is a trade-off against recovery time. The 2017 analysis found only a trend (p = 0.074) for the 5-9 versus 10+ set categories.
+- id: volume-trained-rct
+  kind: programming
+  grade: B
+  statement: In 34 resistance-trained men, 5 sets per exercise per session (three sessions a week) produced larger increases in elbow flexor and thigh size than 1 set, while strength gains were similar across 1, 3 and 5 sets.
+  sources: [schoenfeld-2019-volume-trained]
+  population: 34 resistance-trained men, 8 weeks.
+  caveats: Short duration, men only, volume varied per exercise per session rather than per muscle per week. Hypertrophy and strength responded differently, so volume targets depend on the goal.
+- id: volume-ten-sets
+  kind: programming
+  grade: B
+  statement: Doing at least about 10 hard sets per muscle per week is a sensible floor for hypertrophy. An umbrella review of 14 meta-analyses reports this as optimal.
+  sources: [bernardez-2022-umbrella, schoenfeld-2017-volume]
+  caveats: A summary of meta-analyses, not a trial. The dose-response data show a continuous slope with diminishing returns rather than a hard threshold, so 10 is a floor to plan around, not a cliff. The upper useful limit is not established.
+- id: volume-fractional
+  kind: programming
+  grade: B
+  statement: Counting indirect sets (a muscle working as a helper) as about half a direct set predicted hypertrophy best across 67 studies. Direct and indirect sets are not equal.
+  sources: [pelland-2025-dose-response]
+  population: 67 studies, 2058 participants.
+  caveats: A single meta-regression, with modest model fit. This plan reports direct and indirect sets in separate columns instead of blending them.
+- id: frequency-contested
+  kind: programming
+  grade: Mixed
+  statement: Training a muscle twice a week was reported to beat once a week when volume was matched (2016 meta-analysis). A 2025 meta-regression found the effect of frequency on hypertrophy compatible with a negligible effect once weekly volume is accounted for.
+  sources: [schoenfeld-2016-frequency, pelland-2025-dose-response, currier-2023-prescription]
+  caveats: Most frequency studies compared 1 to 3 days per week. Frequency mainly helps by letting a high weekly volume be spread over more sessions with better quality per set. The highest-ranked hypertrophy prescription in the network meta-analysis was twice-weekly, multi-set, higher-load training.
+- id: frequency-trained-rct
+  kind: programming
+  grade: B
+  statement: In 20 well-trained men, training each muscle three days a week (total body) produced greater forearm flexor thickness gains than once a week (split), with no difference in maximal strength.
+  sources: [schoenfeld-2015-frequency-trained]
+  population: 20 well-trained men.
+  caveats: Small sample. Only forearm flexors differed; vastus lateralis thickness did not. Not enough to conclude that more frequent is always better.
+- id: load-range
+  kind: programming
+  grade: A
+  statement: Muscle growth is similar across a wide range of loads when sets are taken close to failure. Heavier loads (above about 60% of 1RM, and above 80% in the network meta-analysis) give larger gains in maximal strength.
+  sources: [schoenfeld-2017-load, currier-2023-prescription, schoenfeld-2021-loading]
+  caveats: The low-load studies took sets to or near failure. Very high rep sets are uncomfortable and slow; heavy compound lifts add fatigue and joint stress. Pick the range per exercise for practicality.
+- id: proximity-contested
+  kind: programming
+  grade: Mixed
+  statement: A 2023 meta-analysis found no evidence that training to momentary failure beats stopping short of it for hypertrophy. A 2024 exploratory meta-regression found hypertrophy improved as sets ended closer to failure.
+  sources: [refalo-2023-failure, robinson-2024-proximity]
+  caveats: Reps in reserve were estimated from study descriptions in the 2024 analysis, so the exact shape of the relationship is unclear. A reasonable reading is that sets should be hard (roughly 0 to 3 reps in reserve) without needing to go to failure every time.
+- id: rest-interval
+  kind: programming
+  grade: B
+  statement: Resting longer than about 60 seconds between sets gave a small hypertrophy benefit in a Bayesian meta-analysis, with no appreciable difference beyond about 90 seconds. A trial in resistance-trained men found 3 minutes beat 1 minute for quadriceps thickness and strength.
+  sources: [singer-2024-rest, schoenfeld-2016-rest]
+  population: Meta-analysis of 9 studies; trial of 21 resistance-trained men over 8 weeks.
+  caveats: Heterogeneous results. The benefit is probably mediated by being able to do more work in later sets, so heavy compound lifts need longer rests than isolation work.
+- id: prescription-network
+  kind: programming
+  grade: A
+  statement: All resistance-training prescriptions in a 119-study hypertrophy network beat no exercise. The highest-ranked prescription for hypertrophy was higher-load, multi-set, twice-weekly training.
+  sources: [currier-2023-prescription]
+  population: Healthy adults, 119 studies, 3364 participants.
+  caveats: Differences between many prescriptions were small. Ranking does not mean other prescriptions fail.
+- id: exercise-order-tempo
+  kind: programming
+  grade: B
+  statement: An umbrella review concluded that exercise order and time of day do not appear to directly influence the size of muscle gains, and that very slow repetitions (10 seconds or more) should be avoided.
+  sources: [bernardez-2022-umbrella]
+  caveats: A summary of meta-analyses. Putting the priority lift first is still sensible, because fatigue lowers performance on later lifts, but that is practitioner reasoning rather than a hypertrophy finding.
+- id: deload-consensus
+  kind: programming
+  grade: D
+  statement: Expert strength and physique coaches reached consensus that a deload is a period of reduced training stress designed to reduce fatigue, promote recovery and improve readiness for later training.
+  sources: [bell-2023-deload]
+  population: 34 expert coaches in round 1, 21 in round 3.
+  caveats: A Delphi consensus of practitioners, not an outcome trial. Whether, when and how to deload is not established by controlled evidence.
+- id: hypertrophy-mechanisms
+  kind: mechanism
+  grade: C
+  statement: Mechanical tension, muscle damage and metabolic stress are the three proposed mechanisms of exercise-induced hypertrophy. All can play a role.
+  sources: [schoenfeld-2010-mechanisms]
+  caveats: A mechanistic review. The relative importance of each mechanism is not settled, and later work questions the role of damage and metabolic stress.
+- id: protein-intake
+  kind: nutrition
+  grade: A
+  statement: Protein supplementation enhanced gains in muscle mass and strength during resistance training. Benefit levelled off at total intakes of about 1.6 g per kg of body weight per day, and in adults under 65 who trained, eating at least 1.6 g per kg per day gave small extra lean-mass gains.
+  sources: [morton-2018-protein, nunes-2022-protein]
+  population: Healthy adults, 49 and 74 randomised trials respectively.
+  caveats: Effects are small. Individual needs can sit above or below the breakpoint. Nothing here replaces advice from a dietitian, especially with kidney or other medical conditions.

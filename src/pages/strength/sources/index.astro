@@ -1,0 +1,38 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { loadAll, url } from '../../../lib/content';
+
+const d = await loadAll();
+const sources = [...d.sources].sort((a, b) => a.data.authors.localeCompare(b.data.authors) || a.data.year - b.data.year);
+const typeLabel: Record<string, string> = { 'systematic-review': 'Systematic review', 'meta-analysis': 'Meta-analysis', rct: 'Randomised trial', cohort: 'Cohort study', biomechanics: 'Biomechanics / EMG', review: 'Review', consensus: 'Consensus', preprint: 'Preprint', textbook: 'Textbook' };
+const claimsFor = (id: string) => d.claims.filter(c => c.data.sources.some(s => s.id === id));
+---
+<Base title="Sources" description="The source register: every reference used on the site, with its study type and verification date." accent="p1">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Sources' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Sources</p>
+    <h1>Source register</h1>
+    <p class="lede">{sources.length} references. DOIs were checked on Crossref, and claims were written from the abstracts. Open a DOI to read the paper.</p>
+  </section>
+  <ul class="claims">
+    {sources.map(s => (
+      <li id={s.id}>
+        <article class="claim">
+          <div class="head">
+            <span class="badge" data-tone={s.data.type === 'preprint' ? 'warn' : 'info'}>{typeLabel[s.data.type]}</span>
+            {s.data.verifiedOn && <span class="badge" data-tone="good">DOI verified {s.data.verifiedOn}</span>}
+            {!s.data.doi && <span class="badge" data-tone="warn">No DOI</span>}
+          </div>
+          <p><b>{s.data.authors}</b> ({s.data.year}). {s.data.title}. <i>{s.data.venue}</i>.</p>
+          {s.data.doi && <p class="small"><a href={`https://doi.org/${s.data.doi}`} rel="noopener">doi:{s.data.doi}</a></p>}
+          {s.data.url && <p class="small"><a href={s.data.url} rel="noopener">{s.data.url}</a></p>}
+          {s.data.note && <p class="caveat">{s.data.note}</p>}
+          {claimsFor(s.id).length > 0 && (
+            <p class="small muted">Used in: {claimsFor(s.id).map((c, i) => <>{i > 0 && ', '}<a href={`${url.evidence}#claim-${c.id}`}>{c.id}</a></>)}</p>
+          )}
+        </article>
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,382 @@
+# Source register. Every DOI here has been looked up on Crossref and checked against its Europe PMC abstract.
+# `verifiedOn` is written by `npm run verify:sources -- --write`. Never add an entry from memory: find it, then verify it.
+- id: schoenfeld-2010-mechanisms
+  type: review
+  authors: Schoenfeld BJ
+  year: 2010
+  title: The mechanisms of muscle hypertrophy and their application to resistance
+    training
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0b013e3181e840f3
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2017-volume
+  type: meta-analysis
+  authors: Schoenfeld BJ, Ogborn D, Krieger JW
+  year: 2017
+  title: "Dose-response relationship between weekly resistance training volume and
+    increases in muscle mass: A systematic review and meta-analysis"
+  venue: Journal of Sports Sciences
+  doi: 10.1080/02640414.2016.1210197
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2016-frequency
+  type: meta-analysis
+  authors: Schoenfeld BJ, Ogborn D, Krieger JW
+  year: 2016
+  title: "Effects of Resistance Training Frequency on Measures of Muscle
+    Hypertrophy: A Systematic Review and Meta-Analysis"
+  venue: Sports Medicine
+  doi: 10.1007/s40279-016-0543-8
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2015-frequency-trained
+  type: rct
+  authors: Schoenfeld BJ, Ratamess NA, Peterson MD, et al.
+  year: 2015
+  title: Influence of Resistance Training Frequency on Muscular Adaptations in
+    Well-Trained Men
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000000970
+  note: 20 well-trained young men, split routine (1 day per week per muscle)
+    versus total-body (3 days per week).
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2017-load
+  type: meta-analysis
+  authors: Schoenfeld BJ, Grgic J, Ogborn D, Krieger JW
+  year: 2017
+  title: "Strength and Hypertrophy Adaptations Between Low- vs. High-Load
+    Resistance Training: A Systematic Review and Meta-Analysis"
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000002200
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2021-loading
+  type: review
+  authors: Schoenfeld BJ, Grgic J, Van Every DW, et al.
+  year: 2021
+  title: "Loading Recommendations for Muscle Strength, Hypertrophy, and Local
+    Endurance: A Re-Examination of the Repetition Continuum"
+  venue: Sports
+  doi: 10.3390/sports9020032
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2019-volume-trained
+  type: rct
+  authors: Schoenfeld BJ, Contreras B, Krieger J, et al.
+  year: 2019
+  title: Resistance Training Volume Enhances Muscle Hypertrophy but Not Strength
+    in Trained Men
+  venue: Medicine and Science in Sports and Exercise
+  doi: 10.1249/mss.0000000000001764
+  note: 34 resistance-trained men, 8 weeks, 1, 3 or 5 sets per exercise per session.
+  verifiedOn: 2026-11-14
+- id: pelland-2025-dose-response
+  type: meta-analysis
+  authors: Pelland JC, Remmert JF, Robinson ZP, et al.
+  year: 2025
+  title: "The Resistance Training Dose Response: Meta-Regressions Exploring the
+    Effects of Weekly Volume and Frequency on Muscle Hypertrophy and Strength
+    Gain"
+  venue: Sports Medicine
+  doi: 10.1007/s40279-025-02344-w
+  note: 67 studies. Counts indirect sets as half a set (the "fractional" method).
+  verifiedOn: 2026-11-14
+- id: refalo-2023-failure
+  type: meta-analysis
+  authors: Refalo MC, Helms ER, Trexler ET, et al.
+  year: 2023
+  title: "Influence of Resistance Training Proximity-to-Failure on Skeletal Muscle
+    Hypertrophy: A Systematic Review with Meta-analysis"
+  venue: Sports Medicine
+  doi: 10.1007/s40279-022-01784-y
+  verifiedOn: 2026-11-14
+- id: robinson-2024-proximity
+  type: meta-analysis
+  authors: Robinson ZP, Pelland JC, Remmert JF, et al.
+  year: 2024
+  title: Exploring the Dose-Response Relationship Between Estimated Resistance
+    Training Proximity to Failure, Strength Gain, and Muscle Hypertrophy
+  venue: Sports Medicine
+  doi: 10.1007/s40279-024-02069-2
+  note: Exploratory meta-regression; reps in reserve were estimated from study
+    descriptions.
+  verifiedOn: 2026-11-14
+- id: currier-2023-prescription
+  type: meta-analysis
+  authors: Currier BS, Mcleod JC, Banfield L, et al.
+  year: 2023
+  title: "Resistance training prescription for muscle strength and hypertrophy in
+    healthy adults: a systematic review and Bayesian network meta-analysis"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2023-106807
+  verifiedOn: 2026-11-14
+- id: bernardez-2022-umbrella
+  type: systematic-review
+  authors: Bernárdez-Vázquez R, Raya-González J, Castillo D, et al.
+  year: 2022
+  title: "Resistance Training Variables for Optimization of Muscle Hypertrophy: An
+    Umbrella Review"
+  venue: Frontiers in Sports and Active Living
+  doi: 10.3389/fspor.2022.949021
+  verifiedOn: 2026-11-14
+- id: schoenfeld-2016-rest
+  type: rct
+  authors: Schoenfeld BJ, Pope ZK, Benik FM, et al.
+  year: 2016
+  title: Longer Interset Rest Periods Enhance Muscle Strength and Hypertrophy in
+    Resistance-Trained Men
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000001272
+  note: 21 resistance-trained men, 8 weeks, 1 minute versus 3 minutes between sets.
+  verifiedOn: 2026-11-14
+- id: singer-2024-rest
+  type: meta-analysis
+  authors: Singer A, Wolf M, Generoso L, et al.
+  year: 2024
+  title: "Give it a rest: a systematic review with Bayesian meta-analysis on the
+    effect of inter-set rest interval duration on muscle hypertrophy"
+  venue: Frontiers in Sports and Active Living
+  doi: 10.3389/fspor.2024.1429789
+  verifiedOn: 2026-11-14
+- id: bell-2023-deload
+  type: consensus
+  authors: Bell L, Strafford BW, Coleman M, et al.
+  year: 2023
+  title: "Integrating Deloading into Strength and Physique Sports Training
+    Programmes: An International Delphi Consensus Approach"
+  venue: Sports Medicine - Open
+  doi: 10.1186/s40798-023-00633-0
+  note: Expert-coach consensus (Delphi), not an outcome trial.
+  verifiedOn: 2026-11-14
+- id: morton-2018-protein
+  type: meta-analysis
+  authors: Morton RW, Murphy KT, McKellar SR, et al.
+  year: 2018
+  title: A systematic review, meta-analysis and meta-regression of the effect of
+    protein supplementation on resistance training-induced gains in muscle mass
+    and strength in healthy adults
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2017-097608
+  verifiedOn: 2026-11-14
+- id: nunes-2022-protein
+  type: meta-analysis
+  authors: Nunes EA, Colenso-Semple L, McKellar SR, et al.
+  year: 2022
+  title: Systematic review and meta-analysis of protein intake to support muscle
+    mass and function in healthy adults
+  venue: Journal of Cachexia, Sarcopenia and Muscle
+  doi: 10.1002/jcsm.12922
+  verifiedOn: 2026-11-14
+- id: pedrosa-2022-knee-extension
+  type: rct
+  authors: Pedrosa GF, Lima FV, Schoenfeld BJ, et al.
+  year: 2022
+  title: Partial range of motion training elicits favorable improvements in
+    muscular adaptations when carried out at long muscle lengths
+  venue: European Journal of Sport Science
+  doi: 10.1080/17461391.2021.1927199
+  note: 45 untrained women, knee extension.
+  verifiedOn: 2026-11-14
+- id: pedrosa-2023-curl
+  type: rct
+  authors: Pedrosa GF, Simões MG, Figueiredo MOC, et al.
+  year: 2023
+  title: Training in the Initial Range of Motion Promotes Greater Muscle
+    Adaptations Than at Final in the Arm Curl
+  venue: Sports
+  doi: 10.3390/sports11020039
+  note: 19 young women, within-participant design, seated dumbbell preacher curl.
+  verifiedOn: 2026-11-14
+- id: kassiano-2023-calf
+  type: rct
+  authors: Kassiano W, Costa B, Kunevaliki G, et al.
+  year: 2023
+  title: Greater Gastrocnemius Muscle Hypertrophy After Partial Range of Motion
+    Training Performed at Long Muscle Lengths
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000004460
+  note: 42 young women, 8 weeks, calf raise.
+  verifiedOn: 2026-11-14
+- id: maeo-2023-triceps
+  type: rct
+  authors: Maeo S, Wu Y, Huang M, et al.
+  year: 2023
+  title: Triceps brachii hypertrophy is substantially greater after elbow
+    extension training performed in the overhead versus neutral arm position
+  venue: European Journal of Sport Science
+  doi: 10.1080/17461391.2022.2100279
+  note: 21 adults, within-participant design, 12 weeks, MRI muscle volume.
+  verifiedOn: 2026-11-14
+- id: maeo-2021-hamstrings
+  type: rct
+  authors: Maeo S, Huang M, Wu Y, et al.
+  year: 2021
+  title: Greater Hamstrings Muscle Hypertrophy but Similar Damage Protection after
+    Training at Long versus Short Muscle Lengths
+  venue: Medicine and Science in Sports and Exercise
+  doi: 10.1249/mss.0000000000002523
+  note: 20 healthy adults, within-participant design, seated versus prone leg
+    curl, 12 weeks, MRI.
+  verifiedOn: 2026-11-14
+- id: kinoshita-2023-calf
+  type: rct
+  authors: Kinoshita M, Maeo S, Kobayashi Y, et al.
+  year: 2023
+  title: Triceps surae muscle hypertrophy is greater after standing versus seated
+    calf-raise training
+  venue: Frontiers in Physiology
+  doi: 10.3389/fphys.2023.1272106
+  note: 14 untrained adults, within-participant design, 12 weeks, MRI.
+  verifiedOn: 2026-11-14
+- id: contreras-2015-squat-thrust
+  type: biomechanics
+  authors: Contreras B, Vigotsky AD, Schoenfeld BJ, et al.
+  year: 2015
+  title: A Comparison of Gluteus Maximus, Biceps Femoris, and Vastus Lateralis
+    Electromyographic Activity in the Back Squat and Barbell Hip Thrust
+    Exercises
+  venue: Journal of Applied Biomechanics
+  doi: 10.1123/jab.2014-0301
+  note: Surface EMG, 13 trained women, estimated 10RM loads. EMG only; no growth
+    outcome.
+  verifiedOn: 2026-11-14
+- id: williams-2021-glute-emg
+  type: biomechanics
+  authors: Williams MJ, Gibson N, Sorbie GG, et al.
+  year: 2021
+  title: Activation of the Gluteus Maximus During Performance of the Back Squat,
+    Split Squat, and Barbell Hip Thrust and the Relationship With Maximal
+    Sprinting
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000002651
+  note: Surface EMG, 12 male team-sport athletes. EMG only; no growth outcome.
+  verifiedOn: 2026-11-14
+- id: plotkin-2023-thrust-squat
+  type: preprint
+  authors: Plotkin D, Rodas M, Vigotsky A, et al.
+  year: 2023
+  title: Hip thrust and back squat training elicit similar gluteus muscle
+    hypertrophy and transfer similarly to the deadlift
+  venue: bioRxiv (preprint)
+  doi: 10.1101/2023.06.21.545949
+  note: Preprint, not peer reviewed at the time of checking. Untrained
+    college-aged participants, 9 weeks, MRI.
+  verifiedOn: 2026-11-14
+- id: vigotsky-2018-emg
+  type: review
+  authors: Vigotsky AD, Halperin I, Lehman GJ, et al.
+  year: 2018
+  title: Interpreting Signal Amplitudes in Surface Electromyography Studies in
+    Sport and Rehabilitation Sciences
+  venue: Frontiers in Physiology
+  doi: 10.3389/fphys.2017.00985
+  verifiedOn: 2026-11-14
+- id: lauver-2016-bench-angle
+  type: biomechanics
+  authors: Lauver JD, Cayot TE, Scheuermann BW
+  year: 2016
+  title: Influence of bench angle on upper extremity muscular activation during
+    bench press exercise
+  venue: European Journal of Sport Science
+  doi: 10.1080/17461391.2015.1022605
+  note: Surface EMG, 14 resistance-trained men, 0, 30, 45 and -15 degree bench
+    angles. EMG only; no growth outcome.
+  verifiedOn: 2026-11-14
+- id: kubo-2019-squat-depth
+  type: rct
+  authors: Kubo K, Ikebukuro T, Yata H
+  year: 2019
+  title: Effects of squat training with different depths on lower limb muscle volumes
+  venue: European Journal of Applied Physiology
+  doi: 10.1007/s00421-019-04181-y
+  note: 17 males, 10 weeks, MRI muscle volume.
+  verifiedOn: 2026-11-14
+- id: bloomquist-2013-squat-rom
+  type: rct
+  authors: Bloomquist K, Langberg H, Karlsen S, et al.
+  year: 2013
+  title: Effect of range of motion in heavy load squatting on muscle and tendon
+    adaptations
+  venue: European Journal of Applied Physiology
+  doi: 10.1007/s00421-013-2642-7
+  note: 17 male students, 12 weeks, deep (0-120 degrees knee flexion) versus
+    shallow (0-60 degrees) squat.
+  verifiedOn: 2026-11-14
+- id: van-dyk-2019-nordic
+  type: meta-analysis
+  authors: van Dyk N, Behan FP, Whiteley R
+  year: 2019
+  title: Including the Nordic hamstring exercise in injury prevention programmes
+    halves the rate of hamstring injuries
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2018-100045
+  verifiedOn: 2026-11-14
+- id: hulin-2014-spikes
+  type: cohort
+  authors: Hulin BT, Gabbett TJ, Blanch P, et al.
+  year: 2014
+  title: Spikes in acute workload are associated with increased injury risk in
+    elite cricket fast bowlers
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2013-092524
+  note: 28 fast bowlers, 43 seasons.
+  verifiedOn: 2026-11-14
+- id: dennis-2003-workload
+  type: cohort
+  authors: Dennis R, Farhart P, Goumas C, et al.
+  year: 2003
+  title: Bowling workload and the risk of injury in elite cricket fast bowlers
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/s1440-2440(03)80031-2
+  note: 90 male Australian state fast bowlers over two seasons.
+  verifiedOn: 2026-11-14
+- id: gabbett-2016-paradox
+  type: review
+  authors: Gabbett TJ
+  year: 2016
+  title: "The training-injury prevention paradox: should athletes be training
+    smarter and harder?"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2015-095788
+  verifiedOn: 2026-11-14
+- id: impellizzeri-2020-acwr
+  type: review
+  authors: Impellizzeri FM, Tenan MS, Kempton T, et al.
+  year: 2020
+  title: "Acute:Chronic Workload Ratio: Conceptual Issues and Fundamental Pitfalls"
+  venue: International Journal of Sports Physiology and Performance
+  doi: 10.1123/ijspp.2019-0864
+  verifiedOn: 2026-11-14
+- id: foster-1989-back
+  type: cohort
+  authors: Foster D, John D, Elliott B, et al.
+  year: 1989
+  title: "Back injuries to fast bowlers in cricket: a prospective study"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsm.23.3.150
+  note: 82 high-performance young male fast bowlers, mean age 16.8.
+  verifiedOn: 2026-11-14
+- id: elliott-2000-back
+  type: review
+  authors: Elliott B
+  year: 2000
+  title: Back injuries and the fast bowler in cricket
+  venue: Journal of Sports Sciences
+  doi: 10.1080/026404100446784
+  verifiedOn: 2026-11-14
+- id: lloyd-2014-youth
+  type: consensus
+  authors: Lloyd RS, Faigenbaum AD, Stone MH, et al.
+  year: 2014
+  title: "Position statement on youth resistance training: the 2014 International
+    Consensus"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2013-092952
+  verifiedOn: 2026-11-14
+- id: gray-1918
+  type: textbook
+  authors: Gray H
+  year: 1918
+  title: Anatomy of the Human Body (20th edition, public domain)
+  venue: Lea and Febiger
+  url: https://www.bartleby.com/107/
+  note: Used for the structural anatomy (origin, insertion, nerve supply, action)
+    on muscle pages. Terminology is dated; a modern atlas or textbook should
+    replace it at review. Not a DOI source, so it is not checked by the
+    verifier.

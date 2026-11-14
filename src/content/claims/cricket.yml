@@ -1,0 +1,34 @@
+# Cricket claims. Role pages are stubs for now; these are the evidence-backed starting points only.
+- id: cricket-workload-spikes
+  kind: cricket
+  grade: C
+  statement: In 28 elite fast bowlers (43 seasons), a large week-on-week spike in workload (acute workload over twice the 4-week average) was associated with a higher risk of injury in the following week (relative risk 3.3 to 4.5 against a balance of 50 to 99%).
+  sources: [hulin-2014-spikes]
+  population: 28 elite male fast bowlers.
+  caveats: Observational. Small sample. Built on acute-to-chronic ratios, which have been criticised (see the contested ratio claim).
+- id: cricket-workload-low-and-high
+  kind: cricket
+  grade: C
+  statement: In 90 Australian state fast bowlers, both too little and too much bowling was associated with higher injury risk. Under 2 days or 5 or more days between bowling sessions, and fewer than 123 deliveries a week, carried increased risk.
+  sources: [dennis-2003-workload]
+  population: 90 male first-class fast bowlers, two seasons.
+  caveats: Observational, from the 2000s. The authors note more work is needed to understand why infrequent bowlers are injured more.
+- id: acwr-contested
+  kind: cricket
+  grade: Mixed
+  statement: Gabbett (2016) argues that athletes used to high training loads get injured less and that acute-to-chronic ratios are a useful monitoring tool. Impellizzeri and colleagues (2020) conclude there is no evidence supporting the ratio for training recommendations aimed at reducing injury.
+  sources: [gabbett-2016-paradox, impellizzeri-2020-acwr]
+  caveats: Both agree that sudden large spikes and under-training are a concern. Do not present any single ratio as a rule.
+- id: cricket-back-injuries
+  kind: cricket
+  grade: C
+  statement: In 82 young high-performance fast bowlers, 11% sustained a vertebral stress fracture (L4 to S1) and 27% a soft-tissue back injury in one season. A later review links shoulder counter-rotation of 12 to 40 degrees in the delivery stride, and bowling for extended periods, to more back injuries.
+  sources: [foster-1989-back, elliott-2000-back]
+  population: Young male fast bowlers (mean age 16.8).
+  caveats: Observational and older. Technique and workload both matter. Youth bowlers need qualified supervision.
+- id: youth-training-consensus
+  kind: cricket
+  grade: D
+  statement: An international consensus statement on youth resistance training exists, endorsed by organisations in sports medicine, paediatrics and strength and conditioning. Read it before programming for under-18s.
+  sources: [lloyd-2014-youth]
+  caveats: Only the existence of the statement is claimed here; its recommendations still need to be extracted from the full text and checked.

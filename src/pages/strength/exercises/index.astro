@@ -1,0 +1,87 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ExerciseCard from '../../../components/ExerciseCard.astro';
+import { loadAll, levelLabel, spinalLabel, url } from '../../../lib/content';
+
+const d = await loadAll();
+const equipment = [...new Set(d.exercises.flatMap(e => e.data.equipment))].sort();
+const musclesUsed = d.muscles.filter(m => d.exercises.some(e => e.data.primary.some(r => r.id === m.id))).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const exercises = [...d.exercises].sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+<Base title="Exercises" description="Every exercise with setup, execution, common errors, contraindications, regression, progression and a pain rule. Filter by muscle, equipment, level and spinal load." accent="p3">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Exercises' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Exercises</p>
+    <h1>Find an exercise</h1>
+    <p class="lede">Every page has contraindications, a regression and a pain rule. Foundation-level options exist only for squat, glute and lower-back work.</p>
+  </section>
+
+  <form class="filters" id="filters" role="search" aria-label="Filter exercises">
+    <label>Search<input type="search" name="q" autocomplete="off" placeholder="Name or muscle"></label>
+    <label>Muscle group
+      <select name="group"><option value="">All</option>{d.groups.map(g => <option value={g.id}>{g.data.name}</option>)}</select>
+    </label>
+    <label>Primary muscle
+      <select name="muscle"><option value="">All</option>{musclesUsed.map(m => <option value={m.id}>{m.data.name}</option>)}</select>
+    </label>
+    <label>Equipment
+      <select name="equipment"><option value="">All</option>{equipment.map(e => <option value={e}>{e}</option>)}</select>
+    </label>
+    <label>Level
+      <select name="level"><option value="">All</option>{Object.entries(levelLabel).map(([k, v]) => <option value={k}>{v}</option>)}</select>
+    </label>
+    <label>Spinal load
+      <select name="spine"><option value="">All</option>{Object.entries(spinalLabel).map(([k, v]) => <option value={k}>{v}</option>)}</select>
+    </label>
+    <button class="btn" type="reset">Clear filters</button>
+  </form>
+  <p class="result-count" id="count" role="status" aria-live="polite">{exercises.length} exercises</p>
+
+  <ul class="exercise-list" id="list">
+    {exercises.map(e => (
+      <li
+        data-group={e.data.group.id}
+        data-muscles={e.data.primary.map(r => r.id).join(' ')}
+        data-equipment={e.data.equipment.join('|')}
+        data-level={e.data.level}
+        data-spine={e.data.spinalLoad}
+        data-text={`${e.data.name} ${e.data.primary.map(r => d.muscleById.get(r.id)!.data.name).join(' ')}`.toLowerCase()}
+      >
+        <ExerciseCard exercise={e} muscleById={d.muscleById} groupById={d.groupById} />
+      </li>
+    ))}
+  </ul>
+  <p id="empty" class="note" hidden>No exercises match these filters.</p>
+  <noscript><p class="note">Filters need JavaScript. All exercises are listed above.</p></noscript>
+</Base>
+
+<script>
+  const form = document.getElementById('filters') as HTMLFormElement;
+  const items = [...document.querySelectorAll<HTMLLIElement>('#list > li')];
+  const count = document.getElementById('count')!;
+  const empty = document.getElementById('empty')!;
+
+  function apply() {
+    const f = new FormData(form);
+    const q = String(f.get('q') ?? '').trim().toLowerCase();
+    let shown = 0;
+    for (const li of items) {
+      const ok =
+        (!q || li.dataset.text!.includes(q)) &&
+        (!f.get('group') || li.dataset.group === f.get('group')) &&
+        (!f.get('muscle') || li.dataset.muscles!.split(' ').includes(String(f.get('muscle')))) &&
+        (!f.get('equipment') || li.dataset.equipment!.split('|').includes(String(f.get('equipment')))) &&
+        (!f.get('level') || li.dataset.level === f.get('level')) &&
+        (!f.get('spine') || li.dataset.spine === f.get('spine'));
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    count.textContent = `${shown} of ${items.length} exercises`;
+    empty.hidden = shown > 0;
+  }
+
+  form.addEventListener('input', apply);
+  form.addEventListener('submit', e => e.preventDefault());
+  form.addEventListener('reset', () => setTimeout(apply));
+</script>

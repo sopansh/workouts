@@ -1,0 +1,218 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import ClaimList from './ClaimList.astro';
+import StatusBadge from './StatusBadge.astro';
+import { loadAll, spinalLabel, url, DEFAULT_PROGRAM } from '../lib/content';
+import {
+  estimateMinutes, peakSpinalLoad, sessionGaps, totalSets, volumeStatus, weeklyVolume,
+  SECONDS_BETWEEN_EXERCISES, SECONDS_PER_SET, SPINAL_RANK, VOLUME_CEILING, VOLUME_FLOOR, WARM_UP_MINUTES,
+} from '../lib/plan';
+
+interface Props { program: CollectionEntry<'programs'>; }
+const { program } = Astro.props;
+const d = await loadAll();
+const p = program.data;
+
+const exMap = new Map(d.exercises.map(e => [e.id, { id: e.id, primary: e.data.primary.map(r => r.id), secondary: e.data.secondary.map(r => r.id), spinalLoad: e.data.spinalLoad }]));
+const plain = (day: (typeof p.days)[number]) => ({
+  id: day.id,
+  primer: day.primer.map(x => ({ exercise: x.exercise.id, sets: x.sets, rest: x.rest })),
+  exercises: day.exercises.map(x => ({ exercise: x.exercise.id, sets: x.sets, rest: x.rest })),
+});
+const dayById = new Map(p.days.map(day => [day.id, day]));
+
+const week = p.week.map((w, index) => {
+  const day = w.dayId ? dayById.get(w.dayId) : undefined;
+  return { ...w, name: w.day, index, day, plain: day ? plain(day) : undefined };
+});
+const scheduled = week.filter(w => w.day);
+const volume = weeklyVolume(scheduled.map(w => ({ dayIndex: w.index, day: w.plain! })), exMap);
+
+const directByDay = (muscle: string) => week.map(w => (w.day ? w.day.exercises.reduce((sum, rx) => sum + (exMap.get(rx.exercise.id)!.primary.includes(muscle) ? rx.sets : 0), 0) : 0));
+const dayShort = week.map(w => w.name.slice(0, 3));
+
+const muscles = [...volume.values()]
+  .map(v => ({ v, muscle: d.muscleById.get(v.muscle)! }))
+  .sort((a, b) => Number(b.muscle.data.tracked) - Number(a.muscle.data.tracked) || b.v.direct - a.v.direct);
+const tracked = muscles.filter(x => x.muscle.data.tracked);
+
+const peaks = week.map(w => (w.plain ? peakSpinalLoad(w.plain, exMap) : null));
+const heavyList = (day: (typeof p.days)[number]) => day.exercises.map(x => d.exerciseById.get(x.exercise.id)!).filter(e => SPINAL_RANK[e.data.spinalLoad] >= 2);
+const dayName = (list: number[]) => list.map(i => week[i].name).join(', ');
+const statusText = { below: 'Below range', 'in-range': 'In range', above: 'Above range' } as const;
+const statusTone = { below: 'warn', 'in-range': 'good', above: 'bad' } as const;
+const otherPrograms = d.programs.filter(x => x.id !== program.id);
+const spinalWidth = { none: 6, low: 34, moderate: 67, high: 100 } as const;
+const spinalTone = { none: 'good', low: 'good', moderate: 'warn', high: 'bad' } as const;
+---
+<Base title={`Weekly plan: ${p.name}`} description={`How the exercises are distributed across the week in the ${p.name} program: sessions, sets per muscle, spacing, spinal load and time.`} accent="p2">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Weekly plan' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Weekly plan</p>
+    <h1>{p.name}</h1>
+    <p class="lede">How the exercises are distributed across the week for an experienced lifter: what you train each day, how many hard sets each muscle gets, how far apart the sessions are, and how the load on the spine and the clock are managed.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">{p.daysPerWeek} training days</span>
+      <span class="badge">Up to {p.sessionMinutes} min per session</span>
+      <span class="badge">{p.level}</span>
+      <StatusBadge status={p.status} />
+    </div>
+    <div class="switcher">
+      <a class="btn" href={url.program(program.id)}>Program reasoning</a>
+      {otherPrograms.map(o => <a class="btn" href={url.weekly(o.id)}>Switch to {o.data.name}</a>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="glance">
+    <h2 id="glance">The week at a glance</h2>
+    <ol class="week">
+      {week.map(w => (
+        <li>
+          <div class="day" data-kind={w.day ? w.day.id.split('-')[0] : 'rest'}>
+            <span class="day__name">{w.name}</span>
+            {w.day ? (
+              <>
+                <h3><a href={url.day(program.id, w.day.id)}>{w.day.name}</a></h3>
+                <p class="muted small">{w.note}</p>
+                <div class="day__stats">
+                  <span class="badge">{totalSets(w.day)} sets</span>
+                  <span class="badge">~{estimateMinutes(w.plain!)} min</span>
+                  <span class="badge" data-tone={spinalTone[peaks[w.index]!]}>Spine: {spinalLabel[peaks[w.index]!]}</span>
+                </div>
+                <ol>
+                  {w.day.exercises.map(rx => (
+                    <li><a href={url.exercise(rx.exercise.id)}>{d.exerciseById.get(rx.exercise.id)!.data.name}</a> <span class="sets">{rx.sets} × {rx.reps}</span></li>
+                  ))}
+                </ol>
+              </>
+            ) : (
+              <><h3>Rest</h3><p class="muted small">{w.note}</p></>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="muscles">
+    <h2 id="muscles">Sets per muscle across the week</h2>
+    <p class="prose">Numbers in the day columns are <b>direct hard sets</b>: sets where the muscle is a primary mover. <b>Helper sets</b> are sets where it assists. <b>Effective sets</b> are direct sets plus half the helper sets (<a href={url.principle('volume')}>why</a>). Status is shown for the main muscles and compares direct sets with a working range of {VOLUME_FLOOR} to {VOLUME_CEILING} per week.</p>
+    <div class="table-wrap" role="region" aria-label="Weekly sets per muscle" tabindex="0">
+      <table>
+        <caption>Weekly sets per muscle. Deltoid counts all three heads, so its rear-head work on pull days also appears here.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Muscle</th>
+            {dayShort.map(day => <th scope="col" class="num">{day}</th>)}
+            <th scope="col" class="num">Direct</th>
+            <th scope="col" class="num">Helper</th>
+            <th scope="col" class="num">Effective</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {muscles.map(({ v, muscle }) => {
+            const byDay = directByDay(v.muscle);
+            const status = muscle.data.tracked ? volumeStatus(v.direct, v.effective) : null;
+            return (
+              <tr>
+                <th scope="row"><a href={url.muscle(muscle.data.group.id, muscle.id)}>{muscle.data.name}</a></th>
+                {byDay.map(n => <td class="heat" style={`--v:${n}`} data-zero={n === 0 ? '' : undefined}>{n === 0 ? '·' : n}</td>)}
+                <td class="num"><b>{v.direct}</b></td>
+                <td class="num">{v.indirect}</td>
+                <td class="num">{v.effective % 1 === 0 ? v.effective : v.effective.toFixed(1)}</td>
+                <td>{status ? <span class="badge" data-tone={statusTone[status]}>{statusText[status]}</span> : <span class="muted small">Not tracked</span>}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">Primer and warm-up sets are not counted. Muscles that are not tracked get most of their work from other lifts. This is a counting model, not a measurement of how much a muscle is stimulated.</p>
+  </section>
+
+  <section aria-labelledby="spacing">
+    <h2 id="spacing">Frequency and spacing</h2>
+    <div class="table-wrap" role="region" aria-label="Frequency and spacing" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Muscle</th><th scope="col">Hard sessions</th><th scope="col">Days between sessions</th></tr></thead>
+        <tbody>
+          {tracked.map(({ v, muscle }) => {
+            const gaps = sessionGaps(v.sessions);
+            return (
+              <tr>
+                <th scope="row">{muscle.data.name}</th>
+                <td>{v.sessions.length > 0 ? `${v.sessions.length} × (${dayName(v.sessions)})` : 'None'}</td>
+                <td>{gaps.length ? gaps.join(' and ') : 'Once a week'}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">A hard session means at least 2 direct sets in one day. Whether training a muscle twice a week beats once is <a href={`${url.evidence}#claim-frequency-contested`}>contested</a>; here the main aim is to spread the weekly sets over two sessions.</p>
+  </section>
+
+  <section aria-labelledby="spine">
+    <h2 id="spine">Load on the spine across the week</h2>
+    <p class="prose">Each exercise carries our own spinal-load label (none, low, moderate or high; see the <a href={`${url.glossary}#spinal-load`}>glossary</a>). The plan places the heaviest spinal exercises on different days with a lighter day between them. The build fails if high spinal loading lands on consecutive days.</p>
+    <ul class="bars">
+      {week.map(w => {
+        const peak = peaks[w.index] ?? 'none';
+        return (
+          <li>
+            <span>{w.name}</span>
+            <div class="bar" role="img" aria-label={`${w.name}: ${w.day ? `peak spinal load ${spinalLabel[peak]}` : 'rest'}`}><span data-tone={spinalTone[peak] === 'good' ? undefined : spinalTone[peak]} style={`--w:${w.day ? spinalWidth[peak] : 0}%`}></span></div>
+            <span class="small">{w.day ? `${spinalLabel[peak]}${heavyList(w.day).length ? ': ' + heavyList(w.day).map(e => e.data.name).join(', ') : ''}` : 'Rest'}</span>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section aria-labelledby="time">
+    <h2 id="time">Time budget</h2>
+    <p class="prose">Estimated from the prescribed sets: {SECONDS_PER_SET} seconds of work per set plus the rest, {SECONDS_BETWEEN_EXERCISES} seconds to set up each exercise and a {WARM_UP_MINUTES}-minute warm-up. The build fails if a session goes over {p.sessionMinutes} minutes.</p>
+    <ul class="bars">
+      {scheduled.map(w => {
+        const minutes = estimateMinutes(w.plain!);
+        const pct = Math.round((minutes / p.sessionMinutes) * 100);
+        return (
+          <li>
+            <span>{w.name}</span>
+            <div class="bar" role="img" aria-label={`${w.day!.name}: about ${minutes} of ${p.sessionMinutes} minutes`}><span data-tone={pct > 95 ? 'warn' : undefined} style={`--w:${Math.min(pct, 100)}%`}></span></div>
+            <span class="small">{w.day!.name}: ~{minutes} min</span>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section aria-labelledby="block">
+    <h2 id="block">Across five weeks</h2>
+    <div class="table-wrap" role="region" aria-label="Five-week block" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Week</th><th scope="col">Reps in reserve</th><th scope="col">Volume</th><th scope="col">Notes</th></tr></thead>
+        <tbody>{p.block.map(b => <tr><th scope="row">{b.week}</th><td>{b.rir}</td><td>{b.volume}</td><td>{b.note}</td></tr>)}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="adjust">
+    <h2 id="adjust">When the week changes</h2>
+    <p class="muted small">Plan conventions (practitioner practice, not graded evidence).</p>
+    <ul class="prose">
+      <li><b>You miss a day.</b> Do not double up. Pick the plan up on the next scheduled day, or, if two days are lost, swap to the <a href={url.weekly(otherPrograms[0]?.id ?? program.id)}>shorter plan</a> for the week.</li>
+      <li><b>You are short on time.</b> Cut the last one or two exercises of each session first. They are the small-muscle finishers.</li>
+      <li><b>Your lower back flares.</b> Apply the <a href={`${url.exercises}back-squat/#safety`}>lower-back pain rule</a>, use the listed substitutions (supported or machine versions) and skip the high spinal-load exercises until it settles. See a clinician if the red flags apply or it is not improving after 2 to 3 weeks.</li>
+      <li><b>A muscle is lagging.</b> Add 2 to 4 sets for that muscle over several weeks, one muscle at a time, staying inside the {VOLUME_FLOOR} to {VOLUME_CEILING} range.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">What the numbers rest on</h2>
+    <ClaimList claims={['volume-ten-sets', 'volume-fractional', 'frequency-contested']} claimById={d.claimById} sourceById={d.sourceById} />
+  </section>
+</Base>

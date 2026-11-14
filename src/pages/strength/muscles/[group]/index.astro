@@ -1,0 +1,46 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import ExerciseCard from '../../../../components/ExerciseCard.astro';
+import { loadAll, url } from '../../../../lib/content';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.groups.map(group => ({ params: { group: group.id }, props: { group } }));
+}
+
+const { group } = Astro.props;
+const d = await loadAll();
+const muscles = d.muscles.filter(m => m.data.group.id === group.id);
+const exercises = d.exercises.filter(e => e.data.group.id === group.id);
+---
+<Base title={group.data.name} description={group.data.summary} accent={group.data.accent}>
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Muscles', href: url.muscles }, { label: group.data.name }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Muscle group</p>
+    <h1>{group.data.name}</h1>
+    <p class="lede">{group.data.summary}</p>
+    <div class="badges">
+      <span class="badge" data-tone={group.data.detail === 'full' ? 'good' : 'warn'}>{group.data.detail === 'full' ? 'Detailed section' : 'Overview section'}</span>
+    </div>
+  </section>
+
+  <h2>Muscles</h2>
+  <ul class="grid">
+    {muscles.map(m => (
+      <li>
+        <a class="card" href={url.muscle(group.id, m.id)} data-accent={group.data.accent}>
+          <h3>{m.data.name}</h3>
+          <p>{m.data.summary}</p>
+          {m.data.regions.length > 0 && <span class="card__meta">{m.data.regions.length} regions</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Exercises in this group</h2>
+  <ul class="exercise-list">
+    {exercises.map(e => <li><ExerciseCard exercise={e} muscleById={d.muscleById} groupById={d.groupById} /></li>)}
+  </ul>
+  <p class="muted small">Looking for something else? <a href={url.exercises}>Filter all exercises</a>.</p>
+</Base>

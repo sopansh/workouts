@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import { loadAll, url, DEFAULT_PROGRAM } from '../../lib/content';
+
+const d = await loadAll();
+const main = d.programById.get(DEFAULT_PROGRAM)!;
+const tiles = [
+  { href: url.weekly(), title: 'Weekly plan', blurb: 'The full week laid out: which exercises go on which day, sets per muscle, spacing, spinal load and time.', accent: 'p2', meta: 'Start here' },
+  { href: url.programs, title: 'Programs', blurb: 'Push / pull / legs six-day plan and a four-day upper / lower alternative, with a page for every session.', accent: 'p1', meta: `${d.programs.length} programs` },
+  { href: url.exercises, title: 'Exercises', blurb: 'Every exercise with setup, execution, errors, contraindications, regression, progression and pain rule. Filter by muscle, equipment and level.', accent: 'p3', meta: `${d.exercises.length} exercises` },
+  { href: url.muscles, title: 'Muscles', blurb: 'An interactive muscle map and a page for every muscle: anatomy, function, injuries and the evidence behind the exercises.', accent: 'p4', meta: `${d.muscles.length} muscles` },
+  { href: url.principles, title: 'Principles', blurb: 'How muscles grow, and what the evidence says about volume, frequency, load, failure, rest, range of motion and deloads.', accent: 'p2', meta: `${d.principles.length} principles` },
+  { href: url.cricket, title: 'Cricket', blurb: 'The cricket track: role pages and the evidence gathered so far. Stubs for now, with no prescriptions until they are sourced.', accent: 'p3', meta: 'Stub' },
+  { href: url.evidence, title: 'Evidence', blurb: 'How claims are graded, every claim in one place, and the source register checked against Crossref.', accent: 'p1', meta: `${d.claims.length} claims` },
+];
+---
+<Base title="Strength and hypertrophy" description="An evidence-graded strength and hypertrophy guide with a six-day push, pull, legs plan, a weekly distribution of exercises, and a page for every muscle and exercise.">
+  <section class="hero page-head">
+    <p class="eyebrow">Strength / Hypertrophy</p>
+    <h1>Build muscle, with the evidence and a plan</h1>
+    <p class="lede">Written for an experienced lifter with a full gym. Programming is upper-intermediate to advanced. Beginner-level options appear only for squats, glutes and lower-back work. Every claim shows a grade and a source, and what is unknown is said plainly.</p>
+    <div class="badges"><StatusBadge /></div>
+  </section>
+
+  <aside class="note" role="note">
+    <p><b>Your plan:</b> {main.data.name}, about {main.data.sessionMinutes} minutes per session. See the <a href={url.weekly()}>weekly plan</a> for the week at a glance, or the <a href={url.program(main.id)}>program page</a> for the reasoning.</p>
+  </aside>
+
+  <ul class="grid" aria-label="Strength sections">
+    {tiles.map(t => (
+      <li>
+        <a class="card" href={t.href} data-accent={t.accent}>
+          <h3>{t.title}</h3>
+          <p>{t.blurb}</p>
+          <span class="card__meta">{t.meta}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2>How to use this section</h2>
+  <div class="cols prose">
+    <div>
+      <h3>If you want to train</h3>
+      <ol>
+        <li>Read the <a href={url.weekly()}>weekly plan</a> to see the week.</li>
+        <li>Open a day, for example <a href={url.day(main.id, 'push-a')}>Push A</a>, and click through to each exercise.</li>
+        <li>Use the pain rule on each exercise page. It is part of the exercise, not an afterthought.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>If you want to understand</h3>
+      <ol>
+        <li>Start with <a href={url.principle('volume')}>training volume</a> and <a href={url.principle('range-of-motion')}>range of motion</a>.</li>
+        <li>Open a muscle on the <a href={url.muscles}>muscle map</a> to see the exercise variations and the evidence grade behind them.</li>
+        <li>Check the <a href={url.evidence}>evidence page</a> to see how claims are graded.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>What is built and what is next</h2>
+  <div class="panel prose">
+    <ul>
+      <li><b>Built (draft):</b> the weekly plan, two programs with a page per session, {d.exercises.length} exercises, {d.muscles.length} muscle pages, {d.principles.length} principle pages, an evidence register and cricket stubs.</li>
+      <li><b>Chest and legs are the detailed sections</b> (full setup, execution cues, errors and variation tables). Other groups have shorter pages and will be deepened one group at a time.</li>
+      <li><b>Not yet done:</b> physiotherapist and strength-coach review, 3D exercise demos, cricket prescriptions, plyometrics and nutrition sections.</li>
+    </ul>
+  </div>
+</Base>

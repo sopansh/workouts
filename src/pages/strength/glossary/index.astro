@@ -1,0 +1,22 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { loadAll, url } from '../../../lib/content';
+
+const d = await loadAll();
+---
+<Base title="Glossary" description="Plain-language definitions of the terms used in the strength section." accent="p4">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Glossary' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Glossary</p>
+    <h1>Terms used here</h1>
+  </section>
+  <dl class="glossary prose">
+    {d.glossary.map(g => (
+      <>
+        <dt id={g.id}>{g.data.term}</dt>
+        <dd>{g.data.definition}</dd>
+      </>
+    ))}
+  </dl>
+</Base>

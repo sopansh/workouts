@@ -1,0 +1,138 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../components/ClaimList.astro';
+import EvidenceBadge from '../../../components/EvidenceBadge.astro';
+import PainRule from '../../../components/PainRule.astro';
+import StatusBadge from '../../../components/StatusBadge.astro';
+import { loadAll, levelLabel, spinalLabel, url } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.exercises.map(exercise => ({ params: { id: exercise.id }, props: { exercise } }));
+}
+
+const { exercise } = Astro.props;
+const d = await loadAll();
+const e = exercise.data;
+const group = d.groupById.get(e.group.id)!;
+const muscleLink = (id: string) => { const m = d.muscleById.get(id)!; return { href: url.muscle(m.data.group.id, m.id), name: m.data.name }; };
+const pain = d.painById.get(e.painRule.id)!;
+const claimIds = [...new Set([...e.claims.map(c => c.id), ...e.variations.map(v => v.claim?.id).filter(Boolean) as string[]])];
+const usedIn = d.programs.flatMap(p => p.data.days.flatMap(day => {
+  const rx = day.exercises.find(x => x.exercise.id === exercise.id);
+  return rx ? [{ program: p, day, rx }] : [];
+}));
+const siblings = d.exercises.filter(x => x.data.group.id === e.group.id);
+const index = siblings.findIndex(x => x.id === exercise.id);
+const prev = siblings[index - 1];
+const next = siblings[index + 1];
+---
+<Base title={e.name} description={e.summary} accent={group.data.accent}>
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Exercises', href: url.exercises }, { label: e.name }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">{group.data.name} · {e.pattern.replace(/-/g, ' ')}</p>
+    <h1>{e.name}</h1>
+    <p class="lede">{e.summary}</p>
+    <div class="badges">
+      <span class="badge" data-tone={e.level === 'foundation' ? 'good' : 'info'}>{levelLabel[e.level]}</span>
+      <span class="badge" data-tone={e.spinalLoad === 'high' ? 'bad' : e.spinalLoad === 'moderate' ? 'warn' : 'good'} title="Our own planning label for load through the spine. See the glossary.">Spinal load: {spinalLabel[e.spinalLoad]}</span>
+      {e.equipment.map(item => <span class="badge">{item}</span>)}
+      <StatusBadge status={e.status} />
+    </div>
+  </section>
+
+  <section aria-labelledby="muscles">
+    <h2 id="muscles">Muscles worked</h2>
+    <p class="label">Primary</p>
+    <ul class="chip-list">{e.primary.map(r => { const l = muscleLink(r.id); return <li><a class="chip" href={l.href}>{l.name}</a></li>; })}</ul>
+    {e.secondary.length > 0 && (
+      <>
+        <p class="label">Helpers</p>
+        <ul class="chip-list">{e.secondary.map(r => { const l = muscleLink(r.id); return <li><a class="chip" href={l.href}>{l.name}</a></li>; })}</ul>
+      </>
+    )}
+  </section>
+
+  <section aria-labelledby="safety">
+    <h2 id="safety">Safety first</h2>
+    <div class="cols">
+      <div>
+        <p class="label">Do not do this exercise if</p>
+        <ul class="prose">{e.contraindications.map(c => <li>{c}</li>)}</ul>
+        <p class="label">Regression (make it easier)</p>
+        <p class="prose">{e.regression}</p>
+        <p class="label">Progression (make it harder)</p>
+        <p class="prose">{e.progression}</p>
+      </div>
+      <PainRule rule={pain} />
+    </div>
+  </section>
+
+  <section aria-labelledby="how">
+    <h2 id="how">How to do it</h2>
+    <p class="label">Setup</p>
+    <p class="prose">{e.setup}</p>
+    <p class="label">Execution</p>
+    <ol class="steps prose">{e.steps.map(s => <li>{s}</li>)}</ol>
+    {e.cues.length > 0 && <><p class="label">Cues</p><ul class="prose">{e.cues.map(c => <li>{c}</li>)}</ul></>}
+    <p class="label">Common mistakes</p>
+    <ul class="prose">{e.mistakes.map(m => <li>{m}</li>)}</ul>
+  </section>
+
+  {e.variations.length > 0 && (
+    <section aria-labelledby="variations">
+      <h2 id="variations">Variations</h2>
+      <div class="table-wrap" role="region" aria-label="Variations" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Variation</th><th scope="col">What changes</th><th scope="col">What is known</th><th scope="col">Evidence</th></tr></thead>
+          <tbody>
+            {e.variations.map(v => (
+              <tr>
+                <th scope="row">{v.name}</th>
+                <td>{v.change}</td>
+                <td>{v.emphasis ?? ''}</td>
+                <td>{v.claim ? <a href={`#claim-${v.claim.id}`}><EvidenceBadge grade={d.claimById.get(v.claim.id)!.data.grade} short /></a> : <span class="badge" data-tone="warn">No growth evidence</span>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small">"No growth evidence" means no study with a growth outcome was found, so the variation is a hypothesis. Do not treat it as a finding.</p>
+    </section>
+  )}
+
+  <section aria-labelledby="programming">
+    <h2 id="programming">Programming</h2>
+    {e.dose && <p class="prose"><b>Typical dose:</b> {e.dose}. This is a plan convention; see <a href={url.principle('load-and-reps')}>load and rep ranges</a>.</p>}
+    {usedIn.length > 0 ? (
+      <>
+        <p class="label">Used in your plan</p>
+        <ul class="chip-list">
+          {usedIn.map(u => <li><a class="chip" href={url.day(u.program.id, u.day.id)}>{u.day.name}: {u.rx.sets} × {u.rx.reps}</a></li>)}
+        </ul>
+      </>
+    ) : (
+      <p class="muted">Not in a program yet. It is listed as an option or substitution.</p>
+    )}
+  </section>
+
+  {claimIds.length > 0 && (
+    <section aria-labelledby="evidence">
+      <h2 id="evidence">Evidence</h2>
+      <ClaimList claims={claimIds} claimById={d.claimById} sourceById={d.sourceById} />
+    </section>
+  )}
+
+  {e.alternatives.length > 0 && (
+    <section aria-labelledby="alternatives">
+      <h2 id="alternatives">Alternatives</h2>
+      <ul class="chip-list">{e.alternatives.map(r => <li><a class="chip" href={url.exercise(r.id)}>{d.exerciseById.get(r.id)!.data.name}</a></li>)}</ul>
+    </section>
+  )}
+
+  <nav class="nav-pair" aria-label={`${group.data.name} exercises`}>
+    {prev ? <a href={url.exercise(prev.id)}>← {prev.data.name}</a> : <span />}
+    {next ? <a href={url.exercise(next.id)}>{next.data.name} →</a> : <span />}
+  </nav>
+</Base>

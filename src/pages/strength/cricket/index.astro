@@ -1,0 +1,44 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../components/ClaimList.astro';
+import StatusBadge from '../../../components/StatusBadge.astro';
+import { loadAll, url } from '../../../lib/content';
+
+const d = await loadAll();
+const overview = d.cricket.find(c => c.id === 'overview')!;
+const pages = d.cricket.filter(c => c.id !== 'overview');
+const { Content } = await render(overview);
+---
+<Base title="Cricket" description="The cricket strength track: role pages and the evidence found so far. Stubs with no prescriptions until they are sourced." accent="p3">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Cricket' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Cricket</p>
+    <h1>Strength for cricket</h1>
+    <p class="lede">{overview.data.summary}</p>
+    <div class="badges"><span class="badge" data-tone="warn">Stub</span><StatusBadge status={overview.data.status} /></div>
+  </section>
+
+  <aside class="note note--warn" role="note">
+    <p><b>Not for use as a programme yet.</b> Nothing here prescribes exercises, loads or workloads. Youth bowlers need qualified supervision.</p>
+  </aside>
+
+  <h2>Role and topic pages</h2>
+  <ul class="grid">
+    {pages.map(page => (
+      <li>
+        <a class="card" href={url.cricketPage(page.id)} data-accent="p3">
+          <h3>{page.data.title}</h3>
+          <p>{page.data.summary}</p>
+          <span class="card__meta">{page.data.questions.length} open questions</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="prose"><Content /></div>
+
+  <h2>Evidence found so far</h2>
+  <ClaimList claims={overview.data.claims.map(c => c.id)} claimById={d.claimById} sourceById={d.sourceById} />
+</Base>

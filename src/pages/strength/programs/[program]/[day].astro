@@ -1,0 +1,109 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import StatusBadge from '../../../../components/StatusBadge.astro';
+import { loadAll, spinalLabel, url } from '../../../../lib/content';
+import { estimateMinutes, formatRest, peakSpinalLoad, totalSets, SECONDS_PER_SET, SECONDS_BETWEEN_EXERCISES, WARM_UP_MINUTES } from '../../../../lib/plan';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.programs.flatMap(program => program.data.days.map(day => ({ params: { program: program.id, day: day.id }, props: { program, day } })));
+}
+
+const { program, day } = Astro.props;
+const d = await loadAll();
+const exMap = new Map(d.exercises.map(e => [e.id, { id: e.id, primary: e.data.primary.map(r => r.id), secondary: e.data.secondary.map(r => r.id), spinalLoad: e.data.spinalLoad }]));
+const plain = { id: day.id, primer: day.primer.map(x => ({ exercise: x.exercise.id, sets: x.sets, rest: x.rest })), exercises: day.exercises.map(x => ({ exercise: x.exercise.id, sets: x.sets, rest: x.rest })) };
+const minutes = estimateMinutes(plain);
+const peak = peakSpinalLoad(plain, exMap);
+const scheduled = program.data.week.find(w => w.dayId === day.id)?.day;
+const days = program.data.days;
+const index = days.findIndex(x => x.id === day.id);
+const prev = days[index - 1];
+const next = days[index + 1];
+const name = (id: string) => d.exerciseById.get(id)!;
+---
+<Base title={`${day.name} · ${program.data.name}`} description={day.intro} accent="p1">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Programs', href: url.programs }, { label: program.data.name, href: url.program(program.id) }, { label: day.name }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">{scheduled ? `${scheduled} · ` : ''}{program.data.name}</p>
+    <h1>{day.name}</h1>
+    <p class="lede">{day.intro}</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">{totalSets(day)} working sets</span>
+      <span class="badge">~{minutes} min</span>
+      <span class="badge" data-tone={peak === 'high' ? 'bad' : peak === 'moderate' ? 'warn' : 'good'}>Peak spinal load: {spinalLabel[peak]}</span>
+      <StatusBadge status={program.data.status} />
+    </div>
+    <p class="kicker"><span>Focus: {day.focus}</span></p>
+  </section>
+
+  <section aria-labelledby="muscles">
+    <h2 id="muscles">Muscles trained</h2>
+    <ul class="chip-list">
+      {day.muscles.map(r => { const m = d.muscleById.get(r.id)!; return <li><a class="chip" href={url.muscle(m.data.group.id, m.id)}>{m.data.name}</a></li>; })}
+    </ul>
+  </section>
+
+  {day.primer.length > 0 && (
+    <section aria-labelledby="primer">
+      <h2 id="primer">Primer (before the working sets)</h2>
+      <div class="table-wrap" role="region" aria-label="Primer exercises" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Exercise</th><th scope="col" class="num">Sets × reps</th><th scope="col">Notes</th></tr></thead>
+          <tbody>
+            {day.primer.map(rx => <tr><th scope="row"><a href={url.exercise(rx.exercise.id)}>{name(rx.exercise.id).data.name}</a></th><td class="num">{rx.sets} × {rx.reps}</td><td>{rx.note ?? ''}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small">Primer sets are warm-up quality and are not counted in the weekly volume.</p>
+    </section>
+  )}
+
+  <section aria-labelledby="work">
+    <h2 id="work">Working sets</h2>
+    <div class="table-wrap" role="region" aria-label="Working sets" tabindex="0">
+      <table>
+        <thead><tr><th scope="col" class="num">#</th><th scope="col">Exercise</th><th scope="col" class="num">Sets × reps</th><th scope="col" class="num">Reps in reserve</th><th scope="col" class="num">Rest</th><th scope="col">Notes</th></tr></thead>
+        <tbody>
+          {day.exercises.map((rx, i) => {
+            const ex = name(rx.exercise.id);
+            return (
+              <tr>
+                <td class="num">{i + 1}</td>
+                <th scope="row"><a href={url.exercise(ex.id)}>{ex.data.name}</a><br /><span class="muted small">Spine: {spinalLabel[ex.data.spinalLoad]}</span></th>
+                <td class="num">{rx.sets} × {rx.reps}</td>
+                <td class="num">{rx.rir}</td>
+                <td class="num">{formatRest(rx.rest)}</td>
+                <td>{rx.note ?? ''}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">Reps in reserve (RIR) follow the five-week block on the <a href={url.program(program.id)}>program page</a>. The time estimate assumes {SECONDS_PER_SET} seconds per set, {SECONDS_BETWEEN_EXERCISES} seconds to set up each exercise and a {WARM_UP_MINUTES}-minute warm-up.</p>
+  </section>
+
+  <section aria-labelledby="order">
+    <h2 id="order">Why this order</h2>
+    <p class="prose">{day.order}</p>
+  </section>
+
+  {day.substitutions.length > 0 && (
+    <section aria-labelledby="swaps">
+      <h2 id="swaps">Substitutions</h2>
+      <ul class="prose">{day.substitutions.map(s => <li>{s}</li>)}</ul>
+    </section>
+  )}
+
+  <aside class="note note--warn" role="note">
+    <p><b>Pain rule.</b> Each exercise page carries its own pain rule and contraindications. Stay at 2/10 discomfort or lower, and swap to the regression for the session if something hurts.</p>
+  </aside>
+
+  <nav class="nav-pair" aria-label="Sessions">
+    {prev ? <a href={url.day(program.id, prev.id)}>← {prev.name}</a> : <span />}
+    <a href={url.weekly(program.id)}>Weekly plan</a>
+    {next ? <a href={url.day(program.id, next.id)}>{next.name} →</a> : <span />}
+  </nav>
+</Base>

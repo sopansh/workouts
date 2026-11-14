@@ -1,0 +1,200 @@
+- id: quadriceps
+  tracked: true
+  group: legs
+  name: Quadriceps
+  latin: Musculus quadriceps femoris
+  detail: full
+  summary: The four muscles on the front of the thigh. Together they extend the knee; the rectus femoris also flexes the hip.
+  regions:
+    - { id: rectus-femoris, label: Rectus femoris, note: "Crosses the hip and the knee, so it flexes the hip as well as extending the knee. It is lengthened when the hip is extended." }
+    - { id: vastus-lateralis, label: Vastus lateralis, note: "The outer part of the thigh and the largest of the four." }
+    - { id: vastus-medialis, label: Vastus medialis, note: "The inner part, including the teardrop near the knee." }
+    - { id: vastus-intermedius, label: Vastus intermedius, note: "Lies deep, under rectus femoris." }
+  anatomy:
+    origin: Rectus femoris from the anterior inferior iliac spine and above the hip socket. The three vasti from the shaft of the femur.
+    insertion: The patella, and through the patellar tendon the tibial tuberosity.
+    innervation: Femoral nerve (roots L2 to L4).
+    actions:
+      - Knee extension (all four)
+      - Hip flexion (rectus femoris only)
+  role: Drives the stand-up phase of squats, lunges and leg presses. Trained hard by any knee-dominant movement taken to depth.
+  synergists: [gluteus-maximus, adductors]
+  claims: [squat-depth-growth, partial-long-length]
+  injuries:
+    - Patellar-tendon and front-of-knee pain from sudden jumps in volume or depth.
+    - Rectus femoris strains happen during fast kicking or sprinting rather than in gym lifting.
+  redFlags:
+    - Knee locking, giving way or sudden swelling
+  prerequisites: Ankle and hip mobility sufficient to squat to a depth you control with a neutral spine.
+  status: draft
+- id: hamstrings
+  tracked: true
+  group: legs
+  name: Hamstrings
+  latin: Musculi ischiocrurales (biceps femoris, semitendinosus, semimembranosus)
+  detail: full
+  summary: The muscle group at the back of the thigh. It extends the hip and flexes the knee, so it is trained by both hinges and curls.
+  regions:
+    - { id: biceps-femoris-long, label: Biceps femoris long head, note: "Crosses both joints. The muscle most often strained in sprinting." }
+    - { id: biceps-femoris-short, label: Biceps femoris short head, note: "Crosses only the knee, so it is active in knee flexion but not hip extension." }
+    - { id: semitendinosus, label: Semitendinosus, note: "Crosses both joints. Inner hamstring with a long tendon." }
+    - { id: semimembranosus, label: Semimembranosus, note: "Crosses both joints. Deep inner hamstring." }
+  anatomy:
+    origin: Biceps femoris long head, semitendinosus and semimembranosus from the ischial tuberosity. Biceps femoris short head from the linea aspera of the femur.
+    insertion: Biceps femoris onto the head of the fibula. Semitendinosus and semimembranosus onto the upper medial tibia.
+    innervation: Tibial part of the sciatic nerve (roots L5 to S2); the short head of biceps femoris from the common fibular part.
+    actions:
+      - Hip extension (all except the short head)
+      - Knee flexion
+  role: Stabilises the pelvis and hip in hinges, works as a knee flexor in curls, and is a key muscle for sprinting.
+  synergists: [gluteus-maximus, adductors, gastrocnemius]
+  claims: [hamstring-seated-curl, nordic-hamstring-injury]
+  injuries:
+    - Strains are common in sprinting and kicking sports, usually at the long head of biceps femoris near the sit bone.
+    - Proximal tendon pain at the sit bone from deep, loaded hip flexion.
+  redFlags:
+    - A sudden pop or tearing sensation with bruising
+  prerequisites: A controlled hip hinge.
+  status: draft
+- id: gluteus-maximus
+  tracked: true
+  group: legs
+  name: Gluteus maximus
+  latin: Musculus gluteus maximus
+  detail: full
+  summary: The largest muscle of the buttock and the main hip extensor. It also rotates the thigh outwards.
+  regions:
+    - { id: upper, label: Upper fibres, note: "Assist hip abduction as well as extension." }
+    - { id: lower, label: Lower fibres, note: "The main hip extensors, with the largest lever arm in deep hip flexion." }
+  anatomy:
+    origin: The posterior gluteal line of the ilium, the back of the sacrum and coccyx, and the sacrotuberous ligament.
+    insertion: The gluteal tuberosity of the femur and the iliotibial tract.
+    innervation: Inferior gluteal nerve (roots L5 to S2).
+    actions:
+      - Hip extension
+      - Hip external rotation
+      - Upper fibres abduct the hip
+  role: Drives the stand-up phase of squats and hinges and powers sprinting and jumping. It also helps the lower back by taking load from the spinal extensors when hinging.
+  synergists: [hamstrings, adductors, erector-spinae]
+  claims: [glute-emg-versus-growth, emg-not-growth]
+  injuries:
+    - Strains are uncommon. Deep gluteal pain can come from the hamstring tendon or the sciatic nerve region and needs assessment if it persists.
+  prerequisites: A hip hinge and bridge pattern with the pelvis and ribs stacked, so the glutes rather than the lower back do the extension.
+  status: draft
+- id: gluteus-medius-minimus
+  group: legs
+  name: Gluteus medius and minimus
+  latin: Musculus gluteus medius, Musculus gluteus minimus
+  detail: full
+  summary: The side-hip muscles. They abduct the hip and stop the pelvis dropping when you stand on one leg.
+  anatomy:
+    origin: The outer surface of the ilium between the gluteal lines.
+    insertion: The greater trochanter of the femur.
+    innervation: Superior gluteal nerve (roots L4 to S1).
+    actions:
+      - Hip abduction
+      - Pelvic stabilisation in single-leg stance
+      - Anterior fibres assist hip internal rotation
+  role: Keeps the pelvis level in lunges, step-ups, split squats and walking, and helps the knee track over the foot.
+  synergists: [gluteus-maximus, adductors]
+  injuries:
+    - Lateral hip pain over the greater trochanter is common and often related to tendon loading; if it persists, see a clinician.
+  status: draft
+- id: adductors
+  group: legs
+  name: Adductors
+  latin: Musculi adductores (magnus, longus, brevis, gracilis, pectineus)
+  detail: full
+  summary: The muscles of the inner thigh. They pull the thigh inwards and the adductor magnus also assists hip extension.
+  anatomy:
+    origin: The pubis and ischium. Adductor magnus has a hamstring part from the ischial tuberosity.
+    insertion: The linea aspera of the femur. Gracilis inserts on the upper medial tibia.
+    innervation: Obturator nerve (roots L2 to L4); the hamstring part of adductor magnus by the sciatic nerve.
+    actions:
+      - Hip adduction
+      - Adductor magnus assists hip extension, especially in deep hip flexion
+  role: Active in deep squats, lunges and wide-stance lifts, and in cutting and kicking sports.
+  synergists: [gluteus-maximus, hamstrings]
+  injuries:
+    - Groin strains are common in sports with fast change of direction.
+  redFlags:
+    - Sudden sharp groin pain with a pop and weakness
+  status: draft
+- id: hip-flexors
+  group: legs
+  name: Hip flexors (iliopsoas)
+  latin: Musculus iliopsoas (psoas major, iliacus)
+  detail: full
+  summary: The deep muscles at the front of the hip. They lift the thigh towards the trunk.
+  anatomy:
+    origin: Psoas major from the sides of the T12 to L5 vertebrae and discs and their transverse processes. Iliacus from the iliac fossa of the pelvis.
+    insertion: The lesser trochanter of the femur.
+    innervation: Femoral nerve and branches from the lumbar plexus (roots L1 to L3).
+    actions:
+      - Hip flexion
+      - Assists trunk flexion when the legs are fixed
+  role: Active in leg raises and sprinting. Because psoas attaches to the lumbar spine, forceful or fatigued hip flexion work (such as straight-leg sit-ups) loads the lower back.
+  synergists: [quadriceps, rectus-abdominis]
+  injuries:
+    - Hip-flexor strains and groin-front pain can occur in kicking and sprinting.
+  status: draft
+- id: gastrocnemius
+  tracked: true
+  group: legs
+  name: Gastrocnemius
+  latin: Musculus gastrocnemius
+  detail: full
+  summary: The visible calf muscle. It crosses the knee and the ankle, so it is lengthened with the knee straight.
+  regions:
+    - { id: medial, label: Medial head, note: "The inner calf, the larger head." }
+    - { id: lateral, label: Lateral head, note: "The outer calf." }
+  anatomy:
+    origin: The medial and lateral condyles of the femur, above the knee.
+    insertion: The calcaneus through the Achilles tendon.
+    innervation: Tibial nerve (roots S1 and S2).
+    actions:
+      - Ankle plantar flexion
+      - Assists knee flexion
+  role: Drives walking, running and jumping. Trained by straight-knee calf raises.
+  synergists: [soleus]
+  claims: [calf-standing-seated, partial-long-length]
+  injuries:
+    - Calf strains (mid-belly or medial head), and Achilles tendon pain with sudden increases in volume.
+  redFlags:
+    - Sudden snap and pain at the back of the ankle (possible Achilles rupture)
+    - Calf swelling, warmth and redness without clear injury
+  status: draft
+- id: soleus
+  group: legs
+  name: Soleus
+  latin: Musculus soleus
+  detail: full
+  summary: The deeper calf muscle. It crosses only the ankle, so it keeps working when the knee is bent.
+  anatomy:
+    origin: The back of the fibular head and the soleal line of the tibia.
+    insertion: The calcaneus through the Achilles tendon.
+    innervation: Tibial nerve (roots S1 and S2).
+    actions:
+      - Ankle plantar flexion, with the knee bent or straight
+  role: A postural and endurance muscle that carries a large share of load in standing and walking. Trained by bent-knee calf raises.
+  synergists: [gastrocnemius]
+  claims: [calf-standing-seated]
+  status: draft
+- id: tibialis-anterior
+  group: legs
+  name: Tibialis anterior
+  latin: Musculus tibialis anterior
+  detail: full
+  summary: The muscle on the front of the shin that lifts the foot.
+  anatomy:
+    origin: The lateral surface of the tibia.
+    insertion: The medial cuneiform and the base of the first metatarsal.
+    innervation: Deep fibular nerve (roots L4 and L5).
+    actions:
+      - Ankle dorsiflexion
+      - Foot inversion
+  role: Controls the foot in landing and walking and balances calf work around the ankle.
+  synergists: []
+  injuries:
+    - Shin pain from sudden increases in running or impact.
+  status: draft

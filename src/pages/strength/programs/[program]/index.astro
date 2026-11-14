@@ -1,0 +1,82 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import StatusBadge from '../../../../components/StatusBadge.astro';
+import { loadAll, url } from '../../../../lib/content';
+import { estimateMinutes, totalSets } from '../../../../lib/plan';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.programs.map(program => ({ params: { program: program.id }, props: { program } }));
+}
+
+const { program } = Astro.props;
+const d = await loadAll();
+const p = program.data;
+---
+<Base title={p.name} description={p.summary} accent="p1">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Programs', href: url.programs }, { label: p.name }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Program</p>
+    <h1>{p.name}</h1>
+    <p class="lede">{p.summary}</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">{p.daysPerWeek} days a week</span>
+      <span class="badge">Up to {p.sessionMinutes} min per session</span>
+      <span class="badge">{p.level}</span>
+      <StatusBadge status={p.status} />
+    </div>
+    <div class="switcher"><a class="btn" href={url.weekly(program.id)}>Open the weekly plan →</a></div>
+  </section>
+
+  <section aria-labelledby="sessions">
+    <h2 id="sessions">Sessions</h2>
+    <ol class="week">
+      {p.week.map(w => {
+        const day = w.dayId ? p.days.find(x => x.id === w.dayId) : undefined;
+        return (
+          <li>
+            <div class="day" data-kind={day ? day.id.split('-')[0] : 'rest'}>
+              <span class="day__name">{w.day}</span>
+              {day ? (
+                <>
+                  <h3><a href={url.day(program.id, day.id)}>{day.name}</a></h3>
+                  <p class="muted small">{day.focus}</p>
+                  <div class="day__stats"><span class="badge">{totalSets(day)} sets</span><span class="badge">~{estimateMinutes(day)} min</span></div>
+                </>
+              ) : (
+                <><h3>Rest</h3><p class="muted small">{w.note}</p></>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+
+  <section aria-labelledby="why">
+    <h2 id="why">Why it is built this way</h2>
+    <ul class="prose">{p.rationale.map(r => <li>{r}</li>)}</ul>
+    {p.principles.length > 0 && (
+      <>
+        <p class="label">Principles behind the numbers</p>
+        <ul class="chip-list">{p.principles.map(r => <li><a class="chip" href={url.principle(r.id)}>{d.principleById.get(r.id)!.data.title}</a></li>)}</ul>
+      </>
+    )}
+  </section>
+
+  <section aria-labelledby="block">
+    <h2 id="block">Five-week block</h2>
+    <div class="table-wrap" role="region" aria-label="Five-week block" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Week</th><th scope="col">Reps in reserve</th><th scope="col">Volume</th><th scope="col">Notes</th></tr></thead>
+        <tbody>{p.block.map(b => <tr><th scope="row">{b.week}</th><td>{b.rir}</td><td>{b.volume}</td><td>{b.note}</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="muted small">The ramp and the deload are plan conventions backed by practitioner consensus, not trial evidence. See <a href={url.principle('deloads')}>deloads</a> and <a href={url.principle('proximity-to-failure')}>proximity to failure</a>.</p>
+  </section>
+
+  <aside class="note" role="note">
+    <p><b>Back and joints.</b> Every exercise page has a pain rule, contraindications and a regression. Each session lists substitutions for the exercises most likely to need one.</p>
+  </aside>
+</Base>

@@ -1,0 +1,15 @@
+---
+import { levelLabel, spinalLabel, url, type Data, type Exercise } from '../lib/content';
+interface Props { exercise: Exercise; muscleById: Data['muscleById']; groupById: Data['groupById']; }
+const { exercise, muscleById, groupById } = Astro.props;
+const e = exercise.data;
+const primary = e.primary.map(r => muscleById.get(r.id)!.data.name);
+---
+<a class="card exercise-card" href={url.exercise(exercise.id)} data-accent={groupById.get(e.group.id)!.data.accent}>
+  <h3>{e.name}</h3>
+  <p>{primary.join(', ')}</p>
+  <div class="badges">
+    <span class="badge" data-tone={e.level === 'foundation' ? 'good' : 'info'}>{levelLabel[e.level]}</span>
+    <span class="badge" data-tone={e.spinalLoad === 'high' ? 'bad' : e.spinalLoad === 'moderate' ? 'warn' : 'good'}>Spine: {spinalLabel[e.spinalLoad]}</span>
+  </div>
+</a>

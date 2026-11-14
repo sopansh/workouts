@@ -1,0 +1,6 @@
+---
+import { gradeLabel } from '../lib/content';
+interface Props { grade: string; short?: boolean; }
+const { grade, short = false } = Astro.props;
+---
+<span class="badge" data-grade={grade} title={gradeLabel[grade]}><b>{grade === 'Mixed' ? 'Mixed' : `Grade ${grade}`}</b>{!short && <span>{gradeLabel[grade]}</span>}</span>

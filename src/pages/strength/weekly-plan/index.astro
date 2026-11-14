@@ -1,0 +1,8 @@
+---
+import WeeklyPlan from '../../../components/WeeklyPlan.astro';
+import { loadAll, DEFAULT_PROGRAM } from '../../../lib/content';
+
+const d = await loadAll();
+const program = d.programById.get(DEFAULT_PROGRAM)!;
+---
+<WeeklyPlan program={program} />

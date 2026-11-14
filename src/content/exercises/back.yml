@@ -1,0 +1,346 @@
+- id: pull-up
+  name: Pull-up
+  group: back
+  primary: [latissimus-dorsi]
+  secondary: [biceps-brachii, teres-major, rhomboids, trapezius, forearm-flexors]
+  pattern: vertical-pull
+  equipment: [bodyweight, pull-up bar]
+  level: intermediate
+  spinalLoad: low
+  summary: A bodyweight vertical pull that scales by adding load or using assistance.
+  setup: Take a shoulder-width or slightly wider overhand grip. Hang with the shoulder blades packed down and the legs together.
+  steps:
+    - Pull the elbows down and back so the chin passes the bar.
+    - Lower under control to a full hang with the shoulders still engaged.
+  mistakes:
+    - Kipping or swinging
+    - Shrugging into the ears instead of pulling the elbows down
+  contraindications:
+    - Shoulder or elbow pain in the hanging position
+    - Biceps tendon or elbow tendon pain not cleared for loading
+  regression: Lat pulldown or band-assisted pull-up.
+  progression: Weighted pull-ups, slower lowering or pauses at the top.
+  painRule: shoulder
+  variations:
+    - name: Neutral grip
+      change: Palms face each other.
+      emphasis: Often easier on the shoulders and elbows.
+    - name: Supinated (chin-up)
+      change: Palms face you.
+      emphasis: More elbow-flexor involvement.
+  dose: 3 to 4 sets of 6 to 12 reps, 2 minutes rest
+  alternatives: [lat-pulldown]
+  status: draft
+- id: lat-pulldown
+  name: Lat pulldown
+  group: back
+  primary: [latissimus-dorsi]
+  secondary: [biceps-brachii, teres-major, rhomboids, trapezius]
+  pattern: vertical-pull
+  equipment: [cable, machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A cable vertical pull with a seated, supported torso.
+  setup: Set the thigh pad snugly. Take a grip slightly wider than the shoulders and sit tall with a slight lean back.
+  steps:
+    - Pull the elbows down and back until the bar reaches the upper chest.
+    - Let the bar rise under control to a full stretch.
+  mistakes:
+    - Leaning back far enough to turn the pulldown into a row
+    - Pulling with the arms rather than the elbows
+  contraindications:
+    - Shoulder pain overhead
+  regression: Lighter stack and a shorter range.
+  progression: Pauses at the chest or a slower lowering phase.
+  painRule: shoulder
+  variations:
+    - name: Neutral grip
+      change: A close, neutral handle.
+      emphasis: More comfortable for the shoulders for many people.
+  dose: 3 sets of 8 to 12 reps, 90 to 120 seconds rest
+  alternatives: [pull-up]
+  status: draft
+- id: straight-arm-pulldown
+  name: Straight-arm pulldown
+  group: back
+  primary: [latissimus-dorsi]
+  secondary: [teres-major, triceps-brachii]
+  pattern: pulldown-isolation
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A cable pull with the arms straight that isolates the lats through shoulder extension.
+  setup: Stand facing a high pulley, hinge slightly at the hips, arms straight with a bar or rope.
+  steps:
+    - Sweep the arms down to the thighs, keeping the elbow bend fixed.
+    - Return slowly to the overhead position.
+  mistakes:
+    - Bending the elbows and turning it into a pushdown
+    - Using the lower back to swing
+  contraindications:
+    - Shoulder pain overhead
+  regression: Lighter weight and a shorter range.
+  progression: Longer pauses and slow returns.
+  painRule: shoulder
+  variations: []
+  dose: 2 to 3 sets of 12 to 15 reps, 60 seconds rest
+  alternatives: [lat-pulldown]
+  status: draft
+- id: chest-supported-row
+  name: Chest-supported row
+  group: back
+  primary: [latissimus-dorsi, rhomboids, trapezius]
+  secondary: [biceps-brachii, teres-major, deltoid]
+  pattern: row
+  equipment: [machine, dumbbell, bench]
+  level: intermediate
+  spinalLoad: none
+  summary: A row with the chest on a pad, so the lower back is supported and the load goes to the upper back.
+  setup: Adjust the pad so the chest rests firmly with the arms able to hang fully. Grip the handles.
+  steps:
+    - Pull the elbows back and slightly down, bringing the shoulder blades together.
+    - Return slowly to a full stretch.
+  mistakes:
+    - Lifting the chest off the pad
+    - Using the arms rather than the back
+  contraindications:
+    - Shoulder pain in the stretched position
+  regression: Lighter load.
+  progression: Pauses at the top, longer lowering or higher volume.
+  painRule: shoulder
+  variations:
+    - name: Elbows wide
+      change: Elbows flare out at about 45 to 75 degrees.
+      emphasis: Shifts the work toward the upper back and rear deltoid.
+    - name: Elbows close
+      change: Elbows tuck to the sides.
+      emphasis: More lat involvement.
+  dose: 3 to 4 sets of 8 to 12 reps, 90 to 120 seconds rest
+  alternatives: [seated-cable-row, one-arm-dumbbell-row]
+  status: draft
+- id: one-arm-dumbbell-row
+  name: One-arm dumbbell row
+  group: back
+  primary: [latissimus-dorsi]
+  secondary: [rhomboids, trapezius, biceps-brachii, teres-major]
+  pattern: row
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A supported single-arm row that adds range and reduces lower-back demand.
+  setup: Place one hand and the same-side knee on a bench with the spine flat. Hold the dumbbell with the arm hanging.
+  steps:
+    - Pull the elbow up and back toward the hip, keeping the trunk still.
+    - Lower under control to a full stretch.
+  mistakes:
+    - Rotating the trunk to lift the weight
+    - Shrugging the shoulder
+  contraindications:
+    - Shoulder pain in the hanging position
+  regression: Lighter dumbbell.
+  progression: Heavier dumbbell or pauses.
+  painRule: shoulder
+  variations: []
+  dose: 3 sets of 8 to 12 reps each side, 90 seconds rest
+  alternatives: [chest-supported-row]
+  status: draft
+- id: seated-cable-row
+  name: Seated cable row
+  group: back
+  primary: [latissimus-dorsi, rhomboids, trapezius]
+  secondary: [biceps-brachii, erector-spinae]
+  pattern: row
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A cable row with the legs bracing the trunk.
+  setup: Sit with the knees slightly bent and a tall trunk. Hold the handle with the arms straight.
+  steps:
+    - Pull the handle to the lower ribs, bringing the shoulder blades together.
+    - Return under control without letting the trunk rock forwards.
+  mistakes:
+    - Using the trunk to swing the weight
+    - Over-reaching forwards and rounding the lower back at the start
+  contraindications:
+    - Shoulder pain at the stretched position
+  regression: Chest-supported row.
+  progression: Pauses at the lower ribs.
+  painRule: lower-back
+  variations: []
+  dose: 3 sets of 10 to 12 reps, 90 seconds rest
+  alternatives: [chest-supported-row]
+  status: draft
+- id: barbell-row
+  name: Barbell bent-over row
+  group: back
+  primary: [latissimus-dorsi, rhomboids, trapezius]
+  secondary: [erector-spinae, biceps-brachii, hamstrings]
+  pattern: row
+  equipment: [barbell]
+  level: advanced
+  spinalLoad: high
+  summary: A heavy bent-over row that also trains the back extensors to hold a hinged position.
+  setup: Hinge to about 45 degrees with a neutral spine, knees soft. Hold the bar with a shoulder-width grip, arms straight.
+  steps:
+    - Pull the bar to the lower ribs, keeping the trunk still.
+    - Lower under control to straight arms.
+  mistakes:
+    - Standing up to heave the bar up
+    - Letting the lower back round or sag
+  contraindications:
+    - Acute low-back pain
+    - A back injury not cleared for loaded hinging
+  regression: Chest-supported row or a cable row.
+  progression: Pause rows or a heavier bar.
+  painRule: lower-back
+  variations: []
+  dose: 3 sets of 6 to 10 reps, 2 minutes rest
+  alternatives: [chest-supported-row, one-arm-dumbbell-row]
+  status: draft
+- id: deadlift
+  name: Conventional deadlift
+  group: back
+  primary: [gluteus-maximus, hamstrings, erector-spinae]
+  secondary: [quadriceps, latissimus-dorsi, trapezius, forearm-flexors]
+  pattern: hinge
+  equipment: [barbell]
+  level: advanced
+  spinalLoad: high
+  summary: A floor pull and the heaviest hinge most lifters can do. It loads the whole posterior chain.
+  setup: Stand with the bar over the mid-foot, feet hip width. Hinge and squat to grip just outside the legs, shoulders slightly in front of the bar. Pull the slack out of the bar, brace and set the shoulder blades.
+  steps:
+    - Push the floor away, keeping the bar close and the spine neutral.
+    - Lock out by driving the hips through; do not lean back.
+    - Lower by pushing the hips back first, then bending the knees once the bar passes them.
+  cues:
+    - Push the floor away
+    - Keep the bar dragging up the legs
+  mistakes:
+    - Jerking the bar off the floor
+    - Rounding the lower back
+    - Hyperextending at the lockout
+  contraindications:
+    - Acute low-back pain, or a back injury not cleared for heavy hinging
+    - Pain travelling into the leg
+  regression: Romanian deadlift from blocks or with lighter loads; or a trap-bar deadlift.
+  progression: Add load, add a pause below the knee or deficit pulls.
+  painRule: lower-back
+  variations:
+    - name: Trap bar
+      change: Hex bar with neutral grip handles.
+      emphasis: More upright trunk and more knee extension; often easier to learn.
+  claims: [cricket-back-injuries]
+  dose: 3 sets of 3 to 6 reps, 3 minutes rest
+  alternatives: [romanian-deadlift, cable-pull-through]
+  status: draft
+- id: back-extension-45
+  name: 45-degree back extension
+  group: back
+  primary: [erector-spinae, gluteus-maximus]
+  secondary: [hamstrings, multifidus]
+  pattern: back-extension
+  equipment: [bench, bodyweight]
+  level: intermediate
+  spinalLoad: moderate
+  summary: A hinge on a 45-degree bench. A rounded upper back biases the erectors; a neutral spine with a posterior pelvic tilt biases the glutes.
+  setup: Set the pads below the hip crease so the hips can hinge freely, with the ankles secured.
+  steps:
+    - Hinge forwards from the hips with a neutral spine to a comfortable stretch.
+    - Extend back up until the body forms a straight line; do not hyperextend.
+  mistakes:
+    - Swinging up using momentum
+    - Hyperextending at the top
+  contraindications:
+    - Acute low-back pain provoked by the movement
+  regression: Bodyweight with a shorter range, or the dowel hip hinge.
+  progression: Hold a plate or dumbbell at the chest, or slow the tempo.
+  painRule: lower-back
+  variations:
+    - name: Glute-focus
+      change: Round the upper back slightly and tuck the pelvis.
+      emphasis: Reported to shift the work to the glutes; no growth evidence.
+    - name: Back-focus
+      change: Neutral spine with the arms crossed.
+      emphasis: Reported to shift the work to the erectors; no growth evidence.
+  claims: [cricket-back-injuries]
+  dose: 2 to 3 sets of 10 to 15 reps
+  alternatives: [romanian-deadlift, hip-thrust]
+  status: draft
+- id: bird-dog
+  name: Bird dog
+  group: back
+  primary: [multifidus, erector-spinae]
+  secondary: [gluteus-maximus, transversus-abdominis, obliques]
+  pattern: core-stability
+  equipment: [bodyweight]
+  level: foundation
+  spinalLoad: none
+  summary: "A foundation stabilisation drill: extend the opposite arm and leg while keeping the spine still."
+  setup: On all fours with the hands under the shoulders and the knees under the hips. Gentle brace.
+  steps:
+    - Extend one arm and the opposite leg until they are in line with the trunk, without letting the pelvis rotate.
+    - Hold for a few seconds, then return and switch sides.
+  mistakes:
+    - Arching the lower back or twisting the pelvis
+    - Rushing the reps
+  contraindications:
+    - Acute low-back pain that is provoked by the position
+  regression: Extend the arm or the leg only.
+  progression: Longer holds, a small band or a light ankle weight. See the core guide for further progressions.
+  painRule: lower-back
+  variations: []
+  dose: 2 sets of 6 to 10 slow reps each side as a warm-up
+  alternatives: [side-plank]
+  status: draft
+- id: suitcase-carry
+  name: Suitcase carry
+  group: back
+  primary: [quadratus-lumborum, obliques]
+  secondary: [forearm-flexors, trapezius, gluteus-medius-minimus]
+  pattern: carry
+  equipment: [dumbbell, kettlebell]
+  level: intermediate
+  spinalLoad: moderate
+  summary: A one-sided loaded carry that trains the trunk to resist side-bending.
+  setup: Hold a heavy dumbbell or kettlebell in one hand at the side. Stand tall with the ribs over the pelvis.
+  steps:
+    - Walk 15 to 30 metres without leaning toward or away from the weight.
+    - Switch hands and repeat.
+  mistakes:
+    - Leaning away from the load
+    - Hiking the shoulder up
+  contraindications:
+    - Acute low-back pain provoked by the load
+    - Hand or wrist pain
+  regression: A lighter load or a shorter distance.
+  progression: A heavier load or a longer walk.
+  painRule: lower-back
+  variations: []
+  dose: 3 sets of 20 to 30 metres each side
+  alternatives: [side-plank]
+  status: draft
+- id: shrug
+  name: Dumbbell shrug
+  group: back
+  primary: [trapezius]
+  secondary: [forearm-flexors]
+  pattern: shrug
+  equipment: [dumbbell]
+  level: intermediate
+  spinalLoad: low
+  summary: A scapular elevation exercise for the upper trapezius.
+  setup: Stand holding dumbbells at the sides, shoulders relaxed.
+  steps:
+    - Lift the shoulders straight up toward the ears, pause, then lower under control.
+  mistakes:
+    - Rolling the shoulders
+    - Using momentum
+  contraindications:
+    - Neck pain that radiates down the arm
+  regression: Lighter dumbbells.
+  progression: Longer pauses at the top.
+  painRule: neck
+  variations: []
+  dose: 2 to 3 sets of 10 to 15 reps
+  alternatives: []
+  status: draft

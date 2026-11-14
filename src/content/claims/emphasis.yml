@@ -1,0 +1,72 @@
+# Emphasis claims: "this variation grows that region more". Grade honestly; EMG-only evidence is capped at C.
+- id: emg-not-growth
+  kind: mechanism
+  grade: B
+  statement: Differences in surface EMG amplitude between exercises cannot by themselves show that one exercise grows a muscle more. Conclusions about growth from EMG comparisons are frequently unsubstantiated.
+  sources: [vigotsky-2018-emg]
+  caveats: A methodological review. It does not say EMG is useless; it says growth needs a training study.
+- id: bench-angle-emg
+  kind: emphasis
+  grade: C
+  emgOnly: true
+  statement: In 14 trained men, upper pectoralis EMG over the whole press was similar across 0, 30 and 45 degree benches, but was higher at 30 and 45 degrees in the middle part of the lift. Lower pectoralis EMG was lower at 45 degrees than on a flat or slightly declined bench.
+  sources: [lauver-2016-bench-angle]
+  population: 14 resistance-trained men, 6 reps at 65% 1RM.
+  caveats: EMG only, one set of six reps, small sample. It does not show that incline pressing grows the upper chest more. The authors conclude that a flat bench activates both heads and that inclines add emphasis at certain times.
+- id: squat-depth-growth
+  kind: emphasis
+  grade: B
+  statement: Deeper squatting grew the quadriceps more than shallow squatting in two 10 to 12 week trials. One found a larger gain in knee extensor volume with the full squat; the other found 4 to 7% larger front-thigh cross-sectional area after deep squats.
+  sources: [kubo-2019-squat-depth, bloomquist-2013-squat-rom]
+  population: 17 young men in each trial.
+  caveats: Small trials in young men. The full squat in the first trial was no better for the rectus femoris or hamstrings. Depth should match what you can do with control and a neutral spine.
+- id: partial-long-length
+  kind: emphasis
+  grade: B
+  statement: Partial-range training done at long muscle lengths grew the trained muscle as well as, or better than, full range in two trials in young women. In knee extension it gave greater growth in parts of the quadriceps; in calf raises it gave greater gastrocnemius growth.
+  sources: [pedrosa-2022-knee-extension, kassiano-2023-calf]
+  population: Young untrained women, 8 weeks.
+  caveats: Untrained women, single joints, partial ranges that start in the stretched position. Not a licence to cut range on compound lifts; the evidence is that the stretched part of the range matters.
+- id: calf-standing-seated
+  kind: emphasis
+  grade: B
+  statement: Standing (knee-straight) calf raises grew the gastrocnemius far more than seated (knee-bent) calf raises, with similar soleus growth.
+  sources: [kinoshita-2023-calf]
+  population: 14 untrained adults, within-participant design, 12 weeks, MRI.
+  caveats: Untrained adults, one trial. Seated raises still grew the soleus, so both have a role if soleus matters.
+- id: hamstring-seated-curl
+  kind: emphasis
+  grade: B
+  statement: Seated leg curls grew the hamstrings more than prone leg curls (whole hamstrings +14% versus +9%), with the extra growth in the biarticular hamstrings.
+  sources: [maeo-2021-hamstrings]
+  population: 20 healthy adults, within-participant design, 12 weeks, MRI.
+  caveats: One trial, untrained adults. The seated position puts the hamstrings in a more lengthened position at the hip.
+- id: triceps-overhead
+  kind: emphasis
+  grade: B
+  statement: Overhead cable triceps extensions grew the triceps substantially more than the same exercise with the arm at the side (whole triceps +19.9% versus +13.9%), mainly in the long head.
+  sources: [maeo-2023-triceps]
+  population: 21 adults, within-participant design, 12 weeks, MRI.
+  caveats: One trial in mostly untrained adults. The overhead arm used lighter loads and still grew more.
+- id: biceps-initial-range
+  kind: emphasis
+  grade: C
+  statement: Training the preacher curl in the initial (stretched) part of the range grew the distal part of the biceps more than training in the final part, but the summed growth across both sites was not significantly different.
+  sources: [pedrosa-2023-curl]
+  population: 19 young women, within-participant design, 8 weeks.
+  caveats: A difference at one of two measured sites, small sample. Evidence is limited.
+- id: glute-emg-versus-growth
+  kind: emphasis
+  grade: Mixed
+  emgOnly: false
+  statement: The hip thrust produced higher gluteus maximus EMG than the back squat in two EMG studies, but in a preprint of a nine-week training trial, glute growth was similar for hip thrust and squat, the squat grew the quadriceps and adductors more, and EMG did not consistently predict glute growth.
+  sources: [contreras-2015-squat-thrust, williams-2021-glute-emg, plotkin-2023-thrust-squat, vigotsky-2018-emg]
+  population: EMG in 13 trained women and 12 male team-sport athletes; growth trial in untrained college-aged participants.
+  caveats: The growth trial is a preprint (not peer reviewed at the time of checking) in untrained participants. Treat the hip thrust as a useful, well-loaded glute option, not proven to be superior to squatting for glute size.
+- id: nordic-hamstring-injury
+  kind: safety
+  grade: A
+  statement: Including the Nordic hamstring exercise in injury prevention programmes reduced the rate of hamstring injuries (risk ratio 0.49, 95% CI 0.32 to 0.74) across 15 studies.
+  sources: [van-dyk-2019-nordic]
+  population: Athletes in several sports, mostly football; men and women.
+  caveats: Programme studies, not the exercise alone; adherence was variable and some studies had high risk of bias. Nordic curls cause a lot of soreness when started, so introduce them gradually.

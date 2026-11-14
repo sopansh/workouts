@@ -1,0 +1,671 @@
+- id: back-squat
+  name: Barbell back squat
+  group: legs
+  primary: [quadriceps, gluteus-maximus]
+  secondary: [adductors, erector-spinae, hamstrings]
+  pattern: squat
+  equipment: [barbell, rack]
+  level: intermediate
+  spinalLoad: high
+  summary: The standard heavy squat. High-bar position, to a depth you control, for quadriceps, glute and adductor loading.
+  setup: Set the bar on the upper traps (high bar) with a full grip, elbows down. Unrack, step back and set the feet about shoulder width apart with the toes turned out 10 to 30 degrees. Take a breath and brace before each rep.
+  steps:
+    - Sit down and slightly back, with the knees tracking over the toes and the trunk leaning only as much as needed to stay balanced.
+    - Descend to the depth you can control with a neutral spine, ideally with the hips at or below the knees.
+    - Drive the floor away, keeping the chest up and the bar over the mid-foot, until standing.
+  cues:
+    - Spread the floor with the feet
+    - Keep the ribs stacked over the pelvis
+    - Brace before you descend, not during
+  mistakes:
+    - Letting the lower back round at the bottom (butt wink) because the depth is beyond your control
+    - Knees collapsing inwards
+    - Heels lifting because of limited ankle mobility
+    - Dropping the chest and turning the squat into a good morning
+  contraindications:
+    - Acute low-back pain, or a back injury not cleared for loaded spinal work
+    - Knee pain at depth
+    - Unresolved hip impingement symptoms at depth
+  regression: Goblet squat or box squat with a lighter load (both are foundation-level options).
+  progression: Add load; add a pause at the bottom; move to a low-bar or safety-bar variation if shoulder mobility limits the bar position.
+  painRule: lower-back
+  variations:
+    - name: Full depth
+      change: Hips at or below the knees.
+      emphasis: A deeper range grew the quadriceps more than a shallow squat in two small trials.
+      claim: squat-depth-growth
+    - name: Pause squat
+      change: Hold the bottom for 1 to 2 seconds.
+      emphasis: Takes out the bounce and builds control; useful as a technique check.
+    - name: Low-bar squat
+      change: Bar lower on the back, trunk more forward.
+      emphasis: Shifts more of the work to the hips and back; no evidence it grows glutes more.
+  claims: [squat-depth-growth, glute-emg-versus-growth]
+  dose: 3 to 4 sets of 5 to 8 reps, 2 to 3 minutes rest
+  alternatives: [hack-squat, leg-press, front-squat]
+  status: draft
+- id: front-squat
+  name: Front squat
+  group: legs
+  primary: [quadriceps, gluteus-maximus]
+  secondary: [adductors, erector-spinae]
+  pattern: squat
+  equipment: [barbell, rack]
+  level: advanced
+  spinalLoad: moderate
+  summary: A squat with the bar on the front of the shoulders. The upright trunk keeps spinal loading lower than a low-bar squat at equal depth.
+  setup: Rest the bar on the front delts with the elbows high, in a clean grip or crossed arms. Feet about shoulder width, toes slightly turned out.
+  steps:
+    - Brace, then sit straight down with the elbows high and the trunk upright.
+    - Descend to a controllable depth, then stand by driving the floor away.
+  mistakes:
+    - Elbows dropping so the bar rolls forwards
+    - Rounding the upper back
+  contraindications:
+    - Wrist, shoulder or elbow pain in the rack position
+    - Back or knee pain not cleared for loading
+  regression: Goblet squat or a heels-elevated back squat with a lighter load.
+  progression: More load, pause reps, or tempo.
+  painRule: knee
+  variations: []
+  claims: [squat-depth-growth]
+  dose: 3 sets of 5 to 8 reps, 2 to 3 minutes rest
+  alternatives: [back-squat, hack-squat]
+  status: draft
+- id: goblet-squat
+  name: Goblet squat
+  group: legs
+  primary: [quadriceps, gluteus-maximus]
+  secondary: [adductors, erector-spinae]
+  pattern: squat
+  equipment: [dumbbell, kettlebell]
+  level: foundation
+  spinalLoad: low
+  summary: A foundation squat that teaches an upright trunk, brace and depth with a dumbbell held at the chest. Also a good warm-up.
+  setup: Hold one end of a dumbbell vertically at the chest with the elbows pointing down. Feet about shoulder width apart, toes turned out slightly.
+  steps:
+    - Brace and squat straight down between the knees, keeping the elbows inside the knees.
+    - Descend to a controllable depth and drive back up.
+  mistakes:
+    - Allowing the trunk to fall forwards
+    - Heels lifting off the floor
+  contraindications:
+    - Acute low-back or knee pain not cleared for loading
+  regression: Squat to a box or a counterbalanced squat holding a support.
+  progression: Heavier dumbbell, pause at the bottom, or move to a barbell squat.
+  painRule: knee
+  variations:
+    - name: Heels elevated
+      change: Heels on a small plate.
+      emphasis: Lets more depth be reached with an upright trunk if ankle mobility is limited.
+  dose: 2 to 3 sets of 8 to 12 reps as a warm-up or back-off work
+  alternatives: [box-squat]
+  status: draft
+- id: box-squat
+  name: Box squat
+  group: legs
+  primary: [quadriceps, gluteus-maximus]
+  secondary: [adductors, hamstrings, erector-spinae]
+  pattern: squat
+  equipment: [barbell, box, rack]
+  level: foundation
+  spinalLoad: moderate
+  summary: A squat to a box at a set depth. It teaches control at the bottom and limits depth when loading is being re-introduced.
+  setup: Place a box behind you at a height that lets the hips reach about parallel. Set the bar as for a back squat and feet about shoulder width.
+  steps:
+    - Brace, sit back to the box under control, with the shins close to vertical.
+    - Touch the box lightly without relaxing the trunk, then drive up.
+  mistakes:
+    - Dropping onto the box and rocking back
+    - Relaxing the trunk on the box and losing the neutral spine
+  contraindications:
+    - Acute low-back pain
+    - Knee pain at the box height
+  regression: Bodyweight box squat, or a goblet squat to a box.
+  progression: Lower the box height, add load, or move to a free squat.
+  painRule: lower-back
+  variations: []
+  dose: 3 sets of 5 to 8 reps, 2 minutes rest
+  alternatives: [goblet-squat, leg-press]
+  status: draft
+- id: hack-squat
+  name: Hack squat
+  group: legs
+  primary: [quadriceps]
+  secondary: [gluteus-maximus, adductors]
+  pattern: squat
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: low
+  summary: A machine squat with the back supported. A high-load quadriceps exercise with low spinal loading.
+  setup: Stand on the platform with the back and shoulders against the pad and feet about shoulder width, slightly forward. Release the safeties.
+  steps:
+    - Lower under control until the thighs are at least parallel to the platform or you reach your controllable depth.
+    - Press through the whole foot to stand without locking the knees hard.
+  mistakes:
+    - Hips coming off the pad at the bottom
+    - Knees collapsing in
+  contraindications:
+    - Knee pain at depth
+  regression: Leg press with a smaller range.
+  progression: Heavier loads, pauses at the bottom, or tempo reps.
+  painRule: knee
+  variations:
+    - name: Feet low and narrow
+      change: Feet lower on the platform.
+      emphasis: More knee travel and quadriceps demand; no direct growth evidence for this foot position.
+    - name: Feet high and wide
+      change: Feet higher on the platform.
+      emphasis: More hip involvement; no direct growth evidence for this foot position.
+  claims: [squat-depth-growth]
+  dose: 3 to 4 sets of 8 to 12 reps, 2 minutes rest
+  alternatives: [leg-press, back-squat]
+  status: draft
+- id: leg-press
+  name: Leg press
+  group: legs
+  primary: [quadriceps]
+  secondary: [gluteus-maximus, adductors, hamstrings]
+  pattern: squat
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: low
+  summary: A heavily loaded machine press with back support. It allows high volume with low spinal loading.
+  setup: Sit with the back and pelvis flat against the pad. Feet shoulder width on the platform, toes slightly out. Release the safeties.
+  steps:
+    - Lower the platform until the knees are about 90 degrees or deeper, as far as the pelvis stays flat on the pad.
+    - Press through the whole foot to full extension without locking the knees hard.
+  mistakes:
+    - Lowering so far that the pelvis curls off the pad (the lower back rounds)
+    - Knees collapsing inwards
+  contraindications:
+    - Knee pain at depth
+    - Back pain that is provoked by the flexed position at the bottom
+  regression: Smaller range with lighter load.
+  progression: Heavier load, pauses at the bottom, or single-leg presses.
+  painRule: knee
+  variations:
+    - name: Feet high
+      change: Feet higher on the platform.
+      emphasis: More hip extension demand; no direct growth evidence.
+    - name: Feet low
+      change: Feet lower on the platform.
+      emphasis: More knee flexion demand; no direct growth evidence.
+  claims: [squat-depth-growth]
+  dose: 3 sets of 10 to 15 reps, 2 minutes rest
+  alternatives: [hack-squat, back-squat]
+  status: draft
+- id: bulgarian-split-squat
+  name: Bulgarian split squat
+  group: legs
+  primary: [quadriceps, gluteus-maximus]
+  secondary: [adductors, gluteus-medius-minimus, hamstrings]
+  pattern: lunge
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A rear-foot-elevated single-leg squat with a long range. It loads the front leg heavily with a small spinal load.
+  setup: Place the back foot on a bench behind you. Take a long stance so the front shin is near vertical at the bottom. Hold dumbbells at the sides.
+  steps:
+    - Lower straight down until the back knee approaches the floor and the front thigh is about parallel.
+    - Drive through the front foot to stand, keeping the pelvis level.
+  mistakes:
+    - Stance too short so the front knee drifts far forwards
+    - Leaning and twisting the trunk
+  contraindications:
+    - Knee or hip-flexor pain in the stretched position of the back leg
+  regression: Split squat with the back foot on the floor, bodyweight only.
+  progression: Heavier dumbbells, a barbell, or a deficit.
+  painRule: knee
+  variations:
+    - name: Forward lean
+      change: Trunk leans forward slightly over the front leg.
+      emphasis: More hip and glute involvement; no direct growth evidence.
+    - name: Upright trunk
+      change: Trunk stays vertical.
+      emphasis: More knee and quadriceps involvement; no direct growth evidence.
+  dose: 3 sets of 8 to 12 reps each side, 90 to 120 seconds rest
+  alternatives: [walking-lunge, leg-press]
+  status: draft
+- id: walking-lunge
+  name: Walking lunge
+  group: legs
+  primary: [quadriceps, gluteus-maximus]
+  secondary: [adductors, gluteus-medius-minimus, hamstrings]
+  pattern: lunge
+  equipment: [dumbbell]
+  level: intermediate
+  spinalLoad: low
+  summary: A loaded stepping pattern that trains the legs and hips with balance and trunk control.
+  setup: Hold dumbbells at the sides. Take a long step so the front shin is about vertical at the bottom.
+  steps:
+    - Step forward and lower until the back knee almost touches the floor.
+    - Drive through the front foot to bring the back leg forward into the next step.
+  mistakes:
+    - Short steps that push the knee far over the toes
+    - Allowing the trunk to twist
+  contraindications:
+    - Knee or hip pain in the stretched position
+  regression: Static split squat with no weight.
+  progression: Heavier dumbbells, a longer step, or a barbell.
+  painRule: knee
+  variations:
+    - name: Reverse lunge
+      change: Step back instead of forward.
+      emphasis: A common option when stepping forward bothers the knee (practitioner experience, not graded evidence).
+  dose: 2 to 3 sets of 10 to 16 steps, 90 seconds rest
+  alternatives: [bulgarian-split-squat]
+  status: draft
+- id: leg-extension
+  name: Leg extension
+  group: legs
+  primary: [quadriceps]
+  secondary: []
+  pattern: knee-extension
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A single-joint quadriceps exercise with the back supported, so it adds quadriceps volume with no spinal load.
+  setup: Adjust the back pad so the knees line up with the machine axis and the pad sits on the lower shin. Sit with the back supported.
+  steps:
+    - Extend the knees until the legs are straight, pausing briefly at the top.
+    - Lower under control without letting the stack rest.
+  mistakes:
+    - Lifting the hips off the seat
+    - Swinging the weight up
+  contraindications:
+    - Anterior knee pain with the knees extended under load
+    - Recent anterior cruciate ligament reconstruction unless cleared by your surgeon or physiotherapist
+  regression: Lower load and a smaller range.
+  progression: Slower lowering, a pause at the top or a drop set.
+  painRule: knee
+  variations:
+    - name: Initial range
+      change: Train the stretched half of the range only.
+      emphasis: Partial range at the stretched half grew parts of the quadriceps more than full or final-range training in untrained women.
+      claim: partial-long-length
+  claims: [partial-long-length]
+  dose: 2 to 3 sets of 10 to 15 reps, 60 to 90 seconds rest
+  alternatives: [hack-squat, leg-press]
+  status: draft
+- id: romanian-deadlift
+  name: Romanian deadlift
+  group: legs
+  primary: [hamstrings, gluteus-maximus]
+  secondary: [erector-spinae, adductors]
+  pattern: hinge
+  equipment: [barbell, dumbbell]
+  level: intermediate
+  spinalLoad: high
+  summary: A hip hinge from standing that loads the hamstrings and glutes in a lengthened position while the back holds position.
+  setup: Stand holding the bar at the thighs with the feet hip width. Soften the knees, set the shoulder blades and brace.
+  steps:
+    - Push the hips back, letting the bar slide down the thighs, until the hamstrings stretch or the back would begin to round.
+    - Keep the bar close, the spine neutral and the shins near vertical.
+    - Drive the hips forward to stand, finishing without leaning back.
+  cues:
+    - Push the hips back as if closing a door
+    - Keep the shoulder blades set throughout
+  mistakes:
+    - Rounding the lower back to reach further down
+    - Squatting the movement down instead of pushing the hips back
+    - Over-extending at the top
+  contraindications:
+    - Acute low-back pain, or back injury not cleared for hinging under load
+    - Pain at the sit bone under load
+  regression: Hip hinge drill with a dowel, then a light dumbbell RDL with a shorter range.
+  progression: Add load, pause at the bottom, or move to a deficit.
+  painRule: lower-back
+  variations:
+    - name: Dumbbell
+      change: Dumbbells in the hands.
+      emphasis: Easier to learn and to bail out of.
+    - name: Single leg
+      change: One leg lifts behind.
+      emphasis: Adds balance and glute medius demand with a lighter spinal load.
+  claims: [glute-emg-versus-growth]
+  dose: 3 sets of 6 to 10 reps, 2 to 3 minutes rest
+  alternatives: [cable-pull-through, back-extension-45]
+  status: draft
+- id: glute-bridge
+  name: Glute bridge
+  group: legs
+  primary: [gluteus-maximus]
+  secondary: [hamstrings, erector-spinae]
+  pattern: hip-extension
+  equipment: [bodyweight, barbell]
+  level: foundation
+  spinalLoad: low
+  summary: A floor-based hip extension that teaches the glutes to do the work of extending the hips without arching the lower back.
+  setup: Lie on your back with the knees bent and feet flat, about hip width. Ribs down and a gentle brace.
+  steps:
+    - Drive through the feet and lift the hips until the body forms a line from the shoulders to the knees.
+    - Pause for a second at the top, then lower under control.
+  mistakes:
+    - Arching the lower back to get the hips higher
+    - Pushing through the toes so the quads take over
+  contraindications:
+    - Acute low-back pain provoked by the bridge position
+  regression: Smaller range or both feet closer to the glutes.
+  progression: Single-leg bridge, a barbell across the hips, or the hip thrust.
+  painRule: lower-back
+  variations:
+    - name: Banded
+      change: A mini-band above the knees.
+      emphasis: Adds side-hip (gluteus medius) demand and a cue to push the knees out.
+  claims: [glute-emg-versus-growth]
+  dose: 2 sets of 10 to 15 reps as a warm-up or foundation drill
+  alternatives: [hip-thrust]
+  status: draft
+- id: hip-thrust
+  name: Barbell hip thrust
+  group: legs
+  primary: [gluteus-maximus]
+  secondary: [hamstrings, adductors]
+  pattern: hip-extension
+  equipment: [barbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A heavily loaded hip extension with the upper back on a bench. High glute loading at the shortened end of the range.
+  setup: Sit with the upper back against the edge of a bench and the barbell across the hips with a pad. Plant the feet about hip width.
+  steps:
+    - Drive through the feet to lift the hips until the thighs are parallel to the floor.
+    - Pause with the ribs down and the chin tucked, then lower under control.
+  cues:
+    - Chin tucked, ribs down
+    - Push the floor away with the heels
+  mistakes:
+    - Arching the lower back at the top
+    - Feet too far forward or too far back
+  contraindications:
+    - Acute low-back pain provoked by the extended position
+    - Pain at the front of the hip
+  regression: Glute bridge or bodyweight thrust.
+  progression: Heavier load, single-leg thrust, or a pause at the top.
+  painRule: lower-back
+  variations:
+    - name: Banded
+      change: A mini-band above the knees.
+      emphasis: Adds side-hip demand.
+  claims: [glute-emg-versus-growth, emg-not-growth]
+  dose: 3 to 4 sets of 6 to 12 reps, 2 minutes rest
+  alternatives: [glute-bridge, cable-pull-through]
+  status: draft
+- id: cable-pull-through
+  name: Cable pull-through
+  group: legs
+  primary: [gluteus-maximus, hamstrings]
+  secondary: [erector-spinae]
+  pattern: hinge
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: moderate
+  summary: A hinge with the cable pulling from behind. It lets you load the hip hinge with a controlled, low-risk back position.
+  setup: Stand facing away from a low pulley, with a rope between the legs. Step forward until there is tension, feet slightly wider than hip width.
+  steps:
+    - Push the hips back and let the rope pass between the legs, with a neutral spine.
+    - Drive the hips forward and squeeze the glutes at the top.
+  mistakes:
+    - Squatting instead of hinging
+    - Over-extending at the top
+  contraindications:
+    - Acute low-back pain not cleared for hinging
+  regression: Hip hinge drill with a dowel.
+  progression: Heavier stack or a longer pause.
+  painRule: lower-back
+  variations: []
+  dose: 2 to 3 sets of 10 to 15 reps, 90 seconds rest
+  alternatives: [romanian-deadlift, hip-thrust]
+  status: draft
+- id: hip-hinge-dowel
+  name: Dowel hip hinge
+  group: legs
+  primary: [gluteus-maximus, hamstrings]
+  secondary: [erector-spinae]
+  pattern: hinge
+  equipment: [dowel]
+  level: foundation
+  spinalLoad: none
+  summary: A foundation drill for the hip hinge, using a dowel to check that the head, upper back and tailbone stay in one line.
+  setup: Hold a dowel along the spine, touching the back of the head, upper back and tailbone. Feet hip width, soft knees.
+  steps:
+    - Push the hips back, keeping all three contact points on the dowel, until the hamstrings stretch.
+    - Return by driving the hips forward.
+  mistakes:
+    - Losing contact with the dowel at the tailbone or head
+    - Squatting rather than pushing the hips back
+  contraindications:
+    - Pain that builds during the hinge
+  regression: Hands on a wall or a support while hinging.
+  progression: Light dumbbell Romanian deadlift.
+  painRule: lower-back
+  variations: []
+  dose: 2 sets of 10 reps as a warm-up or technique drill
+  alternatives: [cable-pull-through]
+  status: draft
+- id: seated-leg-curl
+  name: Seated leg curl
+  group: legs
+  primary: [hamstrings]
+  secondary: [gastrocnemius]
+  pattern: knee-flexion
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A knee-flexion exercise with the hips flexed, which lengthens the biarticular hamstrings.
+  setup: Adjust the pad so the knees line up with the axis and the pad rests above the heels. Sit back with the thigh pad firm.
+  steps:
+    - Curl the heels toward the glutes until the knees are fully flexed.
+    - Return slowly to the stretched position without letting the stack rest.
+  mistakes:
+    - Lifting the hips or leaning back to cheat
+    - Swinging the weight
+  contraindications:
+    - Recent hamstring strain not cleared for loading
+    - Cramping or pain behind the knee
+  regression: Lighter load and a smaller range.
+  progression: Slower lowering, a pause at the stretch or a drop set.
+  painRule: hamstring
+  variations:
+    - name: Seated versus lying
+      change: Hip flexed (seated) versus hip extended (lying).
+      emphasis: In a within-participant trial the seated curl grew the hamstrings more than the prone curl, particularly the biarticular heads.
+      claim: hamstring-seated-curl
+  claims: [hamstring-seated-curl]
+  dose: 3 sets of 8 to 15 reps, 90 seconds rest
+  alternatives: [lying-leg-curl, nordic-curl]
+  status: draft
+- id: lying-leg-curl
+  name: Lying leg curl
+  group: legs
+  primary: [hamstrings]
+  secondary: [gastrocnemius]
+  pattern: knee-flexion
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A prone knee-flexion exercise. Available at most gyms and easy to load.
+  setup: Lie face down with the knees just past the edge of the bench and the pad above the heels.
+  steps:
+    - Curl the heels to the glutes without lifting the hips.
+    - Lower slowly to a stretch.
+  mistakes:
+    - Hips lifting off the bench
+    - Using momentum
+  contraindications:
+    - Recent hamstring strain not cleared for loading
+    - Pain behind the knee
+  regression: Lighter load and a smaller range.
+  progression: Slower lowering or pauses.
+  painRule: hamstring
+  variations: []
+  claims: [hamstring-seated-curl]
+  dose: 3 sets of 8 to 15 reps, 90 seconds rest
+  alternatives: [seated-leg-curl]
+  status: draft
+- id: nordic-curl
+  name: Nordic hamstring curl
+  group: legs
+  primary: [hamstrings]
+  secondary: [gastrocnemius, gluteus-maximus]
+  pattern: knee-flexion
+  equipment: [bodyweight, bench]
+  level: advanced
+  spinalLoad: low
+  summary: A bodyweight eccentric knee-flexion exercise with a large hamstring load. Also used in injury-prevention programmes.
+  setup: Kneel on a pad with the ankles anchored, hips and trunk in a straight line from the knees to the head.
+  steps:
+    - Lower the trunk slowly forwards as far as you can control, keeping the hips extended.
+    - Catch with the hands and push back up, or use a band to assist the return.
+  mistakes:
+    - Folding at the hips rather than keeping a straight line
+    - Dropping uncontrolled from the start
+  contraindications:
+    - Recent hamstring strain not cleared for loading
+  regression: A shorter range with a band or an incline-assisted version.
+  progression: A longer controlled range, then reduced assistance.
+  painRule: hamstring
+  variations: []
+  claims: [nordic-hamstring-injury]
+  dose: 2 to 3 sets of 4 to 8 reps, introduced gradually (start with 1 to 2 sets)
+  alternatives: [seated-leg-curl, lying-leg-curl]
+  status: draft
+- id: hip-abduction-machine
+  name: Hip abduction machine
+  group: legs
+  primary: [gluteus-medius-minimus]
+  secondary: [gluteus-maximus]
+  pattern: hip-abduction
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A seated abduction that loads the side-hip muscles directly.
+  setup: Sit upright, pads on the outside of the knees, back supported.
+  steps:
+    - Push the knees apart to a comfortable end range without lifting the hips.
+    - Return slowly.
+  mistakes:
+    - Swinging with the trunk
+    - Using a range that causes pinching in the hip
+  contraindications:
+    - Pinching or pain at the front or side of the hip
+  regression: Banded abduction in a side-lying position.
+  progression: Slower lowering, pauses or higher reps.
+  painRule: hip
+  variations:
+    - name: Leaning forward
+      change: Trunk leans forwards on the machine.
+      emphasis: Moves the line of pull to different glute fibres; no growth evidence.
+  dose: 2 to 3 sets of 12 to 20 reps, 60 seconds rest
+  alternatives: [bulgarian-split-squat]
+  status: draft
+- id: standing-calf-raise
+  name: Standing calf raise
+  group: legs
+  primary: [gastrocnemius]
+  secondary: [soleus]
+  pattern: calf
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: low
+  summary: A straight-knee calf raise, with the gastrocnemius lengthened and working.
+  setup: Stand with the balls of the feet on the platform and the shoulders under the pads, knees straight.
+  steps:
+    - Lower the heels as far as comfortable to a full stretch.
+    - Rise as high as possible, pause, then lower slowly.
+  mistakes:
+    - Bouncing out of the bottom
+    - Bending the knees to cheat
+  contraindications:
+    - Achilles tendon pain not cleared for loading
+  regression: Bodyweight calf raise on a step.
+  progression: Slower tempo, pauses at the stretch, or single-leg versions.
+  painRule: general
+  variations:
+    - name: Stretched-position emphasis
+      change: Pause at the bottom or train the lower half of the range.
+      emphasis: Training in the lengthened range grew the gastrocnemius more in a trial in young women.
+      claim: partial-long-length
+  claims: [calf-standing-seated, partial-long-length]
+  dose: 3 to 4 sets of 8 to 15 reps, 60 to 90 seconds rest
+  alternatives: [seated-calf-raise]
+  status: draft
+- id: seated-calf-raise
+  name: Seated calf raise
+  group: legs
+  primary: [soleus]
+  secondary: [gastrocnemius]
+  pattern: calf
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A bent-knee calf raise, which shortens the gastrocnemius so the soleus does more of the work.
+  setup: Sit with the knees bent about 90 degrees and the pads on the thighs, balls of the feet on the platform.
+  steps:
+    - Lower the heels to a full stretch.
+    - Rise to full plantar flexion, pause and lower slowly.
+  mistakes:
+    - Bouncing
+    - Cutting the range short
+  contraindications:
+    - Achilles tendon pain not cleared for loading
+  regression: Lighter load.
+  progression: Slower tempo or pauses.
+  painRule: general
+  variations: []
+  claims: [calf-standing-seated]
+  dose: 2 to 3 sets of 10 to 20 reps, 60 seconds rest
+  alternatives: [standing-calf-raise]
+  status: draft
+- id: adductor-machine
+  name: Adductor machine
+  group: legs
+  primary: [adductors]
+  secondary: []
+  pattern: hip-adduction
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A seated adduction that loads the inner thigh directly.
+  setup: Sit upright, back supported, with the pads against the inner knees.
+  steps:
+    - Squeeze the knees together to a controlled end point.
+    - Open slowly to a comfortable stretch without bouncing.
+  mistakes:
+    - Starting from a very wide stretch with a heavy stack
+    - Jerking the weight
+  contraindications:
+    - Groin pain or recent groin strain not cleared for loading
+  regression: Lighter load and a smaller range.
+  progression: Slower lowering or pauses.
+  painRule: hip
+  variations: []
+  dose: 2 to 3 sets of 10 to 15 reps, 60 seconds rest
+  alternatives: [bulgarian-split-squat]
+  status: draft
+- id: tibialis-raise
+  name: Tibialis raise
+  group: legs
+  primary: [tibialis-anterior]
+  secondary: []
+  pattern: calf
+  equipment: [bodyweight]
+  level: intermediate
+  spinalLoad: none
+  summary: A shin raise that trains the front of the lower leg.
+  setup: Lean against a wall with the feet a step in front of you, heels on the floor.
+  steps:
+    - Lift the toes toward the shins as high as possible.
+    - Lower under control.
+  mistakes:
+    - Using a stance so close to the wall that the movement is cramped
+    - Rushing the lowering phase
+  contraindications:
+    - Shin pain not cleared for loading
+  regression: Seated toe raises.
+  progression: Add a band or weighted plate on the foot.
+  painRule: general
+  variations: []
+  dose: 2 sets of 15 to 25 reps
+  alternatives: []
+  status: draft

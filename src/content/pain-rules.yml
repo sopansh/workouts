@@ -1,0 +1,59 @@
+# One shared pain rule per body area. Every exercise points at one of these, so the wording is consistent.
+- id: general
+  title: General pain rule
+  rule: Stay at 2/10 discomfort or lower during the set, and no worse the next morning. A dull muscle burn is fine; sharp, pinching, catching or joint pain is not. Stop the set, drop the load or range, and do not push through.
+  seeClinician:
+    - Sudden tearing or popping pain, or a visible deformity
+    - Numbness, tingling or new weakness
+    - Pain that is worse at night or does not ease with rest
+    - Pain that is not improving after 2 to 3 weeks
+- id: lower-back
+  title: Lower-back pain rule
+  rule: Keep a neutral spine and stay at 2/10 or lower. Ease off at the first sign of back ache, stiffness that builds set to set, or any pain that travels into the buttock or leg. Cut the load, not the form, and swap to a supported variation (chest-supported, machine or bodyweight) for that session.
+  seeClinician:
+    - Pain below the knee, numbness or tingling in the leg or groin
+    - Leg weakness or foot drop
+    - Any bladder or bowel change, or numbness around the saddle area (urgent, same day)
+    - Night pain that does not ease, or pain not improving after 2 to 3 weeks
+- id: shoulder
+  title: Shoulder pain rule
+  rule: Stay at 2/10 or lower. A pinch at the front or top of the shoulder, a catching sensation or pain that lingers after the set means shorten the range, change the angle (for example a neutral grip) or lower the load. Do not train through pain that is sharp or that wakes you at night.
+  seeClinician:
+    - Sudden loss of strength or being unable to lift the arm
+    - A pop followed by pain or bruising
+    - Numbness or tingling down the arm
+    - Night pain that does not ease, or pain not improving after 2 to 3 weeks
+- id: elbow
+  title: Elbow and forearm pain rule
+  rule: Stay at 2/10 or lower. Pain at the point of the elbow or the inside or outside of the joint means change the grip or implement (for example a cambered bar or cable), shorten the range and lower the load. Pain that builds across sessions is a signal to back off for a week, not to push through.
+  seeClinician:
+    - Sudden pop with bruising or loss of strength
+    - Numbness or tingling in the hand or fingers
+    - Pain that does not settle within 2 to 3 weeks
+- id: knee
+  title: Knee pain rule
+  rule: Stay at 2/10 or lower. Sharp pain at the front of the knee, catching or locking, or the knee giving way means reduce depth, change the stance or lower the load. A dull effort ache in the muscle is fine; pain in the joint is not.
+  seeClinician:
+    - Locking, giving way or a sudden swollen knee
+    - A pop during a movement followed by swelling
+    - Pain that does not settle within 2 to 3 weeks
+- id: hip
+  title: Hip and groin pain rule
+  rule: Stay at 2/10 or lower. A pinch at the front of the hip or deep groin pain at the bottom of a squat or lunge means reduce depth, widen or turn out the stance, or switch to a supported variation. Do not stretch or load through a sharp groin pain.
+  seeClinician:
+    - Sudden sharp groin or hip pain with weakness
+    - Pain that is worse at night or does not ease with rest
+    - Pain that does not settle within 2 to 3 weeks
+- id: hamstring
+  title: Hamstring pain rule
+  rule: Stay at 2/10 or lower. A tight stretch sensation is expected; a sharp pull, a twinge or pain at the sit bone is a stop signal. Reduce range and load, and do not push into a sharp pulling sensation.
+  seeClinician:
+    - Sudden pop or tearing sensation with bruising
+    - Pain at the sit bone that does not settle within 2 to 3 weeks
+- id: neck
+  title: Neck pain rule
+  rule: Stay at 2/10 or lower. Keep the neck long and relaxed; if the neck takes over (shrugging, jutting the chin) lower the load. Stop for sharp pain or any arm symptoms.
+  seeClinician:
+    - Pain, numbness or tingling travelling down the arm
+    - Dizziness, visual changes or severe headache with neck pain
+    - Pain that does not settle within 2 to 3 weeks

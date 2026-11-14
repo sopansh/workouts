@@ -1,0 +1,54 @@
+- id: hypertrophy
+  term: Hypertrophy
+  definition: An increase in muscle size.
+- id: hard-set
+  term: Hard set
+  definition: A working set taken close to failure (roughly 0 to 3 reps in reserve) with good technique. Warm-up sets do not count.
+- id: rir
+  term: Reps in reserve (RIR)
+  definition: How many more reps you could have done when you stopped the set. 2 RIR means you stopped with two left.
+- id: momentary-failure
+  term: Momentary muscular failure
+  definition: The point at which you cannot complete another rep with good technique.
+- id: direct-set
+  term: Direct set
+  definition: A set in which the muscle is a primary mover, for example chest in a bench press.
+- id: indirect-set
+  term: Indirect set
+  definition: A set in which the muscle works as a secondary helper, for example triceps in a bench press.
+- id: effective-set
+  term: Effective sets
+  definition: Direct sets plus half of the indirect sets. The counting method that fitted one large meta-regression best.
+- id: one-rm
+  term: 1RM
+  definition: One-repetition maximum, the heaviest load you can lift for a single rep.
+- id: deload
+  term: Deload
+  definition: A planned period of reduced training stress to reduce fatigue and recover.
+- id: emg
+  term: EMG (electromyography)
+  definition: A measure of the electrical activity of a muscle. Higher EMG during an exercise does not by itself show that exercise grows the muscle more.
+- id: lengthened-position
+  term: Lengthened (stretched) position
+  definition: The part of a movement in which the working muscle is at its longest, for example the bottom of a curl.
+- id: biarticular
+  term: Biarticular muscle
+  definition: A muscle that crosses two joints, such as the long head of triceps (shoulder and elbow) or the hamstrings (hip and knee).
+- id: hinge
+  term: Hip hinge
+  definition: A movement driven by pushing the hips back with the spine held neutral, as in a Romanian deadlift.
+- id: spinal-load
+  term: Spinal load
+  definition: This site's own label (none, low, moderate, high) for how much compressive and shear load an exercise puts through the spine. It is a planning aid based on exercise type, not a measurement.
+- id: eccentric
+  term: Eccentric
+  definition: The lowering phase of a lift, when the muscle lengthens under load.
+- id: concentric
+  term: Concentric
+  definition: The lifting phase of a lift, when the muscle shortens.
+- id: double-progression
+  term: Double progression
+  definition: Work within a rep range and add load once you reach the top of the range on all sets.
+- id: block
+  term: Training block
+  definition: A planned run of weeks, here four weeks of increasing effort plus a deload week.

@@ -1,6 +1,8 @@
 # Strength / Hypertrophy: implementation and information-gathering plan
 
-Status: **proposal for review.** Nothing in this plan is built yet. Part 1 explains what we are building and how the site is
+Status: **first build done (drafts).** The stack decision is made (Astro) and phases 1 to 3 are built in draft form, with the
+weekly-plan and program pages from phase 7 and cricket stubs from phase 8. See "Build status" at the end of section 14 and
+`CONTEXT.md` section 3a. Everything below is still the plan of record. Part 1 explains what we are building and how the site is
 structured; Part 2 is the research plan (how we gather and verify the information); Part 3 is the build plan (phases,
 deliverables, acceptance criteria); Part 4 is the cricket track; Part 5 lists risks and decisions I need from you.
 
@@ -502,6 +504,31 @@ in search and in the relevant index.
    content differ.
 7. **Visuals:** OK to draw our own SVG anatomy and demos (recommended), or do you want photos/videos of your own?
 8. **Pilot choice:** start with chest as proposed?
+
+### Decisions recorded (first build)
+
+| Question | Decision |
+|---|---|
+| 3. Stack | Astro 7, static output; `home/` and `core/` carried over unchanged as static files |
+| 5. Personal context | 10+ years training (upper-intermediate to advanced), full commercial gym, 6 days a week, 90-minute sessions, lower back fully recovered |
+| 6. Cricket | Stub pages for every role and topic; no prescriptions until researched |
+| 8. Pilot | Chest and legs (including glutes and lower back) are the detailed groups |
+| Level | No beginner-level programming. `foundation` exercises exist only for squat, glute and lower-back work |
+| 1, 2, 4, 7 | Still open. Pages are labelled draft; own SVG muscle map used; `/core/` unchanged |
+
+### Build status
+
+| Phase | State |
+|---|---|
+| 1. Foundations | Done: Zod schemas, build-time validator, templates, nav and breadcrumbs, badges, hub. Search is not built (Pagefind later) |
+| 2. Research tooling | Partly done: source register, claims register, Crossref verifier with retraction check, grade rubric. Dossier templates are the schemas |
+| 3. Chest pilot | Built as a draft: 3 muscle pages, 12 chest exercises with variation tables, principles, muscle map v1 (schematic). Not reviewed |
+| 4. Review | Not started: needs named reviewers |
+| 5. Visual tooling | Not started (no 3D demos for strength yet) |
+| 6. Roll-out | Muscle pages and exercises exist for every group; only chest and legs are at full detail |
+| 7. Principles and programs | Built: 10 principles, push/pull/legs six-day and upper/lower four-day programs, weekly-plan page |
+| 8. Cricket (strength) | Stubs only |
+| 9, 10 | Not started |
 
 ---
 

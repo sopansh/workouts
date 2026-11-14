@@ -1,0 +1,148 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../../components/ClaimList.astro';
+import EvidenceBadge from '../../../../components/EvidenceBadge.astro';
+import StatusBadge from '../../../../components/StatusBadge.astro';
+import { loadAll, levelLabel, spinalLabel, url } from '../../../../lib/content';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.muscles.map(muscle => ({ params: { group: muscle.data.group.id, muscle: muscle.id }, props: { muscle } }));
+}
+
+const { muscle } = Astro.props;
+const d = await loadAll();
+const m = muscle.data;
+const group = d.groupById.get(m.group.id)!;
+const primary = d.exercises.filter(e => e.data.primary.some(r => r.id === muscle.id));
+const secondary = d.exercises.filter(e => e.data.secondary.some(r => r.id === muscle.id) && !e.data.primary.some(r => r.id === muscle.id));
+const variationClaims = new Set(primary.flatMap(e => e.data.variations.map(v => v.claim?.id).filter(Boolean) as string[]));
+const claimIds = [...new Set([...m.claims.map(c => c.id), ...variationClaims])];
+const siblings = d.muscles.filter(x => x.data.group.id === group.id);
+const index = siblings.findIndex(x => x.id === muscle.id);
+const prev = siblings[index - 1];
+const next = siblings[index + 1];
+---
+<Base title={m.name} description={m.summary} accent={group.data.accent}>
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Muscles', href: url.muscles }, { label: group.data.name, href: url.group(group.id) }, { label: m.name }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">{group.data.name}</p>
+    <h1>{m.name}</h1>
+    {m.latin && <p class="muted"><i>{m.latin}</i></p>}
+    <p class="lede">{m.summary}</p>
+    <div class="badges"><StatusBadge status={m.status} /></div>
+  </section>
+
+  {m.regions.length > 0 && (
+    <section aria-labelledby="regions">
+      <h2 id="regions">Regions and heads</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Region</th><th scope="col">Notes</th></tr></thead>
+          <tbody>{m.regions.map(r => <tr><th scope="row">{r.label}</th><td>{r.note}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <section aria-labelledby="anatomy">
+    <h2 id="anatomy">Anatomy</h2>
+    <dl class="facts">
+      <dt>Origin</dt><dd>{m.anatomy.origin}</dd>
+      <dt>Insertion</dt><dd>{m.anatomy.insertion}</dd>
+      <dt>Nerve supply</dt><dd>{m.anatomy.innervation}</dd>
+      <dt>Actions</dt>
+      <dd><ul>{m.anatomy.actions.map(a => <li>{a}</li>)}</ul></dd>
+    </dl>
+    <p class="muted small">Structural anatomy follows standard textbook descriptions (see <a href={`${url.sources}#gray-1918`}>Gray, 1918</a>) and is awaiting review against a modern atlas by a qualified reviewer.</p>
+  </section>
+
+  <section aria-labelledby="role">
+    <h2 id="role">What it does in training</h2>
+    <p class="prose">{m.role}</p>
+    {m.synergists.length > 0 && (
+      <>
+        <p class="label">Works with</p>
+        <ul class="chip-list">
+          {m.synergists.map(s => {
+            const sm = d.muscleById.get(s.id)!;
+            return <li><a class="chip" href={url.muscle(sm.data.group.id, sm.id)}>{sm.data.name}</a></li>;
+          })}
+        </ul>
+      </>
+    )}
+  </section>
+
+  <section aria-labelledby="exercises">
+    <h2 id="exercises">Exercises and variations</h2>
+    {primary.length > 0 ? (
+      <div class="table-wrap" role="region" aria-label="Exercises that train this muscle" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Exercise</th><th scope="col">Level</th><th scope="col">Spine</th><th scope="col">Variations and what is known</th></tr></thead>
+          <tbody>
+            {primary.map(e => (
+              <tr>
+                <th scope="row"><a href={url.exercise(e.id)}>{e.data.name}</a></th>
+                <td>{levelLabel[e.data.level]}</td>
+                <td>{spinalLabel[e.data.spinalLoad]}</td>
+                <td>
+                  {e.data.variations.length === 0 && <span class="muted">No variations listed.</span>}
+                  {e.data.variations.map(v => (
+                    <p>
+                      <b>{v.name}.</b> {v.emphasis ?? v.change}
+                      {v.claim ? <> <EvidenceBadge grade={d.claimById.get(v.claim.id)!.data.grade} short /></> : <> <span class="badge" data-tone="warn">No growth evidence</span></>}
+                    </p>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p class="muted">No exercise in this register trains this muscle as a primary mover. It is worked as a helper or through the general work listed below.</p>
+    )}
+    {secondary.length > 0 && (
+      <>
+        <p class="label">Also worked as a helper in</p>
+        <ul class="chip-list">{secondary.map(e => <li><a class="chip" href={url.exercise(e.id)}>{e.data.name}</a></li>)}</ul>
+      </>
+    )}
+    <p class="muted small">"No growth evidence" means no study with a growth outcome was found for that variation, so the variation is a hypothesis, not a finding.</p>
+  </section>
+
+  <section aria-labelledby="growth">
+    <h2 id="growth">Growth considerations and evidence</h2>
+    {claimIds.length > 0
+      ? <ClaimList claims={claimIds} claimById={d.claimById} sourceById={d.sourceById} />
+      : <p class="note">No muscle-specific growth evidence has been added yet. The general <a href={url.principle('volume')}>volume</a>, <a href={url.principle('frequency')}>frequency</a> and <a href={url.principle('range-of-motion')}>range of motion</a> principles apply.</p>}
+  </section>
+
+  <section aria-labelledby="health">
+    <h2 id="health">Injury and health</h2>
+    {m.injuries.length > 0 && <><p class="label">Common issues</p><ul class="prose">{m.injuries.map(i => <li>{i}</li>)}</ul></>}
+    {m.prerequisites && <><p class="label">Prerequisites</p><p class="prose">{m.prerequisites}</p></>}
+    <aside class="note note--warn" role="note">
+      <p><b>Red flags: stop and get medical advice.</b></p>
+      <ul>
+        {m.redFlags.map(r => <li>{r}</li>)}
+        <li>Pain that is sharp, getting worse, or not settling after 2 to 3 weeks</li>
+        <li>Numbness, tingling or new weakness</li>
+      </ul>
+    </aside>
+  </section>
+
+  {m.cricket && (
+    <section aria-labelledby="cricket">
+      <h2 id="cricket">Cricket</h2>
+      <p class="prose">{m.cricket}</p>
+      <p><a href={url.cricket}>Open the cricket section</a></p>
+    </section>
+  )}
+
+  <nav class="nav-pair" aria-label={`${group.data.name} muscles`}>
+    {prev ? <a href={url.muscle(group.id, prev.id)}>← {prev.data.name}</a> : <span />}
+    {next ? <a href={url.muscle(group.id, next.id)}>{next.data.name} →</a> : <span />}
+  </nav>
+</Base>

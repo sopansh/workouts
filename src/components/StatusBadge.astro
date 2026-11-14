@@ -1,0 +1,7 @@
+---
+interface Props { status?: string; }
+const { status = 'draft' } = Astro.props;
+const label: Record<string, string> = { draft: 'Draft', verified: 'Verified', 'expert-reviewed': 'Expert reviewed' };
+const tone = status === 'draft' ? 'warn' : 'good';
+---
+<span class="badge" data-tone={tone} title="Content status. Draft means not yet reviewed by a qualified professional.">{label[status]}</span>

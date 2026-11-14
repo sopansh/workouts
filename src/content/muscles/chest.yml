@@ -1,0 +1,69 @@
+- id: pectoralis-major
+  tracked: true
+  group: chest
+  name: Pectoralis major
+  latin: Musculus pectoralis major
+  detail: full
+  summary: The large fan-shaped muscle of the front of the chest. It brings the arm across the body and rotates it inwards.
+  regions:
+    - { id: clavicular, label: Clavicular head, note: "Upper fibres from the collarbone. Run downwards and outwards, so they are best placed to assist raising the arm forwards." }
+    - { id: sternocostal, label: Sternocostal head, note: "The bulk of the muscle, from the breastbone and upper rib cartilages. Fibres run roughly horizontally to obliquely upwards." }
+    - { id: abdominal, label: Abdominal fibres, note: "The lowest fibres, from the sheath of the abdominal muscles. They run upwards and are active when the arm is pulled down from above the head." }
+  anatomy:
+    origin: Clavicular head from the medial half of the clavicle. Sternocostal head from the front of the sternum and the cartilages of the upper six ribs. Abdominal fibres from the aponeurosis of the external oblique.
+    insertion: The lateral lip of the intertubercular (bicipital) groove of the humerus, by a flat tendon that twists on itself.
+    innervation: Medial and lateral pectoral nerves (roots C5 to T1).
+    actions:
+      - Shoulder horizontal adduction (bringing the arm across the body)
+      - Shoulder internal rotation
+      - Clavicular head assists shoulder flexion
+      - Sternocostal and abdominal fibres extend the arm from a flexed position (pulling it down and back to the side)
+  role: Drives every pressing and flye movement and anchors the arm to the trunk. It works with the anterior deltoid and the triceps in pressing.
+  synergists: [deltoid, triceps-brachii, serratus-anterior]
+  claims: [bench-angle-emg, emg-not-growth]
+  injuries:
+    - Tears are uncommon but serious. They typically happen at the tendon next to the humerus under heavy load, most often in the bottom position of a heavy bench press or dip.
+    - Stretch-related shoulder-front pain from too deep a range on flyes or dips with poor shoulder position.
+  redFlags:
+    - A sudden pop in the chest or upper arm followed by bruising, weakness, or a change in the contour of the chest or armpit
+  prerequisites: Shoulder blade control (retraction and depression on the bench) and enough shoulder external rotation to reach the bottom position without the shoulders rolling forwards.
+  status: draft
+- id: pectoralis-minor
+  group: chest
+  name: Pectoralis minor
+  latin: Musculus pectoralis minor
+  detail: full
+  summary: A small muscle under pectoralis major that controls the shoulder blade rather than moving the arm.
+  anatomy:
+    origin: The outer surfaces of the third to fifth ribs near their cartilages.
+    insertion: The coracoid process of the scapula.
+    innervation: Medial pectoral nerve (roots C8 to T1), often with a branch from the lateral pectoral nerve.
+    actions:
+      - Draws the scapula forwards and down (protraction and depression)
+      - Tilts the scapula forwards when it is shortened or tight
+  role: Sets scapular position during pressing. It is not given its own exercises here; it works during pressing and scapular movements.
+  synergists: [serratus-anterior]
+  prerequisites: Thoracic extension and the ability to retract the shoulder blades on the bench.
+  status: draft
+- id: serratus-anterior
+  group: chest
+  name: Serratus anterior
+  latin: Musculus serratus anterior
+  detail: full
+  summary: A saw-edged sheet along the side of the ribs that holds the shoulder blade flat against the rib cage and turns it upwards.
+  anatomy:
+    origin: The outer surfaces of the upper eight or nine ribs.
+    insertion: The anterior surface of the medial border of the scapula.
+    innervation: Long thoracic nerve (roots C5 to C7).
+    actions:
+      - Protracts the scapula (pushes it forwards round the rib cage)
+      - Rotates the scapula upwards, which is needed to raise the arm overhead
+      - Holds the scapula flat on the ribs (a weak serratus lets the medial border lift, called winging)
+  role: Makes the final reach in push-ups and presses and keeps the shoulder blade stable during overhead work and throwing.
+  synergists: [pectoralis-minor, deltoid]
+  injuries:
+    - Isolated long thoracic nerve injury causes marked winging of the scapula and needs medical review.
+  redFlags:
+    - Sudden onset of scapular winging, especially after illness, a blow to the shoulder or heavy carrying
+  prerequisites: Comfortable reaching overhead without pain.
+  status: draft

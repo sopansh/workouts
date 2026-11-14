@@ -1,0 +1,52 @@
+- id: rectus-abdominis
+  group: core
+  name: Rectus abdominis
+  latin: Musculus rectus abdominis
+  detail: basic
+  summary: The paired vertical muscle of the front of the abdomen, divided by tendinous bands.
+  anatomy:
+    origin: The pubic crest and pubic symphysis.
+    insertion: The xiphoid process and the cartilages of the fifth to seventh ribs.
+    innervation: Ventral rami of T7 to T12.
+    actions:
+      - Trunk flexion
+      - Posterior pelvic tilt
+      - Resists extension of the lumbar spine
+  role: Flexes the trunk in crunches and leg raises and resists the lower back arching under load.
+  synergists: [obliques, hip-flexors]
+  injuries:
+    - Strains are uncommon. Neck and back discomfort in sit-up variants is usually technique or volume.
+  status: draft
+- id: obliques
+  group: core
+  name: Internal and external obliques
+  latin: Musculi obliqui externus et internus abdominis
+  detail: basic
+  summary: The two layers of muscle at the side of the abdomen. They rotate and side-bend the trunk and stiffen it against rotation.
+  anatomy:
+    origin: External oblique from the outer surface of the lower eight ribs. Internal oblique from the iliac crest, the inguinal ligament and the thoracolumbar fascia.
+    insertion: The linea alba, the iliac crest and the lower ribs.
+    innervation: Ventral rami of T7 to L1.
+    actions:
+      - Trunk rotation (opposite sides for the external oblique, same side for the internal)
+      - Lateral flexion
+      - Abdominal compression and resisting rotation
+  role: Resist twisting in carries and presses as much as they create it. Trained by anti-rotation and side-bend work.
+  synergists: [rectus-abdominis, quadratus-lumborum, transversus-abdominis]
+  status: draft
+- id: transversus-abdominis
+  group: core
+  name: Transversus abdominis
+  latin: Musculus transversus abdominis
+  detail: basic
+  summary: The deepest abdominal layer, wrapping round the trunk like a corset.
+  anatomy:
+    origin: The inner surface of the lower six costal cartilages, the thoracolumbar fascia, the iliac crest and the inguinal ligament.
+    insertion: The linea alba and the pubic crest.
+    innervation: Ventral rami of T7 to L1.
+    actions:
+      - Compresses the abdomen and stiffens the trunk
+      - Contributes to bracing and to forced exhalation
+  role: Contributes to trunk stiffness during lifting. Trained indirectly through bracing and the stabilisation drills in the core guide.
+  synergists: [obliques, multifidus]
+  status: draft

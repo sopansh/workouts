@@ -1,0 +1,116 @@
+- id: biceps-brachii
+  tracked: true
+  group: arms
+  name: Biceps brachii
+  latin: Musculus biceps brachii
+  detail: basic
+  summary: The two-headed muscle on the front of the upper arm. It flexes the elbow and supinates the forearm.
+  regions:
+    - { id: long, label: Long head, note: "Crosses the shoulder, from above the socket. More lengthened with the arm behind the body, for example on an incline curl." }
+    - { id: short, label: Short head, note: "From the coracoid process at the front of the shoulder blade." }
+  anatomy:
+    origin: Long head from the supraglenoid tubercle of the scapula. Short head from the coracoid process.
+    insertion: The radial tuberosity and, by the bicipital aponeurosis, the forearm fascia.
+    innervation: Musculocutaneous nerve (roots C5 and C6).
+    actions:
+      - Elbow flexion
+      - Forearm supination
+      - Long head assists shoulder flexion
+  role: Elbow flexion in every pulling movement, trained directly by curls.
+  synergists: [brachialis, brachioradialis, latissimus-dorsi]
+  claims: [biceps-initial-range]
+  injuries:
+    - Distal biceps tendon tears are uncommon but serious, usually under heavy sudden load.
+  redFlags:
+    - Sudden pop at the front of the elbow with bruising and weakness in bending or turning the forearm
+  status: draft
+- id: brachialis
+  group: arms
+  name: Brachialis
+  latin: Musculus brachialis
+  detail: basic
+  summary: A deep muscle under biceps that flexes the elbow whatever the forearm position.
+  anatomy:
+    origin: The distal half of the front of the humerus.
+    insertion: The ulnar tuberosity and the coronoid process of the ulna.
+    innervation: Musculocutaneous nerve, with a small contribution from the radial nerve.
+    actions:
+      - Elbow flexion in any forearm position
+  role: The workhorse of elbow flexion; it is trained by all curl variations.
+  synergists: [biceps-brachii, brachioradialis]
+  status: draft
+- id: brachioradialis
+  group: arms
+  name: Brachioradialis
+  latin: Musculus brachioradialis
+  detail: basic
+  summary: The muscle on the thumb side of the forearm. It flexes the elbow most effectively with the thumb up.
+  anatomy:
+    origin: The lateral supracondylar ridge of the humerus.
+    insertion: The styloid process of the radius.
+    innervation: Radial nerve (roots C5 and C6).
+    actions:
+      - Elbow flexion, most effective with the forearm in a neutral (thumb-up) position
+  role: Contributes to hammer curls and reverse curls.
+  synergists: [brachialis, biceps-brachii]
+  status: draft
+- id: triceps-brachii
+  tracked: true
+  group: arms
+  name: Triceps brachii
+  latin: Musculus triceps brachii
+  detail: basic
+  summary: The three-headed muscle on the back of the upper arm and the main elbow extensor.
+  regions:
+    - { id: long, label: Long head, note: "Crosses the shoulder, so it is lengthened with the arm overhead." }
+    - { id: lateral, label: Lateral head, note: "The outer, horseshoe-shaped part of the muscle." }
+    - { id: medial, label: Medial head, note: "Deep, under the other two." }
+  anatomy:
+    origin: Long head from the infraglenoid tubercle of the scapula. Lateral and medial heads from the back of the humerus.
+    insertion: The olecranon of the ulna.
+    innervation: Radial nerve (roots C6 to C8).
+    actions:
+      - Elbow extension
+      - Long head assists shoulder extension and adduction
+  role: Finishes every pressing movement and is trained directly by extensions and pushdowns.
+  synergists: [pectoralis-major, deltoid]
+  claims: [triceps-overhead]
+  injuries:
+    - Triceps tendon and elbow pain from high volumes of heavy extensions or dips.
+  status: draft
+- id: forearm-flexors
+  group: arms
+  name: Forearm flexors
+  latin: Musculi flexores antebrachii (wrist and finger flexors)
+  detail: basic
+  summary: The muscles on the palm side of the forearm that flex the wrist and fingers and drive grip.
+  anatomy:
+    origin: Mainly the common flexor origin on the medial epicondyle of the humerus.
+    insertion: The carpal and metacarpal bones and the finger bones.
+    innervation: Median nerve and ulnar nerve.
+    actions:
+      - Wrist flexion
+      - Finger flexion (grip)
+  role: Hold the bar in every pull, row and carry.
+  synergists: [forearm-extensors]
+  injuries:
+    - Medial elbow pain with high-volume gripping and curling.
+  status: draft
+- id: forearm-extensors
+  group: arms
+  name: Forearm extensors
+  latin: Musculi extensores antebrachii (wrist and finger extensors)
+  detail: basic
+  summary: The muscles on the back of the forearm that extend the wrist and fingers.
+  anatomy:
+    origin: Mainly the common extensor origin on the lateral epicondyle of the humerus.
+    insertion: The carpal and metacarpal bones and the finger bones.
+    innervation: Radial nerve and its posterior interosseous branch.
+    actions:
+      - Wrist extension
+      - Finger extension
+  role: Keep the wrist straight under load during presses and pulls.
+  synergists: [forearm-flexors]
+  injuries:
+    - Lateral elbow pain with repeated gripping and wrist extension under load.
+  status: draft

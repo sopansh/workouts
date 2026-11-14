@@ -1,0 +1,71 @@
+---
+// A schematic (not anatomically exact) front and back figure. Every region links to its muscle page.
+// The list of muscle links below the map is the accessible alternative to the drawing.
+import { url, type Data } from '../lib/content';
+
+interface Props { muscleById: Data['muscleById']; }
+const { muscleById } = Astro.props;
+
+type Shape = { muscle: string; d: string[]; mirror?: boolean };
+
+const front: Shape[] = [
+  { muscle: 'deltoid', mirror: true, d: ['M62 62 Q46 62 44 82 Q46 94 60 92 Q70 80 70 66 Z'] },
+  { muscle: 'pectoralis-major', mirror: true, d: ['M72 68 L99 70 L99 108 Q84 114 70 102 Q64 84 72 68 Z'] },
+  { muscle: 'serratus-anterior', mirror: true, d: ['M64 104 L72 106 L76 128 L68 126 Z'] },
+  { muscle: 'biceps-brachii', mirror: true, d: ['M44 96 Q38 112 42 130 L54 130 Q58 112 58 96 Z'] },
+  { muscle: 'forearm-flexors', mirror: true, d: ['M40 134 Q36 160 38 188 L50 188 Q54 160 54 134 Z'] },
+  { muscle: 'rectus-abdominis', mirror: true, d: ['M91 114 L99 114 L99 182 L91 182 Z'] },
+  { muscle: 'obliques', mirror: true, d: ['M72 128 L88 118 L88 182 L76 178 Q70 156 72 128 Z'] },
+  { muscle: 'hip-flexors', mirror: true, d: ['M80 186 L96 190 L92 210 L78 204 Z'] },
+  { muscle: 'quadriceps', mirror: true, d: ['M72 212 Q64 262 72 304 L96 304 Q102 260 96 214 Z'] },
+  { muscle: 'tibialis-anterior', mirror: true, d: ['M74 314 Q70 346 74 374 L86 374 Q88 346 86 314 Z'] },
+];
+
+const back: Shape[] = [
+  { muscle: 'trapezius', d: ['M100 52 L70 66 L84 86 L100 120 L116 86 L130 66 Z'] },
+  { muscle: 'deltoid', mirror: true, d: ['M62 62 Q46 62 44 82 Q46 94 60 92 Q70 80 70 68 Z'] },
+  { muscle: 'rotator-cuff', mirror: true, d: ['M72 82 Q80 76 88 84 L86 98 L74 98 Z'] },
+  { muscle: 'teres-major', mirror: true, d: ['M66 100 L78 102 L76 114 L66 112 Z'] },
+  { muscle: 'rhomboids', mirror: true, d: ['M92 88 L99 90 L99 116 L92 110 Z'] },
+  { muscle: 'latissimus-dorsi', mirror: true, d: ['M70 116 L90 122 L90 172 L78 166 Q68 142 70 116 Z'] },
+  { muscle: 'triceps-brachii', mirror: true, d: ['M44 96 Q38 112 42 130 L54 130 Q58 112 58 96 Z'] },
+  { muscle: 'forearm-extensors', mirror: true, d: ['M40 134 Q36 160 38 188 L50 188 Q54 160 54 134 Z'] },
+  { muscle: 'erector-spinae', mirror: true, d: ['M92 124 L99 124 L99 180 L92 180 Z'] },
+  { muscle: 'quadratus-lumborum', mirror: true, d: ['M84 166 L91 166 L91 184 L84 182 Z'] },
+  { muscle: 'gluteus-medius-minimus', mirror: true, d: ['M68 180 L88 184 L86 198 L70 196 Z'] },
+  { muscle: 'gluteus-maximus', mirror: true, d: ['M72 200 Q66 218 78 234 L98 232 L98 204 Z'] },
+  { muscle: 'hamstrings', mirror: true, d: ['M72 238 Q66 272 74 302 L96 302 Q100 270 98 238 Z'] },
+  { muscle: 'gastrocnemius', mirror: true, d: ['M74 312 Q68 338 76 358 L92 358 Q98 338 94 312 Z'] },
+  { muscle: 'soleus', mirror: true, d: ['M78 360 L90 360 L88 384 L80 384 Z'] },
+];
+
+const figures = [
+  { title: 'Front', shapes: front, desc: 'Front view of the body with clickable muscles' },
+  { title: 'Back', shapes: back, desc: 'Back view of the body with clickable muscles' },
+];
+const groupOf = (id: string) => muscleById.get(id)!.data.group.id;
+const nameOf = (id: string) => muscleById.get(id)!.data.name;
+---
+<div class="map">
+  {figures.map(fig => (
+    <figure>
+      <svg viewBox="0 0 200 392" role="group" aria-label={fig.desc}>
+        <circle class="body" cx="100" cy="30" r="17" />
+        <rect class="body" x="92" y="44" width="16" height="12" rx="4" />
+        <path class="body" d="M70 54 Q56 56 48 68 Q36 76 34 100 L30 190 L52 192 L60 130 L64 196 L68 308 L66 384 L98 384 L100 300 L102 384 L134 384 L132 308 L136 196 L140 130 L148 192 L170 190 L166 100 Q164 76 152 68 Q144 56 130 54 Z" />
+        {fig.shapes.map(shape => (
+          <a href={url.muscle(groupOf(shape.muscle), shape.muscle)} data-group={groupOf(shape.muscle)} aria-label={nameOf(shape.muscle)}>
+            <title>{nameOf(shape.muscle)}</title>
+            {shape.d.map(path => (
+              <>
+                <path class="m" d={path} />
+                {shape.mirror && <path class="m" d={path} transform="translate(200 0) scale(-1 1)" />}
+              </>
+            ))}
+          </a>
+        ))}
+      </svg>
+      <figcaption>{fig.title}</figcaption>
+    </figure>
+  ))}
+</div>

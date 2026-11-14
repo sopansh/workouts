@@ -1,0 +1,12 @@
+---
+import WeeklyPlan from '../../../components/WeeklyPlan.astro';
+import { loadAll, DEFAULT_PROGRAM } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.programs.filter(p => p.id !== DEFAULT_PROGRAM).map(program => ({ params: { program: program.id }, props: { program } }));
+}
+
+const { program } = Astro.props;
+---
+<WeeklyPlan program={program} />

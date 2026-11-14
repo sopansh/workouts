@@ -1,0 +1,61 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../components/ClaimList.astro';
+import StatusBadge from '../../../components/StatusBadge.astro';
+import { loadAll, url } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const d = await loadAll();
+  return d.cricket.filter(c => c.id !== 'overview').map(entry => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = await loadAll();
+const { Content } = await render(entry);
+const pages = d.cricket.filter(c => c.id !== 'overview');
+const index = pages.findIndex(c => c.id === entry.id);
+const prev = pages[index - 1];
+const next = pages[index + 1];
+---
+<Base title={entry.data.title} description={entry.data.summary} accent="p3">
+  <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Cricket', href: url.cricket }, { label: entry.data.title }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Cricket · {entry.data.researched ? 'Researched' : 'Stub'}</p>
+    <h1>{entry.data.title}</h1>
+    <p class="lede">{entry.data.summary}</p>
+    <div class="badges">{!entry.data.researched && <span class="badge" data-tone="warn">Stub</span>}<StatusBadge status={entry.data.status} /></div>
+  </section>
+
+  <aside class="note note--warn" role="note">
+    <p><b>Stub page.</b> The demands below are working hypotheses, not sourced findings. There are no prescriptions. Youth bowlers need qualified supervision.</p>
+  </aside>
+
+  <div class="cols">
+    <section aria-labelledby="demands">
+      <h2 id="demands">Working hypotheses: demands</h2>
+      <ul class="prose">{entry.data.demands.map(x => <li>{x}</li>)}</ul>
+    </section>
+    <section aria-labelledby="questions">
+      <h2 id="questions">Open research questions</h2>
+      <ul class="prose">{entry.data.questions.map(x => <li>{x}</li>)}</ul>
+    </section>
+  </div>
+
+  <div class="prose"><Content /></div>
+
+  {entry.data.claims.length > 0 && (
+    <section aria-labelledby="claims">
+      <h2 id="claims">Evidence found so far</h2>
+      <ClaimList claims={entry.data.claims.map(c => c.id)} claimById={d.claimById} sourceById={d.sourceById} />
+    </section>
+  )}
+
+  <p class="prose">General principles and exercises still apply: see <a href={url.principles}>principles</a> and <a href={url.exercises}>exercises</a>.</p>
+
+  <nav class="nav-pair" aria-label="Cricket pages">
+    {prev ? <a href={url.cricketPage(prev.id)}>← {prev.data.title}</a> : <span />}
+    {next ? <a href={url.cricketPage(next.id)}>{next.data.title} →</a> : <span />}
+  </nav>
+</Base>

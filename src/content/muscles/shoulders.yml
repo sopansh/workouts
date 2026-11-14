@@ -1,0 +1,50 @@
+- id: deltoid
+  tracked: true
+  group: shoulders
+  name: Deltoid
+  latin: Musculus deltoideus
+  detail: basic
+  summary: The rounded cap of the shoulder, with three heads that each pull in a different direction.
+  regions:
+    - { id: anterior, label: Anterior deltoid, note: "Flexes and internally rotates the arm; heavily involved in pressing." }
+    - { id: lateral, label: Lateral (middle) deltoid, note: "Abducts the arm (raises it to the side)." }
+    - { id: posterior, label: Posterior deltoid, note: "Extends and externally rotates the arm and horizontally abducts it." }
+  anatomy:
+    origin: The lateral third of the clavicle (anterior), the acromion (lateral) and the spine of the scapula (posterior).
+    insertion: The deltoid tuberosity of the humerus.
+    innervation: Axillary nerve (roots C5 and C6).
+    actions:
+      - "Anterior head: shoulder flexion and internal rotation"
+      - "Lateral head: shoulder abduction"
+      - "Posterior head: shoulder extension, external rotation and horizontal abduction"
+  role: The prime mover of overhead pressing and raises. The anterior head also works hard in all chest pressing.
+  synergists: [pectoralis-major, triceps-brachii, trapezius, rotator-cuff]
+  injuries:
+    - Front-of-shoulder pain from high pressing volume, especially with a wide grip and deep lowering.
+  status: draft
+- id: rotator-cuff
+  group: shoulders
+  name: Rotator cuff
+  latin: Supraspinatus, infraspinatus, teres minor, subscapularis
+  detail: basic
+  summary: Four small muscles that centre the ball of the humerus in the shoulder socket. They are a functional group rather than four separate training targets.
+  regions:
+    - { id: supraspinatus, label: Supraspinatus, note: "Starts arm abduction and keeps the head of the humerus centred." }
+    - { id: infraspinatus, label: Infraspinatus, note: "The main external rotator." }
+    - { id: teres-minor, label: Teres minor, note: "External rotation, with infraspinatus." }
+    - { id: subscapularis, label: Subscapularis, note: "Internal rotation, from the front of the shoulder blade." }
+  anatomy:
+    origin: The supraspinous fossa (supraspinatus), the infraspinous fossa (infraspinatus), the lateral border of the scapula (teres minor) and the subscapular fossa (subscapularis).
+    insertion: The greater tubercle (supraspinatus, infraspinatus, teres minor) and the lesser tubercle (subscapularis) of the humerus.
+    innervation: Suprascapular nerve (supraspinatus, infraspinatus), axillary nerve (teres minor), upper and lower subscapular nerves (subscapularis).
+    actions:
+      - Centres and stabilises the humeral head during arm movement
+      - External rotation (infraspinatus, teres minor) and internal rotation (subscapularis)
+  role: Keeps the shoulder stable under pressing, pulling and overhead load.
+  synergists: [deltoid, trapezius, serratus-anterior]
+  injuries:
+    - Impingement-type pain and cuff tendinopathy from high volumes of pressing or overhead work.
+  redFlags:
+    - Sudden inability to lift the arm, or a sharp pop with weakness
+    - Night pain that does not ease with positioning
+  status: draft

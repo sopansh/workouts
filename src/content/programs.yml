@@ -1,0 +1,228 @@
+# Programs. Day pages and the weekly plan are generated from this file; volume, frequency and time are calculated, not typed.
+- id: push-pull-legs
+  name: Push / Pull / Legs, six days
+  summary: Each muscle is trained twice a week across six sessions, with the push, pull and leg days built differently so the same lift is not repeated back to back. Written for an experienced lifter with a full gym and about 90 minutes per session.
+  level: Upper-intermediate to advanced (10+ years of training)
+  daysPerWeek: 6
+  sessionMinutes: 90
+  status: draft
+  principles: [volume, frequency, load-and-reps, proximity-to-failure, rest-intervals, range-of-motion, progression, deloads]
+  rationale:
+    - "Every muscle is hit twice a week. The frequency evidence is contested, so the main reason is practical: it spreads the weekly sets over two sessions, so each session needs fewer hard sets per muscle."
+    - Weekly direct sets for the major muscles sit around 10 to 20, a range built on the dose-response meta-analyses. Individual tolerance sets the ceiling.
+    - Day A and day B for each pattern differ in emphasis (chest-led versus shoulder-led push, vertical versus horizontal pull, quad-led versus hip-led legs), so heavy spinal loading is spread across the week rather than stacked.
+    - The two heaviest spinal-loading lifts are placed on the legs days, with a rest day or a supported pull day between them, so the lower back is never loaded hard on consecutive days.
+    - Exercises that lengthen the target muscle (incline curl, overhead triceps work, seated leg curl, deep squats, standing calf raises) are chosen where the evidence supports it.
+  week:
+    - { day: Monday, dayId: push-a, note: "Chest-led push. The heaviest chest work is first, while you are fresh." }
+    - { day: Tuesday, dayId: pull-a, note: "Vertical-pull-led pull. Light on the lower back." }
+    - { day: Wednesday, dayId: legs-a, note: "Quad-led legs. The heaviest squat of the week." }
+    - { day: Thursday, dayId: push-b, note: "Shoulder-led push with a second chest exposure." }
+    - { day: Friday, dayId: pull-b, note: "Row-led pull on supported rows; no heavy hinging before Saturday." }
+    - { day: Saturday, dayId: legs-b, note: "Hip-led legs. The heaviest hinge of the week." }
+    - { day: Sunday, note: "Rest. Walk, mobilise, sleep." }
+  block:
+    - { week: Week 1, rir: '3', volume: Base (as listed), note: "Learn the loads. Stop with about 3 reps left in the tank on most sets." }
+    - { week: Week 2, rir: '2 to 3', volume: Base, note: "Add load or a rep wherever the target reps were hit with the RIR left." }
+    - { week: Week 3, rir: '1 to 2', volume: Base (optionally plus 1 set on lagging muscles), note: "Push on the main lifts. Keep isolation work 1 to 2 reps from failure." }
+    - { week: Week 4, rir: '0 to 1', volume: Base (optionally plus 1 set on lagging muscles), note: "The hardest week. Use failure sparingly and only on safe, machine or cable work." }
+    - { week: Week 5 (deload), rir: '4+', volume: About half the sets, note: "Reduced training stress to dissipate fatigue. Keep the loads close to normal. Timing and design are practitioner consensus, not trial-proven." }
+  days:
+    - id: push-a
+      name: Push A
+      focus: Chest-led push (chest, front and side deltoid, triceps)
+      intro: The primary chest session. The flat barbell press is first so it gets the most energy, followed by an incline dumbbell press and a fly for stretch-position work. Shoulders and triceps follow.
+      muscles: [pectoralis-major, deltoid, triceps-brachii, serratus-anterior]
+      order: Barbell press first for strength on a compound lift. Incline press next for the same muscle with a different path. The fly after the presses so the chest is already pre-fatigued only for isolation. The shoulder press comes after the chest work so the front deltoids are not exhausted before the bench. Triceps last because they have already worked in every press.
+      primer:
+        - { exercise: push-up-plus, sets: 2, reps: 10-12, rir: '4', rest: 45, note: "Warm-up for the serratus and shoulder blades." }
+      exercises:
+        - { exercise: barbell-bench-press, sets: 4, reps: 5-8, rir: '1-2', rest: 180, note: "Pause the final rep of each set on the chest in week 1 to check technique." }
+        - { exercise: incline-dumbbell-press, sets: 3, reps: 8-12, rir: '1-2', rest: 120 }
+        - { exercise: cable-fly, sets: 3, reps: 10-15, rir: '0-1', rest: 75, note: "Mid-height cables. Hold the stretch for a beat at the bottom." }
+        - { exercise: seated-dumbbell-press, sets: 3, reps: 8-12, rir: '1-2', rest: 120 }
+        - { exercise: dumbbell-lateral-raise, sets: 3, reps: 12-20, rir: '0-1', rest: 60 }
+        - { exercise: overhead-cable-triceps-extension, sets: 3, reps: 10-15, rir: '1', rest: 75 }
+        - { exercise: triceps-pushdown, sets: 2, reps: 12-15, rir: '0-1', rest: 60 }
+      substitutions:
+        - Barbell bench press to dumbbell bench press or machine chest press if the shoulders are irritable.
+        - Dumbbell lateral raise to cable lateral raise if the dumbbell version stops being comfortable.
+    - id: pull-a
+      name: Pull A
+      focus: Vertical-pull-led pull (lats, upper back, biceps)
+      intro: A lat-led session built around vertical pulling. The lower back is not heavily loaded, so this day can safely follow a hard push day.
+      muscles: [latissimus-dorsi, trapezius, rhomboids, deltoid, biceps-brachii]
+      order: The pull-up is first because it needs the most skill and energy. A supported row follows so the lower back is not the limit. The straight-arm pulldown is an isolation lat finisher. Face pulls and curls come last as small-muscle work.
+      exercises:
+        - { exercise: pull-up, sets: 4, reps: 6-10, rir: '1-2', rest: 150, note: "Add weight once you can do 10 clean reps on all sets." }
+        - { exercise: chest-supported-row, sets: 3, reps: 8-12, rir: '1-2', rest: 120, note: "Elbows close to the body to bias the lats." }
+        - { exercise: straight-arm-pulldown, sets: 3, reps: 12-15, rir: '1', rest: 75 }
+        - { exercise: face-pull, sets: 3, reps: 12-20, rir: '1', rest: 60 }
+        - { exercise: incline-dumbbell-curl, sets: 3, reps: 8-12, rir: '1', rest: 75 }
+        - { exercise: hammer-curl, sets: 2, reps: 10-12, rir: '0-1', rest: 60 }
+      substitutions:
+        - Pull-up to lat pulldown if you cannot reach the target reps cleanly.
+        - Chest-supported row to seated cable row if the machine is busy.
+    - id: legs-a
+      name: Legs A
+      focus: Quad-led legs (quads, glutes, adductors, calves)
+      intro: The squat session. The back squat is first, then a machine squat and single-leg work. The hamstring curl and calf raises finish the session, with a hanging leg raise for the trunk. The leg extension is on Legs B so the quadriceps get a second exposure later in the week.
+      muscles: [quadriceps, gluteus-maximus, adductors, hamstrings, gastrocnemius]
+      order: The back squat is first because it is the most technical and fatiguing. The hack squat adds quadriceps volume with the back supported. The split squat provides unilateral work. The seated curl is a single-joint finisher. Calves and core come last.
+      primer:
+        - { exercise: goblet-squat, sets: 2, reps: 8, rir: '5', rest: 45, note: "Down to your working depth with a pause at the bottom. It also warms up the hips and ankles." }
+      exercises:
+        - { exercise: back-squat, sets: 4, reps: 5-8, rir: '1-2', rest: 180, note: "Hips at or below the knees only if you can keep a neutral spine." }
+        - { exercise: hack-squat, sets: 3, reps: 8-12, rir: '1-2', rest: 120 }
+        - { exercise: bulgarian-split-squat, sets: 3, reps: 8-12, rir: '1-2', rest: 90, note: "Each leg." }
+        - { exercise: seated-leg-curl, sets: 3, reps: 8-12, rir: '1', rest: 90 }
+        - { exercise: standing-calf-raise, sets: 4, reps: 8-15, rir: '0-1', rest: 75, note: "Full stretch at the bottom with a one-second pause." }
+        - { exercise: hanging-leg-raise, sets: 3, reps: 8-12, rir: '1-2', rest: 60 }
+      substitutions:
+        - Back squat to front squat, leg press or box squat if the back needs a lighter session.
+        - Hack squat to leg press if the machine is not available.
+    - id: push-b
+      name: Push B
+      focus: Shoulder-led push (shoulders, upper chest, triceps)
+      intro: A shoulder-led session with a second exposure for the chest. The overhead press is first. The chest dip and incline barbell press supply the heavier chest work, and the machine fly finishes the chest.
+      muscles: [deltoid, pectoralis-major, triceps-brachii, serratus-anterior]
+      order: The overhead press is first as the main shoulder strength lift. Incline barbell work is next for chest. The dip adds a bodyweight-loaded exercise. Cable lateral raises and the pec deck are higher-rep finishers. Triceps are last.
+      exercises:
+        - { exercise: overhead-press, sets: 4, reps: 5-8, rir: '1-2', rest: 150, note: "Keep the glutes and abdomen tight so the back does not arch." }
+        - { exercise: incline-barbell-press, sets: 3, reps: 6-10, rir: '1-2', rest: 150, note: "Bench at 30 degrees." }
+        - { exercise: chest-dip, sets: 3, reps: 8-12, rir: '1-2', rest: 120, note: "Use machine-assisted dips or a push-up variation if the shoulder is irritated." }
+        - { exercise: cable-lateral-raise, sets: 3, reps: 12-20, rir: '0-1', rest: 60 }
+        - { exercise: pec-deck-fly, sets: 3, reps: 12-15, rir: '0-1', rest: 60 }
+        - { exercise: skull-crusher, sets: 3, reps: 8-12, rir: '1', rest: 90 }
+        - { exercise: triceps-pushdown, sets: 2, reps: 12-15, rir: '0-1', rest: 60 }
+      substitutions:
+        - Overhead press to seated dumbbell press if standing pressing aggravates the lower back.
+        - Chest dip to machine chest press if the shoulders do not tolerate dips.
+    - id: pull-b
+      name: Pull B
+      focus: Row-led pull (upper back, lats, rear deltoid, biceps, forearms)
+      intro: A row-led pull day. Every row is supported or one-armed, so the lower back is not the limiting factor, and the following legs day can have a heavy hinge.
+      muscles: [latissimus-dorsi, trapezius, rhomboids, deltoid, biceps-brachii, forearm-flexors]
+      order: The chest-supported row is first for the heaviest back loading. The one-arm row and pulldown add unilateral and vertical variety. The reverse pec deck trains the rear deltoid. Curls and forearm work follow. The Pallof press at the end trains the trunk against rotation.
+      exercises:
+        - { exercise: chest-supported-row, sets: 4, reps: 6-10, rir: '1-2', rest: 150, note: "Elbows wide at about 45 to 75 degrees to bias the upper back." }
+        - { exercise: one-arm-dumbbell-row, sets: 3, reps: 8-12, rir: '1-2', rest: 90, note: "Each arm." }
+        - { exercise: lat-pulldown, sets: 3, reps: 10-12, rir: '1', rest: 90, note: "Neutral grip." }
+        - { exercise: reverse-pec-deck, sets: 3, reps: 12-20, rir: '0-1', rest: 60 }
+        - { exercise: barbell-curl, sets: 3, reps: 8-12, rir: '1', rest: 75 }
+        - { exercise: wrist-curl, sets: 2, reps: 12-20, rir: '1', rest: 45 }
+        - { exercise: reverse-wrist-curl, sets: 2, reps: 12-20, rir: '1', rest: 45 }
+        - { exercise: pallof-press, sets: 3, reps: 8-12, rir: '2', rest: 45, note: "Each side." }
+      substitutions:
+        - Chest-supported row to seated cable row if no supported row is available.
+        - Barbell curl to EZ-bar or cable curl if the wrists complain.
+    - id: legs-b
+      name: Legs B
+      focus: Hip-led legs (glutes, hamstrings, lower back, calves)
+      intro: The hinge session. The Romanian deadlift is first, followed by the hip thrust, quadriceps work for a second exposure and hamstring, lower-back and calf work. It is placed after the pull B day, which has no heavy hinging.
+      muscles: [gluteus-maximus, hamstrings, erector-spinae, gluteus-medius-minimus, quadriceps, soleus, gastrocnemius]
+      order: The Romanian deadlift is first because it is the most technical and fatiguing hinge. The hip thrust follows for glute work with a low spinal cost. The leg press and leg extension add quadriceps volume with back support. The Nordic curl and back extension are later because they are lower-load accessories. Hip-abductor and calf work finish the session.
+      primer:
+        - { exercise: glute-bridge, sets: 2, reps: 12, rir: '4', rest: 45, note: "Squeeze at the top. Warm-up for the glutes before the hinge." }
+        - { exercise: bird-dog, sets: 2, reps: 6, rir: '5', rest: 30, note: "Each side, slow." }
+      exercises:
+        - { exercise: romanian-deadlift, sets: 4, reps: 6-10, rir: '1-2', rest: 150, note: "Stop the set when your spine position would change." }
+        - { exercise: hip-thrust, sets: 4, reps: 6-12, rir: '1-2', rest: 120 }
+        - { exercise: leg-press, sets: 3, reps: 10-15, rir: '1-2', rest: 90 }
+        - { exercise: leg-extension, sets: 3, reps: 10-15, rir: '0-1', rest: 60 }
+        - { exercise: nordic-curl, sets: 3, reps: 4-8, rir: '1-2', rest: 90, note: "Introduce gradually: 1 to 2 sets in the first 2 weeks." }
+        - { exercise: back-extension-45, sets: 3, reps: 10-15, rir: '2', rest: 60 }
+        - { exercise: hip-abduction-machine, sets: 3, reps: 12-20, rir: '1', rest: 45 }
+        - { exercise: seated-calf-raise, sets: 3, reps: 10-15, rir: '0-1', rest: 45 }
+        - { exercise: standing-calf-raise, sets: 2, reps: 8-15, rir: '0-1', rest: 45 }
+      substitutions:
+        - Romanian deadlift to cable pull-through or dumbbell Romanian deadlift if the lower back needs a lighter hinge.
+        - Nordic curl to seated or lying leg curl until the eccentric load is tolerated.
+- id: upper-lower
+  name: Upper / Lower, four days
+  summary: A shorter alternative for weeks with less time or when you want fewer, longer recovery gaps. Each muscle is still trained twice a week.
+  level: Upper-intermediate to advanced (10+ years of training)
+  daysPerWeek: 4
+  sessionMinutes: 80
+  status: draft
+  principles: [volume, frequency, load-and-reps, proximity-to-failure, rest-intervals]
+  rationale:
+    - Same weekly frequency (twice per muscle) as the six-day plan but in four sessions.
+    - Sessions are about 80 minutes, so the exercise count per muscle is lower and the volume sits at the lower end of the 10 to 20 range.
+    - Use it as a fallback for a busy or travel week, or during a deload week if you prefer to keep a routine.
+  week:
+    - { day: Monday, dayId: upper-a, note: "Upper A." }
+    - { day: Tuesday, dayId: lower-a, note: "Lower A." }
+    - { day: Wednesday, note: "Rest." }
+    - { day: Thursday, dayId: upper-b, note: "Upper B." }
+    - { day: Friday, dayId: lower-b, note: "Lower B." }
+    - { day: Saturday, note: "Rest or light walking." }
+    - { day: Sunday, note: "Rest." }
+  block:
+    - { week: Weeks 1 to 4, rir: '3, 2, 1-2, 0-1', volume: As listed, note: "Same RIR ramp as the six-day plan." }
+    - { week: Week 5 (deload), rir: '4+', volume: About half the sets, note: "Reduced training stress." }
+  days:
+    - id: upper-a
+      name: Upper A
+      focus: Chest and back strength-biased upper body
+      intro: Heavy horizontal press and row first, then vertical pull, a chest fly, shoulder work and a short arm finish.
+      muscles: [pectoralis-major, latissimus-dorsi, deltoid, biceps-brachii, triceps-brachii]
+      order: The two heavy compounds (bench and row) first, then vertical pull, the fly, the lateral raise and the arm work.
+      exercises:
+        - { exercise: barbell-bench-press, sets: 4, reps: 5-8, rir: '1-2', rest: 180 }
+        - { exercise: chest-supported-row, sets: 4, reps: 6-10, rir: '1-2', rest: 150 }
+        - { exercise: lat-pulldown, sets: 3, reps: 8-12, rir: '1', rest: 90 }
+        - { exercise: pec-deck-fly, sets: 3, reps: 12-15, rir: '0-1', rest: 60 }
+        - { exercise: dumbbell-lateral-raise, sets: 3, reps: 12-20, rir: '0-1', rest: 60 }
+        - { exercise: overhead-cable-triceps-extension, sets: 3, reps: 10-15, rir: '1', rest: 75 }
+        - { exercise: incline-dumbbell-curl, sets: 3, reps: 8-12, rir: '1', rest: 75 }
+      substitutions:
+        - Swap the bench press for a dumbbell bench press if the shoulders are irritable.
+    - id: lower-a
+      name: Lower A
+      focus: Squat-led lower body
+      intro: Squat first, with a hinge and single-leg work and calves.
+      muscles: [quadriceps, gluteus-maximus, hamstrings, gastrocnemius]
+      order: The squat first. Then the hinge, the unilateral work, and calves.
+      primer:
+        - { exercise: goblet-squat, sets: 2, reps: 8, rir: '5', rest: 45 }
+      exercises:
+        - { exercise: back-squat, sets: 4, reps: 5-8, rir: '1-2', rest: 180 }
+        - { exercise: romanian-deadlift, sets: 3, reps: 6-10, rir: '1-2', rest: 150 }
+        - { exercise: bulgarian-split-squat, sets: 3, reps: 8-12, rir: '1-2', rest: 90 }
+        - { exercise: seated-leg-curl, sets: 3, reps: 8-12, rir: '1', rest: 90 }
+        - { exercise: standing-calf-raise, sets: 4, reps: 8-15, rir: '0-1', rest: 60 }
+      substitutions:
+        - Back squat to hack squat or leg press if the back needs a lighter session.
+    - id: upper-b
+      name: Upper B
+      focus: Shoulder and upper-back biased upper body
+      intro: Overhead press and vertical pull lead; chest and rows are secondary.
+      muscles: [deltoid, latissimus-dorsi, pectoralis-major, triceps-brachii, biceps-brachii]
+      order: The overhead press first, then vertical pull, incline press, row and arm finishers.
+      exercises:
+        - { exercise: overhead-press, sets: 4, reps: 5-8, rir: '1-2', rest: 150 }
+        - { exercise: pull-up, sets: 4, reps: 6-10, rir: '1-2', rest: 150 }
+        - { exercise: incline-dumbbell-press, sets: 3, reps: 8-12, rir: '1-2', rest: 120 }
+        - { exercise: one-arm-dumbbell-row, sets: 3, reps: 8-12, rir: '1-2', rest: 90 }
+        - { exercise: reverse-pec-deck, sets: 3, reps: 12-20, rir: '0-1', rest: 60 }
+        - { exercise: skull-crusher, sets: 3, reps: 8-12, rir: '1', rest: 90 }
+        - { exercise: hammer-curl, sets: 3, reps: 8-12, rir: '1', rest: 75 }
+      substitutions:
+        - Overhead press to seated dumbbell press if standing pressing bothers the lower back.
+    - id: lower-b
+      name: Lower B
+      focus: Hip-led lower body
+      intro: The hip thrust leads, followed by a leg press, a hamstring curl, a back extension and calf work. The Romanian deadlift is on Lower A.
+      muscles: [gluteus-maximus, hamstrings, quadriceps, erector-spinae, soleus]
+      order: The hip thrust first as the heaviest glute exercise, then the leg press, hamstring curl, back extension and calf work.
+      primer:
+        - { exercise: glute-bridge, sets: 2, reps: 12, rir: '4', rest: 45 }
+      exercises:
+        - { exercise: hip-thrust, sets: 4, reps: 6-12, rir: '1-2', rest: 120 }
+        - { exercise: leg-press, sets: 3, reps: 10-15, rir: '1-2', rest: 120 }
+        - { exercise: lying-leg-curl, sets: 3, reps: 8-12, rir: '1', rest: 90 }
+        - { exercise: back-extension-45, sets: 3, reps: 10-15, rir: '2', rest: 75 }
+        - { exercise: seated-calf-raise, sets: 4, reps: 10-15, rir: '0-1', rest: 60 }
+      substitutions:
+        - Hip thrust to glute bridge or cable pull-through if the lower back is irritable.

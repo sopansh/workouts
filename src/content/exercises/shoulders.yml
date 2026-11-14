@@ -1,0 +1,184 @@
+- id: overhead-press
+  name: Standing barbell overhead press
+  group: shoulders
+  primary: [deltoid]
+  secondary: [triceps-brachii, trapezius, serratus-anterior]
+  pattern: vertical-press
+  equipment: [barbell, rack]
+  level: intermediate
+  spinalLoad: moderate
+  summary: A standing vertical press that loads the shoulders and triceps and demands trunk stiffness.
+  setup: Bar at the collarbone, hands just outside the shoulders, elbows slightly in front of the bar. Feet hip width and glutes and abdomen tight.
+  steps:
+    - Press the bar up in a straight line, moving the head back and then forward through the arms.
+    - Finish with the bar over the mid-foot and the shoulders shrugged up.
+    - Lower under control to the collarbone.
+  mistakes:
+    - Leaning back to press, which arches the lower back
+    - Letting the bar drift forward
+  contraindications:
+    - Shoulder pain overhead
+    - Back pain provoked by standing extension
+  regression: Seated dumbbell press with back support.
+  progression: Add load or use a push press for overload.
+  painRule: shoulder
+  variations: []
+  dose: 3 to 4 sets of 5 to 8 reps, 2 minutes rest
+  alternatives: [seated-dumbbell-press]
+  status: draft
+- id: seated-dumbbell-press
+  name: Seated dumbbell shoulder press
+  group: shoulders
+  primary: [deltoid]
+  secondary: [triceps-brachii, trapezius]
+  pattern: vertical-press
+  equipment: [dumbbell, bench]
+  level: intermediate
+  spinalLoad: low
+  summary: A back-supported vertical press with a natural path.
+  setup: Set the bench upright. Hold the dumbbells at shoulder height with the palms forward or slightly turned in.
+  steps:
+    - Press the dumbbells up until the arms are straight.
+    - Lower to about ear level with control.
+  mistakes:
+    - Arching the lower back off the bench
+    - Using a range that causes a pinch in the shoulder
+  contraindications:
+    - Shoulder pain overhead
+  regression: Lighter dumbbells or a machine shoulder press.
+  progression: Heavier dumbbells and slower lowering.
+  painRule: shoulder
+  variations: []
+  dose: 3 sets of 8 to 12 reps, 2 minutes rest
+  alternatives: [overhead-press]
+  status: draft
+- id: dumbbell-lateral-raise
+  name: Dumbbell lateral raise
+  group: shoulders
+  primary: [deltoid]
+  secondary: [trapezius, rotator-cuff]
+  pattern: lateral-raise
+  equipment: [dumbbell]
+  level: intermediate
+  spinalLoad: low
+  summary: A raise to the side that trains the lateral deltoid.
+  setup: Stand holding light dumbbells at the sides with a soft elbow bend.
+  steps:
+    - Raise the arms out to the side to about shoulder height.
+    - Lower slowly without swinging.
+  mistakes:
+    - Swinging the body to lift the weight
+    - Shrugging the shoulders
+  contraindications:
+    - Pinching pain at the top of the shoulder
+  regression: Lighter dumbbells or a cable raise.
+  progression: Slower lowering, pauses or higher reps.
+  painRule: shoulder
+  variations: []
+  dose: 3 sets of 12 to 20 reps, 60 seconds rest
+  alternatives: [cable-lateral-raise]
+  status: draft
+- id: cable-lateral-raise
+  name: Cable lateral raise
+  group: shoulders
+  primary: [deltoid]
+  secondary: [trapezius, rotator-cuff]
+  pattern: lateral-raise
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A raise with constant cable tension, including at the bottom where free weights offer little resistance.
+  setup: Stand side-on to a low pulley with the handle in the far hand.
+  steps:
+    - Raise the arm to about shoulder height without shrugging.
+    - Lower slowly.
+  mistakes:
+    - Leaning away to cheat
+    - Shrugging
+  contraindications:
+    - Pinching pain at the top of the shoulder
+  regression: Lighter weight.
+  progression: Slower lowering and pauses.
+  painRule: shoulder
+  variations: []
+  dose: 3 sets of 12 to 20 reps each side, 60 seconds rest
+  alternatives: [dumbbell-lateral-raise]
+  status: draft
+- id: reverse-pec-deck
+  name: Reverse pec deck
+  group: shoulders
+  primary: [deltoid]
+  secondary: [rhomboids, trapezius, rotator-cuff]
+  pattern: rear-delt
+  equipment: [machine]
+  level: intermediate
+  spinalLoad: none
+  summary: A seated reverse fly that trains the posterior deltoid and upper back.
+  setup: Sit facing the pad with the arms level with the shoulders.
+  steps:
+    - Sweep the arms out and back to a level just behind the body line.
+    - Return slowly.
+  mistakes:
+    - Using too much weight and shrugging
+    - Going too far behind the body
+  contraindications:
+    - Shoulder pain at the end of the range
+  regression: Lighter load.
+  progression: Slower lowering.
+  painRule: shoulder
+  variations: []
+  dose: 3 sets of 12 to 20 reps, 60 seconds rest
+  alternatives: [face-pull]
+  status: draft
+- id: face-pull
+  name: Face pull
+  group: shoulders
+  primary: [deltoid, rotator-cuff]
+  secondary: [trapezius, rhomboids]
+  pattern: rear-delt
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: low
+  summary: A cable pull to the face that works the rear deltoid, rotator cuff and mid-back.
+  setup: Set the pulley at head height with a rope. Step back so the arms are straight.
+  steps:
+    - Pull the rope toward the face, elbows high and out, rotating the hands up.
+    - Return under control.
+  mistakes:
+    - Leaning back
+    - Pulling with the arms rather than the elbows
+  contraindications:
+    - Shoulder pain with the elbows high
+  regression: Lighter weight.
+  progression: Pauses at the end and slower returns.
+  painRule: shoulder
+  variations: []
+  dose: 2 to 3 sets of 12 to 20 reps
+  alternatives: [reverse-pec-deck]
+  status: draft
+- id: cable-external-rotation
+  name: Cable external rotation
+  group: shoulders
+  primary: [rotator-cuff]
+  secondary: [deltoid]
+  pattern: rotator-cuff
+  equipment: [cable]
+  level: intermediate
+  spinalLoad: none
+  summary: A light external-rotation drill for the rotator cuff.
+  setup: Stand with the elbow tucked at the side, forearm across the body, holding a handle on a low pulley.
+  steps:
+    - Rotate the forearm outward, keeping the elbow in contact with the side.
+    - Return slowly.
+  mistakes:
+    - Using too much weight
+    - Letting the elbow drift away from the body
+  contraindications:
+    - Acute shoulder pain
+  regression: A band.
+  progression: Slower tempo.
+  painRule: shoulder
+  variations: []
+  dose: 2 sets of 12 to 20 reps each side as a warm-up or finisher
+  alternatives: [face-pull]
+  status: draft

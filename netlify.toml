@@ -1,6 +1,10 @@
-# Static site: no build step. Everything under site/ is published; docs/ is not.
+# Astro builds the site into dist/. Static pages (home, core, shared assets, 404) live in site/ and are copied through unchanged.
 [build]
-  publish = "site"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
 
 # The bare domain has no page of its own; send visitors to the home page.
 [[redirects]]
