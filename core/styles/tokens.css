@@ -1,0 +1,72 @@
+/* Design tokens. Light is the default; dark follows the OS unless data-theme overrides it. */
+:root {
+  color-scheme: light dark;
+
+  --bg: #eef2f1;
+  --surface: #ffffff;
+  --surface-2: #f4f7f6;
+  --ink: #14231f;
+  --mut: #566863;
+  --line: #d3ddda;
+  --hot: #e5484d;
+  --hot-ink: #b42328;
+  --hot-soft: #fdeded;
+
+  --p1: #1b7f62;
+  --p2: #3567c9;
+  --p3: #b4690a;
+
+  --stage-top: #edf3f1;
+  --stage-bottom: #c6d6d0;
+  --stage-floor: #6f8c84;
+
+  --shadow: 0 1px 2px rgb(20 35 31 / 0.06), 0 12px 32px rgb(20 35 31 / 0.08);
+  --radius: 16px;
+  --font-display: 'Barlow Semi Condensed', system-ui, sans-serif;
+  --font-body: Barlow, system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0e1614;
+    --surface: #17221f;
+    --surface-2: #121c19;
+    --ink: #e6f0ed;
+    --mut: #9db3ac;
+    --line: #2a3b36;
+    --hot: #ff6b6f;
+    --hot-ink: #ff9a9d;
+    --hot-soft: #2a1a1c;
+    --p1: #4cc9a0;
+    --p2: #85a9f7;
+    --p3: #f0b04a;
+    --stage-top: #22332e;
+    --stage-bottom: #0f1816;
+    --stage-floor: #7fa097;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px rgb(0 0 0 / 0.35);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0e1614;
+  --surface: #17221f;
+  --surface-2: #121c19;
+  --ink: #e6f0ed;
+  --mut: #9db3ac;
+  --line: #2a3b36;
+  --hot: #ff6b6f;
+  --hot-ink: #ff9a9d;
+  --hot-soft: #2a1a1c;
+  --p1: #4cc9a0;
+  --p2: #85a9f7;
+  --p3: #f0b04a;
+  --stage-top: #22332e;
+  --stage-bottom: #0f1816;
+  --stage-floor: #7fa097;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px rgb(0 0 0 / 0.35);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Back-safe core, glute and power guide</title>
+<meta name="description" content="A three-phase recovery plan after a lower-back strain: stabilise, load, then power, with looping 3D exercise demos.">
+<meta name="color-scheme" content="light dark">
+<script>
+  // Apply a saved theme before first paint to avoid a light/dark flash.
+  try {
+    var saved = localStorage.getItem('core-guide-theme');
+    if (saved) document.documentElement.dataset.theme = saved;
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/components.css">
+<script defer
+  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+  integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+  crossorigin="anonymous"></script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="toolbar">
+  <div class="wrap toolbar__inner">
+    <a class="toolbar__brand" href="#top">Core guide</a>
+    <nav class="toolbar__nav" id="phase-nav" aria-label="Sections"></nav>
+    <div class="toolbar__controls" role="group" aria-label="Animation and theme">
+      <button id="speed" class="btn" type="button"><span class="label">Speed 1×</span></button>
+      <button id="pp" class="btn" type="button" aria-pressed="false">
+        <span class="icon" aria-hidden="true">❚❚</span><span class="label">Pause animations</span>
+      </button>
+      <button id="theme" class="btn btn--icon" type="button" aria-label="Switch theme">
+        <span class="icon" aria-hidden="true">◐</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Lower-back recovery plan</p>
+    <h1>Back-safe core, glute and power guide</h1>
+    <p class="lede">Ten days after a lower-back strain, the order matters: stabilise, load, then power. Each 3D figure loops the movement, and the red glow marks the muscles doing the work. Drag a figure sideways to rotate it and see the movement from the front or back.</p>
+    <p class="legend"><span class="dot" aria-hidden="true"></span>Working muscle</p>
+  </section>
+
+  <aside class="callout" role="note">
+    <span class="callout__icon" aria-hidden="true">!</span>
+    <p><b>Pain rule.</b> Stay at 2/10 or lower during an exercise, and no worse the next morning. Stop and see a doctor for pain below the knee, numbness or tingling, leg weakness, night pain that doesn’t ease, or any bladder or bowel change (urgent). Not improving by 2–3 weeks also means a check-up.</p>
+  </aside>
+
+  <section id="plan" class="plan" aria-labelledby="plan-title">
+    <h2 id="plan-title">When to do what</h2>
+    <ol class="plan__steps" id="plan-steps"></ol>
+  </section>
+
+  <div id="phases"></div>
+
+  <noscript><p class="callout">This guide needs JavaScript to show the exercises.</p></noscript>
+</main>
+
+<footer class="wrap footer">
+  <p>Sources behind the approach: McGill’s core stability work (curl-up, side plank, bird dog), Lake and Lauder 2012 on kettlebell swing training and power, and Oranchuk et al. 2019 on isometric training. This guide is general education and does not replace a physiotherapist’s assessment of your back.</p>
+</footer>
+</body>
+</html>
