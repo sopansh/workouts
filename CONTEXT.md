@@ -1,8 +1,9 @@
 # Workouts: project context
 
-Read this first when opening the repo. It is the hand-off document: what exists, how it fits together, how to run and
-deploy it, the conventions to follow, and what to build next. The long-term plan lives in
-[`docs/hypertrophy-plan.md`](docs/hypertrophy-plan.md).
+Read this first when opening the repo. It is the hand-off document: what exists, how it fits together, how to run and deploy
+it, the coding standards, and what to build next. The long-term plans live in
+[`docs/hypertrophy-plan.md`](docs/hypertrophy-plan.md) and
+[`docs/getting-started-and-calisthenics-plan.md`](docs/getting-started-and-calisthenics-plan.md).
 
 ## 1. What this is
 
@@ -14,263 +15,256 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | Live site | https://workouts.theroningamer.com (root redirects to `/home/`) |
 | Repo | https://github.com/sopansh/workouts (public, branch `main`) |
 | Hosting | Netlify site `core-workouts` (default URL `core-workouts.netlify.app`), auto-deploys on every push to `main` |
-| Stack | **Astro 7** (static output) for the strength section. `/home/` and `/core/` stay plain HTML, CSS and ES modules, served unchanged from `site/`. three.js r128 from a CDN |
+| Stack | **One stack: Astro 7** (static output). Every page, in every section, is an Astro page. Content is YAML or Markdown in content collections with Zod schemas. Client JS exists only where a page needs it (theme toggle, the 3D rig). three.js r128 from a CDN |
 | Language | British English (stabilise, colour); "program" is used for training programs |
 
 ## 2. Current state
 
 | Area | Status |
 |---|---|
-| `/home/` landing page with section tiles | **Done, live** |
-| `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Done, live** (8 exercises, 3 phases) |
-| Shared design system (`site/shared/`) | **Done** |
-| Custom 404 page | **Done** |
-| `/strength/` Strength / Hypertrophy | **Built as drafts** (Astro, plan phases 1 to 3 and 7 in skeleton form): weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups. See section 3a |
-| `/plyometrics/` | **Built as a draft** (plain HTML and ES modules): overview, weekly plan, exercises, progression, fascia and tendons. Personal two-session plan to follow later, once cleared to jump. See section 3b |
-| `/nutrition/` Health & Nutrition | Not started (tile "Coming soon"). Out of scope for the current plan |
-| Cricket-specific tracks (in strength, plyometrics, isometrics) | Planned only (plan section 12) |
-| Content validation | `npm run check:content` (runs before every build) and `npm run verify:sources` (Crossref). No CI yet |
+| `/home/` landing page | Rendered from `src/content/sections.yml`. **Live** |
+| `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Live** (8 exercises, 3 phases). Now an Astro page; the 3D rig is in `src/scripts/core/` |
+| `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups |
+| `/getting-started/` Getting started with strength | **First slice built as a draft**: overview, 8-week plan, exercises (10 ladders, 20 exercises), progression, evidence. Home tile is **"Coming soon"** (`status: soon`) |
+| `/plyometrics/` | **Built as a draft**: overview, weekly plan, exercises, progression, fascia and tendons. Personal plan, to follow once cleared to jump |
+| `/calisthenics/` | **Planned only**, home tile "Coming soon". See the plan doc |
+| `/nutrition/` Health & Nutrition | Not started (tile "Coming soon") |
+| Cricket-specific tracks | Stubs in `/strength/cricket/`; planned for plyometrics and isometrics (hypertrophy plan section 12) |
+| Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). No CI yet |
 
 ## 3. Repo layout
 
 ```
+astro.config.mjs             static output, trailingSlash always, directory format, strength redirect
 netlify.toml                 build = npm run build, publish dir = dist/, redirect / -> /home/ (302)
-astro.config.mjs             publicDir = site/ (copied to dist unchanged), trailingSlash always, strength redirects
-package.json                 astro + yaml; scripts: dev, build, check:content, verify:sources
-docs/
-  hypertrophy-plan.md        implementation + information-gathering plan (NOT published)
+package.json                 astro + yaml; scripts: dev, build, preview, check, check:content, check:standards, verify:sources
+.editorconfig                2 spaces, LF, final newline, no trailing whitespace
+public/assets/img/           tile illustrations (SVG). The only static files; Astro copies them to dist/ untouched
+docs/                        plans (NOT published)
 scripts/
-  check-content.mjs          build-time validator (refs, claims, safety fields, session time, spinal-load spacing)
-  verify-sources.mjs         Crossref DOI / title / year / retraction check; `-- --write` stamps verifiedOn
-src/                         the Astro project (strength section) - see section 3a
-site/                        static files, copied to dist/ unchanged (Astro `publicDir`)
-  404.html                   custom not-found page
-  assets/img/*.svg           home-page tile illustrations (hand-drawn SVG; swap for photos any time)
-  shared/                    reused by every section
-    styles/tokens.css        colour/spacing tokens, light + dark themes (incl. --p1..--p4 accents)
-    styles/base.css          reset, typography, skip-link, focus ring, reduced-motion
-    styles/chrome.css        sticky toolbar, buttons, hero text, footer
-    js/theme-init.js         blocking <head> script: applies saved theme before first paint
-    js/theme.js              theme toggle + change events (localStorage key: "workouts-theme")
-    js/dom.js                h() element builder (never innerHTML)
-  home/                      /home/
-    index.html  styles/home.css
-    js/main.js               renders tiles from sections.js, wires the theme button
-    js/sections.js           DATA: the list of sections shown on the home page
-  core/                      /core/  (the isometrics core guide)
-    index.html  styles/components.css
-    js/main.js               entry: renders content, then enhances with 3D
-    js/data/exercises.js     DATA: every exercise (text + named-joint poses)
-    js/data/phases.js        DATA: the three phases
-    js/rig/pose.js           pure pose maths (no DOM, no three.js)
-    js/rig/figure.js         the 3D mannequin (meshes, glow, auto-framing camera)
-    js/stage.js              ONE shared WebGL renderer + scene for all cards
-    js/three.js              facade for the global THREE (null if the CDN failed)
-    js/playback.js           shared pause/speed clock
-    js/ui/cards.js nav.js controls.js     card/plan rendering, scroll-spy nav, toolbar + drag/keyboard rotation
-```
-
-## 3a. The strength section (Astro)
-
-```
+  check-content.mjs          build-time content validator (see section 6)
+  check-standards.mjs        build-time coding-standards check (see section 11)
+  verify-sources.mjs         Crossref DOI / title / year / retraction check
+tests/                       node --test files for logic that is not a data rule (paired-split muscle coverage)
 src/
-  content.config.ts          Zod schemas for every collection (the validator for shape and references)
-  loaders/yaml-dir.ts        loads every *.yml in a folder (one file per group, each a list of entries)
-  lib/content.ts             url helpers, loadAll(), labels.   lib/plan.ts  pure planning maths (sets, time, spinal load)
-  content/                   ALL CONTENT (edit these, not pages)
-    groups.yml  pain-rules.yml  sources.yml  glossary.yml  programs.yml
-    claims/*.yml  muscles/*.yml  exercises/*.yml
-    principles/*.md  cricket/*.md
-  layouts/Base.astro         chrome, nav, theme toggle (reuses /shared/ CSS and theme JS as static files)
-  components/                Breadcrumbs, badges, ClaimList, PainRule, ExerciseCard, MuscleMap (SVG), WeeklyPlan
-  pages/strength/            index, principles, muscles/[group]/[muscle], exercises, programs/[program]/[day],
-                             weekly-plan (the weekly distribution page), cricket, evidence, sources, glossary
-  styles/strength.css        section styles (tokens only; no new colour tokens)
+  content.config.ts          Zod schemas for every collection. The shape-and-reference validator
+  content/                   ALL CONTENT. Edit these, not pages (see 3a)
+  layouts/Base.astro         the one layout: toolbar, nav, theme toggle, footer, slots
+  components/                shared Astro components (PascalCase)
+  lib/                       content.ts (strength loader, labels), guide.ts (guide loader), sections.ts, plan.ts (pure maths)
+  loaders/yaml-dir.ts        loads every *.yml in a folder
+  pages/                     one folder per section: home, core, strength, getting-started, plyometrics, plus 404.astro
+  scripts/                   client scripts: theme.ts, theme-init.js (inlined), core/ (the 3D rig)
+  styles/                    tokens.css (colours), base.css, chrome.css, app.css (shared components), home.css, core.css
 ```
 
-URL map: `/strength/`, `/strength/principles/<id>/`, `/strength/muscles/<group>/<muscle>/`, `/strength/exercises/<id>/`,
-`/strength/programs/<program>/<day>/`, `/strength/weekly-plan/` (default program) and `/strength/weekly-plan/<program>/`,
-`/strength/cricket/<role>/`, `/strength/evidence/`, `/strength/sources/`, `/strength/glossary/`.
+## 3a. Content collections
+
+| Collection | File(s) | Used by |
+|---|---|---|
+| `sections` | `sections.yml` | home tiles, each section's nav and footer links, page titles. `status: live` needs an `href` |
+| `groups`, `muscles`, `exercises`, `programs`, `principles`, `cricket`, `glossary`, `painRules` | `groups.yml`, `muscles/`, `exercises/`, `programs.yml`, `principles/*.md`, `cricket/*.md`, ... | strength |
+| `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups.yml`, `guides/exercises/*.yml`, `guides/plans.yml` | getting-started and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises |
+| `corePhases`, `coreExercises` | `core/phases.yml`, `core/exercises.yml` | `/core/`. `poses` drive the 3D figures |
+| `sources`, `claims` | `sources.yml`, `claims/*.yml` | **every section**. Each entry has a `section` (default `strength`). Pages filter by section |
+
+Rules that follow from this:
+- **Order is explicit.** Astro does not guarantee collection load order, so anything shown in a sequence has an `order` field
+  (guide exercises, core exercises, sections, groups). The validator requires unique values.
+- **Defaults must be reference-shaped.** `section: reference('sections').default(...)` uses an object default, because Zod
+  defaults skip the reference transform. A plain string default silently empties the strength evidence pages.
+- **One evidence registry.** New sources go in `sources.yml` and are verified by the one verifier. Textbooks and guidelines
+  are cited in page text and do not need a graded claim.
+
+URL map (all trailing-slash): `/home/`, `/core/`, `/strength/...` (principles, muscles, exercises, programs, weekly-plan,
+cricket, evidence, sources, glossary), and for each of `/getting-started/` and `/plyometrics/`: overview, `weekly-plan/`,
+`exercises/`, `progression/`, plus `evidence/` (getting-started) or `fascia/` (plyometrics). Anchors: exercise cards use
+`#<exercise-id>`, groups use `#group-<id>`, pain rules `#pain-<id>`, claims `#claim-<id>`.
 `/strength/programs/push-pull-legs/week/` redirects to `/strength/weekly-plan/`.
 
-Key rules baked into the build (`scripts/check-content.mjs`):
-- every reference resolves (exercise -> muscle, claim, pain rule; program -> exercise; claim -> source);
-- every DOI source has a `verifiedOn` stamp; EMG-only claims are capped at grade C; a preprint alone cannot support A or B;
-- every exercise has contraindications, a regression and a pain rule (shared per body area in `pain-rules.yml`);
-- `level: foundation` is only allowed for squat, glute and lower-back muscles (the owner wants no beginner-level work elsewhere);
-- no session may estimate over the program's minutes; no two consecutive days may both peak at `spinalLoad: high`;
-- emphasis words ("targets", "optimal", "superior"...) in exercise text need a claim.
-
-The weekly-plan page is computed from `programs.yml` + each exercise's `primary`/`secondary` muscles: direct sets, helper
-sets, effective sets (direct + half of helper sets), session spacing, spinal load per day and time per session. Change the
-program and the page follows.
-
-User-provided context: 10+ years training, with beginner options limited to squats, glutes and lower-back work. Full commercial
-gym access, training days, session length and lower-back recovery are unconfirmed assumptions, not a personalised prescription.
-The paired-muscle split uses five days and a 90-minute planning allowance as examples.
-
-## 3b. The plyometrics section (plain modules)
-
-```
-site/plyometrics/
-  index.html  weekly-plan/  exercises/  progression/  fascia/     one HTML shell per page (empty slots, no content)
-  js/data/exercises.js  sessions.js  evidence.js                  DATA: edit these, not the pages
-  js/ui/render.js          cards, tables, evidence list (built with h())
-  js/layout.js             toolbar, safety callout (#safety slot), footer
-  js/pages/*.js            one small entry per page
-  styles/plyometrics.css   tokens only
-```
-
-Personal plan: two sessions a week (A vertical power, B lateral), repeated for eight weeks, floor first. Written to start only
-after a doctor or physiotherapist clears jumping (the owner has current back pain; the repo is public, so no health details
-are published). The box is optional and unprescribed. `exercises.js` `progression` drives both the cards and the table.
-Test: `node --test tests/plyometrics.test.mjs`. Fascia is described as connective tissue; no source shows these exercises
-change it, and the page says so. Hosted pages need the `index.html` path locally: use `npm run build && npm run preview`.
+User-provided context: 10+ years training, with beginner options limited to squats, glutes and lower-back work (strength
+only). Full gym access, training days, session length and lower-back recovery are unconfirmed assumptions. The plyometrics plan
+is personal (two sessions, floor first, box optional) and to be started only after a clinician clears jumping; the repo is
+public, so no health details are published.
 
 ## 4. Architecture and the reasoning behind it
 
-- **Content is data.** Pages are rendered from JS data modules (`sections.js`, `exercises.js`, `phases.js`). Add an entry
-  and the page updates; do not hand-edit generated markup.
-- **Content renders before 3D.** `core/js/main.js` builds all text first, then dynamically imports the 3D modules only if
-  `THREE` exists. If three.js fails to load, the guide is still fully readable (`.no-3d` class shows a fallback note).
-- **One WebGL context, many canvases.** Browsers cap live WebGL contexts (~16). `Stage` renders the active figure into a
-  single offscreen renderer and copies the result into that card's 2D canvas. Don't add a renderer per card.
-- **Pose format.** Poses are named joints in SVG-style units (origin top-left, y down, floor at y = 150, x = 150 is centre),
-  e.g. `head: [192, 130]`. Far-side limbs are optional and default to the near side. Exercises animate `start -> end`.
-  `core/js/data/exercises.js` documents the format at the top. A numeric check against the original arrays was done when
-  migrating; if you change `resolvePose`, re-verify.
+- **One layout, one registry.** `Base.astro` renders every page. A section id from `sections.yml` gives it the toolbar nav,
+  title suffix, accent and footer links. Named slots (`head`, `nav`, `controls`, `footer`) let a page override a part; `/core/`
+  uses them for its phase pills and animation buttons. Omit `section` for the home page.
+- **Content is data.** Add an entry to a collection and the pages update. Do not hand-edit generated markup.
+- **Shared components, shared CSS.** `app.css` holds every shared component style (badges, notes, callout, tables, cards,
+  claims, guide cards, week strips). Only `home.css` and `core.css` are page-specific. Class names are the contract; do not
+  reuse a shared class name for a different look (core's exercise cards are `.demo`, not `.card`, for this reason).
+- **Content renders before 3D.** `/core/` is fully rendered at build time. `src/scripts/core/main.js` only attaches 3D to the
+  cards already on the page and reads each exercise's poses from a JSON script tag. If three.js fails to load, the guide is
+  still fully readable (`.no-3d` shows a fallback note).
+- **One WebGL context, many canvases.** Browsers cap live WebGL contexts (~16). `Stage` renders the active figure into one
+  offscreen renderer and copies it into that card's 2D canvas. Don't add a renderer per card.
+- **Pose format.** Named joints in SVG-style units (origin top-left, y down, floor at y = 150, x = 150 is centre), e.g.
+  `head: [192, 130]`. Far-side limbs are optional. Exercises animate `start -> end`. If you change `resolvePose`, re-verify.
 - **Camera auto-frames each figure** from the extents of its two poses, so new exercises need no camera tuning.
-- **Glow regions** are only `torso` and `hips` today (`figure.js`). Per-muscle glow needs more regions (see plan section 10.2).
-- **Theme** follows the OS (`prefers-color-scheme`) unless the user toggles; the choice is saved and shared across pages.
-  Tokens are duplicated across the light block, the dark media-query block and the `[data-theme=dark]` block in
-  `tokens.css`. Change all of them together.
-- **Absolute paths for shared files** (`/shared/...`, `/assets/...`). The site lives at the domain root, so this is correct on
-  Netlify. Astro serves `site/` as its static folder, so the same paths work in `npm run dev` and in `dist/`.
-- **Astro pages link the shared CSS and theme scripts as static files** (not bundled), so the theme and tokens stay identical
-  across `/home/`, `/core/` and `/strength/`. Astro can only bundle files it owns, which is why `site/` is `publicDir`.
-- **Security/robustness:** the three.js script is pinned to r128 with a Subresource Integrity hash. If you change the
-  version, regenerate the hash (`openssl dgst -sha512 -binary file | openssl base64 -A`). Never use `innerHTML` with data;
-  use `h()`.
+- **Glow regions** are only `torso` and `hips` today (`figure.js`). Per-muscle glow needs more regions.
+- **Theme** follows the OS (`prefers-color-scheme`) unless the user toggles; the choice is saved and shared across pages. A tiny
+  blocking script (`theme-init.js`) is inlined in `<head>`; `theme.ts` is bundled. Tokens are duplicated across the light block,
+  the dark media-query block and the `[data-theme=dark]` block of `tokens.css`; the standards check enforces that they match.
+- **Security/robustness:** the three.js script is pinned to r128 with a Subresource Integrity hash. If you change the version,
+  regenerate the hash (`openssl dgst -sha512 -binary file | openssl base64 -A`). Never inject data as HTML. The only
+  `set:html` uses are the inlined theme script and the escaped core JSON.
 
 ## 5. Run it locally
 
 ```bash
 npm install                        # first time only
-npm run dev                        # http://localhost:4321/home/  and  /strength/
+npm run dev                        # http://localhost:4321/home/
 npm run build && npm run preview   # serves dist/ exactly as Netlify will
+npm run check                      # content + standards + tests, without building
 ```
 
-Needs Node 22.23.4 or newer (Astro 7). Notes:
+Needs Node 22.23.4 or newer (Astro 7); Netlify uses Node 24. Notes:
 - The dev and preview servers do **not** apply `netlify.toml` redirects, so `/` is a 404 locally. Open `/home/` directly.
-- Browsers cache aggressively: hard-refresh (Cmd+Shift+R) after editing CSS/JS/SVG.
-- Plain `python3 -m http.server` from `site/` still serves `/home/` and `/core/` if you want to test them in isolation.
+- Browsers cache aggressively: hard-refresh (Cmd+Shift+R) after editing CSS or scripts.
+- Do not run `npm run build` while a browser test is reading `dist/`: the build empties it first.
 
 ## 6. Testing and verification
 
-- **Content validator:** `npm run check:content` (also the first step of `npm run build`). Add `-- --report` to print weekly
-  sets per muscle, spacing, time and spinal load for each program: use it when changing `programs.yml`.
-- **Plyometrics data:** `node --test tests/plyometrics.test.mjs` checks safety fields, session references, progressions and sources.
-- **Paired split coverage:** `node --test tests/paired-muscle-split.test.mjs` checks major muscles and the two leg sessions.
-- **Sources:** `npm run verify:sources` re-checks every DOI against Crossref; `-- --write` stamps `verifiedOn`. A new source
-  must be looked up (Crossref / PubMed / Europe PMC) and read before any claim is written from it. Never cite from memory.
-- **Syntax check JS in `site/`:** `for f in $(find site -name '*.js'); do node --input-type=module --check < "$f"; done`
-- **CSS brace balance** (an unbalanced `}` once silently disabled all mobile styles): count `{` vs `}` per file.
-- **Browser smoke test** (Playwright via the editor's browser tools): no console errors or failed requests; home -> strength ->
-  weekly plan; home -> core -> back; exercise filters; theme persists across pages; mobile (390px) has no horizontal
-  overflow; every internal link and `#anchor` resolves (a small crawler against `npm run preview` did this: 146 pages).
-- **Playwright gotcha:** `locator.click()` on the sticky toolbar can scroll the page, which makes `IntersectionObserver` stop
-  rendering canvases and looks like a bug. Click by coordinates (`page.mouse.click`) when testing pause/resume on `/core/`.
-- Screenshot tools sometimes return a stale frame: hard-reload and re-capture before trusting a visual.
+- **Content validator:** `npm run check:content` (first step of the build). It checks references and shape beyond Zod, plus:
+  every DOI source has a `verifiedOn` stamp; EMG-only claims are capped at grade C; a preprint alone cannot support A or B;
+  every exercise (strength, guide) has contraindications, a regression and a pain rule; `level: foundation` is only for squat,
+  glute and lower-back muscles (strength only); no strength session over its minutes and no two consecutive days both peaking at
+  high spinal load; emphasis words need a claim; **guides:** ladders have consecutive levels from 1 and level 1 needs no optional
+  equipment, plans reference real groups and exercises in their own section, sessions are never on consecutive days (Sunday to
+  Monday included), session time estimates stay within budget, jump schedules never go down, no outcome promises ("burn fat",
+  "tone", "guaranteed"); **core:** every pose has all required joints and a real phase; orders are unique. Add `-- --report` to
+  print weekly volume for each strength program.
+- **Standards check:** `npm run check:standards` (see section 11).
+- **Sources:** `npm run verify:sources` checks only entries without a `verifiedOn` stamp; `-- --write` stamps them; `-- --all`
+  rechecks every DOI. It backs off on Crossref rate limits. A new source must be looked up (Crossref / PubMed / Europe PMC) and its
+  abstract read before any claim is written from it. Never cite from memory. Europe PMC can mislink a DOI to an unrelated paper:
+  confirm the DOI on Crossref **and** the title.
+- **Tests:** `node --test tests/paired-muscle-split.test.mjs`. Name the file: passing the `tests/` directory fails.
+- **Regression check for refactors:** build the previous commit in a `git worktree`, then compare each page's title, description
+  and visible body text between the two `dist/` folders. This caught a section default that silently emptied three pages.
+- **Link check:** a crawl of `dist/` resolves every internal link, asset and `#anchor` (165 pages, about 5,000 links at last run).
+- **Browser smoke test:** no console errors or failed requests; home -> a section -> back; theme persists across pages; mobile
+  (390 px) has no horizontal overflow.
+- **Browser-test gotchas:** a hidden tab (as in this editor) never runs animation frames, so coordinate clicks can wait forever on
+  "stable" and the 3D loop never draws. Click through the DOM (`element.click()`), and test the rig by importing the built
+  `Stage` and `Figure` chunks and rendering a frame by hand. Screenshots can return a stale frame: reload and re-capture.
+  Playwright's `emulateMedia({ reducedMotion })` persists on the page across navigations.
 
 ## 7. Deploy and infrastructure
 
-- **Flow:** commit -> `git push origin main` -> Netlify runs `npm run build` (validator, then `astro build`) and publishes
-  `dist/` (set in `netlify.toml`, with `NODE_VERSION = 24`, which overrides dashboard settings). A content error fails the build,
-  so a bad deploy cannot go live. **First deploy of the Astro setup: check the Netlify build log once.**
+- **Flow:** commit -> `git push origin main` -> Netlify runs `npm run build` (content check, standards check, then `astro build`)
+  and publishes `dist/` (set in `netlify.toml`, with `NODE_VERSION = 24`, which overrides dashboard settings). A content or
+  standards error fails the build, so a bad deploy cannot go live. The dashboard's publish directory shows `.` but is
+  "overridden by netlify.toml".
+- **If a deploy succeeds but the site is stale:** the deploy list may not be publishing it. On the deploy, look for a **Published**
+  badge and for a "lock to stop auto publishing" control. Confirm with `curl` on a changed file, cache-busted.
 - **Roll back:** Netlify dashboard -> Deploys -> pick an earlier deploy -> Publish deploy. Or `git revert` and push.
 - **DNS:** registrar is Squarespace Domains. Record: `CNAME workouts -> core-workouts.netlify.app` (TTL 4 hrs). Don't change
   it unless you change the Netlify site name.
-- **HTTPS:** Netlify-managed Let's Encrypt certificate for `workouts.theroningamer.com`, renewed automatically. If a browser
-  shows "not secure", first suspect a stale cached state: test in a private window and check
-  `curl -sI https://workouts.theroningamer.com/home/`.
+- **HTTPS:** Netlify-managed Let's Encrypt certificate, renewed automatically. If a browser shows "not secure", first suspect a
+  stale cached state: test in a private window and check `curl -sI https://workouts.theroningamer.com/home/`.
 - **Redirects:** `/` -> `/home/` (302) in `netlify.toml`. `http://` is redirected to `https://` by Netlify. `/core/` is canonical
   for the core guide; do not move it without adding a redirect.
-- **Not published:** anything not in `dist/` (e.g. `docs/`, `scripts/`, `src/content/` source files). Verified before Astro: `/docs/...` returned 404 live.
+- **Not published:** anything not in `dist/` (`docs/`, `scripts/`, `src/`, `tests/`). The source is public on GitHub.
 
 ## 8. Common tasks
 
-**Add an exercise.** Append an object to the right file in `src/content/exercises/` (copy a neighbour: it needs setup, steps,
-mistakes, contraindications, regression, progression and a `painRule` id from `pain-rules.yml`). Muscles and claims are
-referenced by id. Run `npm run check:content`.
+**Add a strength exercise.** Append to the right file in `src/content/exercises/` (copy a neighbour: setup, steps, mistakes,
+contraindications, regression, progression, a `painRule` id). Muscles and claims are referenced by id. Run `npm run check`.
 
-**Add a claim.** Find the paper (Crossref / PubMed), add it to `src/content/sources.yml`, run `npm run verify:sources -- --write`,
-read the abstract, then add the claim to `src/content/claims/` with a grade from the rubric on `/strength/evidence/`.
+**Add a guide exercise** (getting-started or plyometrics). Append to `src/content/guides/exercises/<section>.yml`: `section`,
+`order`, `group`, `level` (ladder groups only), `equipment`, `muscles`, `setup`, `steps`, `mistakes`, `contraindications`,
+`regression`, `progression`, `painRule`, and a `dose` or a `schedule`. Level 1 of a ladder must need no optional kit. Then make
+sure the plan uses it: a ladder group must appear in a session, other exercises must be listed in a session or the warm-up.
 
-**Change the plan.** Edit `src/content/programs.yml`, run `npm run check:content -- --report`, and read the volume and time
-tables. The weekly-plan page, day pages and exercise pages ("used in your plan") all update.
+**Change a guide plan.** Edit `src/content/guides/plans.yml` (sessions, weeks, timing). The validator checks spacing and time.
 
-**Add a muscle or a group.** Add to `src/content/muscles/` (and `groups.yml`). To show it on the map, add a shape in
-`src/components/MuscleMap.astro`.
+**Add a claim.** Find the paper, add it to `src/content/sources.yml` with a `section`, run `npm run verify:sources -- --write`,
+read the abstract, then add the claim to `src/content/claims/<section>.yml` with a grade from the rubric on `/strength/evidence/`.
 
-**Add a principle or cricket page.** Add a Markdown file in `src/content/principles/` or `src/content/cricket/`.
+**Change the strength plan.** Edit `src/content/programs.yml`, run `npm run check:content -- --report`, read the tables.
 
-**Make a home tile live.** In `site/home/js/sections.js` set `status: 'live'` and `href: '/yourpath/'`.
+**Add a muscle or group.** `src/content/muscles/` and `groups.yml`. To show it on the map, add a shape in `MuscleMap.astro`.
 
-**Add a new section tile.** Append an entry to `sections` (title, blurb, image under `/assets/img/`, accent `p1`..`p4`,
-status). The grid reflows by itself. New section code lives in its own folder under `site/` (copy the shape of `site/core/`),
-importing shared files from `/shared/`.
+**Add a principle or cricket page.** A Markdown file in `src/content/principles/` or `src/content/cricket/`.
 
-**Swap a tile image.** Drop a JPG/PNG/WebP into `site/assets/img/` and point `image` at it (keep 16:10).
+**Make a section live, or add one.** In `src/content/sections.yml` set `status: live` and an `href`, or append an entry (title,
+short name, blurb, image in `public/assets/img/` at 16:10, accent `p1`..`p4`, nav, footer). Pages live in `src/pages/<section>/`
+and pass `section="<id>"` to `Base`.
 
-**Add an exercise to the core guide.** Add an object to `site/core/js/data/exercises.js` (id, phase, name, dose, muscles,
-glow, cycle, poses start/end, steps, mistakes). Nothing else needs editing; the card, nav and framing update themselves.
+**Swap a tile image.** Replace the file in `public/assets/img/` (keep 16:10) or point `image` at a new one.
 
-**Add a phase.** Add to `phases.js`, and give exercises a matching `phase` number. Add an accent rule for the new number in
-`core/styles/components.css` (`[data-phase='N']`) and a token in `tokens.css` if needed.
+**Add an exercise to the core guide.** Append to `src/content/core/exercises.yml` (`order`, `phase`, name, dose, muscles, glow,
+cycle, poses start/end, steps, mistakes). The card, nav and framing update themselves.
 
-**Change colours.** Edit `site/shared/styles/tokens.css` (all three theme blocks).
+**Add a core phase.** Add to `core/phases.yml`, give exercises the matching `phase`, and add an accent rule for the number in
+`core.css` (`[data-phase='N']`).
+
+**Change colours.** Edit `src/styles/tokens.css`, in all three theme blocks (the standards check fails otherwise).
 
 ## 9. Known limitations and gotchas
 
 - Poses are side-view x/y only with fixed depth offsets, so frontal-plane moves (lateral raise, fly) can't be shown correctly
-  without a rig extension (plan section 10.2).
-- The strength section is statically rendered by Astro (good for SEO and build-time validation). `/home/` and `/core/` are still
-  client-rendered.
+  without a rig extension.
 - Stage framing assumes a roughly human-sized figure; very large range-of-motion poses may need a bounds check.
-- The core guide's Phase 1 now says "all six" (the original said "five" but there are six exercises).
-- Health content here is general education. The guide's medical wording was authored by the site owner, not clinically
-  reviewed. See plan section 1 and section 13 before expanding it.
-- `docs/core/` (a lossy Markdown export of the original core guide) may exist locally but is intentionally not tracked.
+- The 3D frame loop could not be watched in the hidden browser tab used for development; the rig was verified by rendering
+  frames from the built chunks (all 8 exercises draw, glow and move). Look at `/core/` once in a normal browser before relying on it.
+- Getting-started and strength each have their own beginner-level exercises (push-up, glute bridge, bird dog...) with separate
+  text. That duplicates a concept; merging them is a possible later cleanup.
+- Health content here is general education. Medical wording was authored by the site owner or drafted by an AI assistant and
+  has not been clinically reviewed. Everything is labelled draft until a physiotherapist and a strength coach sign off.
+- The Astro build was introduced without recorded approval from the owner, who has since asked for everything to use it.
 
 ## 10. What to build next
 
-The existing draft uses Astro, cricket stub pages and detailed chest and leg groups. Explicit approval of the Astro build
-change was not recorded. Still open: gym access, schedule, session length, back-recovery stage, named reviewers (everything
-is labelled draft), cricket role/level/format, and whether `/isometrics/` becomes a hub for `/core/`.
+1. **Review pass** of the drafts (physiotherapist for anatomy, contraindications and pain rules; a CSCS coach for programs).
+2. **Calisthenics** (plan doc phases 4 and 5): foundations, then first skills, each gated by prerequisites and flagged as coaching
+   convention where no training evidence exists. It can reuse `guideGroups`, `guideExercises` and `guidePlans`.
+3. **Finish getting-started:** soreness and adherence guidance, deeper exercise notes, the remaining evidence gaps in the plan doc.
+4. **Deepen the other strength groups** (back, shoulders, arms, core) to the chest and legs standard.
+5. **Anatomy sources:** modern OpenStax regional references are linked beside the 1918 Gray source; verify each muscle page.
+6. **Cricket research** (hypertrophy plan section 12).
+7. **Visuals:** per-muscle glow and 3D demos on the existing rig for strength exercises.
+8. **Search and CI:** Pagefind for site search, and a GitHub Action that runs `npm run check` and a link check.
 
-Suggested next steps, in order:
-1. **Review pass** of the drafts (physiotherapist for anatomy, contraindications and pain rules; a CSCS coach for the program).
-2. **Deepen the other groups** (back, shoulders, arms, core) to the chest and legs standard: full setup/cues/variation tables,
-   muscle growth claims with verified sources.
-3. **Anatomy sources:** modern OpenStax regional references are linked alongside the original Gray 1918 draft source; verify
-   each individual muscle page, including nerve supply, against current references with a qualified reviewer.
-4. **Cricket research** (plan section 12): role demands, injury epidemiology, workload evidence, then prescriptions.
-5. **Visuals:** per-muscle glow and tier-2 3D demos on the existing rig (plan section 10); a tighter muscle-map drawing.
-6. **Search and CI:** Pagefind for site search, and a GitHub Action that runs `check:content` and a link check.
+## 11. Coding standards
 
-## 11. Conventions
+These are written down because tooling is deliberately minimal (no linter or formatter dependency). `scripts/check-standards.mjs`
+enforces the mechanical ones on every build; the rest are reviewed.
 
-- Match the existing style: small modules, data separated from rendering, comments only where the *why* isn't obvious.
-- No `innerHTML` with data; use `h()` from `/shared/js/dom.js`.
-- No new runtime dependency without agreeing it (Astro and `yaml` are the only ones). The build is `npm run build`.
-- Accessibility is a requirement: keyboard operable, visible focus, text alternatives for diagrams, honour
-  `prefers-reduced-motion`, WCAG AA contrast in both themes.
-- Health content: every exercise needs contraindications, a regression and a pain rule; emphasis/benefit claims need a source
-  and an evidence grade (plan section 5). Never cite from memory; verify DOIs.
-- Commits: small and descriptive. Pushing to `main` deploys to production, so smoke-test locally first (section 6).
+**Enforced by the build**
+- No HTML injection (`innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`); `set:html` only in the two reviewed files.
+- No colour literals outside `tokens.css`, except pure white and black (icon text, shadows, canvas fades).
+- Theme tokens: every colour in the light block exists in both dark blocks, and the two dark blocks match.
+- Every `<img>` has `alt`, every `<canvas>` has `aria-label`, `target="_blank"` has `rel`.
+- Every page under `src/pages/` uses the shared `Base` layout (directly or through `WeeklyPlan`).
+- No `any`, no `console.log`, no references to the removed `site/` or `/shared/` folders.
+- Naming: components and layouts `PascalCase.astro`; every other file under `src/` lowercase kebab-case (`content.config.ts` excepted).
+- Whitespace: LF, final newline, no trailing whitespace; balanced CSS braces.
+
+**Reviewed by hand**
+- **Stack:** one Astro setup. New sections are pages plus content collections, never a separate plain-HTML folder. No new
+  dependency or bundler without asking.
+- **Data vs markup:** copy and numbers live in `src/content/`; pages and components only lay them out. Prose that belongs to one
+  page (an overview, a "what this does not cover" list) may live in that page.
+- **TypeScript:** strict (`astro/tsconfigs/strict`). Type component props with an `interface Props`. Use `unknown` and narrowing,
+  not `any`. `src/scripts/core/` is legacy JavaScript moved without a rewrite; new client code is TypeScript.
+- **Formatting:** 2 spaces, single quotes in TS and JS, semicolons, trailing commas in multiline literals, `const` by default,
+  named exports. Short comments only where the *why* is not obvious.
+- **CSS:** tokens only; mobile-first with `min-width` queries (existing `max-width` rules are tolerated); one class per concept;
+  state through `data-*` attributes (`data-tone`, `data-accent`, `data-grade`).
+- **Accessibility is a requirement:** keyboard operable, visible focus, `prefers-reduced-motion` honoured, text alternative for every
+  diagram, WCAG AA contrast in both themes, a skip link, tables with headers, scrollable tables focusable.
+- **Language:** British English, plain and concise UI text. Units are metric.
+- **Health content:** every exercise needs contraindications, a regression, a progression and a pain rule; benefit or emphasis
+  claims need a source and an evidence grade; no outcome promises; say what is unknown. Never invent or cite from memory.
+- **Commits:** small and descriptive. Pushing to `main` deploys to production, so run `npm run check`, build, and the smoke test first.
 
 ## 12. Starter prompt for a new session
 
-> Open `CONTEXT.md` (sections 3a and 8) and `docs/hypertrophy-plan.md`. The strength section is built as drafts in Astro.
-> Next: <your goal, e.g. "deepen the back group to the chest standard" or "add a Monday-only 45 minute variant of the plan">.
-> Keep `/home/` and `/core/` working, run `npm run check:content` and the smoke test before finishing.
+> Open `CONTEXT.md` (sections 3a, 8 and 11) and the relevant plan in `docs/`. Everything is Astro: pages in `src/pages/<section>/`,
+> content in `src/content/`, one layout. Next: <your goal, e.g. "build the calisthenics foundations section" or "add a deload
+> week to the getting-started plan">. Run `npm run check` and the smoke test before finishing.

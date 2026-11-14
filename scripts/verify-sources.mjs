@@ -1,23 +1,33 @@
-// Verifies every DOI in src/content/sources.yml against Crossref: the DOI resolves, the title and year match, and no
-// retraction notice points at it. Run `npm run verify:sources` to check, add `-- --write` to stamp `verifiedOn`.
+// Verifies DOIs in src/content/sources.yml against Crossref: the DOI resolves, the title and year match, and no
+// retraction notice points at it. Run `npm run verify:sources` to check entries without a `verifiedOn` stamp, add `-- --write`
+// to stamp them, and `-- --all` to recheck every DOI (for example before a release).
 import { readFile, writeFile } from 'node:fs/promises';
 import { parseDocument } from 'yaml';
 
 const FILE = new URL('../src/content/sources.yml', import.meta.url);
 const write = process.argv.includes('--write');
+const checkAll = process.argv.includes('--all');
 const today = new Date().toISOString().slice(0, 10);
 const headers = { 'User-Agent': 'workouts-site-source-verifier (https://github.com/sopansh/workouts)' };
 
 const norm = s => s.toLowerCase().replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/[^a-z0-9]+/g, ' ').trim();
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const MAX_ATTEMPTS = 6;
+
+// Crossref rate-limits bursts (HTTP 429). Back off and retry instead of failing the whole run.
 const getJson = async url => {
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
       const res = await fetch(url, { headers, signal: AbortSignal.timeout(30000) });
       if (res.status === 404) return null;
-      if (res.ok) return await res.json();
-    } catch { /* retry */ }
+      if (res.ok) { await sleep(250); return await res.json(); }
+      const retryAfter = Number(res.headers.get('retry-after'));
+      await sleep(Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : attempt * 2000);
+    } catch {
+      await sleep(attempt * 2000);
+    }
   }
-  throw new Error(`Could not reach ${url}`);
+  throw new Error(`Could not reach ${url} after ${MAX_ATTEMPTS} attempts`);
 };
 
 const doc = parseDocument(await readFile(FILE, 'utf8'));
@@ -27,6 +37,7 @@ for (const item of doc.contents.items) {
   const id = item.get('id');
   const doi = item.get('doi');
   if (!doi) continue;
+  if (!checkAll && item.get('verifiedOn')) continue;
 
   const work = await getJson(`https://api.crossref.org/works/${encodeURIComponent(doi)}`);
   if (!work) { console.error(`FAIL ${id}: DOI ${doi} does not resolve on Crossref`); failures++; continue; }
@@ -53,4 +64,4 @@ for (const item of doc.contents.items) {
 
 if (write && !failures) await writeFile(FILE, String(doc));
 if (failures) { console.error(`\n${failures} source(s) failed verification.`); process.exit(1); }
-console.log(write ? `\nAll DOIs verified and stamped ${today}.` : '\nAll DOIs verified.');
+console.log(write ? `\nAll checked DOIs verified and stamped ${today}.` : '\nAll checked DOIs verified.');

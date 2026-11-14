@@ -1,0 +1,83 @@
+# One entry per section. Drives the home-page tiles, each section's navigation and its footer links.
+# status: live links the tile to `href`; soon shows "Coming soon". Flip to live only when the pages are ready.
+- id: strength
+  order: 1
+  title: Strength / Hypertrophy
+  short: Strength
+  blurb: Build muscle and strength, muscle group by muscle group, with the exercise variations that target each one.
+  image: /assets/img/strength.svg
+  accent: p2
+  status: live
+  href: /strength/
+  nav:
+    - { label: Principles, href: /strength/principles/ }
+    - { label: Muscles, href: /strength/muscles/ }
+    - { label: Exercises, href: /strength/exercises/ }
+    - { label: Programs, href: /strength/programs/ }
+    - { label: Weekly plan, href: /strength/weekly-plan/ }
+    - { label: Cricket, href: /strength/cricket/ }
+    - { label: Evidence, href: /strength/evidence/ }
+  footer:
+    - { label: How claims are graded, href: /strength/evidence/ }
+    - { label: Sources, href: /strength/sources/ }
+    - { label: Glossary, href: /strength/glossary/ }
+- id: getting-started
+  order: 2
+  title: Getting started with strength
+  short: Getting started
+  blurb: Begin strength training at home with bodyweight exercises, for men and women, with a day-by-day and week-by-week plan.
+  image: /assets/img/getting-started.svg
+  accent: p1
+  status: soon
+  href: /getting-started/
+  nav:
+    - { label: Weekly plan, href: /getting-started/weekly-plan/ }
+    - { label: Exercises, href: /getting-started/exercises/ }
+    - { label: Progression, href: /getting-started/progression/ }
+    - { label: Evidence, href: /getting-started/evidence/ }
+  footer:
+    - { label: Sources and evidence grades, href: /getting-started/evidence/ }
+    - { label: Strength section, href: /strength/ }
+- id: calisthenics
+  order: 3
+  title: Calisthenics
+  short: Calisthenics
+  blurb: "A beginner guide to bodyweight skills: what to build first, the starter exercises and weekly plans. Independent of strength training."
+  image: /assets/img/calisthenics.svg
+  accent: p4
+  status: soon
+- id: plyometrics
+  order: 4
+  title: Plyometrics
+  short: Plyometrics
+  blurb: A basic, repeatable two-session jump plan with calf and ankle work. A draft for later, once cleared to jump.
+  image: /assets/img/plyometrics.svg
+  accent: p3
+  status: live
+  href: /plyometrics/
+  nav:
+    - { label: Weekly plan, href: /plyometrics/weekly-plan/ }
+    - { label: Exercises, href: /plyometrics/exercises/ }
+    - { label: Progression, href: /plyometrics/progression/ }
+    - { label: Fascia and tendons, href: /plyometrics/fascia/ }
+  footer:
+    - { label: Sources and evidence grades, href: /plyometrics/fascia/#evidence }
+    - { label: Strength section, href: /strength/ }
+    - { label: Back-safe core guide, href: /core/ }
+- id: isometrics
+  order: 5
+  title: Isometrics (Core)
+  short: Core
+  blurb: A back-safe core, glute and power guide with looping 3D exercise demos.
+  image: /assets/img/isometrics.svg
+  accent: p1
+  status: live
+  href: /core/
+- id: nutrition
+  order: 6
+  title: Health & Nutrition
+  short: Nutrition
+  blurb: Fuel, recovery and the habits that make training work.
+  image: /assets/img/nutrition.svg
+  accent: p4
+  status: soon

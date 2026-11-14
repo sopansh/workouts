@@ -1,0 +1,26 @@
+---
+import { DAY_NAMES, type GuidePlan } from '../lib/guide';
+
+interface Props {
+  week: GuidePlan['data']['weeks'][number];
+  /** Session ids to a link target, so each day can link to its session. */
+  sessionHref?: (id: string) => string;
+  label?: string;
+}
+
+const { week, sessionHref, label = week.label } = Astro.props;
+---
+<ol class="week" aria-label={label}>
+  {DAY_NAMES.map(day => {
+    const sessionId = week.days[day];
+    return (
+      <li>
+        <div class="day" data-kind={sessionId ? sessionId.toLowerCase() : 'rest'}>
+          <span class="day__name">{day}</span>
+          <h3>{sessionId ? (sessionHref ? <a href={sessionHref(sessionId)}>Session {sessionId}</a> : `Session ${sessionId}`) : 'Rest'}</h3>
+          <p class="muted small">{sessionId ? 'Working sets are listed under the sessions.' : 'Rest or an easy walk.'}</p>
+        </div>
+      </li>
+    );
+  })}
+</ol>

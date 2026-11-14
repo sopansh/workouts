@@ -47,7 +47,7 @@ const otherPrograms = d.programs.filter(x => x.id !== program.id);
 const spinalWidth = { none: 6, low: 34, moderate: 67, high: 100 } as const;
 const spinalTone = { none: 'good', low: 'good', moderate: 'warn', high: 'bad' } as const;
 ---
-<Base title={`Weekly plan: ${p.name}`} description={`How the exercises are distributed across the week in the ${p.name} program: sessions, sets per muscle, spacing, spinal load and time.`} accent="p2">
+<Base section="strength" title={`Weekly plan: ${p.name}`} description={`How the exercises are distributed across the week in the ${p.name} program: sessions, sets per muscle, spacing, spinal load and time.`} accent="p2">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Weekly plan' }]} />
   <section class="hero page-head">
     <p class="eyebrow">Weekly plan</p>

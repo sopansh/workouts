@@ -1,0 +1,530 @@
+# Getting started: bodyweight exercises as ladders. Level 1 of every ladder needs no equipment.
+- id: sit-to-stand
+  order: 1
+  section: getting-started
+  group: squat
+  level: 1
+  name: Sit-to-stand
+  equipment:
+    - sturdy chair
+  muscles: Quadriceps, glutes
+  setup: Use a chair without wheels, pushed against a wall so it cannot slide. Sit on the front half with your feet hip-width apart and your arms crossed on your chest.
+  steps:
+    - Lean slightly forwards and stand up using your legs.
+    - Stand fully upright.
+    - Sit back down slowly, taking about 3 seconds, without dropping into the chair.
+  cues:
+    - Knees track over the toes
+  mistakes:
+    - pushing up with the hands
+    - dropping into the seat
+    - letting the knees fall inwards
+  contraindications:
+    - knee or hip pain that is not yet assessed
+    - dizziness on standing up
+  regression: Use a higher seat, or rest a hand on a stable table.
+  progression: Lower the seat, or move on to the box squat when 12 slow reps feel easy.
+  painRule: knee
+  status: draft
+- id: box-squat
+  order: 2
+  section: getting-started
+  group: squat
+  level: 2
+  name: Box squat
+  equipment:
+    - sturdy chair
+  muscles: Quadriceps, glutes
+  setup: Stand in front of a chair pushed against a wall, feet shoulder-width apart, toes turned out slightly.
+  steps:
+    - Push your hips back and bend your knees until you lightly touch the seat.
+    - "Do not sit and relax: touch, then drive up through the whole foot."
+    - Stand fully upright.
+  cues:
+    - Chest tall
+    - Heels stay down
+  mistakes:
+    - collapsing onto the seat
+    - heels lifting
+    - knees caving inwards
+  contraindications:
+    - knee or hip pain that is not yet assessed
+    - dizziness on standing up
+  regression: Go back to the sit-to-stand.
+  progression: Move on to the bodyweight squat when 12 controlled reps feel easy.
+  painRule: knee
+  status: draft
+- id: bodyweight-squat
+  order: 3
+  section: getting-started
+  group: squat
+  level: 3
+  name: Bodyweight squat
+  equipment:
+    - floor
+  muscles: Quadriceps, glutes, adductors
+  setup: Stand with your feet shoulder-width apart and toes turned out slightly. Hold your arms out in front or crossed on your chest.
+  steps:
+    - Push your hips back and down to a depth you can control, keeping your heels on the floor.
+    - Keep your chest tall and your knees tracking over your toes.
+    - Stand up by pushing the floor away.
+  cues:
+    - Whole foot on the floor
+  mistakes:
+    - heels lifting
+    - knees caving inwards
+    - going deeper than you can control
+  contraindications:
+    - knee or hip pain that is not yet assessed
+    - dizziness on standing up
+  regression: Go back to the box squat.
+  progression: Add a 2 second pause at the bottom or a slower lowering. When 12 clean reps are easy, hold a loaded backpack against your chest.
+  painRule: knee
+  status: draft
+- id: wall-push-up
+  order: 4
+  section: getting-started
+  group: push
+  level: 1
+  name: Wall push-up
+  equipment:
+    - wall
+  muscles: Chest, front of the shoulders, back of the arms
+  setup: Stand at arm's length from a wall. Place your hands flat on it at chest height, a little wider than your shoulders.
+  steps:
+    - Keep your body in one straight line from head to heels.
+    - Bend your elbows to bring your chest towards the wall, with the elbows about 45 degrees from your sides.
+    - Push back to the start.
+  cues:
+    - Straight line, ribs down
+  mistakes:
+    - sagging at the hips
+    - flaring the elbows straight out
+    - shrugging the shoulders
+  contraindications:
+    - shoulder, elbow or wrist pain that is not yet assessed
+  regression: Stand a little closer to the wall.
+  progression: Move on to the incline push-up when 12 slow reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: incline-push-up
+  order: 5
+  section: getting-started
+  group: push
+  level: 2
+  name: Incline push-up
+  equipment:
+    - sturdy counter, table or bench
+  muscles: Chest, front of the shoulders, back of the arms
+  setup: "Use a surface that cannot move: a fixed kitchen counter, a heavy table or a sturdy bench. Lean on it to check before you start. Place your hands slightly wider than your shoulders, with your feet back so your body is one straight line."
+  steps:
+    - Lower your chest towards the edge of the surface with your elbows about 45 degrees from your sides.
+    - Push back to the start without your hips sagging.
+  cues:
+    - Squeeze the glutes to keep the line
+  mistakes:
+    - using a surface that can slide or tip
+    - sagging at the hips
+    - head dropping forwards
+  contraindications:
+    - shoulder, elbow or wrist pain that is not yet assessed
+  regression: Use a higher surface, or go back to the wall push-up.
+  progression: Use a lower surface. Move on to the knee push-up when 12 slow reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: knee-push-up
+  order: 6
+  section: getting-started
+  group: push
+  level: 3
+  name: Knee push-up
+  equipment:
+    - mat or soft floor
+  muscles: Chest, front of the shoulders, back of the arms
+  setup: Kneel on a mat with your hands under your shoulders. Walk your hands forward until your body is one straight line from knees to head.
+  steps:
+    - Lower your chest towards the floor with your elbows about 45 degrees from your sides.
+    - Push back up, keeping the straight line from knees to head.
+  cues:
+    - Straight line from knees to head
+  mistakes:
+    - hips piking up or sagging
+    - only moving the head
+    - elbows flaring wide
+  contraindications:
+    - shoulder, elbow or wrist pain that is not yet assessed
+    - knee pain when kneeling
+  regression: Go back to the incline push-up.
+  progression: Move on to the full push-up when 12 slow reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: push-up
+  order: 7
+  section: getting-started
+  group: push
+  level: 4
+  name: Push-up
+  equipment:
+    - floor
+  muscles: Chest, front of the shoulders, back of the arms, trunk
+  setup: Hands under your shoulders and a little wider, feet together or hip-width apart, body in one straight line from head to heels.
+  steps:
+    - Lower your chest to the floor with your elbows about 45 degrees from your sides.
+    - Push the floor away until your arms are straight.
+  cues:
+    - Brace the trunk as if bracing for a light punch
+  mistakes:
+    - hips sagging
+    - partial range
+    - elbows flaring wide
+    - head dropping forwards
+  contraindications:
+    - shoulder, elbow or wrist pain that is not yet assessed
+  regression: Go back to the knee push-up.
+  progression: Slow the lowering to 3 seconds, or pause for 1 second at the bottom. This plan stops at the full push-up.
+  painRule: shoulder
+  status: draft
+- id: glute-bridge
+  order: 8
+  section: getting-started
+  group: bridge
+  level: 1
+  name: Glute bridge
+  equipment:
+    - mat or soft floor
+  muscles: Glutes, back of the thighs
+  setup: Lie on your back with your knees bent and your feet flat on the floor, hip-width apart, arms by your sides.
+  steps:
+    - Press through your heels and lift your hips until your shoulders, hips and knees are in a line.
+    - Pause for 1 second without arching your lower back.
+    - Lower slowly.
+  cues:
+    - Ribs down
+    - Push the floor away
+  mistakes:
+    - arching the lower back at the top
+    - pushing through the toes
+    - rushing the lowering
+  contraindications:
+    - back pain that is not yet assessed
+    - repeated hamstring cramping (shorten the range)
+  regression: Lift a smaller height.
+  progression: Move on to the marching bridge when 12 reps with a pause feel easy.
+  painRule: lower-back
+  status: draft
+- id: marching-bridge
+  order: 9
+  section: getting-started
+  group: bridge
+  level: 2
+  name: Marching bridge
+  equipment:
+    - mat or soft floor
+  muscles: Glutes, back of the thighs, trunk
+  setup: Set up in a glute bridge and hold the top position.
+  steps:
+    - Keeping your hips level, lift one foot a few centimetres off the floor and put it back.
+    - Repeat with the other foot. Each lift is one rep for that side.
+  cues:
+    - Do not let the hips tip or drop
+  mistakes:
+    - hips dropping on the lifted side
+    - arching the lower back
+    - rushing
+  contraindications:
+    - back pain that is not yet assessed
+  regression: Go back to the glute bridge.
+  progression: Move on to the single-leg bridge when 12 steady marches on each side feel easy.
+  painRule: lower-back
+  status: draft
+- id: single-leg-bridge
+  order: 10
+  section: getting-started
+  group: bridge
+  level: 3
+  name: Single-leg bridge
+  equipment:
+    - mat or soft floor
+  muscles: Glutes, back of the thighs, trunk
+  setup: Lie on your back with one foot flat on the floor and the other leg held up with the knee bent over your hip.
+  steps:
+    - Press through the heel of the standing foot and lift your hips until your hips and shoulders line up.
+    - Keep your hips level, pause for 1 second, and lower slowly.
+    - Do all reps on one side, then swap.
+  cues:
+    - Level hips
+  mistakes:
+    - hips tilting to one side
+    - arching the lower back
+    - hamstring cramping from rushing
+  contraindications:
+    - back pain that is not yet assessed
+    - repeated hamstring cramping (shorten the range)
+  regression: Go back to the marching bridge.
+  progression: Slow the lowering to 3 seconds. This plan stops at the single-leg bridge.
+  painRule: lower-back
+  status: draft
+- id: wall-hip-hinge
+  order: 11
+  section: getting-started
+  group: hinge
+  level: 1
+  name: Wall hip hinge
+  equipment:
+    - wall
+  muscles: Back of the thighs, glutes, back muscles
+  setup: Stand with your back to a wall, about a foot-length away from it, feet hip-width apart, knees slightly bent.
+  steps:
+    - Keeping your back flat, push your hips back until your buttocks touch the wall.
+    - Let your hands slide down your thighs.
+    - Drive your hips forward to stand tall.
+  cues:
+    - Hips back, not knees forward
+    - Back stays flat
+  mistakes:
+    - rounding the back
+    - bending the knees into a squat
+    - leaning back instead of hinging
+  contraindications:
+    - back pain or sciatica-type leg symptoms that are not yet assessed
+  regression: Use a smaller range of movement.
+  progression: Move on to the bodyweight hip hinge when 12 slow reps feel easy.
+  painRule: lower-back
+  status: draft
+- id: bodyweight-hip-hinge
+  order: 12
+  section: getting-started
+  group: hinge
+  level: 2
+  name: Bodyweight hip hinge
+  equipment:
+    - floor
+  muscles: Back of the thighs, glutes, back muscles
+  setup: Stand with your feet hip-width apart and knees slightly bent. Hold your hands on your thighs or crossed on your chest.
+  steps:
+    - Push your hips back and tip your trunk forwards with a flat back until you feel your hamstrings working.
+    - Drive your hips forward to stand tall.
+  cues:
+    - Think "close a car door with your hips"
+  mistakes:
+    - rounding the back
+    - squatting instead of hinging
+    - going lower than you can control
+  contraindications:
+    - back pain or sciatica-type leg symptoms that are not yet assessed
+  regression: Go back to the wall hip hinge.
+  progression: Slow the lowering to 3 seconds. When 12 clean reps are easy, hold a light backpack against your chest. This plan stops there.
+  painRule: lower-back
+  status: draft
+- id: prone-y-raise
+  order: 13
+  section: getting-started
+  group: pull
+  level: 1
+  name: Prone Y raise
+  equipment:
+    - mat or soft floor
+  muscles: Upper back, back of the shoulders
+  setup: Lie face down with your forehead on a folded towel and your arms overhead in a Y, thumbs pointing up.
+  steps:
+    - Lift your arms a few centimetres off the floor, keeping your neck long.
+    - Pause for 1 second and lower slowly.
+  cues:
+    - Shoulders away from the ears
+  mistakes:
+    - shrugging towards the ears
+    - arching the lower back
+    - lifting the head
+  contraindications:
+    - shoulder or neck pain that is not yet assessed
+  regression: Lift smaller or lift one arm at a time.
+  progression: Move on to the backpack row when 12 smooth reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: backpack-row
+  order: 14
+  section: getting-started
+  group: pull
+  level: 2
+  name: Backpack row
+  equipment:
+    - backpack
+    - sturdy chair or wall
+  muscles: Upper back, lats, front of the arms
+  setup: Put some books in a backpack and zip it. Rest one hand on a chair pushed against a wall, or flat on a wall, and hinge forwards with a flat back. Hold the backpack handle in the other hand, arm hanging.
+  steps:
+    - Pull your elbow towards your hip, as if putting it in a back pocket.
+    - Pause for 1 second and lower slowly.
+    - Do all reps on one side, then swap.
+  cues:
+    - Lead with the elbow
+  mistakes:
+    - twisting the trunk
+    - rounding the back
+    - using a chair that can slide
+  contraindications:
+    - back pain that the hinge position aggravates
+    - shoulder or elbow pain that is not yet assessed
+  regression: Use a lighter backpack, or go back to the prone Y raise.
+  progression: Add weight to the backpack in small steps, or move on to the band row if you have one.
+  painRule: shoulder
+  status: draft
+- id: band-row
+  order: 15
+  section: getting-started
+  group: pull
+  level: 3
+  name: Band row (optional equipment)
+  equipment:
+    - resistance band
+    - secure anchor
+  optional: true
+  muscles: Upper back, lats, front of the arms
+  setup: Check the band for nicks or tears before every session. Anchor it to a secure fixed point, such as a purpose-made door anchor with the door closed and locked, at about chest height. Sit or stand facing the anchor with your arms straight.
+  steps:
+    - Pull your elbows back and slightly down, squeezing your shoulder blades together.
+    - Return slowly with control.
+  cues:
+    - Chest tall, elbows back
+  mistakes:
+    - an anchor that can slip
+    - shrugging
+    - letting the band snap back
+  contraindications:
+    - a damaged band
+    - latex allergy (check the band material)
+    - shoulder or elbow pain that is not yet assessed
+  regression: Use a lighter band or go back to the backpack row.
+  progression: Use a heavier band, or slow the return to 3 seconds. This plan stops there.
+  painRule: shoulder
+  status: draft
+- id: step-up
+  order: 16
+  section: getting-started
+  group: step
+  level: 1
+  name: Low step-up
+  equipment:
+    - sturdy step
+  muscles: Quadriceps, glutes
+  setup: Use a stable, non-slip step about 15 to 20 cm high, such as the bottom stair, with a rail or wall to touch if needed.
+  steps:
+    - Put your whole foot on the step.
+    - Stand up using the front leg, without pushing off the back foot.
+    - Lower slowly. Do all reps on one leg, then swap.
+  cues:
+    - Front foot does the work
+  mistakes:
+    - pushing off the back foot
+    - knee caving inwards
+    - a step that can slip
+  contraindications:
+    - balance problems
+    - knee pain on stairs that is not yet assessed
+  regression: Use a lower step and touch a rail or wall.
+  progression: Use a slightly higher step, or hold a light backpack. This plan stops there.
+  painRule: knee
+  status: draft
+- id: dead-bug
+  order: 17
+  section: getting-started
+  group: dead-bug
+  level: 1
+  name: Dead bug
+  equipment:
+    - mat or soft floor
+  muscles: Abdominals, hip flexors
+  setup: Lie on your back with your hips and knees at 90 degrees and your arms pointing at the ceiling.
+  steps:
+    - Keeping your lower back comfortable on the floor, slowly lower one arm overhead and the opposite leg towards the floor.
+    - Return to the start and swap sides.
+  cues:
+    - Move as slowly as you can control
+  mistakes:
+    - lower back arching off the floor
+    - moving too fast
+    - holding the breath
+  contraindications:
+    - back pain that is not yet assessed
+  regression: Move only the legs, tapping a heel to the floor.
+  progression: Extend the arm and leg further, or slow each rep to 5 seconds. This plan stops there.
+  painRule: lower-back
+  status: draft
+- id: side-plank-knees
+  order: 18
+  section: getting-started
+  group: side-plank
+  level: 1
+  name: Side plank from the knees
+  equipment:
+    - mat or soft floor
+  muscles: Sides of the trunk, outer hip
+  setup: Lie on your side with your elbow directly under your shoulder and your knees bent to 90 degrees.
+  steps:
+    - Lift your hips until your shoulder, hip and knees form one line.
+    - Hold, breathing steadily, then lower.
+    - Do all holds on one side, then swap.
+  cues:
+    - Ribs stacked, hips up
+  mistakes:
+    - hips sagging
+    - rolling the hips back
+    - holding the breath
+  contraindications:
+    - shoulder or back pain that is not yet assessed
+  regression: Shorten the hold or lift the hips only a little.
+  progression: Build to 30 seconds. This plan stops there.
+  painRule: shoulder
+  status: draft
+- id: bird-dog
+  order: 19
+  section: getting-started
+  group: bird-dog
+  level: 1
+  name: Bird dog
+  equipment:
+    - mat or soft floor
+  muscles: Back muscles, glutes, trunk
+  setup: Start on hands and knees with your hands under your shoulders and your knees under your hips.
+  steps:
+    - Brace your trunk and keep your back flat.
+    - Reach one arm forward and the opposite leg straight back to hip height.
+    - Hold for 2 to 5 seconds, return with control, then swap.
+  cues:
+    - Imagine a glass of water on your back
+  mistakes:
+    - hips rotating
+    - arching the lower back
+    - lifting the leg too high
+  contraindications:
+    - wrist or knee pain on hands and knees
+    - back pain that is not yet assessed
+  regression: Lift just an arm or just a leg.
+  progression: Lengthen the hold to 5 seconds. This plan stops there.
+  painRule: lower-back
+  status: draft
+- id: calf-raise
+  order: 20
+  section: getting-started
+  group: calf-raise
+  level: 1
+  name: Calf raise
+  equipment:
+    - wall or chair for balance
+  muscles: Calves
+  setup: Stand with your hands resting on a wall or the back of a chair for balance.
+  steps:
+    - Rise slowly onto the balls of both feet.
+    - Lower slowly under control.
+  cues:
+    - Slow up, slower down
+  mistakes:
+    - bouncing
+    - rushing the lowering
+    - rolling the ankles outwards
+  contraindications:
+    - Achilles or calf pain that is not yet assessed
+  regression: Hold on with both hands or use a smaller range.
+  progression: Rest only a fingertip on the wall, or move to one leg at a time. This plan stops there.
+  painRule: ankle-foot
+  status: draft

@@ -14,7 +14,7 @@ const { program } = Astro.props;
 const d = await loadAll();
 const p = program.data;
 ---
-<Base title={p.name} description={p.summary} accent="p1">
+<Base section="strength" title={p.name} description={p.summary} accent="p1">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Programs', href: url.programs }, { label: p.name }]} />
   <section class="hero page-head">
     <p class="eyebrow">Program</p>

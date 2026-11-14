@@ -2,8 +2,14 @@
 import EvidenceBadge from './EvidenceBadge.astro';
 import { sourceCite, url, type Data } from '../lib/content';
 
-interface Props { claims: string[]; claimById: Data['claimById']; sourceById: Data['sourceById']; heading?: string; }
-const { claims, claimById, sourceById } = Astro.props;
+interface Props {
+  claims: string[];
+  claimById: Data['claimById'];
+  sourceById: Data['sourceById'];
+  /** Where the cited sources are listed. Defaults to the strength sources page; use '' for the same page. */
+  sourcesHref?: string;
+}
+const { claims, claimById, sourceById, sourcesHref = url.sources } = Astro.props;
 const list = claims.map(id => claimById.get(id)).filter(Boolean);
 ---
 <ul class="claims">
@@ -21,7 +27,7 @@ const list = claims.map(id => claimById.get(id)).filter(Boolean);
           Sources:
           {claim!.data.sources.map((ref, i) => {
             const s = sourceById.get(ref.id)!;
-            return <>{i > 0 && '; '} <a href={`${url.sources}#${s.id}`}>{sourceCite(s.data)}</a>{s.data.type === 'preprint' ? ' (preprint)' : ''}</>;
+            return <>{i > 0 && '; '} <a href={`${sourcesHref}#${s.id}`}>{sourceCite(s.data)}</a>{s.data.type === 'preprint' ? ' (preprint)' : ''}</>;
           })}
         </p>
       </article>

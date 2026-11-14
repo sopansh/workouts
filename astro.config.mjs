@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
 
-// `site/` is Astro's static folder: home, core, shared assets and the 404 page are copied to the build output untouched.
+// Static files (images) live in public/ and are copied to the build output untouched. Everything else is an Astro page.
 export default defineConfig({
-  publicDir: './site',
   outDir: './dist',
   trailingSlash: 'always',
   build: { format: 'directory' },

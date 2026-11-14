@@ -1,0 +1,53 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import GettingStartedSafety from '../../../components/GettingStartedSafety.astro';
+import { exercisesInGroup, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('getting-started');
+---
+<Base section="getting-started" title="Progression" description="How to find your starting level, move up, hold or step back, and retest, for the eight-week bodyweight plan.">
+  <Breadcrumbs items={[{ label: 'Getting started', href: '/getting-started/' }, { label: 'Progression' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Progression</p>
+    <h1>Finding your level and moving up</h1>
+    <p class="lede">Instead of adding weight, you move up a ladder. The rules below are cautious planning conventions for beginners, not results from a trial.</p>
+  </section>
+
+  <GettingStartedSafety />
+
+  <section aria-labelledby="placement">
+    <h2 id="placement">Placement test</h2>
+    <p class="prose">Do each test once, on a day you feel normal, after a warm-up. Start on the first level where you can do the test cleanly. If you cannot do the easiest level without pain, skip that pattern and ask a clinician.</p>
+    <div class="table-wrap" role="region" aria-label="Placement tests" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Pattern</th><th scope="col">Test</th><th scope="col">Ladder, easier to harder</th></tr></thead>
+        <tbody>
+          {data.groups.map(group => (
+            <tr>
+              <th scope="row"><a href={`/getting-started/exercises/#group-${group.id}`}>{group.data.title}</a></th>
+              <td>{group.data.test}</td>
+              <td>{exercisesInGroup(data, group.id).map(exercise => exercise.data.name).join(', then ')}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="rules">
+    <h2 id="rules">When to move up, hold or step back</h2>
+    <ul class="prose">
+      <li><b>Move up one level</b> when you reach the top of the rep range on every set with the reps in reserve for that week, and your technique stayed clean on the last rep.</li>
+      <li><b>Add a rep, not a level,</b> while you are still inside the range.</li>
+      <li><b>Hold</b> your level if technique slips, you are unusually sore the next day, or you slept badly.</li>
+      <li><b>Step back one level</b> after illness, a break of more than a couple of weeks, or any pain. If pain does not settle within 2 to 3 weeks, see a clinician.</li>
+      <li><b>Soreness.</b> Muscle soreness in the first week or two is common and eases. Sharp or joint pain is different: use the pain rule.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="retest">
+    <h2 id="retest">After week 8</h2>
+    <p class="prose">Retest each ladder. If you moved up, repeat the eight weeks at the new level. If not, repeat the plan. When the top rung of a ladder feels easy, you are ready for the next step. That is beyond this plan, so consider a coach, or the <a href="/strength/">strength section</a> if you have access to a gym.</p>
+  </section>
+</Base>

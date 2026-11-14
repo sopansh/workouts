@@ -1,0 +1,45 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import GuideExerciseCard from '../../../components/GuideExerciseCard.astro';
+import PainRule from '../../../components/PainRule.astro';
+import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
+import { exercisesInGroup, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('plyometrics');
+const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRule.id))];
+---
+<Base section="plyometrics" title="Exercises" description="Setup, steps, mistakes, contraindications and a regression for every plyometrics, calf and balance exercise.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Exercises' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Exercises</p>
+    <h1>Every exercise</h1>
+    <p class="lede">Each exercise lists what it works, how to set up and perform it, the common mistakes, who should not do it, and an easier regression. Start every jump on the floor.</p>
+    <ul class="chip-list" aria-label="Jump to an exercise">
+      {data.exercises.map(exercise => <li><a class="chip" href={`#${exercise.id}`}>{exercise.data.name}</a></li>)}
+    </ul>
+  </section>
+
+  <PlyometricsSafety />
+
+  {data.groups.map(group => (
+    <section aria-labelledby={`group-${group.id}`}>
+      <h2 id={`group-${group.id}`}>{group.data.title}</h2>
+      <p class="prose">{group.data.summary}</p>
+      <div class="guide-list">
+        {exercisesInGroup(data, group.id).map(exercise => {
+          const pain = data.painById.get(exercise.data.painRule.id)!;
+          return <GuideExerciseCard exercise={exercise} painRuleTitle={pain.data.title} painRuleHref={`#pain-${pain.id}`} />;
+        })}
+      </div>
+    </section>
+  ))}
+
+  <section aria-labelledby="pain">
+    <h2 id="pain">Pain rules</h2>
+    <p class="prose">Stay at 2/10 discomfort or lower, and no worse the next morning. A dull muscle effort in the calves is expected. Sharp, pinching or catching pain in the back, hip, knee, ankle, foot or Achilles means stop the set and use the regression. Do not push through it. Each exercise names the rule for its body area.</p>
+    <div class="cols">
+      {painIds.map(id => <div id={`pain-${id}`}><PainRule rule={data.painById.get(id)!} /></div>)}
+    </div>
+  </section>
+</Base>

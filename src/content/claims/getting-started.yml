@@ -1,0 +1,78 @@
+# Claims for the getting-started section. Statements paraphrase the abstracts of the cited sources.
+- id: guideline-strengthening
+  kind: programming
+  section: getting-started
+  statement: The WHO guidelines recommend regular muscle-strengthening activity for all age groups. The NHS advises adults to do strengthening activities that work all the major muscle groups on at least 2 days a week, and counts exercises that use your own body weight, such as push-ups and sit-ups.
+  grade: D
+  sources:
+    - bull-2020
+    - nhs-adults
+  caveats: Public-health guidelines for health, not a prescription for building a particular amount of muscle. The NHS tells people who have not exercised for some time, or who have a medical condition or concern, to speak to a GP first.
+- id: strengthening-health
+  kind: health
+  section: getting-started
+  statement: In a review of 16 cohort studies, adults who did muscle-strengthening activities had a 10 to 17% lower risk of all-cause mortality, cardiovascular disease, total cancer, diabetes and lung cancer. For all-cause mortality, cardiovascular disease and total cancer the largest reduction (about 10 to 20%) was at roughly 30 to 60 minutes a week; for diabetes the risk fell steeply up to about 60 minutes a week.
+  grade: C
+  sources:
+    - momma-2022
+  caveats: The studies were observational, so this shows an association, not that strengthening caused the lower risk. The association was J-shaped, so more is not clearly better, and some site-specific cancers showed no association.
+- id: sex-similar
+  kind: programming
+  section: getting-started
+  statement: Young to middle-aged men and women gained muscle size and lower-body strength by similar amounts from the same resistance training. Women showed a larger relative gain in upper-body strength. A later review found relative increases in muscle size were similar between the sexes, while absolute upper-body size slightly favoured men.
+  grade: A
+  sources:
+    - roberts-2020
+    - refalo-2025
+  caveats: Healthy adults aged roughly 18 to 45 and mostly short studies. The upper-body strength result varied a lot between studies (I2 about 72%). It shows no need for a separate programme here; it does not tell any one person what they will gain.
+- id: sets
+  kind: programming
+  section: getting-started
+  statement: Across 14 studies, 2 to 3 sets per exercise gave about 46% greater strength gains than 1 set, in both trained and untrained people. Going from 2 to 3 sets up to 4 to 6 sets showed no clear extra gain.
+  grade: A
+  sources:
+    - krieger-2009
+  caveats: A meta-regression of strength outcomes in mostly lifting-based studies, published in 2009. It does not directly cover bodyweight exercises.
+- id: frequency
+  kind: programming
+  section: getting-started
+  statement: Higher training frequencies were linked with greater strength gains, but when total volume was matched there was no significant effect of frequency. Higher frequency mainly lets more volume be done. Most studies were in untrained participants.
+  grade: A
+  sources:
+    - grgic-2018
+  caveats: Mostly studies of moderate quality. It supports two to three sessions a week as a reasonable way to spread the work, not as a proven requirement.
+- id: novice-guideline
+  kind: programming
+  section: getting-started
+  statement: The ACSM position stand recommends 2 to 3 days a week for novices, loads in the 8 to 12 repetition-maximum range, and a 2 to 10% load increase once the current load can be done for one or two repetitions over the target.
+  grade: D
+  sources:
+    - acsm-2009
+  caveats: Written in 2009 for external loads such as weights, so the bodyweight ladders on this site replace a "2 to 10% load increase" with moving up one level.
+- id: pushup-scaling
+  kind: programming
+  section: getting-started
+  statement: In small trials in men, push-ups scaled to a similar load as a bench press gave comparable strength gains. Push-ups with the position adjusted (for example kneeling) to about 40% of a bench press maximum gave similar muscle thickness and strength gains over 8 weeks, and progressive push-up variations improved upper-body strength over 4 weeks.
+  grade: B
+  sources:
+    - kikuchi-2017
+    - calatayud-2015
+    - kotarsky-2018
+  caveats: Three small trials, all men, mostly short (4 to 8 weeks, 18 to 30 people), some moderately or highly trained. They support using position changes to set the load. They do not show the same size of result for women or for complete beginners.
+- id: pushup-load
+  kind: mechanism
+  section: getting-started
+  statement: How much of your body weight the arms support during a push-up depends on body position and on the variant (traditional or knees-down), and the authors suggest the range of motion may need adjusting for beginners.
+  grade: C
+  sources:
+    - suprak-2011
+  caveats: A biomechanics study of static positions in 28 highly strength-trained men. It supports the idea of ladders, not any particular number of reps.
+- id: light-loads
+  kind: programming
+  section: getting-started
+  statement: Light loads taken to failure built similar muscle to heavy loads in untrained men over 4 weeks, but only the heavy load increased strength. In untrained women over 12 weeks, light and heavy loads taken to failure gave similar strength gains.
+  grade: Mixed
+  sources:
+    - jenkins-2016
+    - dinyer-2019
+  caveats: Both trials trained to failure, whereas this plan stops 2 or 3 repetitions short for beginners, so they do not apply directly. Small trials; one tested only the forearm muscles.

@@ -24,7 +24,7 @@ const index = siblings.findIndex(x => x.id === muscle.id);
 const prev = siblings[index - 1];
 const next = siblings[index + 1];
 ---
-<Base title={m.name} description={m.summary} accent={group.data.accent}>
+<Base section="strength" title={m.name} description={m.summary} accent={group.data.accent}>
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Muscles', href: url.muscles }, { label: group.data.name, href: url.group(group.id) }, { label: m.name }]} />
   <section class="hero page-head">
     <p class="eyebrow">{group.data.name}</p>

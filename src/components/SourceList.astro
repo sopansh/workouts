@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { sourceTypeLabel } from '../lib/content';
+
+interface Props {
+  sources: CollectionEntry<'sources'>[];
+  claims: CollectionEntry<'claims'>[];
+  /** Page that lists the claims, so each source can link to the claims that use it. */
+  evidenceHref: string;
+}
+
+const { sources, claims, evidenceHref } = Astro.props;
+const sorted = [...sources].sort((a, b) => a.data.authors.localeCompare(b.data.authors) || a.data.year - b.data.year);
+const claimsFor = (id: string) => claims.filter(c => c.data.sources.some(s => s.id === id));
+---
+<ul class="claims">
+  {sorted.map(s => (
+    <li id={s.id}>
+      <article class="claim">
+        <div class="head">
+          <span class="badge" data-tone={s.data.type === 'preprint' ? 'warn' : 'info'}>{sourceTypeLabel[s.data.type]}</span>
+          {s.data.verifiedOn && <span class="badge" data-tone="good">DOI verified {s.data.verifiedOn}</span>}
+          {!s.data.doi && <span class="badge" data-tone="warn">No DOI</span>}
+        </div>
+        <p><b>{s.data.authors}</b> ({s.data.year}). {s.data.title}. <i>{s.data.venue}</i>.</p>
+        {s.data.doi && <p class="small"><a href={`https://doi.org/${s.data.doi}`} rel="noopener">doi:{s.data.doi}</a></p>}
+        {s.data.url && <p class="small"><a href={s.data.url} rel="noopener">{s.data.url}</a></p>}
+        {s.data.note && <p class="caveat">{s.data.note}</p>}
+        {claimsFor(s.id).length > 0 && (
+          <p class="small muted">Used in: {claimsFor(s.id).map((c, i) => <>{i > 0 && ', '}<a href={`${evidenceHref}#claim-${c.id}`}>{c.id}</a></>)}</p>
+        )}
+      </article>
+    </li>
+  ))}
+</ul>

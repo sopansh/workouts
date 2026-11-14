@@ -6,6 +6,28 @@ import { yamlDir } from './loaders/yaml-dir';
 const status = z.enum(['draft', 'verified', 'expert-reviewed']).default('draft');
 const grade = z.enum(['A', 'B', 'C', 'D', 'Mixed']);
 
+const accent = z.enum(['p1', 'p2', 'p3', 'p4']);
+// Zod defaults skip the reference transform, so the default must already have the shape a resolved reference has.
+const strengthSection = { collection: 'sections' as const, id: 'strength' };
+const link = z.object({ label: z.string(), href: z.string() });
+
+const sections = defineCollection({
+  loader: file('src/content/sections.yml'),
+  schema: z.object({
+    id: z.string(),
+    order: z.number(),
+    title: z.string(),
+    short: z.string(),
+    blurb: z.string(),
+    image: z.string(),
+    accent,
+    status: z.enum(['live', 'soon']),
+    href: z.string().optional(),
+    nav: z.array(link).default([]),
+    footer: z.array(link).default([]),
+  }),
+});
+
 const groups = defineCollection({
   loader: file('src/content/groups.yml'),
   schema: z.object({
@@ -14,7 +36,7 @@ const groups = defineCollection({
     order: z.number(),
     summary: z.string(),
     detail: z.enum(['full', 'overview']),
-    accent: z.enum(['p1', 'p2', 'p3', 'p4']),
+    accent,
     anatomySources: z.array(reference('sources')).default([]),
   }),
 });
@@ -23,7 +45,8 @@ const sources = defineCollection({
   loader: file('src/content/sources.yml'),
   schema: z.object({
     id: z.string(),
-    type: z.enum(['systematic-review', 'meta-analysis', 'rct', 'cohort', 'biomechanics', 'review', 'consensus', 'preprint', 'textbook']),
+    type: z.enum(['systematic-review', 'meta-analysis', 'rct', 'cohort', 'biomechanics', 'review', 'consensus', 'guideline', 'preprint', 'textbook']),
+    section: reference('sections').default(strengthSection),
     authors: z.string(),
     year: z.number(),
     title: z.string(),
@@ -40,7 +63,8 @@ const claims = defineCollection({
   loader: yamlDir('src/content/claims'),
   schema: z.object({
     id: z.string(),
-    kind: z.enum(['emphasis', 'programming', 'mechanism', 'safety', 'nutrition', 'cricket']),
+    kind: z.enum(['emphasis', 'programming', 'mechanism', 'safety', 'health', 'nutrition', 'cricket']),
+    section: reference('sections').default(strengthSection),
     statement: z.string(),
     grade,
     sources: z.array(reference('sources')).min(1),
@@ -127,6 +151,86 @@ const exercises = defineCollection({
   }),
 });
 
+// Guides (getting started, plyometrics): groups of exercises, the exercises themselves, and the plan that schedules them.
+const guideGroups = defineCollection({
+  loader: file('src/content/guides/groups.yml'),
+  schema: z.object({
+    id: z.string(),
+    section: reference('sections'),
+    order: z.number(),
+    title: z.string(),
+    summary: z.string(),
+    /** A ladder runs from easier (level 1) to harder; the person starts at the level a placement test gives them. */
+    ladder: z.boolean().default(false),
+    test: z.string().optional(),
+  }),
+});
+
+const guideExercises = defineCollection({
+  loader: yamlDir('src/content/guides/exercises'),
+  schema: z.object({
+    id: z.string(),
+    section: reference('sections'),
+    /** Position within the page. Collection load order is not guaranteed, so order is explicit. */
+    order: z.number(),
+    group: reference('guideGroups'),
+    level: z.number().int().min(1).optional(),
+    name: z.string(),
+    equipment: z.array(z.string()).min(1),
+    /** Needs kit beyond the no-equipment path. */
+    optional: z.boolean().default(false),
+    muscles: z.string(),
+    /** Fixed dose, for exercises that are not progressed week to week. */
+    dose: z.string().optional(),
+    /** Dose by week range, for exercises that are progressed. */
+    schedule: z.array(z.object({ weeks: z.string(), sets: z.number(), reps: z.number() })).optional(),
+    setup: z.string(),
+    steps: z.array(z.string()).min(1),
+    cues: z.array(z.string()).default([]),
+    mistakes: z.array(z.string()).min(1),
+    contraindications: z.array(z.string()).min(1),
+    regression: z.string(),
+    progression: z.string(),
+    painRule: reference('painRules'),
+    status,
+  }),
+});
+
+const guideItem = z.object({
+  group: reference('guideGroups').optional(),
+  exercise: reference('guideExercises').optional(),
+  reps: z.coerce.string().optional(),
+  note: z.string().optional(),
+});
+
+const guidePlans = defineCollection({
+  loader: file('src/content/guides/plans.yml'),
+  schema: z.object({
+    id: z.string(),
+    section: reference('sections'),
+    name: z.string(),
+    warmup: z.object({ text: z.string(), items: z.array(guideItem).default([]) }),
+    sessions: z.array(z.object({ id: z.string(), title: z.string(), intro: z.string().optional(), items: z.array(guideItem).min(1) })),
+    weeks: z.array(z.object({
+      label: z.string(),
+      sets: z.number().optional(),
+      rir: z.coerce.string().optional(),
+      /** Day name to session id. Days not listed are rest days. */
+      days: z.record(z.string(), z.string()),
+      note: z.string(),
+    })),
+    /** Planning assumptions behind the time estimate; omit when sessions are not timed. */
+    timing: z.object({
+      secondsPerSet: z.number(),
+      restSeconds: z.number(),
+      secondsBetweenExercises: z.number(),
+      warmUpMinutes: z.number(),
+      maxMinutes: z.number(),
+    }).optional(),
+    status,
+  }),
+});
+
 const prescription = z.object({
   exercise: reference('exercises'),
   sets: z.number(),
@@ -192,9 +296,48 @@ const cricket = defineCollection({
   }),
 });
 
+// Core guide: the recovery phases and the exercises, including the poses that drive the 3D figures.
+const point = z.tuple([z.number(), z.number()]);
+const pose = z.object({
+  head: point, shoulder: point, elbow: point, wrist: point, hip: point, knee: point, ankle: point, toe: point,
+  farElbow: point.optional(), farWrist: point.optional(), farKnee: point.optional(), farAnkle: point.optional(), farToe: point.optional(),
+});
+
+const corePhases = defineCollection({
+  loader: file('src/content/core/phases.yml'),
+  schema: z.object({
+    id: z.string(),
+    number: z.number().int(),
+    title: z.string(),
+    duration: z.string().optional(),
+    intro: z.string().optional(),
+    moveOn: z.string(),
+    plan: z.string(),
+  }),
+});
+
+const coreExercises = defineCollection({
+  loader: file('src/content/core/exercises.yml'),
+  schema: z.object({
+    id: z.string(),
+    order: z.number(),
+    phase: z.number().int(),
+    name: z.string(),
+    dose: z.string(),
+    muscles: z.string(),
+    equipment: z.enum(['kettlebell']).optional(),
+    glow: z.array(z.enum(['torso', 'hips'])),
+    cycle: z.number(),
+    spineBend: z.tuple([z.number(), z.number()]).optional(),
+    poses: z.object({ start: pose, end: pose }),
+    steps: z.array(z.string()).min(1),
+    mistakes: z.string(),
+  }),
+});
+
 const glossary = defineCollection({
   loader: file('src/content/glossary.yml'),
   schema: z.object({ id: z.string(), term: z.string(), definition: z.string() }),
 });
 
-export const collections = { groups, sources, claims, painRules, muscles, exercises, programs, principles, cricket, glossary };
+export const collections = { sections, corePhases, coreExercises, guideGroups, guideExercises, guidePlans, groups, sources, claims, painRules, muscles, exercises, programs, principles, cricket, glossary };

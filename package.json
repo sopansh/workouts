@@ -2,13 +2,17 @@
   "name": "workouts",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22.23.4" },
+  "engines": {
+    "node": ">=22.23.4"
+  },
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
     "check:content": "node scripts/check-content.mjs",
+    "check:standards": "node scripts/check-standards.mjs",
+    "check": "npm run check:content && npm run check:standards && node --test tests/paired-muscle-split.test.mjs",
     "verify:sources": "node scripts/verify-sources.mjs",
-    "build": "npm run check:content && astro build",
+    "build": "npm run check:content && npm run check:standards && astro build",
     "preview": "astro preview"
   },
   "dependencies": {

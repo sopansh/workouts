@@ -1,58 +1,64 @@
 ---
-import '../styles/strength.css';
-import { url } from '../lib/content';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/chrome.css';
+import '../styles/app.css';
+import themeInit from '../scripts/theme-init.js?raw';
+import { getSection } from '../lib/sections';
 
 interface Props {
   title: string;
   description: string;
+  /** Section id from sections.yml. Omit for the home page. */
+  section?: string;
   accent?: 'p1' | 'p2' | 'p3' | 'p4';
   noindex?: boolean;
+  /** Show the "draft, not reviewed" notice in the default footer. */
+  draft?: boolean;
 }
 
-const { title, description, accent = 'p2', noindex = false } = Astro.props;
+const { title, description, section: sectionId, noindex = false, draft = true } = Astro.props;
+const section = sectionId ? await getSection(sectionId) : undefined;
+const accent = Astro.props.accent ?? section?.data.accent ?? 'p1';
 const path = Astro.url.pathname;
-
-const nav = [
-  { href: url.principles, label: 'Principles' },
-  { href: url.muscles, label: 'Muscles' },
-  { href: url.exercises, label: 'Exercises' },
-  { href: url.programs, label: 'Programs' },
-  { href: url.weekly(), label: 'Weekly plan' },
-  { href: url.cricket, label: 'Cricket' },
-  { href: url.evidence, label: 'Evidence' },
-];
-const isCurrent = (href: string) => path === href || (href !== url.hub && path.startsWith(href) && !(href === url.programs && path.startsWith(url.weekly())));
+const pageTitle = section ? `${title} · ${section.data.short} · Workouts` : title;
+const hubHref = section?.data.href ?? '/home/';
+// A nav link is current on its own page and on every page below it. The section hub only matches exactly.
+const isCurrent = (href: string) => path.startsWith(href);
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title} · Strength · Workouts</title>
+<title>{pageTitle}</title>
 <meta name="description" content={description}>
 <meta name="color-scheme" content="light dark">
 {noindex && <meta name="robots" content="noindex">}
-<script is:inline src="/shared/js/theme-init.js"></script>
+<script is:inline set:html={themeInit}></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/shared/styles/tokens.css">
-<link rel="stylesheet" href="/shared/styles/base.css">
-<link rel="stylesheet" href="/shared/styles/chrome.css">
+<slot name="head" />
 </head>
 <body data-accent={accent}>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="toolbar">
   <div class="wrap toolbar__inner">
-    <a class="toolbar__brand" href="/home/" aria-label="Back to all workouts">
-      <span aria-hidden="true">←</span><span class="brand-text--wide">Workouts</span>
+    <a class="toolbar__brand" href="/home/" aria-label={section ? 'Back to all workouts' : undefined}>
+      {section && <span aria-hidden="true">←</span>}<span class={section ? 'brand-text--wide' : undefined}>Workouts</span>
     </a>
-    <nav class="toolbar__nav" aria-label="Strength sections">
-      <a href={url.hub} aria-current={path === url.hub ? 'page' : undefined}>Strength</a>
-      {nav.map(item => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
-    </nav>
+    {Astro.slots.has('nav') ? (
+      <slot name="nav" />
+    ) : section && (
+      <nav class="toolbar__nav" aria-label={`${section.data.short} sections`}>
+        <a href={hubHref} aria-current={path === hubHref ? 'page' : undefined}>{section.data.short}</a>
+        {section.data.nav.map(item => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
+      </nav>
+    )}
     <div class="toolbar__controls">
+      <slot name="controls" />
       <button id="theme" class="btn btn--icon" type="button" aria-label="Switch theme">
         <span class="icon" aria-hidden="true">◐</span>
       </button>
@@ -65,16 +71,26 @@ const isCurrent = (href: string) => path === href || (href !== url.hub && path.s
 </main>
 
 <footer class="wrap footer">
-  <p>Draft content: not yet reviewed by a physiotherapist, doctor or strength and conditioning coach. General education, not medical advice. If something hurts, stop and see a qualified professional. <a href={url.evidence}>How claims are graded</a> · <a href={url.sources}>Sources</a> · <a href={url.glossary}>Glossary</a></p>
+  {Astro.slots.has('footer') ? (
+    <slot name="footer" />
+  ) : (
+    <p>
+      {draft && 'Draft content: not yet reviewed by a physiotherapist, doctor or strength and conditioning coach. '}General education, not medical advice. If something hurts, stop and see a qualified professional.
+      {section?.data.footer.map((item, i) => <>{i > 0 ? ' · ' : ' '}<a href={item.href}>{item.label}</a></>)}
+    </p>
+  )}
 </footer>
 
-<script is:inline type="module">
-  import { isDark, onThemeChange, toggleTheme } from '/shared/js/theme.js';
-  const button = document.getElementById('theme');
-  const sync = () => button.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme');
-  button.addEventListener('click', toggleTheme);
-  onThemeChange(sync);
-  sync();
+<script>
+  import { isDark, onThemeChange, toggleTheme } from '../scripts/theme';
+
+  const button = document.querySelector<HTMLButtonElement>('#theme');
+  if (button) {
+    const sync = () => button.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme');
+    button.addEventListener('click', toggleTheme);
+    onThemeChange(sync);
+    sync();
+  }
 </script>
 </body>
 </html>

@@ -1,0 +1,55 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../components/ClaimList.astro';
+import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
+import SourceList from '../../../components/SourceList.astro';
+import { loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('plyometrics');
+---
+<Base section="plyometrics" title="Fascia and tendons" description="What fascia is, what calf and hopping work does and does not show, and the graded sources behind this plan.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Fascia and tendons' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Fascia and tendons</p>
+    <h1>Fascia, calves and tendons</h1>
+    <p class="lede">Fascia is connective tissue, not a separate muscle, so it cannot be trained in isolation. This page says what the plan does for the calves, ankles and feet, and what nobody can honestly promise.</p>
+  </section>
+
+  <PlyometricsSafety />
+
+  <section aria-labelledby="what">
+    <h2 id="what">What fascia is</h2>
+    <p class="prose">Each skeletal muscle is wrapped in layers of connective tissue (epimysium, perimysium and endomysium) that blend into its tendon, and fascia is the connective tissue between the skin and bones. The tension a muscle produces passes through these layers to the tendon. This is a textbook description of structure: see <a href="#openstax-muscle-2022">OpenStax, Anatomy and Physiology 2e, section 10.2</a>. It is not evidence that any exercise changes fascia.</p>
+  </section>
+
+  <section aria-labelledby="does">
+    <h2 id="does">What the plan does</h2>
+    <ul class="prose">
+      <li><b>Starts easy.</b> Bounces and jumps are small, rhythmic and repeated, so the tissue is loaded gradually.</li>
+      <li><b>Builds calf basics.</b> Straight-knee and bent-knee calf raises work the two main calf muscles, and are slow and controlled.</li>
+      <li><b>Adds balance.</b> Single-leg standing loads the ankle and foot stabilisers with no impact.</li>
+    </ul>
+    <p class="prose">These choices are reasonable and cautious. They are not shown to produce a particular fascia adaptation.</p>
+  </section>
+
+  <section aria-labelledby="cannot">
+    <h2 id="cannot">What nobody can promise</h2>
+    <ul class="prose">
+      <li>No source gathered for this plan shows that these exercises change fascia, reduce injury risk or add a particular number of centimetres to a jump.</li>
+      <li>The tendon review measured tendon size and stiffness in healthy adults, not injuries.</li>
+      <li>Stretching ranked low in that review for the outcomes studied. The plan therefore does not rely on stretching for tendon health.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">Evidence and grades</h2>
+    <p class="prose">Grades follow the <a href="/strength/evidence/">strength section's rubric</a>. Both journal sources had their DOIs checked on Crossref (title, year and retraction notices) and their abstracts read. Checking a DOI does not show the claim is perfectly applied here, so the limits are stated with each claim. The starting doses, the two-sessions-a-week layout, the rests and the eight-week progression are cautious planning conventions, not taken from a trial. Nobody has tested this exact program.</p>
+    <ClaimList claims={data.claims.map(claim => claim.id)} claimById={data.claimById} sourceById={data.sourceById} sourcesHref="" />
+  </section>
+
+  <section aria-labelledby="sources">
+    <h2 id="sources">All sources</h2>
+    <SourceList sources={data.sources} claims={data.claims} evidenceHref="/plyometrics/fascia/" />
+  </section>
+</Base>

@@ -19,7 +19,7 @@ const index = pages.findIndex(c => c.id === entry.id);
 const prev = pages[index - 1];
 const next = pages[index + 1];
 ---
-<Base title={entry.data.title} description={entry.data.summary} accent="p3">
+<Base section="strength" title={entry.data.title} description={entry.data.summary} accent="p3">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Cricket', href: url.cricket }, { label: entry.data.title }]} />
   <section class="hero page-head">
     <p class="eyebrow">Cricket · {entry.data.researched ? 'Researched' : 'Stub'}</p>

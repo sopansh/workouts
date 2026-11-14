@@ -24,15 +24,19 @@ export const url = {
 
 export const DEFAULT_PROGRAM = 'push-pull-legs';
 
+/** The strength section's data. Claims and sources are filtered to strength; the by-id maps cover every section. */
 export async function loadAll() {
   const [groups, muscles, exercises, claims, sources, painRules, programs, principles, cricket, glossary] = await Promise.all([
     getCollection('groups'), getCollection('muscles'), getCollection('exercises'), getCollection('claims'), getCollection('sources'),
     getCollection('painRules'), getCollection('programs'), getCollection('principles'), getCollection('cricket'), getCollection('glossary'),
   ]);
   const byId = <T extends { id: string }>(list: T[]) => new Map(list.map(item => [item.id, item]));
+  const inStrength = <T extends { data: { section: { id: string } } }>(list: T[]) => list.filter(item => item.data.section.id === 'strength');
   return {
     groups: groups.sort((a, b) => a.data.order - b.data.order),
-    muscles, exercises, claims, sources, painRules, programs,
+    muscles, exercises, painRules, programs,
+    claims: inStrength(claims),
+    sources: inStrength(sources),
     principles: principles.sort((a, b) => a.data.order - b.data.order),
     cricket: cricket.sort((a, b) => a.data.order - b.data.order),
     glossary: glossary.sort((a, b) => a.data.term.localeCompare(b.data.term)),
@@ -52,6 +56,19 @@ export const gradeLabel: Record<string, string> = {
   C: 'Plausible, not proven to change growth',
   D: 'Practitioner consensus',
   Mixed: 'Contested',
+};
+
+export const sourceTypeLabel: Record<string, string> = {
+  'systematic-review': 'Systematic review',
+  'meta-analysis': 'Meta-analysis',
+  rct: 'Randomised trial',
+  cohort: 'Cohort study',
+  biomechanics: 'Biomechanics / EMG',
+  review: 'Review',
+  consensus: 'Consensus',
+  guideline: 'Guideline',
+  preprint: 'Preprint',
+  textbook: 'Textbook',
 };
 
 export const spinalLabel: Record<string, string> = { none: 'None', low: 'Low', moderate: 'Moderate', high: 'High' };

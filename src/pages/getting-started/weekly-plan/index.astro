@@ -1,0 +1,58 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import GettingStartedSafety from '../../../components/GettingStartedSafety.astro';
+import GuideSession from '../../../components/GuideSession.astro';
+import GuideWeek from '../../../components/GuideWeek.astro';
+import { estimateMinutes, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('getting-started');
+const { plan } = data;
+const timing = plan.data.timing!;
+const rows = (items: typeof plan.data.sessions[number]['items']) => items.map(item => {
+  const group = data.groupById.get(item.group!.id)!;
+  return { label: group.data.title, href: `/getting-started/exercises/#group-${group.id}`, dose: item.reps ?? '', note: item.note };
+});
+---
+<Base section="getting-started" title="Weekly plan" description="An eight-week bodyweight plan: two sessions, the week layout for each week, sets and reps in reserve, with time estimates.">
+  <Breadcrumbs items={[{ label: 'Getting started', href: '/getting-started/' }, { label: 'Weekly plan' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Weekly plan</p>
+    <h1>Eight weeks, session by session</h1>
+    <p class="lede">Two sessions, A and B. Weeks 1 and 2 have two sessions a week, then weeks 3 to 8 have three, with a rest day in between. Each exercise is a ladder, so you do your own level.</p>
+  </section>
+
+  <GettingStartedSafety />
+
+  <section aria-labelledby="before">
+    <h2 id="before">Warm-up, every session</h2>
+    <p class="prose">{plan.data.warmup.text}</p>
+  </section>
+
+  <section aria-labelledby="sessions">
+    <h2 id="sessions">The two sessions</h2>
+    <p class="prose">Rest about 60 seconds between sets. Stop each set with the reps in reserve shown for that week, meaning you could have done that many more clean reps. Use the sets shown for the week. Click an exercise name to see its ladder.</p>
+    {plan.data.sessions.map(session => (
+      <GuideSession
+        id={`session-${session.id}`}
+        title={session.title}
+        intro={`About ${estimateMinutes(plan, session, 2)} to ${estimateMinutes(plan, session, 3)} minutes at 2 to 3 sets, including the warm-up.`}
+        rows={rows(session.items)}
+        doseHeading="Reps"
+      />
+    ))}
+    <p class="muted small">The time estimate allows {timing.secondsPerSet} seconds of work per set, {timing.restSeconds} seconds of rest, {timing.secondsBetweenExercises} seconds to set up each exercise and a {timing.warmUpMinutes}-minute warm-up. It is a planning estimate, not a timed measurement.</p>
+  </section>
+
+  <section aria-labelledby="weeks">
+    <h2 id="weeks">Week by week</h2>
+    <p class="prose">Rest or walk on the days shown as Rest. If you miss a session, do not double up: carry on with the next session, and repeat the week if you missed more than one.</p>
+    {plan.data.weeks.map(week => (
+      <section class="week-block" aria-labelledby={`week-${week.label.replace(/\s+/g, '-').toLowerCase()}`}>
+        <h3 id={`week-${week.label.replace(/\s+/g, '-').toLowerCase()}`}>{week.label}</h3>
+        <p class="muted">{week.sets} sets of each exercise. Stop with {week.rir} reps in reserve. {week.note}</p>
+        <GuideWeek week={week} sessionHref={id => `#session-${id}-title`} />
+      </section>
+    ))}
+  </section>
+</Base>

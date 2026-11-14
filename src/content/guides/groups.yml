@@ -1,0 +1,95 @@
+# Groups of exercises for the guide sections. A ladder runs from easier (level 1) to harder.
+- id: squat
+  section: getting-started
+  order: 1
+  title: Squat
+  summary: Legs and hips. Sit down and stand up under control.
+  ladder: true
+  test: 8 slow reps (3 seconds down), stopping with 2 or 3 more possible.
+- id: push
+  section: getting-started
+  order: 2
+  title: Push
+  summary: Chest, shoulders and the back of the arms. The body position sets the load.
+  ladder: true
+  test: 8 slow reps with the chest reaching the surface, stopping with 2 or 3 more possible.
+- id: bridge
+  section: getting-started
+  order: 3
+  title: Hip extension
+  summary: Glutes and the back of the thighs, lying down with no spinal load.
+  ladder: true
+  test: 8 reps with a 1 second pause at the top, stopping with 2 or 3 more possible.
+- id: hinge
+  section: getting-started
+  order: 4
+  title: Hinge
+  summary: Learning to bend at the hips with a flat back.
+  ladder: true
+  test: 8 slow reps with the back staying flat.
+- id: pull
+  section: getting-started
+  order: 5
+  title: Pull
+  summary: Upper back and the front of the arms. Hardest to do with no equipment, so it starts on the floor.
+  ladder: true
+  test: 8 reps on each side with smooth, quiet control.
+- id: step
+  section: getting-started
+  order: 6
+  title: Step
+  summary: One leg at a time.
+  ladder: true
+  test: 8 reps on each leg without wobbling.
+- id: dead-bug
+  section: getting-started
+  order: 7
+  title: Trunk, front
+  summary: Trunk control while the limbs move.
+  ladder: true
+  test: 6 slow reps on each side with the lower back comfortable.
+- id: side-plank
+  section: getting-started
+  order: 8
+  title: Trunk, side
+  summary: The sides of the trunk and hips.
+  ladder: true
+  test: A 10 second hold on each side, breathing steadily.
+- id: bird-dog
+  section: getting-started
+  order: 9
+  title: Trunk, back
+  summary: Back and hip control on hands and knees.
+  ladder: true
+  test: 6 reps on each side without the hips twisting.
+- id: calf-raise
+  section: getting-started
+  order: 10
+  title: Calves
+  summary: The calf muscles.
+  ladder: true
+  test: 10 slow reps.
+- id: plyo-warmup
+  title: Warm-up
+  summary: Easy and unhurried. If anything hurts during the warm-up, do not continue to the jumps.
+  section: plyometrics
+  order: 1
+  ladder: false
+- id: plyo-jumps
+  title: Jumps
+  summary: Small, rhythmic jumps repeated with patient increases. Everything starts on the floor.
+  section: plyometrics
+  order: 2
+  ladder: false
+- id: plyo-calf
+  title: Calf work
+  summary: Slow, controlled calf raises with the knee straight and bent.
+  section: plyometrics
+  order: 3
+  ladder: false
+- id: plyo-balance
+  title: Balance
+  summary: Single-leg standing, with no impact.
+  section: plyometrics
+  order: 4
+  ladder: false

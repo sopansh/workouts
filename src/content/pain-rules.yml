@@ -57,3 +57,19 @@
     - Pain, numbness or tingling travelling down the arm
     - Dizziness, visual changes or severe headache with neck pain
     - Pain that does not settle within 2 to 3 weeks
+- id: ankle-foot
+  title: Ankle, foot and calf pain rule
+  rule: Stay at 2/10 or lower. A dull effort in the calves is expected. Sharp, pinching or catching pain in the ankle, foot, Achilles or calf, or an Achilles that is stiff and sore the next morning, means stop the set, use the easier version and rest the area until it settles. Do not push through it.
+  seeClinician:
+    - Sudden pop or snap at the back of the ankle, or being unable to rise onto your toes
+    - Visible swelling, bruising or a gap in the Achilles tendon
+    - Numbness or tingling in the foot
+    - Pain that is worse at night, or not improving after 2 to 3 weeks
+- id: jumping
+  title: Jumping pain rule
+  rule: Stay at 2/10 discomfort or lower, and no worse the next morning. Stop a set when landings turn loud or uncontrolled, or if anything feels sharp, pinching or catching in the back, hip, knee, ankle, foot or Achilles. Use the regression for that session and do not add height, speed or box work to push through.
+  seeClinician:
+    - Pain, tingling, weakness or numbness in the legs, or new bladder or bowel changes with back pain (urgent, same day)
+    - A sudden pop or tearing sensation, or a visible deformity
+    - Pain that is worse at night or does not ease with rest
+    - Pain that is not improving after 2 to 3 weeks

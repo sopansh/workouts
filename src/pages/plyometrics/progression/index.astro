@@ -1,0 +1,76 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
+import { loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('plyometrics');
+const jumps = data.exercises.filter(exercise => exercise.data.schedule);
+const weeks = jumps[0].data.schedule!.map(step => step.weeks);
+
+// Foot contacts: landings in a session, summed over the progressed jumps in that session.
+const contacts = (sessionId: string, index: number) => {
+  const session = data.plan.data.sessions.find(s => s.id === sessionId)!;
+  return session.items.reduce((sum, item) => {
+    const step = data.exerciseById.get(item.exercise!.id)!.data.schedule?.[index];
+    return sum + (step ? step.sets * step.reps : 0);
+  }, 0);
+};
+const sessionIds = data.plan.data.sessions.map(session => session.id);
+---
+<Base section="plyometrics" title="Progression" description="The eight-week jump progression, foot contacts per session, and when to hold back. Repeat the eight weeks rather than escalating.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Progression' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Progression</p>
+    <h1>Eight weeks, then repeat</h1>
+    <p class="lede">The plan builds by repetition. Only the jumps change over the eight weeks, and only slightly. Calf raises and balance stay at the same dose throughout.</p>
+  </section>
+
+  <PlyometricsSafety />
+
+  <section aria-labelledby="table">
+    <h2 id="table">The eight weeks</h2>
+    <div class="table-wrap" role="region" aria-label="Eight-week jump progression" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Weeks</th>
+            {jumps.map(jump => <th scope="col">{jump.data.name} (sets × reps)</th>)}
+            {sessionIds.map(id => <th scope="col">Foot contacts, Session {id}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {weeks.map((label, index) => (
+            <tr>
+              <th scope="row">{label}</th>
+              {jumps.map(jump => <td>{jump.data.schedule![index].sets} × {jump.data.schedule![index].reps}</td>)}
+              {sessionIds.map(id => <td>{contacts(id, index)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">Foot contacts are the number of jump landings in a session (sets × reps summed across the jumps shown for that session). Warm-up squat-to-calf-raises, calf raises and balance work are not counted. These are planning conventions, not a validated prescription.</p>
+  </section>
+
+  <section aria-labelledby="move-on">
+    <h2 id="move-on">When to move up, hold or step back</h2>
+    <ul class="prose">
+      <li><b>Move up</b> to the next row only if landings stayed quiet and controlled throughout, and you felt comfortable during and the day after both sessions.</li>
+      <li><b>Hold</b> the current row for another week if landings got noisy, you were unusually sore or tired the next day, or you missed a session.</li>
+      <li><b>Step back</b> a row, or return to the regression, after illness, a break of more than a couple of weeks, or any pain. If pain does not settle within 2 to 3 weeks, see a clinician.</li>
+      <li><b>After week 8</b> do not add more. Repeat weeks 5 to 8, or take an easier week, and keep the landings clean. The aim here is repetition, not escalation.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="box">
+    <h2 id="box">The box</h2>
+    <p class="prose">Your box can be set at roughly 50, 60 or 70 cm. Those heights are high for learning, so this plan does not use it, and nothing in the eight weeks depends on it. It is optional.</p>
+    <ul class="prose">
+      <li>Consider it only after the floor jumps feel comfortable and controlled for several weeks, and ideally after a coach or physiotherapist has seen you jump.</li>
+      <li>Check the box is stable in the chosen orientation and that you have clear, non-slip space to land on.</li>
+      <li>Use it only as a place to step onto and step down from. Do not jump down off it, and do not do depth jumps.</li>
+      <li>Treat any box work as a separate decision with its own review. This plan gives no box prescription.</li>
+    </ul>
+  </section>
+</Base>

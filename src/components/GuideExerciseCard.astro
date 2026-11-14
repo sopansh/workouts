@@ -1,0 +1,45 @@
+---
+import { doseText, sentenceCase, type GuideExercise } from '../lib/guide';
+
+interface Props {
+  exercise: GuideExercise;
+  painRuleTitle: string;
+  /** Pain rules are listed once at the foot of the page; cards link to them. */
+  painRuleHref: string;
+  heading?: string;
+}
+
+const { exercise, painRuleTitle, painRuleHref, heading } = Astro.props;
+const e = exercise.data;
+const dose = doseText(exercise);
+---
+<article class="guide-card" id={exercise.id}>
+  <h4>{heading ?? e.name}</h4>
+  <ul class="chip-list">
+    {e.equipment.map(item => <li><span class="chip" data-tone={e.optional ? 'warn' : undefined}>{item}</span></li>)}
+  </ul>
+  <dl class="facts">
+    <dt>Works</dt><dd>{e.muscles}</dd>
+    {dose && <><dt>Dose</dt><dd>{dose}</dd></>}
+    <dt>Setup</dt><dd>{e.setup}</dd>
+  </dl>
+  <ol class="steps steps--numbered">{e.steps.map(step => <li>{step}</li>)}</ol>
+  {e.cues.length > 0 && <p><span class="label">Cues</span> {e.cues.join(' · ')}</p>}
+  <div class="cols guide-card__safety">
+    <div>
+      <p class="label label--warn">Common mistakes</p>
+      <ul class="prose">{e.mistakes.map(item => <li>{sentenceCase(item)}</li>)}</ul>
+    </div>
+    <div>
+      <p class="label label--warn">Do not do this if</p>
+      <ul class="prose">{e.contraindications.map(item => <li>{sentenceCase(item)}</li>)}</ul>
+    </div>
+    <div>
+      <p class="label">Easier</p>
+      <p>{e.regression}</p>
+      <p class="label">Harder</p>
+      <p>{e.progression}</p>
+    </div>
+  </div>
+  <p class="small muted">Pain rule: <a href={painRuleHref}>{painRuleTitle}</a></p>
+</article>

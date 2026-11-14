@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadSections } from '../../lib/sections';
+import '../../styles/home.css';
+
+const sections = await loadSections();
+---
+<Base title="Workouts" description="Guides for building strength, power and resilience: strength and hypertrophy, getting started, calisthenics, plyometrics, isometrics and core, health and nutrition." draft={false}>
+  <section class="hero">
+    <p class="eyebrow">Training library</p>
+    <h1>Pick a section</h1>
+    <p class="lede">Guides for building strength, power and resilience. Choose where you want to start.</p>
+  </section>
+
+  <ul class="tiles" aria-label="Workout sections">
+    {sections.map(({ data }) => {
+      const live = data.status === 'live';
+      const Tag = live ? 'a' : 'div';
+      return (
+        <li>
+          <Tag class={live ? 'tile' : 'tile is-soon'} href={live ? data.href : undefined} data-accent={data.accent}>
+            <img class="tile__img" src={data.image} alt="" width="640" height="400" loading="lazy" />
+            <div class="tile__body">
+              <h2 class="tile__title">{data.title}</h2>
+              <p class="tile__blurb">{data.blurb}</p>
+              {live ? <span class="tile__cta">Open guide →</span> : <span class="tile__badge">Coming soon</span>}
+            </div>
+          </Tag>
+        </li>
+      );
+    })}
+  </ul>
+</Base>

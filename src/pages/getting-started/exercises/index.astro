@@ -1,0 +1,53 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import GettingStartedSafety from '../../../components/GettingStartedSafety.astro';
+import GuideExerciseCard from '../../../components/GuideExerciseCard.astro';
+import PainRule from '../../../components/PainRule.astro';
+import { exercisesInGroup, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('getting-started');
+const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRule.id))];
+---
+<Base section="getting-started" title="Exercises" description="Every exercise as a ladder from easier to harder, with setup, steps, mistakes, contraindications and an easier and harder version.">
+  <Breadcrumbs items={[{ label: 'Getting started', href: '/getting-started/' }, { label: 'Exercises' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Exercises</p>
+    <h1>Every exercise, as a ladder</h1>
+    <p class="lede">Each movement has levels from easier to harder. Find your level with the placement test, then use the setup, steps, common mistakes and the safety notes for that exercise.</p>
+    <ul class="chip-list" aria-label="Jump to a movement">
+      {data.groups.map(group => <li><a class="chip" href={`#group-${group.id}`}>{group.data.title}</a></li>)}
+    </ul>
+  </section>
+
+  <GettingStartedSafety />
+
+  {data.groups.map(group => (
+    <section aria-labelledby={`group-${group.id}`}>
+      <h2 id={`group-${group.id}`}>{group.data.title}</h2>
+      <p class="prose">{group.data.summary}</p>
+      <p class="prose"><b>Placement test.</b> {group.data.test} Start on the first level where you can do this cleanly.</p>
+      <div class="guide-list">
+        {exercisesInGroup(data, group.id).map(exercise => {
+          const pain = data.painById.get(exercise.data.painRule.id)!;
+          return (
+            <GuideExerciseCard
+              exercise={exercise}
+              heading={`Level ${exercise.data.level}: ${exercise.data.name}`}
+              painRuleTitle={pain.data.title}
+              painRuleHref={`#pain-${pain.id}`}
+            />
+          );
+        })}
+      </div>
+    </section>
+  ))}
+
+  <section aria-labelledby="pain">
+    <h2 id="pain">Pain rules</h2>
+    <p class="prose">A dull muscle effort is expected. Stay at 2 out of 10 discomfort or lower, and no worse the next morning. Sharp, pinching, catching or joint pain means stop the set and use the easier version. Do not push through it. Each exercise names the rule for its body area.</p>
+    <div class="cols">
+      {painIds.map(id => <div id={`pain-${id}`}><PainRule rule={data.painById.get(id)!} /></div>)}
+    </div>
+  </section>
+</Base>

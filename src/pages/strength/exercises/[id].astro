@@ -28,7 +28,7 @@ const index = siblings.findIndex(x => x.id === exercise.id);
 const prev = siblings[index - 1];
 const next = siblings[index + 1];
 ---
-<Base title={e.name} description={e.summary} accent={group.data.accent}>
+<Base section="strength" title={e.name} description={e.summary} accent={group.data.accent}>
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Exercises', href: url.exercises }, { label: e.name }]} />
   <section class="hero page-head">
     <p class="eyebrow">{group.data.name} · {e.pattern.replace(/-/g, ' ')}</p>

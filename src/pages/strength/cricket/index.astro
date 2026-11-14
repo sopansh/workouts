@@ -11,7 +11,7 @@ const overview = d.cricket.find(c => c.id === 'overview')!;
 const pages = d.cricket.filter(c => c.id !== 'overview');
 const { Content } = await render(overview);
 ---
-<Base title="Cricket" description="The cricket strength track: role pages and the evidence found so far. Stubs with no prescriptions until they are sourced." accent="p3">
+<Base section="strength" title="Cricket" description="The cricket strength track: role pages and the evidence found so far. Stubs with no prescriptions until they are sourced." accent="p3">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Cricket' }]} />
   <section class="hero page-head">
     <p class="eyebrow">Cricket</p>

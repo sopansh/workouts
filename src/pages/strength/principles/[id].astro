@@ -20,7 +20,7 @@ const index = d.principles.findIndex(p => p.id === entry.id);
 const prev = d.principles[index - 1];
 const next = d.principles[index + 1];
 ---
-<Base title={entry.data.title} description={entry.data.summary} accent="p2">
+<Base section="strength" title={entry.data.title} description={entry.data.summary} accent="p2">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Principles', href: url.principles }, { label: entry.data.title }]} />
   <section class="hero page-head">
     <p class="eyebrow">Principle</p>

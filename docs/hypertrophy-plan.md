@@ -93,7 +93,7 @@ mobility) is a copy of the pattern.
 - **`/core/` stays where it is.** It is the existing, working isometrics core guide. A future `/isometrics/` hub would list it
   alongside other isometric content rather than move it, so existing links never break. If you prefer a single
   `/isometrics/core/`, we add a redirect. This is an open question in section 14.
-- Section hubs are listed in `site/home/js/sections.js`; flipping a tile from `soon` to `live` is a one-line change.
+- Section hubs are listed in `src/content/sections.yml`; flipping a tile from `soon` to `live` is a one-line change.
 
 ---
 
@@ -344,7 +344,7 @@ nothing live breaks. **Decision gate in Phase 0**, needs your confirmation, beca
 
 - **Search:** build-time index (e.g. Pagefind), no server.
 - **Filtering** on the exercise index: by muscle, equipment, level, back-safe, cricket relevance.
-- **Shared design system:** already extracted (`site/shared/`): tokens, chrome, theme, DOM helper. New sections reuse it.
+- **Shared design system:** `src/styles/` (tokens, base, chrome, `app.css`), `src/scripts/theme.ts` and the shared Astro components. New sections reuse it through the one `Base` layout.
 - **No tracking/analytics** unless you ask for it. No accounts.
 - **Accessibility:** target WCAG 2.2 AA (contrast, keyboard operation, reduced motion, text alternatives for every diagram).
 - **Performance budget:** pages under ~100 KB excluding images; 3D only on pages that need it.

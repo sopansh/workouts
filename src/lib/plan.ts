@@ -105,3 +105,16 @@ export function formatRest(seconds: number): string {
   const minutes = seconds / 60;
   return `${Number.isInteger(minutes) ? minutes : minutes.toFixed(1)} min`;
 }
+
+export interface GuideTiming {
+  secondsPerSet: number;
+  restSeconds: number;
+  secondsBetweenExercises: number;
+  warmUpMinutes: number;
+}
+
+/** Estimated minutes for a guide session: set up each exercise, do the sets with their rests, plus the warm-up. */
+export function guideSessionMinutes(timing: GuideTiming, exerciseCount: number, sets: number): number {
+  const seconds = exerciseCount * timing.secondsBetweenExercises + exerciseCount * sets * (timing.secondsPerSet + timing.restSeconds);
+  return Math.round(seconds / 60 + timing.warmUpMinutes);
+}

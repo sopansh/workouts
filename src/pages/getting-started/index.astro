@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import GettingStartedSafety from '../../components/GettingStartedSafety.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import { exercisesInGroup, loadGuide } from '../../lib/guide';
+
+const data = await loadGuide('getting-started');
+---
+<Base section="getting-started" title="Overview" description="Start strength training at home with bodyweight exercises, for men and women, with an eight-week plan, ladders from easier to harder and graded evidence. Draft.">
+  <section class="hero page-head">
+    <p class="eyebrow">Getting started with strength</p>
+    <h1>Start strength training at home</h1>
+    <p class="lede">An eight-week beginner plan that needs no equipment. Each movement is a ladder from easier to harder, so you start where you are and move up one step at a time. It is the same plan for men and women.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">2 to 3 sessions a week</span>
+      <span class="badge">About 30 to 40 min</span>
+      <span class="badge">8 weeks</span>
+      <span class="badge">No equipment needed</span>
+      <StatusBadge status={data.plan.data.status} />
+    </div>
+  </section>
+
+  <GettingStartedSafety />
+
+  <section aria-labelledby="start">
+    <h2 id="start">How to begin</h2>
+    <ol class="steps prose">
+      <li>Read the safety note above, and check with a GP first if it applies to you.</li>
+      <li>On the <a href="/getting-started/progression/">progression page</a>, do the placement test for each movement to find your starting level.</li>
+      <li>Follow the <a href="/getting-started/weekly-plan/">weekly plan</a>, week by week and session by session.</li>
+      <li>Use the <a href="/getting-started/exercises/">exercise pages</a> for setup, steps, mistakes and an easier version of each exercise.</li>
+      <li>Retest in week 8, then repeat the plan or move up a level on any ladder that feels easy.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="why">
+    <h2 id="why">What it is based on</h2>
+    <p class="prose">Guidelines recommend regular muscle-strengthening activity for adults, on at least 2 days a week for all the major muscle groups, and they count bodyweight exercises. For a beginner, 2 to 3 sessions a week and 2 to 3 sets of each exercise are reasonable starting points. Small trials show that changing the body position of a push-up can set the load. Each claim has a grade and its limits on the <a href="/getting-started/evidence/">evidence page</a>. The weekly layout and the progression rules are cautious planning conventions, not trial results.</p>
+  </section>
+
+  <section aria-labelledby="equipment">
+    <h2 id="equipment">Equipment</h2>
+    <ul class="prose">
+      <li><b>No equipment needed:</b> a wall, a sturdy chair, a mat or soft floor, a low step such as the bottom stair, and a backpack with some books in it.</li>
+      <li><b>Optional:</b> a resistance band with a secure anchor, for the band row. Check the band for damage before every session, and use an anchor that cannot slip. The plan has a no-equipment alternative for everything.</li>
+      <li><b>Use only stable surfaces.</b> Lean on any chair, table or counter to check it cannot slide or tip before you use it.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="sexes">
+    <h2 id="sexes">Men and women</h2>
+    <p class="prose">There is one plan. In the studies reviewed, young and middle-aged men and women gained muscle and lower-body strength by similar amounts from the same training, and women showed a larger relative gain in upper-body strength. This is an average across studies, it was found in healthy adults mostly aged under 45, and it does not predict what any one person will gain. See <a href="/getting-started/evidence/#claim-sex-similar">the claim and its limits</a>.</p>
+  </section>
+
+  <section aria-labelledby="ladders">
+    <h2 id="ladders">The ladders</h2>
+    <p class="prose">Each pattern has levels from easier to harder. The plan names a pattern, and you do your level.</p>
+    <ul class="grid">
+      {data.groups.map(group => (
+        <li>
+          <div class="card" data-accent="p1">
+            <h3><a href={`/getting-started/exercises/#group-${group.id}`}>{group.data.title}</a></h3>
+            <p>{group.data.summary}</p>
+            <ol class="small">
+              {exercisesInGroup(data, group.id).map(exercise => (
+                <li><a href={`/getting-started/exercises/#${exercise.id}`}>{exercise.data.name}</a></li>
+              ))}
+            </ol>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="not">
+    <h2 id="not">What this does not do</h2>
+    <ul class="prose">
+      <li>It is not a personal prescription, and it has not been reviewed by a physiotherapist or a strength coach.</li>
+      <li>It does not make promises about weight loss, toning or the shape of any body part.</li>
+      <li>It does not cover aerobic exercise. The guidelines also recommend regular aerobic activity, which is separate from this plan.</li>
+      <li>It does not cover pregnancy, under-18s, older adults with frailty, or people with a medical condition or injury.</li>
+    </ul>
+  </section>
+</Base>

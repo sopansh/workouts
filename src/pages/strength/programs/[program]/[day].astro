@@ -23,7 +23,7 @@ const prev = days[index - 1];
 const next = days[index + 1];
 const name = (id: string) => d.exerciseById.get(id)!;
 ---
-<Base title={`${day.name} · ${program.data.name}`} description={day.intro} accent="p1">
+<Base section="strength" title={`${day.name} · ${program.data.name}`} description={day.intro} accent="p1">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Programs', href: url.programs }, { label: program.data.name, href: url.program(program.id) }, { label: day.name }]} />
   <section class="hero page-head">
     <p class="eyebrow">{scheduled ? `${scheduled} · ` : ''}{program.data.name}</p>

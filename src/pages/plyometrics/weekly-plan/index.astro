@@ -1,0 +1,45 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import GuideSession from '../../../components/GuideSession.astro';
+import GuideWeek from '../../../components/GuideWeek.astro';
+import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
+import { doseText, loadGuide, type GuideItem } from '../../../lib/guide';
+
+const data = await loadGuide('plyometrics');
+const { plan } = data;
+const rows = (items: GuideItem[]) => items.map(item => {
+  const exercise = data.exerciseById.get(item.exercise!.id)!;
+  return { label: exercise.data.name, href: `/plyometrics/exercises/#${exercise.id}`, dose: doseText(exercise), note: exercise.data.muscles };
+});
+---
+<Base section="plyometrics" title="Weekly plan" description="An example week of two plyometric sessions, with the shared warm-up and each session laid out.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Weekly plan' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Weekly plan</p>
+    <h1>Two sessions, repeated</h1>
+    <p class="lede">Session A is vertical power and Session B is lateral control. Both share the same warm-up, calf work and balance work. Leave at least 48 hours between them.</p>
+  </section>
+
+  <PlyometricsSafety />
+
+  <section aria-labelledby="glance">
+    <h2 id="glance">An example week</h2>
+    <p class="prose">{plan.data.weeks[0].note}</p>
+    <GuideWeek week={plan.data.weeks[0]} label="Example week" sessionHref={id => `#session-${id}-title`} />
+  </section>
+
+  <section aria-labelledby="sessions">
+    <h2 id="sessions">The sessions</h2>
+    <p class="prose">Rest roughly 60 to 90 seconds between jump sets, longer if you need it. Stop a set when landings become noisy, uncontrolled or painful. Doses below are the starting point for weeks 1 and 2; the <a href="/plyometrics/progression/">progression page</a> shows how they change. Each exercise links to its full instructions.</p>
+    <GuideSession id="warmup" title="Warm-up for both sessions (about 8 minutes)" intro={plan.data.warmup.text} rows={rows(plan.data.warmup.items)} doseHeading="Dose" noteHeading="Works" />
+    {plan.data.sessions.map(session => (
+      <GuideSession id={`session-${session.id}`} title={session.title} intro={session.intro} rows={rows(session.items)} doseHeading="Starting dose" noteHeading="Works" />
+    ))}
+  </section>
+
+  <section aria-labelledby="time">
+    <h2 id="time">Time</h2>
+    <p class="prose">The warm-up takes about 8 minutes. The jump and calf work follows, with the rest between sets, and fits comfortably in 30 to 40 minutes at the starting doses. This is an estimate from the listed sets and rests, not a timed measurement.</p>
+  </section>
+</Base>

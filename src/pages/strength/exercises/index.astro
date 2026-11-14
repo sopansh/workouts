@@ -9,7 +9,7 @@ const equipment = [...new Set(d.exercises.flatMap(e => e.data.equipment))].sort(
 const musclesUsed = d.muscles.filter(m => d.exercises.some(e => e.data.primary.some(r => r.id === m.id))).sort((a, b) => a.data.name.localeCompare(b.data.name));
 const exercises = [...d.exercises].sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
-<Base title="Exercises" description="Every exercise with setup, execution, common errors, contraindications, regression, progression and a pain rule. Filter by muscle, equipment, level and spinal load." accent="p3">
+<Base section="strength" title="Exercises" description="Every exercise with setup, execution, common errors, contraindications, regression, progression and a pain rule. Filter by muscle, equipment, level and spinal load." accent="p3">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Exercises' }]} />
   <section class="hero page-head">
     <p class="eyebrow">Exercises</p>

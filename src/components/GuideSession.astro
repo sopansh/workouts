@@ -1,0 +1,37 @@
+---
+interface Row {
+  label: string;
+  href: string;
+  dose: string;
+  note?: string;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  intro?: string;
+  rows: Row[];
+  doseHeading?: string;
+  noteHeading?: string;
+}
+
+const { id, title, intro, rows, doseHeading = 'Dose', noteHeading = 'Notes' } = Astro.props;
+---
+<section class="session" aria-labelledby={`${id}-title`}>
+  <h3 id={`${id}-title`}>{title}</h3>
+  {intro && <p class="muted">{intro}</p>}
+  <div class="table-wrap" role="region" aria-label={`${title}: exercises`} tabindex="0">
+    <table>
+      <thead><tr><th scope="col">Exercise</th><th scope="col">{doseHeading}</th><th scope="col">{noteHeading}</th></tr></thead>
+      <tbody>
+        {rows.map(row => (
+          <tr>
+            <th scope="row"><a href={row.href}>{row.label}</a></th>
+            <td>{row.dose}</td>
+            <td>{row.note ?? ''}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
