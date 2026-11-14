@@ -21,10 +21,11 @@ export const sections = [
   {
     id: 'plyometrics',
     title: 'Plyometrics',
-    blurb: 'Jumps, bounds and throws that build explosive power and reactive strength.',
+    blurb: 'A basic, repeatable two-session jump plan with calf and ankle work. A draft for later, once cleared to jump.',
     image: '/assets/img/plyometrics.svg',
     accent: 'p3',
-    status: 'soon',
+    status: 'live',
+    href: '/plyometrics/',
   },
   {
     id: 'isometrics',

@@ -26,7 +26,7 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | Shared design system (`site/shared/`) | **Done** |
 | Custom 404 page | **Done** |
 | `/strength/` Strength / Hypertrophy | **Built as drafts** (Astro, plan phases 1 to 3 and 7 in skeleton form): weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups. See section 3a |
-| `/plyometrics/` | Not started (tile "Coming soon") |
+| `/plyometrics/` | **Built as a draft** (plain HTML and ES modules): overview, weekly plan, exercises, progression, fascia and tendons. Personal two-session plan to follow later, once cleared to jump. See section 3b |
 | `/nutrition/` Health & Nutrition | Not started (tile "Coming soon"). Out of scope for the current plan |
 | Cricket-specific tracks (in strength, plyometrics, isometrics) | Planned only (plan section 12) |
 | Content validation | `npm run check:content` (runs before every build) and `npm run verify:sources` (Crossref). No CI yet |
@@ -109,6 +109,24 @@ User-provided context: 10+ years training, with beginner options limited to squa
 gym access, training days, session length and lower-back recovery are unconfirmed assumptions, not a personalised prescription.
 The paired-muscle split uses five days and a 90-minute planning allowance as examples.
 
+## 3b. The plyometrics section (plain modules)
+
+```
+site/plyometrics/
+  index.html  weekly-plan/  exercises/  progression/  fascia/     one HTML shell per page (empty slots, no content)
+  js/data/exercises.js  sessions.js  evidence.js                  DATA: edit these, not the pages
+  js/ui/render.js          cards, tables, evidence list (built with h())
+  js/layout.js             toolbar, safety callout (#safety slot), footer
+  js/pages/*.js            one small entry per page
+  styles/plyometrics.css   tokens only
+```
+
+Personal plan: two sessions a week (A vertical power, B lateral), repeated for eight weeks, floor first. Written to start only
+after a doctor or physiotherapist clears jumping (the owner has current back pain; the repo is public, so no health details
+are published). The box is optional and unprescribed. `exercises.js` `progression` drives both the cards and the table.
+Test: `node --test tests/plyometrics.test.mjs`. Fascia is described as connective tissue; no source shows these exercises
+change it, and the page says so. Hosted pages need the `index.html` path locally: use `npm run build && npm run preview`.
+
 ## 4. Architecture and the reasoning behind it
 
 - **Content is data.** Pages are rendered from JS data modules (`sections.js`, `exercises.js`, `phases.js`). Add an entry
@@ -151,6 +169,7 @@ Needs Node 22.23.4 or newer (Astro 7). Notes:
 
 - **Content validator:** `npm run check:content` (also the first step of `npm run build`). Add `-- --report` to print weekly
   sets per muscle, spacing, time and spinal load for each program: use it when changing `programs.yml`.
+- **Plyometrics data:** `node --test tests/plyometrics.test.mjs` checks safety fields, session references, progressions and sources.
 - **Paired split coverage:** `node --test tests/paired-muscle-split.test.mjs` checks major muscles and the two leg sessions.
 - **Sources:** `npm run verify:sources` re-checks every DOI against Crossref; `-- --write` stamps `verifiedOn`. A new source
   must be looked up (Crossref / PubMed / Europe PMC) and read before any claim is written from it. Never cite from memory.
