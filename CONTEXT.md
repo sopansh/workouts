@@ -30,14 +30,14 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | `/calisthenics/` | **Planned only**, home tile "Coming soon". See the plan doc |
 | `/nutrition/` Health & Nutrition | Not started (tile "Coming soon") |
 | Cricket-specific tracks | Stubs in `/strength/cricket/`; planned for plyometrics and isometrics (hypertrophy plan section 12) |
-| Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). No CI yet |
+| Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). No CI yet. `npm run test:e2e` runs the browser tests |
 
 ## 3. Repo layout
 
 ```
 astro.config.mjs             static output, trailingSlash always, directory format, strength redirect
 netlify.toml                 build = npm run build, publish dir = dist/, redirect / -> /home/ (302)
-package.json                 astro + yaml; scripts: dev, build, preview, check, check:content, check:standards, verify:sources
+package.json                 astro + yaml (+ @playwright/test, dev only); scripts: dev, build, preview, check, check:content, check:standards, verify:sources, test:e2e
 .editorconfig                2 spaces, LF, final newline, no trailing whitespace
 public/assets/img/           tile illustrations (SVG). The only static files; Astro copies them to dist/ untouched
 docs/                        plans (NOT published)
@@ -45,7 +45,7 @@ scripts/
   check-content.mjs          build-time content validator (see section 6)
   check-standards.mjs        build-time coding-standards check (see section 11)
   verify-sources.mjs         Crossref DOI / title / year / retraction check
-tests/                       node --test files for logic that is not a data rule (paired-split muscle coverage)
+tests/                       node --test files for logic that is not a data rule; tests/e2e/ holds the Playwright suite
 src/
   content.config.ts          Zod schemas for every collection. The shape-and-reference validator
   content/                   ALL CONTENT. Edit these, not pages (see 3a)
@@ -146,9 +146,12 @@ Needs Node 22.23.4 or newer (Astro 7); Netlify uses Node 24. Notes:
 - **Regression check for refactors:** build the previous commit in a `git worktree`, then compare each page's title, description
   and visible body text between the two `dist/` folders. This caught a section default that silently emptied three pages.
 - **Link check:** a crawl of `dist/` resolves every internal link, asset and `#anchor` (165 pages, about 5,000 links at last run).
-- **Browser smoke test:** no console errors or failed requests; home -> a section -> back; theme persists across pages; mobile
-  (390 px) has no horizontal overflow.
-- **Browser-test gotchas:** a hidden tab (as in this editor) never runs animation frames, so coordinate clicks can wait forever on
+- **Browser tests (Playwright):** `npm run test:e2e` builds, then runs `tests/e2e/*.spec.ts` in desktop and mobile Chromium against
+  `astro preview` on port 4322 (`test:e2e:fast` skips the build). One-off setup: `npx playwright install chromium`. It covers every
+  built page (loads, one `h1`, no horizontal scroll), redirects, home tiles and back, skip link, theme persistence, the exercise
+  filters, the plyometrics section, and `/core/` (figure drawn, animates, pause/resume, speed, arrow-key rotation, reduced motion).
+  Any console error, exception or 4xx/5xx fails the test (`fixtures.ts`). New pages are picked up from `dist/` automatically.
+- **Ad-hoc browser gotchas:** a hidden tab (as in this editor) never runs animation frames, so coordinate clicks can wait forever on
   "stable" and the 3D loop never draws. Click through the DOM (`element.click()`), and test the rig by importing the built
   `Stage` and `Figure` chunks and rendering a frame by hand. Screenshots can return a stale frame: reload and re-capture.
   Playwright's `emulateMedia({ reducedMotion })` persists on the page across navigations.

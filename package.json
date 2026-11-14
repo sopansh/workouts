@@ -13,10 +13,15 @@
     "check": "npm run check:content && npm run check:standards && node --test tests/paired-muscle-split.test.mjs",
     "verify:sources": "node scripts/verify-sources.mjs",
     "build": "npm run check:content && npm run check:standards && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:fast": "playwright test"
   },
   "dependencies": {
     "astro": "^7.4.12",
     "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
   }
 }

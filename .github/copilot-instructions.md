@@ -4,7 +4,7 @@ Static training-guide site at workouts.theroningamer.com. **Read `CONTEXT.md` (a
 `docs/hypertrophy-plan.md` (roadmap) before making changes.**
 
 ## Always
-- **One stack: Astro.** Every page in every section is an Astro page under `src/pages/<section>/`, rendered with the one layout `src/layouts/Base.astro` (pass `section="<id>"`). Don't add a plain-HTML section, a dependency or a bundler without asking.
+- **One stack: Astro.** Every page in every section is an Astro page under `src/pages/<section>/`, rendered with the one layout `src/layouts/Base.astro` (pass `section="<id>"`). Don't add a plain-HTML section, a dependency or a bundler without asking (Playwright is the one approved dev dependency).
 - Netlify builds with `npm run build` (content check, standards check, then Astro) and publishes `dist/`. Static files are only the images in `public/assets/img/`.
 - Content is data: edit `src/content/**` (strength, guides, core, sections, sources, claims); don't hand-edit rendered markup. Anything shown in a sequence has an explicit `order`. See `CONTEXT.md` sections 3a and 8.
 - Shared styles live in `src/styles/app.css`; only home and core have their own stylesheet. Colours come from `src/styles/tokens.css` (a token change must be made in **all three** theme blocks). No colour literals elsewhere.
@@ -20,7 +20,7 @@ Static training-guide site at workouts.theroningamer.com. **Read `CONTEXT.md` (a
 - `npm run check` (content, standards and tests; the first two also run before `npm run build`); add `-- --report` to `check:content` after changing `programs.yml`.
 - `npm run build && npm run preview` and open `/home/` (the local server has no redirects). Don't build while a browser test is reading `dist/`.
 - After a refactor, compare the new build's page text with the previous commit's (git worktree) and crawl `dist/` for broken links and anchors.
-- Smoke-test in a browser: no console errors, home -> a section -> back works, theme persists, mobile has no horizontal scroll, `/core/` 3D renders.
+- `npm run test:e2e` (Playwright, builds first): every page loads without console errors or horizontal scroll, home -> a section -> back works, theme persists, `/core/` 3D renders and animates. Add a spec in `tests/e2e/` for any new interactive feature.
 
 ## Avoid
 - A new WebGL renderer per card (one shared `Stage` exists on purpose).
