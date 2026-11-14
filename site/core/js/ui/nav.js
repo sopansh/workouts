@@ -1,4 +1,4 @@
-import { h } from './dom.js';
+import { h } from '/shared/js/dom.js';
 
 /** Builds the sticky section pills and highlights the one currently in view. */
 export function renderNav(container, phases) {

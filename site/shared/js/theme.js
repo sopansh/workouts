@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'core-guide-theme';
+const STORAGE_KEY = 'workouts-theme'; // keep in sync with theme-init.js
 const root = document.documentElement;
 const systemDark = matchMedia('(prefers-color-scheme: dark)');
 

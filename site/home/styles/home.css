@@ -1,0 +1,43 @@
+.tiles {
+  list-style: none; margin: 36px 0 0; padding: 0;
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.tiles > li { display: flex; }
+
+.tile {
+  --accent: var(--p1);
+  display: flex; flex-direction: column; width: 100%; overflow: hidden;
+  color: inherit; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.tile[data-accent='p2'] { --accent: var(--p2); }
+.tile[data-accent='p3'] { --accent: var(--p3); }
+.tile[data-accent='p4'] { --accent: var(--p4); }
+
+a.tile:hover, a.tile:focus-visible {
+  transform: translateY(-4px); border-color: var(--accent);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.06), 0 18px 40px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.tile__img {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover;
+  border-bottom: 1px solid var(--line);
+}
+.tile__body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 18px 20px 22px; }
+.tile__title { font-size: 1.5rem; }
+.tile__blurb { color: var(--mut); }
+.tile__cta {
+  margin-top: auto; padding-top: 10px;
+  font: 700 0.85rem var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+}
+.tile__badge {
+  align-self: flex-start; margin-top: auto;
+  padding: 3px 11px; border-radius: 999px; border: 1px dashed var(--line);
+  font: 600 0.78rem var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mut);
+}
+
+/* Not clickable yet: mute the artwork so live sections stand out. */
+.tile.is-soon .tile__img { filter: saturate(0.8); opacity: 0.94; }

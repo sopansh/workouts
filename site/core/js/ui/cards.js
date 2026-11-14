@@ -1,4 +1,4 @@
-import { h } from './dom.js';
+import { h } from '/shared/js/dom.js';
 
 const sentence = text => text.charAt(0).toUpperCase() + text.slice(1);
 

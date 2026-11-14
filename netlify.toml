@@ -1,9 +1,9 @@
-# Static site: no build step, publish the repo root (served at /core/).
+# Static site: no build step. Everything under site/ is published; docs/ is not.
 [build]
-  publish = "."
+  publish = "site"
 
-# There is no page at the root, so send visitors to the guide.
+# The bare domain has no page of its own; send visitors to the home page.
 [[redirects]]
   from = "/"
-  to = "/core/"
+  to = "/home/"
   status = 302

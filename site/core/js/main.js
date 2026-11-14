@@ -2,7 +2,7 @@ import { THREE } from './three.js';
 import { phases } from './data/phases.js';
 import { exercises } from './data/exercises.js';
 import { Playback } from './playback.js';
-import { cssColor, isDark, onThemeChange, toggleTheme } from './theme.js';
+import { cssColor, isDark, onThemeChange, toggleTheme } from '/shared/js/theme.js';
 import { renderPhase, renderPlan } from './ui/cards.js';
 import { renderNav } from './ui/nav.js';
 import { bindToolbar, enableRotation } from './ui/controls.js';

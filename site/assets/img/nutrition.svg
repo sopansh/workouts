@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Apple with a heartbeat line">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8e63d6"/>
+      <stop offset="1" stop-color="#4a2a8a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <rect width="640" height="400" fill="url(#grid)"/>
+  <circle cx="320" cy="180" r="190" fill="url(#glow)"/>
+  <!-- apple -->
+  <path d="M320 132 C292 112 232 130 232 198 C232 262 276 300 320 284 C364 300 408 262 408 198 C408 130 348 112 320 132 Z" fill="#fff"/>
+  <path d="M258 168 C262 146 280 138 296 140" fill="none" stroke="#e9defb" stroke-width="9" stroke-linecap="round"/>
+  <path d="M322 132 L316 98" fill="none" stroke="#e9defb" stroke-width="9" stroke-linecap="round"/>
+  <path d="M324 128 C326 100 344 84 370 80 C368 108 350 124 324 128 Z" fill="#9be3b7"/>
+  <!-- heartbeat -->
+  <polyline points="40,338 214,338 240,338 262,298 288,372 314,316 334,338 600,338" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

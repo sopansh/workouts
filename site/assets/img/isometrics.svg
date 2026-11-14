@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Forearm plank with the core glowing">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#27a583"/>
+      <stop offset="1" stop-color="#0e5a49"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <rect width="640" height="400" fill="url(#grid)"/>
+  <circle cx="330" cy="230" r="210" fill="url(#glow)"/>
+  <ellipse cx="338" cy="328" rx="260" ry="16" fill="#000" opacity=".28"/>
+  <!-- floor -->
+  <path d="M70 318 H590" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>
+  <!-- body -->
+  <g fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M200 244 L488 296"/>
+    <path d="M200 244 V298 H262" stroke-width="20"/>
+    <path d="M488 296 L506 304" stroke-width="20"/>
+  </g>
+  <circle cx="160" cy="214" r="27" fill="#fff"/>
+  <!-- working core -->
+  <path d="M262 255 L392 278" fill="none" stroke="#ff5a5f" stroke-width="26" stroke-linecap="round"/>
+  <path d="M262 255 L392 278" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="8" stroke-linecap="round"/>
+</svg>

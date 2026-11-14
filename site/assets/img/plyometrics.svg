@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Athlete mid box jump">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9a23b"/>
+      <stop offset="1" stop-color="#a2540a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <rect width="640" height="400" fill="url(#grid)"/>
+  <circle cx="330" cy="170" r="200" fill="url(#glow)"/>
+  <ellipse cx="330" cy="338" rx="250" ry="18" fill="#000" opacity=".25"/>
+  <!-- plyo box -->
+  <polygon points="215,300 415,300 445,272 245,272" fill="#fff3d6"/>
+  <rect x="215" y="300" width="200" height="40" rx="4" fill="#fff"/>
+  <polygon points="415,300 445,272 445,312 415,340" fill="#f0d79a"/>
+  <!-- motion trail -->
+  <path d="M120 300 C150 190 210 120 290 96" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
+  <!-- athlete, mid-air with knees tucked -->
+  <g transform="translate(-49.5 -55) scale(1.15)">
+    <g fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M332 150 L338 214"/>
+      <path d="M334 160 L296 128"/>
+      <path d="M336 160 L382 126"/>
+      <path d="M338 214 L304 244 L338 262"/>
+      <path d="M338 214 L372 240 L352 274"/>
+    </g>
+    <circle cx="328" cy="118" r="23" fill="#fff"/>
+    <!-- working muscles -->
+    <path d="M338 214 L304 244" stroke="#ff5a5f" stroke-width="15" stroke-linecap="round" fill="none"/>
+    <path d="M338 214 L372 240" stroke="#ff5a5f" stroke-width="15" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
