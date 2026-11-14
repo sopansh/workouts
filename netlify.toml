@@ -1,3 +1,9 @@
 # Static site: no build step, publish the repo root (served at /core/).
 [build]
   publish = "."
+
+# There is no page at the root, so send visitors to the guide.
+[[redirects]]
+  from = "/"
+  to = "/core/"
+  status = 302
