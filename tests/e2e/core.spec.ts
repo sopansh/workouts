@@ -14,6 +14,18 @@ const drawnPixels = (canvas: Locator) =>
   });
 
 test.describe('core guide', () => {
+  test('exercise payload accepts 2D or 3D joint points', async ({ page }) => {
+    await page.goto('/core/');
+    const arities = await page.evaluate(() => {
+      const data = JSON.parse(document.getElementById('core-data')!.textContent ?? '[]');
+      return data.flatMap((exercise: { poses: { start: Record<string, number[]>; end: Record<string, number[]> } }) =>
+        ['start', 'end'].flatMap((phase: 'start' | 'end') => Object.values(exercise.poses[phase]).map(point => point.length)),
+      );
+    });
+    expect(arities.length).toBeGreaterThan(0);
+    for (const arity of arities) expect([2, 3]).toContain(arity);
+  });
+
   test('renders all eight exercise cards with a labelled canvas each', async ({ page }) => {
     await page.goto('/core/');
     await expect(page.locator('article.demo')).toHaveCount(8);

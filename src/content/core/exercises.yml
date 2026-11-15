@@ -1,6 +1,7 @@
 # Core guide exercises. Poses are side-on stick-figure joints in SVG-style units (origin top-left, y grows down, the floor
-# is y = 150 and x = 150 is the centre). The figure animates start -> end; far-side limbs (far*) default to the near side.
-# glow: regions that light up while the exercise works them (torso, hips). cycle: seconds for one rep.
+# is y = 150 and x = 150 is the centre). Joint points are [x, y] or [x, y, z], with z in the same units. The figure animates
+# start -> end; far-side
+# limbs (far*) default to the near side. glow: regions that light up while the exercise works them. cycle: seconds for one rep.
 # spineBend: optional [start, end] vertical offset of the spine curve (cat-cow).
 - id: mcgill-curl-up
   order: 1
@@ -13,7 +14,7 @@
   cycle: 4
   poses:
     start:
-      head: [192, 130]
+      head: [192, 130, 0]
       shoulder: [174, 131]
       elbow: [156, 135]
       wrist: [138, 137]
@@ -27,7 +28,7 @@
       farAnkle: [50, 135]
       farToe: [42, 132]
     end:
-      head: [190, 110]
+      head: [190, 110, 0]
       shoulder: [172, 120]
       elbow: [156, 135]
       wrist: [138, 137]

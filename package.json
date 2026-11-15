@@ -11,7 +11,7 @@
     "check:content": "node scripts/check-content.mjs",
     "check:standards": "node scripts/check-standards.mjs",
     "check:agents": "node scripts/check-agents.mjs",
-    "check": "npm run check:content && npm run check:standards && npm run check:agents && node --test tests/paired-muscle-split.test.mjs tests/hooks.test.mjs",
+    "check": "npm run check:content && npm run check:standards && npm run check:agents && node --test tests/paired-muscle-split.test.mjs tests/hooks.test.mjs tests/core-rig-pose.test.mjs",
     "verify:sources": "node scripts/verify-sources.mjs",
     "build": "npm run check:content && npm run check:standards && astro build",
     "preview": "astro preview",

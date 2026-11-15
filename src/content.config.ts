@@ -306,7 +306,7 @@ const cricket = defineCollection({
 });
 
 // Core guide: the recovery phases and the exercises, including the poses that drive the 3D figures.
-const point = z.tuple([z.number(), z.number()]);
+const point = z.union([z.tuple([z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number()])]);
 const pose = z.object({
   head: point, shoulder: point, elbow: point, wrist: point, hip: point, knee: point, ankle: point, toe: point,
   farElbow: point.optional(), farWrist: point.optional(), farKnee: point.optional(), farAnkle: point.optional(), farToe: point.optional(),
@@ -335,7 +335,7 @@ const coreExercises = defineCollection({
     dose: z.string(),
     muscles: z.string(),
     equipment: z.enum(['kettlebell']).optional(),
-    glow: z.array(z.enum(['torso', 'hips'])),
+    glow: z.array(z.enum(['torso', 'hips', 'chest', 'lats', 'deltoids', 'arms', 'quads', 'hamstrings', 'calves'])),
     cycle: z.number(),
     spineBend: z.tuple([z.number(), z.number()]).optional(),
     poses: z.object({ start: pose, end: pose }),

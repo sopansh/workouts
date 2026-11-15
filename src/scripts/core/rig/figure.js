@@ -1,5 +1,5 @@
 import { THREE } from '../three.js';
-import { SCALE, ORIGIN, J, resolvePose, blendPoses, cycleWeight, poseBounds } from './pose.js';
+import { SCALE, ORIGIN, J, resolvePose, setJointWorld, blendPoses, cycleWeight, poseBounds } from './pose.js';
 
 export const DEFAULT_YAW = 0.4;
 
@@ -7,7 +7,7 @@ const BASE = new THREE.Color(0xd6e0dc);
 const FAR_BASE = new THREE.Color(0x9db0aa);
 const HOT = new THREE.Color(0xff4a4a);
 
-/** [node, source joint, depth] — near-side limbs sit in front of far-side ones. */
+/** [node, source joint, base depth] — near-side limbs sit in front of far-side ones. */
 const NODES = [
   ['head', 'head', 0],
   ['shoulderN', 'shoulder', 0.13], ['shoulderF', 'shoulder', -0.13],
@@ -22,14 +22,14 @@ const SPINE = Array.from({ length: 6 }, (_, i) => `spine${i}`);
 
 /** [from, to, radius at `from`, material, taper toward `to`] */
 const BONES = [
-  ['shoulderN', 'elbowN', 0.055, 'near', 0.85], ['elbowN', 'wristN', 0.045, 'near', 0.85],
-  ['shoulderF', 'elbowF', 0.055, 'far', 0.85], ['elbowF', 'wristF', 0.045, 'far', 0.85],
-  ['hipN', 'kneeN', 0.085, 'hips', 0.85], ['kneeN', 'ankleN', 0.06, 'near', 0.8],
-  ['ankleN', 'toeN', 0.04, 'near', 1],
-  ['hipF', 'kneeF', 0.085, 'hips', 0.85], ['kneeF', 'ankleF', 0.06, 'far', 0.8],
-  ['ankleF', 'toeF', 0.04, 'far', 1],
-  ['shoulderF', 'shoulderN', 0.05, 'near', 1], ['hipF', 'hipN', 0.07, 'hips', 1],
-  ['spine0', 'head', 0.045, 'near', 1],
+  ['shoulderN', 'elbowN', 0.055, 'armN', 0.85], ['elbowN', 'wristN', 0.045, 'armN', 0.85],
+  ['shoulderF', 'elbowF', 0.055, 'armF', 0.85], ['elbowF', 'wristF', 0.045, 'armF', 0.85],
+  ['hipN', 'kneeN', 0.085, 'thighN', 0.85], ['kneeN', 'ankleN', 0.06, 'calfN', 0.8],
+  ['ankleN', 'toeN', 0.04, 'calfN', 1],
+  ['hipF', 'kneeF', 0.085, 'thighF', 0.85], ['kneeF', 'ankleF', 0.06, 'calfF', 0.8],
+  ['ankleF', 'toeF', 0.04, 'calfF', 1],
+  ['shoulderF', 'shoulderN', 0.05, 'armN', 1], ['hipF', 'hipN', 0.07, 'hips', 1],
+  ['spine0', 'head', 0.045, 'torso', 1],
   ['spine0', 'spine1', 0.115, 'torso', 1], ['spine1', 'spine2', 0.115, 'torso', 1],
   ['spine2', 'spine3', 0.105, 'torso', 1], ['spine3', 'spine4', 0.105, 'torso', 1],
   ['spine4', 'spine5', 0.11, 'torso', 1],
@@ -37,14 +37,14 @@ const BONES = [
 
 /** [node, radius, material] */
 const BALLS = [
-  ['elbowN', 0.055, 'near'], ['elbowF', 0.055, 'far'],
-  ['wristN', 0.045, 'near'], ['wristF', 0.045, 'far'],
-  ['shoulderN', 0.07, 'near'], ['shoulderF', 0.07, 'far'],
-  ['kneeN', 0.07, 'near'], ['kneeF', 0.07, 'far'],
-  ['ankleN', 0.055, 'near'], ['ankleF', 0.055, 'far'],
-  ['toeN', 0.042, 'near'], ['toeF', 0.042, 'far'],
+  ['elbowN', 0.055, 'armN'], ['elbowF', 0.055, 'armF'],
+  ['wristN', 0.045, 'armN'], ['wristF', 0.045, 'armF'],
+  ['shoulderN', 0.07, 'armN'], ['shoulderF', 0.07, 'armF'],
+  ['kneeN', 0.07, 'thighN'], ['kneeF', 0.07, 'thighF'],
+  ['ankleN', 0.055, 'calfN'], ['ankleF', 0.055, 'calfF'],
+  ['toeN', 0.042, 'calfN'], ['toeF', 0.042, 'calfF'],
   ['hipN', 0.1, 'hips'], ['hipF', 0.1, 'hips'],
-  ['head', 0.115, 'near'],
+  ['head', 0.115, 'torso'],
   ['spine0', 0.12, 'torso'], ['spine1', 0.115, 'torso'], ['spine2', 0.105, 'torso'],
   ['spine3', 0.105, 'torso'], ['spine4', 0.105, 'torso'], ['spine5', 0.11, 'torso'],
 ];
@@ -57,9 +57,16 @@ function cylinder(taper) {
 }
 
 const surface = (color, roughness = 0.5) => new THREE.MeshStandardMaterial({ color, roughness });
-const NEAR_MATERIAL = surface(BASE);
-const FAR_MATERIAL = surface(FAR_BASE);
-
+const MATERIAL_SPECS = {
+  torso: { base: BASE, regions: ['torso', 'chest', 'lats'] },
+  hips: { base: BASE, regions: ['hips'] },
+  armN: { base: BASE, regions: ['arms', 'deltoids'] },
+  armF: { base: FAR_BASE, regions: ['arms', 'deltoids'] },
+  thighN: { base: BASE, regions: ['hips', 'quads', 'hamstrings'] },
+  thighF: { base: FAR_BASE, regions: ['hips', 'quads', 'hamstrings'] },
+  calfN: { base: BASE, regions: ['calves'] },
+  calfF: { base: FAR_BASE, regions: ['calves'] },
+};
 const UP = new THREE.Vector3(0, 1, 0);
 const from = new THREE.Vector3();
 const dir = new THREE.Vector3();
@@ -79,7 +86,9 @@ export class Figure {
     this.frozen = false; // hold the peak pose (reduced motion)
     this.dirty = true;
 
-    this.materials = { near: NEAR_MATERIAL, far: FAR_MATERIAL, torso: surface(BASE.clone()), hips: surface(BASE.clone()) };
+    this.materials = Object.fromEntries(
+      Object.entries(MATERIAL_SPECS).map(([name, spec]) => [name, surface(spec.base.clone())]),
+    );
     this.nodes = Object.fromEntries([...NODES.map(n => n[0]), ...SPINE].map(name => [name, new THREE.Vector3()]));
 
     this.root = new THREE.Group(); // rotates around the figure's centre
@@ -163,20 +172,20 @@ export class Figure {
 
   placeNodes(weight) {
     const q = this.pose;
-    const world = (i, z, out) => out.set((q[2 * i] - ORIGIN.x) * SCALE, (ORIGIN.y - q[2 * i + 1]) * SCALE, z);
-    for (const [name, joint, z] of NODES) world(J[joint], z, this.nodes[name]);
+    for (const [name, joint, z] of NODES) setJointWorld(this.nodes[name], q, J[joint], z);
 
     // The spine is a quadratic curve from shoulder to hip; cat-cow bends its control point.
-    const sx = q[2 * J.shoulder], sy = q[2 * J.shoulder + 1];
-    const hx = q[2 * J.hip], hy = q[2 * J.hip + 1];
+    const sx = q[3 * J.shoulder], sy = q[3 * J.shoulder + 1], sz = q[3 * J.shoulder + 2];
+    const hx = q[3 * J.hip], hy = q[3 * J.hip + 1], hz = q[3 * J.hip + 2];
     const bend = this.bend[0] + (this.bend[1] - this.bend[0]) * weight;
     const cx = (sx + hx) / 2, cy = (sy + hy) / 2 + bend;
+    const cz = (sz + hz) / 2;
     SPINE.forEach((name, i) => {
       const s = i / 5, a = (1 - s) * (1 - s), b = 2 * s * (1 - s), c = s * s;
       this.nodes[name].set(
         (a * sx + b * cx + c * hx - ORIGIN.x) * SCALE,
         (ORIGIN.y - (a * sy + b * cy + c * hy)) * SCALE,
-        0,
+        (a * sz + b * cz + c * hz) * SCALE,
       );
     });
   }
@@ -201,10 +210,10 @@ export class Figure {
   /** Worked regions blush red and glow hardest at the peak of each rep. */
   applyGlow(weight, time) {
     const level = Math.min(1, 0.3 + 0.5 * weight + 0.1 * Math.sin(time * 5.5));
-    for (const region of ['torso', 'hips']) {
-      const amount = this.glow.has(region) ? level : 0;
-      const material = this.materials[region];
-      material.color.copy(BASE).lerp(HOT, amount);
+    for (const [name, material] of Object.entries(this.materials)) {
+      const spec = MATERIAL_SPECS[name];
+      const amount = spec.regions.some(region => this.glow.has(region)) ? level : 0;
+      material.color.copy(spec.base).lerp(HOT, amount);
       material.emissive.copy(HOT).multiplyScalar(amount * 0.3);
     }
   }

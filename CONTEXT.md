@@ -210,8 +210,9 @@ cycle, poses start/end, steps, mistakes). The card, nav and framing update thems
 
 ## 9. Known limitations and gotchas
 
-- Poses are side-view x/y only with fixed depth offsets, so frontal-plane moves (lateral raise, fly) can't be shown correctly
-  without a rig extension.
+- Poses are still authored for a side view, but joints can now include optional z depth in the same authoring units as x/y.
+  Existing x/y-only data still works.
+  Frontal-plane moves (lateral raise, fly) still need authored z data and exercise-specific polish.
 - Stage framing assumes a roughly human-sized figure; very large range-of-motion poses may need a bounds check.
 - The 3D frame loop could not be watched in the hidden browser tab used for development; the rig was verified by rendering
   frames from the built chunks (all 8 exercises draw, glow and move). Look at `/core/` once in a normal browser before relying on it.

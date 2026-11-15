@@ -1,7 +1,8 @@
 /**
  * Pure pose maths: no DOM and no three.js, so it can be reasoned about (and tested) alone.
  *
- * A "resolved pose" is a flat Float64Array of [x, y] pairs in JOINTS order.
+ * A "resolved pose" is a flat Float64Array of [x, y, z] triplets in JOINTS order.
+ * Authored joints may be [x, y] or [x, y, z], with z in the same authoring units.
  */
 
 /** Authoring units -> world units, and the authoring point that maps to world (0, 0). */
@@ -13,7 +14,7 @@ export const JOINTS = [
   'farElbow', 'farWrist', 'farKnee', 'farAnkle', 'farToe',
 ];
 
-/** Joint name -> index into a resolved pose (x at 2 * i, y at 2 * i + 1). */
+/** Joint name -> index into a resolved pose (x at 3 * i, y at 3 * i + 1, z at 3 * i + 2). */
 export const J = Object.fromEntries(JOINTS.map((name, i) => [name, i]));
 
 const FAR_FALLBACK = {
@@ -21,14 +22,25 @@ const FAR_FALLBACK = {
 };
 
 export function resolvePose(pose) {
-  const out = new Float64Array(JOINTS.length * 2);
+  const out = new Float64Array(JOINTS.length * 3);
   JOINTS.forEach((name, i) => {
     const point = pose[name] ?? pose[FAR_FALLBACK[name]];
     if (!point) throw new Error(`Pose is missing joint "${name}"`);
-    out[2 * i] = point[0];
-    out[2 * i + 1] = point[1];
+    out[3 * i] = point[0];
+    out[3 * i + 1] = point[1];
+    out[3 * i + 2] = point[2] ?? 0;
   });
   return out;
+}
+
+/** Convert one authored joint (x, y, optional z) into world space. */
+export function setJointWorld(out, pose, jointIndex, baseZ = 0) {
+  const i = 3 * jointIndex;
+  return out.set(
+    (pose[i] - ORIGIN.x) * SCALE,
+    (ORIGIN.y - pose[i + 1]) * SCALE,
+    pose[i + 2] * SCALE + baseZ,
+  );
 }
 
 export function blendPoses(from, to, weight, out) {
@@ -51,7 +63,7 @@ export function cycleWeight(u) {
 export function poseBounds(poses) {
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
   for (const pose of poses) {
-    for (let i = 0; i < pose.length; i += 2) {
+    for (let i = 0; i < pose.length; i += 3) {
       minX = Math.min(minX, pose[i]);
       maxX = Math.max(maxX, pose[i]);
       minY = Math.min(minY, pose[i + 1]);
