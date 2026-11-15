@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      { "type": "command", "command": "node .github/hooks/scripts/session-context.mjs", "timeoutSec": 10 }
+    ],
+    "subagentStart": [
+      { "type": "command", "command": "node .github/hooks/scripts/subagent-brief.mjs", "timeoutSec": 10 }
+    ],
+    "preToolUse": [
+      { "type": "command", "command": "node .github/hooks/scripts/guard-tool-use.mjs", "timeoutSec": 10 }
+    ]
+  }
+}

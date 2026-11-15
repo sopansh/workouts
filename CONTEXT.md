@@ -37,7 +37,7 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 ```
 astro.config.mjs             static output, trailingSlash always, directory format, strength redirect
 netlify.toml                 build = npm run build, publish dir = dist/, redirect / -> /home/ (302)
-package.json                 astro + yaml (+ @playwright/test, dev only); scripts: dev, build, preview, check, check:content, check:standards, verify:sources, test:e2e
+package.json                 astro + yaml (+ @playwright/test, dev only); scripts: dev, build, preview, check, check:content, check:standards, check:agents, verify:sources, test:e2e
 .editorconfig                2 spaces, LF, final newline, no trailing whitespace
 public/assets/img/           tile illustrations (SVG). The only static files; Astro copies them to dist/ untouched
 docs/                        plans (NOT published)
@@ -272,3 +272,12 @@ enforces the mechanical ones on every build; the rest are reviewed.
 > Open `CONTEXT.md` (sections 3a, 8 and 11) and the relevant plan in `docs/`. Everything is Astro: pages in `src/pages/<section>/`,
 > content in `src/content/`, one layout. Next: <your goal, e.g. "add parallettes to the calisthenics L-sit ladder" or "add a deload
 > week to the getting-started plan">. Run `npm run check` and `npm run test:e2e` before finishing.
+
+## 13. Agent team
+
+A manager and four coaches work on the site: `executive`, `strength-coach`, `plyometrics-coach`, `nutrition-coach`, `calisthenics-coach`.
+Agents are in `.github/agents/`, 17 skills in `.github/skills/`, three hooks in `.github/hooks/` (session context, a coach reporting
+brief, and a guard that asks before `git push` and blocks force-push, secrets and writes into `dist/`). The org chart, ownership table,
+report format, standing directives and backlog are in `docs/agents/`. `npm run check:agents` validates the setup (it runs inside
+`npm run check`), and `tests/hooks.test.mjs` tests the hook scripts. A colon inside an unquoted frontmatter value stops an agent or
+skill loading, so reword or quote it. Coaches never commit or push.
