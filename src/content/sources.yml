@@ -622,3 +622,83 @@
   url: https://www.nhs.uk/conditions/back-pain/
   note: Page last reviewed 5 March 2026.
   section: plyometrics
+- id: flanagan-2003
+  type: cohort
+  authors: Flanagan SP, Vanderburgh PM, Borchers SG, Kohstall CD
+  year: 2003
+  title: Training college-age women to perform the pull-up exercise
+  venue: Research Quarterly for Exercise and Sport
+  doi: 10.1080/02701367.2003.10609064
+  note: A training study; the abstract does not describe a control group.
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: dickie-2017
+  type: biomechanics
+  authors: Dickie JA, Faulkner JA, Barnes MJ, Lark SD
+  year: 2017
+  title: Electromyographic analysis of muscle activation during pull-up variations
+  venue: Journal of Electromyography and Kinesiology
+  doi: 10.1016/j.jelekin.2016.11.004
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: youdas-2016
+  type: biomechanics
+  authors: Youdas JW, Keith JM, Nonn DE, Squires AC, Hollman JH
+  year: 2016
+  title: Activation of spinal stabilizers and shoulder complex muscles during an
+    inverted row using a portable pull-up device and body weight resistance
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000001210
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: prinold-2016
+  type: biomechanics
+  authors: Prinold JA, Bull AM
+  year: 2016
+  title: 'Scapula kinematics of pull-up techniques: avoiding impingement risk with
+    training changes'
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/j.jsams.2015.08.002
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: ekstrom-2007
+  type: biomechanics
+  authors: Ekstrom RA, Donatelli RA, Carp KC
+  year: 2007
+  title: Electromyographic analysis of core trunk, hip, and thigh muscles during 9
+    rehabilitation exercises
+  venue: Journal of Orthopaedic and Sports Physical Therapy
+  doi: 10.2519/jospt.2007.2471
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: kang-2019
+  type: systematic-review
+  authors: Kang FJ, Ou HL, Lin KY, Lin JJ
+  year: 2019
+  title: 'Serratus anterior and upper trapezius electromyographic analysis of the
+    push-up plus exercise: a systematic review and meta-analysis'
+  venue: Journal of Athletic Training
+  doi: 10.4085/1062-6050-237-18
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: nance-2017
+  type: cohort
+  authors: Nance EM, Byun DJ, Endo Y, Wolfe SW, Lee SK
+  year: 2017
+  title: 'Dorsal wrist pain in the extended wrist-loading position: an MRI study'
+  venue: Journal of Wrist Surgery
+  doi: 10.1055/s-0037-1599829
+  note: A retrospective chart review of patients, not of people who exercise.
+  section: calisthenics
+  verifiedOn: 2026-11-14
+- id: mchugh-2003
+  type: review
+  authors: McHugh MP
+  year: 2003
+  title: 'Recent advances in the understanding of the repeated bout effect: the
+    protective effect against muscle damage from a single bout of eccentric
+    exercise'
+  venue: Scandinavian Journal of Medicine and Science in Sports
+  doi: 10.1034/j.1600-0838.2003.02477.x
+  section: calisthenics
+  verifiedOn: 2026-11-14

@@ -163,6 +163,14 @@ const guideGroups = defineCollection({
     /** A ladder runs from easier (level 1) to harder; the person starts at the level a placement test gives them. */
     ladder: z.boolean().default(false),
     test: z.string().optional(),
+    /** Splits one section's groups and plans into stages, for example foundations and first skills. */
+    phase: z.string().optional(),
+    /** Kit that the whole ladder needs, so level 1 may need it too. */
+    requires: z.string().optional(),
+    /** Checks to pass before starting this group, shown on the page and in the plan. */
+    gates: z.array(z.string()).default([]),
+    /** True when the steps are a coaching convention with no training-outcome evidence. */
+    convention: z.boolean().default(false),
   }),
 });
 
@@ -208,6 +216,7 @@ const guidePlans = defineCollection({
   schema: z.object({
     id: z.string(),
     section: reference('sections'),
+    phase: z.string().optional(),
     name: z.string(),
     warmup: z.object({ text: z.string(), items: z.array(guideItem).default([]) }),
     sessions: z.array(z.object({ id: z.string(), title: z.string(), intro: z.string().optional(), items: z.array(guideItem).min(1) })),

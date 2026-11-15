@@ -28,7 +28,7 @@
   blurb: Begin strength training at home with bodyweight exercises, for men and women, with a day-by-day and week-by-week plan.
   image: /assets/img/getting-started.svg
   accent: p1
-  status: soon
+  status: live
   href: /getting-started/
   nav:
     - { label: Weekly plan, href: /getting-started/weekly-plan/ }
@@ -45,7 +45,20 @@
   blurb: "A beginner guide to bodyweight skills: what to build first, the starter exercises and weekly plans. Independent of strength training."
   image: /assets/img/calisthenics.svg
   accent: p4
-  status: soon
+  status: live
+  href: /calisthenics/
+  nav:
+    - { label: Start here, href: /calisthenics/start-here/ }
+    - { label: Foundations, href: /calisthenics/foundations/ }
+    - { label: First skills, href: /calisthenics/first-skills/ }
+    - { label: Weekly plan, href: /calisthenics/weekly-plan/ }
+    - { label: Exercises, href: /calisthenics/exercises/ }
+    - { label: Progression, href: /calisthenics/progression/ }
+    - { label: Evidence, href: /calisthenics/evidence/ }
+  footer:
+    - { label: Sources and evidence grades, href: /calisthenics/evidence/ }
+    - { label: Getting started with strength, href: /getting-started/ }
+    - { label: Back-safe core guide, href: /core/ }
 - id: plyometrics
   order: 4
   title: Plyometrics

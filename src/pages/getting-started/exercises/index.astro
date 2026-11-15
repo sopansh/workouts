@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import GettingStartedSafety from '../../../components/GettingStartedSafety.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
 import GuideExerciseCard from '../../../components/GuideExerciseCard.astro';
 import PainRule from '../../../components/PainRule.astro';
 import { exercisesInGroup, loadGuide } from '../../../lib/guide';
@@ -20,7 +20,7 @@ const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRul
     </ul>
   </section>
 
-  <GettingStartedSafety />
+  <BeginnerSafety />
 
   {data.groups.map(group => (
     <section aria-labelledby={`group-${group.id}`}>

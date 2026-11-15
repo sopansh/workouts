@@ -1,0 +1,781 @@
+# Calisthenics foundations: prepare the wrists and shoulders, then ladders from easier to harder.
+# Level 1 of every ladder needs no equipment. A level marked optional needs a stable table edge or a secure bar.
+- id: cal-wrist-rocks
+  order: 1
+  section: calisthenics
+  group: cal-prep
+  name: Wrist rocks
+  equipment:
+    - mat or soft floor
+  muscles: Wrist and forearm
+  dose: 8 to 10 slow rocks, each way
+  setup: Kneel on a mat on hands and knees with your hands under your shoulders, fingers pointing forwards.
+  steps:
+    - Rock your body slowly forwards until you feel a gentle stretch at the wrists, then rock back.
+    - Turn the hands so the fingers point out to the sides and repeat, then do a few with the fingers pointing back if it is comfortable.
+    - Keep the movement small and smooth. Stop before any pain.
+  cues:
+    - Press the whole palm, including the finger pads, into the floor
+  mistakes:
+    - rocking far enough to pinch the wrist
+    - bouncing
+    - holding the breath
+  contraindications:
+    - a current wrist injury or pain on the back of the wrist when it bears weight
+    - numbness or tingling in the hands
+  regression: Make the rocks smaller, or rest on the forearms and open and close the hands instead.
+  progression: Do the rocks with your knees lifted a little, or move on to the scapular push-up.
+  painRule: wrist
+  status: draft
+- id: cal-scapular-push-up
+  order: 2
+  section: calisthenics
+  group: cal-prep
+  name: Scapular push-up
+  equipment:
+    - mat or soft floor
+  muscles: Serratus anterior, trapezius
+  dose: 2 sets of 8 to 10 slow reps
+  setup: Start in a push-up position with straight arms, or on your hands and knees if that is easier.
+  steps:
+    - Keep your arms straight and let the chest sink slightly so the shoulder blades move together.
+    - Push the floor away so the upper back rounds slightly and the shoulder blades spread apart.
+    - Repeat smoothly without bending your elbows.
+  cues:
+    - Only the shoulder blades move
+  mistakes:
+    - bending the elbows
+    - sagging at the hips
+    - moving fast
+  contraindications:
+    - a current shoulder or wrist injury
+    - pain when the hands bear weight
+  regression: Do it on your hands and knees, or with your hands on a wall.
+  progression: Move on to the push ladder.
+  painRule: shoulder
+  status: draft
+- id: cal-wall-slide
+  order: 3
+  section: calisthenics
+  group: cal-prep
+  name: Wall slide
+  equipment:
+    - wall
+  muscles: Shoulders, upper back
+  dose: 2 sets of 8 to 10 slow reps
+  setup: Stand with your back and head against a wall and your feet a short step in front of it. Rest your forearms on the wall with your elbows bent at the sides.
+  steps:
+    - Slide your forearms up the wall as far as you can without your ribs flaring or your lower back arching.
+    - Pause, then slide back down slowly.
+  cues:
+    - Ribs down
+    - Keep the forearms in touch with the wall
+  mistakes:
+    - arching the lower back
+    - shrugging the shoulders to the ears
+    - forcing the range
+  contraindications:
+    - a current shoulder injury
+    - pain at the front or top of the shoulder when lifting the arm
+  regression: Slide up only as far as is comfortable.
+  progression: Use the same slide with the hands lifted slightly off the wall at the top, if that is comfortable.
+  painRule: shoulder
+  status: draft
+- id: cal-incline-push-up
+  order: 4
+  section: calisthenics
+  group: cal-push
+  level: 1
+  name: Incline push-up
+  equipment:
+    - counter, sturdy table or the wall
+  muscles: Chest, front of the shoulders, back of the arms
+  setup: Place your hands on a stable counter or table edge, slightly wider than shoulder-width, and walk your feet back until your body forms a straight line. Check that the support cannot slide.
+  steps:
+    - Lower your chest towards the edge, keeping your elbows at about 45 degrees from your sides.
+    - Pause briefly, then press back to straight arms.
+    - Keep your body in one line throughout.
+  cues:
+    - Squeeze the glutes
+    - Elbows angled back, not flared
+  mistakes:
+    - sagging at the hips
+    - elbows flared out
+    - head dropping forwards
+  contraindications:
+    - a current shoulder, elbow or wrist injury
+    - pain when the hands bear weight
+  regression: Use a higher surface, or push-ups against the wall.
+  progression: Lower the surface a little at a time. Move to the push-up when 12 clean reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: cal-push-up
+  order: 5
+  section: calisthenics
+  group: cal-push
+  level: 2
+  name: Push-up
+  equipment:
+    - mat or soft floor
+  muscles: Chest, front of the shoulders, back of the arms
+  setup: Place your hands under or slightly wider than your shoulders. Straighten your legs behind you, balanced on your toes, so your body is one straight line.
+  steps:
+    - Lower your whole body together until your chest is a hand-width from the floor.
+    - Press back up to straight arms.
+    - Keep your abdomen and glutes braced so the hips do not sag or lift.
+  cues:
+    - Body like a moving plank
+    - Elbows about 45 degrees
+  mistakes:
+    - hips sagging or piking
+    - partial range
+    - elbows flaring wide
+  contraindications:
+    - a current shoulder, elbow or wrist injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Go back to the incline push-up, or do the push-up from the knees.
+  progression: Add a 2 second pause at the bottom (level 3) when 12 clean reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: cal-pause-push-up
+  order: 6
+  section: calisthenics
+  group: cal-push
+  level: 3
+  name: Pause push-up
+  equipment:
+    - mat or soft floor
+  muscles: Chest, front of the shoulders, back of the arms
+  setup: Take the push-up position, with a straight line from head to heels.
+  steps:
+    - Lower slowly over 2 seconds.
+    - Hold 2 seconds with the chest a hand-width off the floor, without resting on it.
+    - Press up smoothly to straight arms.
+  cues:
+    - Stay tight in the pause
+  mistakes:
+    - dropping onto the floor
+    - hips sagging in the pause
+    - holding the breath
+  contraindications:
+    - a current shoulder, elbow or wrist injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Shorten the pause to 1 second, or go back to the push-up.
+  progression: Lengthen the pause, or move on to the pike push-up for the handstand path.
+  painRule: shoulder
+  status: draft
+- id: cal-pike-push-up
+  order: 7
+  section: calisthenics
+  group: cal-push
+  level: 4
+  name: Pike push-up
+  equipment:
+    - mat or soft floor
+  muscles: Shoulders, back of the arms
+  setup: Start on your hands and toes with your hips high, so your body is an upside-down V. Place your hands slightly wider than your shoulders and walk your feet in until your back is flat and your hips are above your shoulders.
+  steps:
+    - Bend your elbows and lower your head towards a point just in front of your hands.
+    - Press back up to straight arms with the hips staying high.
+    - Keep your neck relaxed and look between your hands.
+  cues:
+    - Hips high
+    - Head lowers forwards, not straight down
+  mistakes:
+    - letting the hips drop so it becomes a push-up
+    - hitting the head on the floor
+    - moving too fast
+  contraindications:
+    - a current shoulder, neck or wrist injury
+    - high blood pressure or an eye condition that has not been checked, because the head is lower than the hips
+  regression: Place your hands on a low step, or use a smaller range.
+  progression: Use a lower hand position or raise the feet slightly. Treat the handstand ladder as a separate step with its own checks.
+  painRule: shoulder
+  status: draft
+- id: cal-prone-y-raise
+  order: 8
+  section: calisthenics
+  group: cal-pull
+  level: 1
+  name: Prone Y raise
+  equipment:
+    - mat or soft floor
+  muscles: Mid and lower trapezius, rear shoulders
+  setup: Lie face down with your forehead resting on the floor or a folded towel and your arms stretched overhead in a Y, thumbs pointing up.
+  steps:
+    - Lift your arms a few centimetres off the floor by squeezing your shoulder blades down and together.
+    - Hold for a second, then lower slowly.
+    - Keep your neck long and your ribs on the floor.
+  cues:
+    - Lift with the shoulder blades
+    - Thumbs up
+  mistakes:
+    - lifting the chest and arching the lower back
+    - shrugging the shoulders
+    - jerking the arms up
+  contraindications:
+    - a current shoulder or neck injury
+    - back pain when lying face down
+  regression: Lift the arms only a few centimetres, or do it with the arms by your sides.
+  progression: Move on to the one-arm backpack row when 12 clean reps feel easy.
+  painRule: shoulder
+  status: draft
+- id: cal-backpack-row
+  order: 9
+  section: calisthenics
+  group: cal-pull
+  level: 2
+  name: One-arm backpack row
+  equipment:
+    - backpack with books in it
+    - sturdy chair
+  muscles: Upper back, back of the shoulder, biceps
+  setup: Put a few books in a backpack and hold it by the top handle in one hand. Rest the other hand and a knee on a sturdy chair seat, with a flat back. Check the chair cannot slide.
+  steps:
+    - Let the bag hang with your arm straight and the shoulder blade relaxed.
+    - Pull the shoulder blade back first, then bend the elbow and bring the bag to your hip.
+    - Lower slowly to a straight arm. Do all the reps, then swap sides.
+  cues:
+    - Pull to the hip, not the chest
+    - Quiet torso
+  mistakes:
+    - twisting the trunk to swing the bag
+    - shrugging
+    - rounding the back
+  contraindications:
+    - a current shoulder, elbow or lower-back injury
+    - pain when bending forwards over a chair
+  regression: Use a lighter bag, or put your free hand on a table and stand.
+  progression: Add a book at a time. Move on to the inverted row when you can do 12 clean reps with a heavy bag, if you have a stable table edge or a bar.
+  painRule: shoulder
+  status: draft
+- id: cal-inverted-row
+  order: 10
+  section: calisthenics
+  group: cal-pull
+  level: 3
+  name: Inverted row
+  equipment:
+    - a heavy table that cannot slide or tip, or a low bar fixed to a rack
+  optional: true
+  muscles: Upper back, back of the shoulder, biceps
+  setup: Only use a table that is very heavy and cannot slide or tip, or a bar fixed to a rack at about hip height. Test it with your hands before you rely on it. Lie underneath and take the edge or bar with a shoulder-width, palms-away grip. Keep your legs straight with your heels on the floor.
+  steps:
+    - Keep your body in one line from head to heels.
+    - Pull your chest towards the edge or bar by drawing the shoulder blades together and bending the elbows.
+    - Lower slowly to straight arms.
+  cues:
+    - Chest to the bar
+    - Body stays rigid
+  mistakes:
+    - hips dropping
+    - pulling with the neck
+    - bouncing at the bottom
+  contraindications:
+    - a current shoulder, elbow or lower-back injury
+    - a table or bar that has not been checked as stable and strong enough
+  regression: Bend your knees, or stand more upright with your feet closer to the edge.
+  progression: Walk your feet further forwards to lower the angle, or move on to the hang.
+  painRule: shoulder
+  status: draft
+- id: cal-active-hang
+  order: 11
+  section: calisthenics
+  group: cal-pull
+  level: 4
+  name: Active hang
+  equipment:
+    - a secure pull-up bar
+  optional: true
+  muscles: Forearms, shoulders, upper back
+  setup: Use only a bar that is fixed to a wall, rack or ceiling, or a doorway bar rated for your weight and fitted exactly to its instructions. Test it first with your feet on the floor. Hold it with a shoulder-width, palms-away grip, standing on a step so you can start with your feet down.
+  steps:
+    - Step off or lift your feet so you hang with straight arms.
+    - Gently draw your shoulder blades down and back, without bending your elbows, so your shoulders move away from your ears.
+    - Hold, then relax and step down.
+  cues:
+    - Shoulders away from the ears
+    - Easy, steady grip
+  mistakes:
+    - hanging passively with the shoulders shrugged up
+    - bending the elbows
+    - hanging until the grip fails and dropping
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Keep your toes on the floor or a step to take some of the weight, or hold for fewer seconds.
+  progression: Move on to the slow lowering when you can hold 30 seconds.
+  painRule: shoulder
+  status: draft
+- id: cal-negative-pull-up
+  order: 12
+  section: calisthenics
+  group: cal-pull
+  level: 5
+  name: Slow lowering from the top
+  equipment:
+    - a secure pull-up bar
+    - a step or sturdy chair
+  optional: true
+  muscles: Upper back, shoulders, biceps
+  setup: Use a secure bar and a stable step. Stand on the step and take a shoulder-width, palms-away grip. Start with your chin over the bar, so you begin at the top without jumping.
+  steps:
+    - Take your feet off the step and hold at the top for a second.
+    - Lower yourself as slowly as you can, aiming for 3 to 5 seconds, to straight arms.
+    - Step back up onto the step and repeat. Rest between reps.
+  cues:
+    - Keep the shoulders away from the ears
+    - Lower in control, do not drop
+  mistakes:
+    - dropping instead of lowering
+    - jumping from the floor with a kick
+    - wide grip
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Use a band or a lighter step-up, or return to the active hang.
+  progression: Move on to the pull-up when you can do 5 slow lowerings.
+  painRule: shoulder
+  status: draft
+- id: cal-pull-up
+  order: 13
+  section: calisthenics
+  group: cal-pull
+  level: 6
+  name: Pull-up
+  equipment:
+    - a secure pull-up bar
+  optional: true
+  muscles: Upper back, shoulders, biceps
+  setup: Use a secure bar and take a shoulder-width, palms-away grip. Start from an active hang with straight arms.
+  steps:
+    - Draw the shoulder blades down and back, then pull your elbows towards your ribs.
+    - Bring your chin over the bar.
+    - Lower in control to straight arms with the shoulders still away from the ears.
+  cues:
+    - Elbows to the ribs
+    - Chest to the bar
+  mistakes:
+    - kicking or swinging
+    - a wide grip
+    - partial range
+    - dropping on the way down
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Go back to the slow lowering, or use a band for assistance.
+  progression: Add a rep or a pause. Wider grips, weight and other pull-up variations are beyond this guide.
+  painRule: shoulder
+  status: draft
+- id: cal-bodyweight-squat
+  order: 14
+  section: calisthenics
+  group: cal-squat
+  level: 1
+  name: Bodyweight squat
+  equipment:
+    - none
+  muscles: Quadriceps, glutes
+  setup: Stand with your feet about shoulder-width apart and your toes turned out slightly. Hold your hands in front of you for balance.
+  steps:
+    - Push your hips back and bend your knees, lowering as far as you can with your heels down and your back flat.
+    - Pause for a second.
+    - Stand up through the whole foot.
+  cues:
+    - Chest tall
+    - Knees in line with the toes
+  mistakes:
+    - heels lifting
+    - knees falling inwards
+    - rounding the lower back at the bottom
+  contraindications:
+    - knee or hip pain that has not been assessed
+    - dizziness on standing up
+  regression: Squat to a chair, touching the seat lightly before standing.
+  progression: Slow the lowering to 3 seconds, then move on to the split squat.
+  painRule: knee
+  status: draft
+- id: cal-split-squat
+  order: 15
+  section: calisthenics
+  group: cal-squat
+  level: 2
+  name: Split squat
+  equipment:
+    - none
+  muscles: Quadriceps, glutes
+  setup: Take a long step forward and stand with your feet in line with your hips, back heel raised. Rest a hand on a wall for balance if needed.
+  steps:
+    - Bend both knees and lower your back knee towards the floor.
+    - Keep your front heel down and your torso upright.
+    - Press through the front foot to stand. Do all the reps, then swap legs.
+  cues:
+    - Stand tall
+    - Front knee tracks over the toes
+  mistakes:
+    - leaning the trunk forwards
+    - front heel lifting
+    - too short a stance
+  contraindications:
+    - knee or hip pain that has not been assessed
+    - poor balance without support
+  regression: Hold on to a wall or a chair, or reduce the depth.
+  progression: Raise the back foot on a chair (level 3) when 12 slow reps on each leg feel easy.
+  painRule: knee
+  status: draft
+- id: cal-rear-foot-elevated
+  order: 16
+  section: calisthenics
+  group: cal-squat
+  level: 3
+  name: Rear-foot-elevated split squat
+  equipment:
+    - sturdy chair
+  muscles: Quadriceps, glutes
+  setup: Stand in front of a sturdy chair pushed against a wall, then place the top of one foot on the seat behind you. Step your front foot out so the stance is comfortable. Hold a wall for balance if needed.
+  steps:
+    - Bend your front knee and lower your body straight down.
+    - Keep your front heel on the floor and your torso upright.
+    - Press through the front foot to stand. Do all the reps, then swap legs.
+  cues:
+    - Most of the weight on the front leg
+    - Slow and controlled
+  mistakes:
+    - stance too short
+    - front knee collapsing inwards
+    - pushing off the back foot
+  contraindications:
+    - knee, hip or ankle pain that has not been assessed
+    - poor balance without support
+  regression: Go back to the split squat, or hold on to a wall.
+  progression: Move on to the single-leg box squat when 10 slow reps on each leg feel easy.
+  painRule: knee
+  status: draft
+- id: cal-single-leg-box-squat
+  order: 17
+  section: calisthenics
+  group: cal-squat
+  level: 4
+  name: Single-leg box squat
+  equipment:
+    - sturdy chair
+  muscles: Quadriceps, glutes
+  setup: Stand in front of a sturdy chair against a wall, on one foot, with the other leg held a little in front. Keep a wall or a stable object within reach.
+  steps:
+    - Push your hips back and lower slowly to the seat on one leg.
+    - Touch the seat lightly. Do not drop.
+    - Stand up using the same leg. Do all the reps, then swap legs.
+  cues:
+    - Slow lowering
+    - Knee over the toes
+  mistakes:
+    - dropping onto the seat
+    - the knee collapsing inwards
+    - holding the breath
+  contraindications:
+    - knee or hip pain that has not been assessed
+    - poor balance without support
+  regression: Use a higher seat or add a hand for support, or go back to the rear-foot-elevated split squat.
+  progression: Lower the seat a little at a time. Deeper single-leg squats are beyond this guide.
+  painRule: knee
+  status: draft
+- id: cal-glute-bridge
+  order: 18
+  section: calisthenics
+  group: cal-bridge
+  level: 1
+  name: Glute bridge
+  equipment:
+    - mat or soft floor
+  muscles: Glutes, back of the thighs
+  setup: Lie on your back with your knees bent and feet flat, hip-width apart, about 25 to 30 centimetres from your hips. Rest your arms by your sides.
+  steps:
+    - Press through your heels and lift your hips until your body forms a straight line from knees to shoulders.
+    - Pause for a second, squeezing your glutes.
+    - Lower slowly.
+  cues:
+    - Ribs down
+    - Push the floor away with the heels
+  mistakes:
+    - arching the lower back
+    - pushing through the toes
+    - raising the hips too high
+  contraindications:
+    - back pain when lying on your back
+    - acute hamstring pain
+  regression: Lift only a few centimetres, or pause for less time.
+  progression: Move on to the single-leg bridge when 12 reps with a 1 second pause feel easy.
+  painRule: lower-back
+  status: draft
+- id: cal-single-leg-bridge
+  order: 19
+  section: calisthenics
+  group: cal-bridge
+  level: 2
+  name: Single-leg bridge
+  equipment:
+    - mat or soft floor
+  muscles: Glutes, back of the thighs
+  setup: Lie as for the glute bridge, then straighten one leg or hold the knee towards your chest.
+  steps:
+    - Press through the heel of the standing foot and lift your hips.
+    - Keep your hips level and do not let the free side drop.
+    - Lower slowly. Do all the reps, then swap legs.
+  cues:
+    - Hips level
+  mistakes:
+    - twisting the hips
+    - arching the lower back
+    - speeding up
+  contraindications:
+    - back pain when lying on your back
+    - acute hamstring pain
+  regression: Go back to the glute bridge, or keep the toe of the free foot on the floor.
+  progression: Move on to the feet-on-chair bridge when 10 slow reps on each leg feel easy.
+  painRule: lower-back
+  status: draft
+- id: cal-chair-bridge
+  order: 20
+  section: calisthenics
+  group: cal-bridge
+  level: 3
+  name: Feet-on-chair bridge
+  equipment:
+    - sturdy chair
+  muscles: Glutes, back of the thighs
+  setup: Lie on your back with your calves resting on the seat of a sturdy chair that is pushed against a wall, so your knees are bent to about 90 degrees.
+  steps:
+    - Press the heels into the seat and lift your hips until your body forms a line from knees to shoulders.
+    - Pause for a second, then lower slowly.
+  cues:
+    - Keep the ribs down
+  mistakes:
+    - arching the lower back
+    - the chair sliding
+    - hips twisting
+  contraindications:
+    - back pain when lying on your back
+    - acute hamstring pain
+  regression: Go back to the single-leg bridge on the floor.
+  progression: Move to one leg at a time on the chair when 12 reps feel easy. Further hamstring work is beyond this guide.
+  painRule: lower-back
+  status: draft
+- id: cal-dead-bug
+  order: 21
+  section: calisthenics
+  group: cal-hollow
+  level: 1
+  name: Dead bug
+  equipment:
+    - mat or soft floor
+  muscles: Abdominal wall, hip flexors
+  setup: Lie on your back with your arms pointing to the ceiling and your hips and knees bent to 90 degrees. Press your lower back lightly into the floor.
+  steps:
+    - Slowly straighten one leg and lower the opposite arm overhead, keeping the lower back flat.
+    - Return to the start and swap sides.
+  cues:
+    - Back stays flat
+    - Move slowly
+  mistakes:
+    - the lower back arching
+    - moving too fast
+    - holding the breath
+  contraindications:
+    - back pain when lying on your back
+    - a current abdominal or hip injury
+  regression: Move only the legs, with the arms held up.
+  progression: Move on to the hollow tuck hold when you can do 20 seconds of continuous slow reps.
+  painRule: lower-back
+  status: draft
+- id: cal-hollow-tuck
+  order: 22
+  section: calisthenics
+  group: cal-hollow
+  level: 2
+  name: Hollow tuck hold
+  equipment:
+    - mat or soft floor
+  muscles: Abdominal wall, hip flexors
+  setup: Lie on your back with your knees bent to your chest and your arms by your sides.
+  steps:
+    - Press your lower back into the floor and lift your head and shoulders slightly.
+    - Hold with your knees tucked and your lower back flat.
+    - Breathe steadily, then lower.
+  cues:
+    - Lower back stays in contact with the floor
+    - Chin tucked
+  mistakes:
+    - the lower back lifting off the floor
+    - neck strain
+    - holding the breath
+  contraindications:
+    - back pain when lying on your back
+    - neck pain or strain
+  regression: Go back to the dead bug, or keep the head down.
+  progression: Move on to the hollow hold when you can hold 30 seconds with the lower back flat.
+  painRule: lower-back
+  status: draft
+- id: cal-hollow-hold
+  order: 23
+  section: calisthenics
+  group: cal-hollow
+  level: 3
+  name: Hollow-body hold
+  equipment:
+    - mat or soft floor
+  muscles: Abdominal wall, hip flexors
+  setup: Lie on your back with your arms by your sides and your legs straight.
+  steps:
+    - Press your lower back into the floor.
+    - Lift your shoulders and your straight legs a little off the floor, making a shallow banana shape.
+    - Hold with a flat lower back and steady breathing, then lower.
+  cues:
+    - Lower back flat
+    - Legs lower only as far as the lower back allows
+  mistakes:
+    - the lower back arching off the floor
+    - holding the breath
+    - the neck straining forwards
+  contraindications:
+    - back pain when lying on your back
+    - neck pain or strain
+  regression: Bend your knees (the tuck hold), or lift the legs higher.
+  progression: Hold for longer, or lower the legs a little. Arms overhead makes it harder.
+  painRule: lower-back
+  status: draft
+- id: cal-knee-plank
+  order: 24
+  section: calisthenics
+  group: cal-plank
+  level: 1
+  name: Forearm plank from the knees
+  equipment:
+    - mat or soft floor
+  muscles: Trunk, shoulders
+  setup: Rest on your forearms and knees, with your elbows under your shoulders and your body in a line from head to knees.
+  steps:
+    - Brace your abdomen and squeeze your glutes.
+    - Hold, breathing steadily, with no sagging at the hips.
+  cues:
+    - Push the floor away
+    - Look at the floor
+  mistakes:
+    - sagging at the hips
+    - raising the hips too high
+    - holding the breath
+  contraindications:
+    - a current shoulder or back injury
+    - pain in the lower back while holding
+  regression: Rest on a wall or a counter with your hands on it.
+  progression: Move on to the forearm plank when you can hold 30 seconds.
+  painRule: lower-back
+  status: draft
+- id: cal-forearm-plank
+  order: 25
+  section: calisthenics
+  group: cal-plank
+  level: 2
+  name: Forearm plank
+  equipment:
+    - mat or soft floor
+  muscles: Trunk, shoulders
+  setup: Rest on your forearms and toes, with your elbows under your shoulders and your body in a straight line from head to heels.
+  steps:
+    - Brace your abdomen and squeeze your glutes.
+    - Hold, breathing steadily, with no sagging at the hips.
+  cues:
+    - Push the floor away
+    - Look at the floor
+  mistakes:
+    - sagging at the hips
+    - piking the hips up
+    - holding the breath
+  contraindications:
+    - a current shoulder or back injury
+    - pain in the lower back while holding
+  regression: Go back to the forearm plank from the knees.
+  progression: Move on to the straight-arm plank when you can hold 30 seconds with no pain.
+  painRule: lower-back
+  status: draft
+- id: cal-straight-arm-plank
+  order: 26
+  section: calisthenics
+  group: cal-plank
+  level: 3
+  name: Straight-arm plank
+  equipment:
+    - mat or soft floor
+  muscles: Trunk, shoulders, wrists
+  setup: Take a push-up position, with your hands under your shoulders and your body in a straight line. Spread your fingers and press the whole palm into the floor.
+  steps:
+    - Push the floor away so your upper back is slightly rounded and your shoulder blades are spread.
+    - Hold with your abdomen and glutes braced.
+    - Breathe steadily, then lower to your knees.
+  cues:
+    - Push the floor away
+    - Whole palm down
+  mistakes:
+    - sagging between the shoulder blades
+    - sagging at the hips
+    - wrists tilting
+  contraindications:
+    - a current wrist, shoulder or back injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Go back to the forearm plank, or hold the straight-arm plank for less time.
+  progression: Hold for longer. Moving the shoulders forward is the planche lean step.
+  painRule: wrist
+  status: draft
+- id: cal-side-plank-knees
+  order: 27
+  section: calisthenics
+  group: cal-side-plank
+  level: 1
+  name: Side plank from the knees
+  equipment:
+    - mat or soft floor
+  muscles: Sides of the trunk, outer hip
+  setup: Lie on your side with your knees bent and your forearm on the floor under your shoulder. Stack your hips and knees.
+  steps:
+    - Lift your hips until your body forms a line from knees to shoulders.
+    - Hold, breathing steadily, then lower slowly. Do both sides.
+  cues:
+    - Hips forward
+    - Shoulder stays above the elbow
+  mistakes:
+    - hips sagging or rolling back
+    - shoulder collapsing into the ear
+    - holding the breath
+  contraindications:
+    - a current shoulder injury
+    - pain in the lower back while holding
+  regression: Lift the hips only a short way.
+  progression: Move on to the side plank when you can hold 20 seconds on each side.
+  painRule: lower-back
+  status: draft
+- id: cal-side-plank-full
+  order: 28
+  section: calisthenics
+  group: cal-side-plank
+  level: 2
+  name: Side plank
+  equipment:
+    - mat or soft floor
+  muscles: Sides of the trunk, outer hip
+  setup: Lie on your side with your legs straight and your forearm under your shoulder. Stack or stagger your feet.
+  steps:
+    - Lift your hips until your body forms a straight line from head to feet.
+    - Hold, breathing steadily, then lower slowly. Do both sides.
+  cues:
+    - Hips forward
+    - Push the floor away with the forearm
+  mistakes:
+    - hips sagging
+    - rolling the body backwards
+    - holding the breath
+  contraindications:
+    - a current shoulder injury
+    - pain in the lower back while holding
+  regression: Go back to the side plank from the knees, or stagger the feet for a wider base.
+  progression: Hold for longer. Lifting the top leg or the arm is beyond this guide.
+  painRule: lower-back
+  status: draft

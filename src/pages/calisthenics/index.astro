@@ -1,0 +1,104 @@
+---
+import Base from '../../layouts/Base.astro';
+import BeginnerSafety from '../../components/BeginnerSafety.astro';
+import SkillSafety from '../../components/SkillSafety.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import { exercisesInGroup, groupsInPhase, loadGuide } from '../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const foundations = groupsInPhase(data, 'foundations');
+const skills = groupsInPhase(data, 'first-skills');
+---
+<Base section="calisthenics" title="Overview" description="A beginner guide to calisthenics: what to build first, the foundations, the first skills behind gates, and eight-week plans. Independent of strength training. Draft.">
+  <section class="hero page-head">
+    <p class="eyebrow">Calisthenics</p>
+    <h1>Bodyweight strength and first skills</h1>
+    <p class="lede">A beginner guide to training with your own body weight. You build the foundations first, then add a few first skills when you meet the checks for each. It stands alone: you do not need to do any other training with it.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">3 sessions a week</span>
+      <span class="badge">About 30 to 45 min</span>
+      <span class="badge">2 phases, 8 weeks each</span>
+      <span class="badge">No equipment to start</span>
+      <StatusBadge status={data.plan.data.status} />
+    </div>
+  </section>
+
+  <BeginnerSafety />
+  <SkillSafety />
+
+  <section aria-labelledby="start">
+    <h2 id="start">How to begin</h2>
+    <ol class="steps prose">
+      <li>Read the safety notes above, and check with a GP first if they apply to you.</li>
+      <li>Read <a href="/calisthenics/start-here/">Start here</a> for what to build first and why, and for the equipment.</li>
+      <li>Do the placement test for each ladder on the <a href="/calisthenics/progression/">progression page</a> to find your level.</li>
+      <li>Follow the <a href="/calisthenics/weekly-plan/">foundations plan</a> for eight weeks.</li>
+      <li>Move on to <a href="/calisthenics/first-skills/">first skills</a> only for the skills whose gates you meet.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="phases">
+    <h2 id="phases">Two phases</h2>
+    <ul class="grid">
+      <li>
+        <div class="card" data-accent="p1">
+          <h3><a href="/calisthenics/foundations/">Foundations</a></h3>
+          <p>Push, pull, legs, hips and the trunk, with wrist and shoulder preparation. Eight weeks, three sessions a week. No equipment is needed to start.</p>
+        </div>
+      </li>
+      <li>
+        <div class="card" data-accent="p4">
+          <h3><a href="/calisthenics/first-skills/">First skills</a></h3>
+          <p>The L-sit, wall handstand, planche lean and tuck front lever, each behind its own gates. A coaching convention, with no training-outcome evidence found.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="ladders">
+    <h2 id="ladders">The ladders</h2>
+    <p class="prose">Each pattern has levels from easier to harder. You start on the first level where you can do the placement test cleanly.</p>
+    <h3>Foundations</h3>
+    <ul class="grid">
+      {foundations.map(group => (
+        <li>
+          <div class="card" data-accent="p1">
+            <h4><a href={`/calisthenics/exercises/#group-${group.id}`}>{group.data.title}</a></h4>
+            <p>{group.data.summary}</p>
+            <ol class="small">
+              {exercisesInGroup(data, group.id).map(exercise => (
+                <li><a href={`/calisthenics/exercises/#${exercise.id}`}>{exercise.data.name}</a></li>
+              ))}
+            </ol>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <h3>First skills</h3>
+    <ul class="grid">
+      {skills.map(group => (
+        <li>
+          <div class="card" data-accent="p4">
+            <h4><a href={`/calisthenics/exercises/#group-${group.id}`}>{group.data.title}</a></h4>
+            <p>{group.data.summary}</p>
+            <ol class="small">
+              {exercisesInGroup(data, group.id).map(exercise => (
+                <li><a href={`/calisthenics/exercises/#${exercise.id}`}>{exercise.data.name}</a></li>
+              ))}
+            </ol>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="not">
+    <h2 id="not">What this does not do</h2>
+    <ul class="prose">
+      <li>It is not a personal prescription, and it has not been reviewed by a physiotherapist or a strength coach.</li>
+      <li>It makes no promises about weight loss, toning or the shape of any body part.</li>
+      <li>It does not teach kick-ups, freestanding handstands or any full planche or front lever.</li>
+      <li>It does not cover aerobic exercise, which the guidelines also recommend, or pregnancy, under-18s, older adults with frailty, or people with a medical condition or injury.</li>
+    </ul>
+  </section>
+</Base>

@@ -195,7 +195,12 @@ for (const g of guideGroups.filter(x => x.ladder)) {
   if (!levels.length) fail(`Guide group ${g.id}: empty ladder`);
   else if (levels.some((level, i) => level !== i + 1)) fail(`Guide group ${g.id}: levels must be 1, 2, 3... (found ${levels.join(', ')})`);
   const first = guideExercises.find(e => e.group === g.id && e.level === 1);
-  if (first?.optional) fail(`Guide group ${g.id}: level 1 must not need optional equipment`);
+  if (first?.optional && !g.requires) fail(`Guide group ${g.id}: level 1 must not need optional equipment (or set "requires" on the group)`);
+}
+// First skills are coaching convention: they must say so and be gated behind objective prerequisites.
+for (const g of guideGroups.filter(x => x.phase === 'first-skills')) {
+  if (!g.convention) fail(`Guide group ${g.id}: a skill group must be flagged convention: true`);
+  if ((g.gates ?? []).length < 2) fail(`Guide group ${g.id}: a skill group needs at least 2 gates`);
 }
 
 for (const plan of guidePlans) {
@@ -212,8 +217,8 @@ for (const plan of guidePlans) {
   // Everything in the section must be reachable: every ladder group, and every exercise that is not part of a ladder.
   const usedGroups = new Set(items.filter(i => i.group).map(i => i.group));
   const usedExercises = new Set(items.filter(i => i.exercise).map(i => i.exercise));
-  for (const g of guideGroups.filter(x => x.section === plan.section && x.ladder)) if (!usedGroups.has(g.id)) fail(`${where}: ladder ${g.id} is not used in any session`);
-  for (const e of guideExercises.filter(x => x.section === plan.section && !groupById.get(x.group)?.ladder)) if (!usedExercises.has(e.id)) fail(`${where}: exercise ${e.id} is not used in the plan`);
+  for (const g of guideGroups.filter(x => x.section === plan.section && x.phase === plan.phase && x.ladder)) if (!usedGroups.has(g.id)) fail(`${where}: ladder ${g.id} is not used in any session`);
+  for (const e of guideExercises.filter(x => x.section === plan.section && groupById.get(x.group)?.phase === plan.phase && !groupById.get(x.group)?.ladder)) if (!usedExercises.has(e.id)) fail(`${where}: exercise ${e.id} is not used in the plan`);
 
   const scheduledSessions = new Set();
   for (const week of plan.weeks) {
@@ -246,6 +251,11 @@ const uniqueOrders = (list, key, label) => {
     seen.add(k);
   }
 };
+// Guide ids are shared by every section, so a repeated id would silently overwrite another entry.
+for (const [label, list] of [['group', guideGroups], ['exercise', guideExercises], ['plan', guidePlans]]) {
+  const seen = new Set();
+  for (const item of list) { if (seen.has(item.id)) fail(`Guide ${label} id "${item.id}" is used twice`); seen.add(item.id); }
+}
 uniqueOrders(guideExercises, e => e.section, 'Guide exercise');
 uniqueOrders(guideGroups, g => g.section, 'Guide group');
 uniqueOrders(coreExercises, () => 'core', 'Core exercise');

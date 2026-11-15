@@ -18,9 +18,12 @@ test.describe('plyometrics section', () => {
   }
 });
 
-test.describe('getting started section (not yet on the home page)', () => {
-  test('pages exist and the weekly plan renders eight weeks', async ({ page }) => {
-    await page.goto('/getting-started/weekly-plan/');
+test.describe('getting started section', () => {
+  test('opens from the home tile and the weekly plan renders eight weeks', async ({ page }) => {
+    await page.goto('/home/');
+    await page.locator('a.tile[href="/getting-started/"]').click();
+    await expect(page).toHaveURL('/getting-started/');
+    await page.locator('nav a[href="/getting-started/weekly-plan/"]').first().click();
     await expect(page.locator('main')).toContainText(/week 8/i);
   });
 });

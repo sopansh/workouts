@@ -1,0 +1,76 @@
+# Claims for the calisthenics section. Statements paraphrase the abstracts of the cited sources.
+# The skill progressions (L-sit, wall handstand, planche lean, tuck front lever) have no claim: no training-outcome evidence was found.
+- id: cal-push-progressions
+  kind: programming
+  section: calisthenics
+  statement: In a 4-week trial, progressive calisthenic push-up training (harder push-up variations as strength improved) increased upper-body muscle strength in healthy, moderately trained men, comparable to bench-press training. Muscle thickness did not change significantly in either group.
+  grade: B
+  sources:
+    - kotarsky-2018
+  caveats: 23 men aged about 23, trained 3 days a week for 4 weeks. It shows that moving to harder push-up variations can build strength; it does not show the same for women, beginners, or for any other calisthenic exercise.
+  population: Healthy, moderately trained men (mean age 23).
+- id: cal-first-pull-up
+  kind: programming
+  section: calisthenics
+  statement: In a combined strength and aerobic programme for college-age women, upper-body strength increased. The women who could do a pull-up at the end of the programme had greater strength, and a higher strength-to-body-mass ratio and strength-to-fat-free-mass ratio, than those who could not.
+  grade: C
+  sources:
+    - flanagan-2003
+  caveats: The abstract describes no control group and the programme combined strength and aerobic work, so it cannot show that pull-up practice caused the gain. The prediction equation came from the same small group of college-age women. It suggests that relative strength matters for a first pull-up; it gives no schedule for reaching one.
+  population: College-age women.
+- id: cal-pull-muscle-activity
+  kind: mechanism
+  section: calisthenics
+  statement: In 19 strength-trained men, muscle activity across pull-up grips (palms away, palms towards you, neutral and rope) was broadly similar, apart from a higher middle-trapezius activity with the palms-away grip than the neutral grip. In 26 adults (13 men, 13 women), four inverted-row variations produced very high activity (more than 61% of maximum) in the latissimus dorsi, biceps, lower trapezius and posterior deltoid, and the amount did not differ between one-leg and two-leg support.
+  grade: C
+  sources:
+    - dickie-2017
+    - youdas-2016
+  caveats: Muscle activity measured by surface electromyography during a single test session; it shows which muscles work, not how much muscle or strength training will build. The pull-up study used trained men, and the inverted-row study used a portable pull-up device, not a table edge.
+  emgOnly: true
+  population: Strength-trained men (pull-up); 13 men and 13 women (inverted row).
+- id: cal-pull-up-shoulder
+  kind: safety
+  section: calisthenics
+  statement: In 11 people who regularly do pull-ups, wide-grip and palms-towards-you pull-ups showed shoulder-blade movement patterns that the authors link to a higher risk of shoulder impingement than the palms-away pull-up. The authors suggest that weight-assisted pull-ups in front of the body could suit weaker participants.
+  grade: C
+  sources:
+    - prinold-2016
+  caveats: A small observational study of movement patterns in people who already pull up, with no injury outcomes. It supports choosing a shoulder-width, palms-away grip and an assisted version first; it does not show that any grip causes injury.
+  population: Eleven young adults who regularly do pull-ups.
+- id: cal-trunk-activity
+  kind: mechanism
+  section: calisthenics
+  statement: In 30 healthy adults, the authors suggest the side bridge could be used for strengthening the gluteus medius and the external oblique. The other exercises tested, including the bridge, the single-leg bridge and the prone bridge on the elbows and toes, produced activity below 45% of maximum, which the authors suggest suits endurance or stabilisation training.
+  grade: C
+  sources:
+    - ekstrom-2007
+  caveats: Muscle activity in one session in healthy adults, not a training trial. It guides the choice between strength and endurance emphasis; it does not show what these exercises build over time.
+  emgOnly: true
+  population: 19 men and 11 women, healthy.
+- id: cal-scapular-push-up
+  kind: mechanism
+  section: calisthenics
+  statement: A review of 19 studies (356 participants) found that hand width, arm angle and leg position change how strongly the serratus anterior and upper trapezius work during the push-up plus, the push-up with an extra push of the shoulder blades apart at the top. The setup with the most serratus anterior and least upper trapezius activity was on a stable surface with the elbows straight, the hands shoulder-width apart and the arms raised to about 110 to 120 degrees.
+  grade: C
+  sources:
+    - kang-2019
+  caveats: Muscle-activity studies only, mostly in healthy people. It supports the scapular push-up as a way to practise shoulder-blade control; it does not show that it prevents injury or improves skills.
+  emgOnly: true
+- id: cal-wrist-loading
+  kind: safety
+  section: calisthenics
+  statement: In a chart review, 84% of patients with dorsal (back-of-the-wrist) pain when bearing weight on an extended wrist, for example in push-ups or the plank position, had an abnormality on MRI, most often a small ganglion cyst, then a partial scapholunate ligament tear. The authors suggest imaging may be warranted when such pain keeps happening.
+  grade: C
+  sources:
+    - nance-2017
+  caveats: A retrospective review of patients who were already seeking care, compared with patients with a different wrist problem. It says nothing about how common the problem is in people who exercise, and it does not show that exercise caused the findings. It supports the wrist pain rule, which says recurring back-of-the-wrist pain is a reason to see a clinician.
+  population: Patients with dorsal wrist pain.
+- id: cal-soreness
+  kind: mechanism
+  section: calisthenics
+  statement: A single bout of eccentric exercise (where the muscle lengthens under load, as when lowering the body) protects the muscle against damage from later bouts. This is called the repeated bout effect. The review covers neural, mechanical and cellular explanations and says that no single theory explains it.
+  grade: C
+  sources:
+    - mchugh-2003
+  caveats: A review of mechanisms, from studies mostly of controlled eccentric exercise. It is the reason the plan starts with 2 sets and stays short of failure in the first weeks; the exact size and length of the first-week reduction in sets are a planning convention.

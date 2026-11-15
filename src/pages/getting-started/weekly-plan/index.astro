@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import GettingStartedSafety from '../../../components/GettingStartedSafety.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
 import GuideSession from '../../../components/GuideSession.astro';
 import GuideWeek from '../../../components/GuideWeek.astro';
 import { estimateMinutes, loadGuide } from '../../../lib/guide';
@@ -22,7 +22,7 @@ const rows = (items: typeof plan.data.sessions[number]['items']) => items.map(it
     <p class="lede">Two sessions, A and B. Weeks 1 and 2 have two sessions a week, then weeks 3 to 8 have three, with a rest day in between. Each exercise is a ladder, so you do your own level.</p>
   </section>
 
-  <GettingStartedSafety />
+  <BeginnerSafety />
 
   <section aria-labelledby="before">
     <h2 id="before">Warm-up, every session</h2>

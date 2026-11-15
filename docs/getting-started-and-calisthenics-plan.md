@@ -1,6 +1,6 @@
 # Getting started with strength, and beginner calisthenics: implementation and evidence plan
 
-Status: **plan of record. Phase 1 (first slice of "Getting started") is built as a draft and the two home tiles are added as "Coming soon".** Calisthenics is planned only.
+Status: **plan of record. Phase 1 (getting started) and phases 4 and 5 (calisthenics foundations and first skills) are built as drafts, and both home tiles are live.** Remaining work is review and the evidence gaps below.
 Related: [`CONTEXT.md`](../CONTEXT.md), [`hypertrophy-plan.md`](./hypertrophy-plan.md) (the evidence rubric and quality gates here follow section 5 and 13 of that plan).
 
 ## 1. Scope and decisions
@@ -145,10 +145,10 @@ One build-time validator covers the guides: every exercise has safety fields and
 | 1 | **Getting started, first slice:** hub, weekly plan, exercises, progression, evidence (draft) | **Done:** all five pages load at 1280 and 390 px with no console errors or overflow, validator rules pass (and fail when the data is deliberately broken), every claim graded with limits, sources re-verified by `npm run verify:sources` |
 | 2 | Getting started complete: soreness and adherence guidance, deeper exercise notes, remaining evidence from section 4 | New sources verified and graded |
 | 3 | Put every section on one stack and shared components | **Done:** all sections are Astro; one layout, one evidence registry, shared guide components; 152 strength pages compared identical to the previous build |
-| 4 | Calisthenics foundations | Same checks, plus prerequisites and gates |
-| 5 | Calisthenics first skills | Every skill step flagged grade D and gated |
+| 4 | Calisthenics foundations | **Done (draft):** 8 pages under `/calisthenics/`, 8 ladders, 8-week plan, prep exercises, claims graded with limits, 8 new DOIs verified on Crossref |
+| 5 | Calisthenics first skills | **Done (draft):** L-sit, wall handstand, planche lean and tuck front lever, each gated (validator needs `convention: true` and at least 2 gates), 8-week plan |
 | 6 | Review | A physiotherapist and a strength coach have signed it off; status moves from draft |
-| 7 | Flip the home tiles to live | Phase 1 and 4 are ready; the owner approves |
+| 7 | Flip the home tiles to live | **Done** at the owner's request, still labelled draft |
 
 ## 9. Risks and open questions
 

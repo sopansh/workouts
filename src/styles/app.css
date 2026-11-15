@@ -246,6 +246,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 .session > h3 { padding-left: 12px; border-left: 5px solid var(--accent); margin-top: 0; }
 .day[data-kind='a'] { --accent: var(--p1); }
 .day[data-kind='b'] { --accent: var(--p2); }
+.day[data-kind='c'] { --accent: var(--p3); }
 
 @media (prefers-reduced-motion: reduce) {
   .card, .map .m { transition: none !important; }

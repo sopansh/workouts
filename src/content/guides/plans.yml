@@ -146,3 +146,253 @@
         Friday: B
       note: "An example: any two days at least 48 hours apart work. Wednesday and Friday are rest days in the paired strength split."
   status: draft
+- id: cal-foundations
+  section: calisthenics
+  phase: foundations
+  name: Calisthenics foundations, eight weeks
+  warmup:
+    text: "About 8 minutes: march on the spot and circle the arms and hips for 2 minutes, then do the three preparation exercises. If anything hurts during the warm-up, do not continue to the working sets."
+    items:
+      - exercise: cal-wrist-rocks
+        reps: 8-10 each way
+      - exercise: cal-scapular-push-up
+        reps: 8-10
+        note: 2 sets.
+      - exercise: cal-wall-slide
+        reps: 8-10
+        note: 2 sets.
+  sessions:
+    - id: A
+      title: "Session A: push, legs and trunk"
+      intro: Pushing, squatting and a hollow-body trunk exercise.
+      items:
+        - group: cal-push
+          reps: 8-12
+        - group: cal-squat
+          reps: 8-12
+          note: Each leg for the single-leg levels.
+        - group: cal-bridge
+          reps: 8-12
+          note: Each leg for the single-leg levels.
+        - group: cal-hollow
+          reps: 15-30 s
+          note: Hold for seconds.
+    - id: B
+      title: "Session B: pull and trunk"
+      intro: Pulling and two trunk holds. If you have no table or bar, stay on levels 1 and 2 of the pull ladder.
+      items:
+        - group: cal-pull
+          reps: 8-12
+          note: Each side for the one-arm row. Hold for seconds for the active hang.
+        - group: cal-bridge
+          reps: 8-12
+          note: Each leg for the single-leg levels.
+        - group: cal-plank
+          reps: 20-40 s
+          note: Hold for seconds.
+        - group: cal-side-plank
+          reps: 15-30 s
+          note: Each side. Hold for seconds.
+    - id: C
+      title: "Session C: push, pull and legs"
+      intro: The main patterns again, with a hollow-body hold.
+      items:
+        - group: cal-push
+          reps: 8-12
+        - group: cal-pull
+          reps: 8-12
+          note: Each side for the one-arm row. Hold for seconds for the active hang.
+        - group: cal-squat
+          reps: 8-12
+          note: Each leg for the single-leg levels.
+        - group: cal-hollow
+          reps: 15-30 s
+          note: Hold for seconds.
+  weeks:
+    - label: Week 1
+      sets: 2
+      rir: 3 or more
+      days:
+        Monday: A
+        Thursday: B
+      note: Learn the movements and stay well short of failure. Muscle soreness in the first week is common.
+    - label: Week 2
+      sets: 2
+      rir: 3 or more
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: All three sessions begin. Keep one rest day between them.
+    - label: Week 3
+      sets: 2
+      rir: 2 to 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Add a rep wherever it feels easy and clean.
+    - label: Week 4
+      sets: 3
+      rir: 2 to 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Add a third set to each exercise.
+    - label: Week 5
+      sets: 3
+      rir: 2
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Move up a level on any ladder where you reached the top of the range on every set.
+    - label: Week 6
+      sets: 3
+      rir: 2
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Same sessions. Hold your level if technique slipped last week.
+    - label: Week 7
+      sets: 3
+      rir: 1 to 2
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: The hardest week. Stop sets with clean form, not at failure.
+    - label: Week 8
+      sets: 2
+      rir: 3 or more
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: An easier week, then retest each ladder on the progression page.
+  timing:
+    secondsPerSet: 40
+    restSeconds: 75
+    secondsBetweenExercises: 30
+    warmUpMinutes: 8
+    maxMinutes: 45
+  status: draft
+- id: cal-first-skills
+  section: calisthenics
+  phase: first-skills
+  name: First skills, eight weeks
+  warmup:
+    text: "About 8 minutes: the same preparation as the foundations plan, with extra time on the wrists before any session with hand support. If anything hurts, do not continue."
+    items:
+      - exercise: cal-wrist-rocks
+        reps: 8-10 each way
+      - exercise: cal-scapular-push-up
+        reps: 8-10
+        note: 2 sets.
+  sessions:
+    - id: A
+      title: "Session A: L-sit and wall handstand"
+      intro: Do only the blocks whose gates you have passed. Use the foundations session for the rest.
+      items:
+        - group: cal-l-sit
+          reps: 10-20 s
+          note: Hold for seconds, rest between holds.
+        - group: cal-handstand
+          reps: 10-20 s
+          note: Hold for seconds. Walk up and down only.
+        - group: cal-push
+          reps: 6-10
+    - id: B
+      title: "Session B: planche lean and pulling"
+      intro: The front lever block needs a secure bar. Skip it if you do not have one.
+      items:
+        - group: cal-planche
+          reps: 10-15 s
+          note: Hold for seconds.
+        - group: cal-front-lever
+          reps: 5-15 s
+          note: Hold for seconds. Needs a secure bar.
+        - group: cal-pull
+          reps: 6-10
+    - id: C
+      title: "Session C: skills and legs"
+      intro: Short skill practice, then the legs and the hollow-body hold.
+      items:
+        - group: cal-l-sit
+          reps: 10-20 s
+          note: Hold for seconds, rest between holds.
+        - group: cal-handstand
+          reps: 10-20 s
+          note: Hold for seconds. Walk up and down only.
+        - group: cal-squat
+          reps: 8-12
+          note: Each leg for the single-leg levels.
+        - group: cal-hollow
+          reps: 15-30 s
+          note: Hold for seconds.
+  weeks:
+    - label: Week 1
+      sets: 2
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Test each block at its first level. Stop a hold early if form slips.
+    - label: Week 2
+      sets: 2
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Same sessions. Hold for longer only if the form stays clean.
+    - label: Week 3
+      sets: 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Add a third set to each block.
+    - label: Week 4
+      sets: 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Move up a level on any ladder where you reached the top of the hold range on every set.
+    - label: Week 5
+      sets: 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Same sessions. Hold your level if wrists or shoulders feel sore.
+    - label: Week 6
+      sets: 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: Same sessions.
+    - label: Week 7
+      sets: 3
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: The hardest week. Stop holds before the form breaks.
+    - label: Week 8
+      sets: 2
+      days:
+        Monday: A
+        Wednesday: B
+        Friday: C
+      note: An easier week, then retest each gate on the progression page.
+  timing:
+    secondsPerSet: 30
+    restSeconds: 90
+    secondsBetweenExercises: 45
+    warmUpMinutes: 8
+    maxMinutes: 45
+  status: draft

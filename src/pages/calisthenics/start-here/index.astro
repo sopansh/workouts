@@ -1,0 +1,48 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import { loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const soreness = data.claimById.get('cal-soreness')!;
+---
+<Base section="calisthenics" title="Start here" description="What to build first in calisthenics and why, what you need, and how to check you are ready for the foundations.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'Start here' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Start here</p>
+    <h1>What to build first</h1>
+    <p class="lede">Calisthenics skills sit on a base of strong shoulders, wrists and trunk. Build that base first, in a fixed order. The order is a coaching convention, not a study result.</p>
+  </section>
+
+  <BeginnerSafety />
+
+  <section aria-labelledby="order">
+    <h2 id="order">The order, and why</h2>
+    <ol class="steps prose">
+      <li><b>Prepare the wrists and shoulders.</b> Weight-bearing on the hands and straight-arm positions load the wrists and shoulders. Easy preparation goes before every session. <a href="/calisthenics/exercises/#group-cal-prep">See the exercises</a>.</li>
+      <li><b>Build the foundations.</b> A push-up, a pull, a squat that moves to one leg, a hip bridge, and trunk holds (hollow body, plank, side plank). These are the prerequisites for every skill. <a href="/calisthenics/foundations/">Foundations</a>.</li>
+      <li><b>Pass the gates, then add skills.</b> Each skill has gates, such as a number of clean push-ups and a plank hold. If you do not meet them, you stay on the foundations. <a href="/calisthenics/first-skills/">First skills</a>.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="equipment">
+    <h2 id="equipment">What you need</h2>
+    <ul class="prose">
+      <li><b>No equipment needed to start:</b> a wall, a mat or soft floor, a sturdy chair and a backpack with some books in it.</li>
+      <li><b>Optional, for pulling:</b> a stable table edge, or a pull-up bar. Without either, the pull ladder stops at level 2, the one-arm backpack row, and the front lever ladder is skipped.</li>
+      <li><b>Check every support.</b> A table must be heavy and unable to slide or tip. A bar must be fixed to a wall, rack or ceiling, or be a doorway bar rated for your weight and fitted exactly to its instructions. Test it with your feet on the floor before you rely on it.</li>
+      <li><b>Not needed:</b> parallettes, rings, bands or weights.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="ready">
+    <h2 id="ready">Are you ready for the foundations?</h2>
+    <p class="prose">Do the <a href="/calisthenics/progression/">placement test</a> for each ladder. If you cannot do the easiest level of a ladder without pain, skip that ladder and ask a clinician. If you have never trained before, you may find the <a href="/getting-started/">getting-started plan</a> an easier way in, but you do not need it.</p>
+  </section>
+
+  <section aria-labelledby="soreness">
+    <h2 id="soreness">The first weeks and soreness</h2>
+    <p class="prose">{soreness.data.statement} The plan therefore starts with 2 sets and stays short of failure for the first weeks. Some muscle soreness early on is common and eases. Sharp, pinching or joint pain is different: use the pain rule for that exercise. <a href="/calisthenics/evidence/#claim-cal-soreness">See the claim and its limits</a>.</p>
+  </section>
+</Base>

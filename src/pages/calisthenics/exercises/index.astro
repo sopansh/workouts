@@ -1,0 +1,76 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import SkillSafety from '../../../components/SkillSafety.astro';
+import GuideExerciseCard from '../../../components/GuideExerciseCard.astro';
+import PainRule from '../../../components/PainRule.astro';
+import { exercisesInGroup, groupsInPhase, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRule.id))];
+const phases = [
+  { id: 'foundations', title: 'Foundations', groups: groupsInPhase(data, 'foundations') },
+  { id: 'first-skills', title: 'First skills', groups: groupsInPhase(data, 'first-skills') },
+];
+---
+<Base section="calisthenics" title="Exercises" description="Every calisthenics exercise as a ladder from easier to harder, with setup, steps, mistakes, contraindications, an easier and a harder version, and the gates for each skill.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'Exercises' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Exercises</p>
+    <h1>Every exercise, as a ladder</h1>
+    <p class="lede">Each movement has levels from easier to harder. Find your level with the placement test. Skills list the gates you must meet first.</p>
+    {phases.map(phase => (
+      <>
+        <p class="label">{phase.title}</p>
+        <ul class="chip-list" aria-label={`Jump to a ${phase.title.toLowerCase()} movement`}>
+          {phase.groups.map(group => <li><a class="chip" href={`#group-${group.id}`}>{group.data.title}</a></li>)}
+        </ul>
+      </>
+    ))}
+  </section>
+
+  <BeginnerSafety />
+  <SkillSafety />
+
+  {phases.map(phase => (
+    <>
+      <h2 id={`phase-${phase.id}`}>{phase.title}</h2>
+      {phase.groups.map(group => (
+        <section aria-labelledby={`group-${group.id}`}>
+          <h3 id={`group-${group.id}`}>{group.data.title}</h3>
+          <p class="prose">{group.data.summary}</p>
+          {group.data.requires && <p class="prose"><b>Needs:</b> {group.data.requires}</p>}
+          {group.data.gates.length > 0 && (
+            <>
+              <p class="prose"><b>Gates: you need all of these first.</b></p>
+              <ul class="prose">{group.data.gates.map(gate => <li>{gate}</li>)}</ul>
+            </>
+          )}
+          {group.data.ladder && <p class="prose"><b>{group.data.gates.length > 0 ? 'Moving up.' : 'Placement test.'}</b> {group.data.test}{group.data.gates.length === 0 && ' Start on the first level where you can do this cleanly.'}</p>}
+          <div class="guide-list">
+            {exercisesInGroup(data, group.id).map(exercise => {
+              const pain = data.painById.get(exercise.data.painRule.id)!;
+              return (
+                <GuideExerciseCard
+                  exercise={exercise}
+                  heading={exercise.data.level ? `Level ${exercise.data.level}: ${exercise.data.name}` : exercise.data.name}
+                  painRuleTitle={pain.data.title}
+                  painRuleHref={`#pain-${pain.id}`}
+                />
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </>
+  ))}
+
+  <section aria-labelledby="pain">
+    <h2 id="pain">Pain rules</h2>
+    <p class="prose">A dull muscle effort is expected. Stay at 2 out of 10 discomfort or lower, and no worse the next morning. Sharp, pinching, catching or joint pain means stop the set and use the easier version. Do not push through it. Each exercise names the rule for its body area.</p>
+    <div class="cols">
+      {painIds.map(id => <div id={`pain-${id}`}><PainRule rule={data.painById.get(id)!} /></div>)}
+    </div>
+  </section>
+</Base>

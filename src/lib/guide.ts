@@ -9,7 +9,7 @@ export type GuideItem = GuideSession['items'][number];
 
 export const DAY_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const;
 
-/** Everything a guide section (getting started, plyometrics) needs, filtered to that section. */
+/** Everything a guide section (getting started, calisthenics, plyometrics) needs, filtered to that section. */
 export async function loadGuide(section: string) {
   const [groups, exercises, plans, painRules, claims, sources] = await Promise.all([
     getCollection('guideGroups'), getCollection('guideExercises'), getCollection('guidePlans'),
@@ -20,14 +20,19 @@ export async function loadGuide(section: string) {
   const order = new Map(sortedGroups.map((g, i) => [g.id, i]));
   const sortedExercises = mine(exercises).sort((a, b) =>
     (order.get(a.data.group.id) ?? 0) - (order.get(b.data.group.id) ?? 0) || (a.data.level ?? 0) - (b.data.level ?? 0) || a.data.order - b.data.order);
-  const plan = mine(plans)[0];
+  const sectionPlans = mine(plans);
+  const plan = sectionPlans[0];
   if (!plan) throw new Error(`No plan for section "${section}"`);
+  const mineClaims = mine(claims);
+  // A section's evidence page lists every source its claims cite, including ones registered under another section.
+  const cited = new Set(mineClaims.flatMap(claim => claim.data.sources.map(source => source.id)));
   return {
     groups: sortedGroups,
     exercises: sortedExercises,
     plan,
-    claims: mine(claims),
-    sources: mine(sources),
+    plans: sectionPlans,
+    claims: mineClaims,
+    sources: sources.filter(source => source.data.section.id === section || cited.has(source.id)),
     painById: new Map(painRules.map(rule => [rule.id, rule])),
     claimById: new Map(claims.map(claim => [claim.id, claim])),
     sourceById: new Map(sources.map(source => [source.id, source])),
@@ -37,6 +42,8 @@ export async function loadGuide(section: string) {
 }
 
 export type GuideData = Awaited<ReturnType<typeof loadGuide>>;
+
+export const groupsInPhase = (data: GuideData, phase: string): GuideGroup[] => data.groups.filter(group => group.data.phase === phase);
 
 export const exercisesInGroup = (data: GuideData, groupId: string): GuideExercise[] =>
   data.exercises.filter(exercise => exercise.data.group.id === groupId);

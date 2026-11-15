@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import GettingStartedSafety from '../../../components/GettingStartedSafety.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
 import { exercisesInGroup, loadGuide } from '../../../lib/guide';
 
 const data = await loadGuide('getting-started');
@@ -14,7 +14,7 @@ const data = await loadGuide('getting-started');
     <p class="lede">Instead of adding weight, you move up a ladder. The rules below are cautious planning conventions for beginners, not results from a trial.</p>
   </section>
 
-  <GettingStartedSafety />
+  <BeginnerSafety />
 
   <section aria-labelledby="placement">
     <h2 id="placement">Placement test</h2>

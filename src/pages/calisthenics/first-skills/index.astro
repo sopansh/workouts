@@ -1,0 +1,44 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import SkillSafety from '../../../components/SkillSafety.astro';
+import { exercisesInGroup, groupsInPhase, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const skills = groupsInPhase(data, 'first-skills');
+---
+<Base section="calisthenics" title="First skills" description="Phase 2 of calisthenics: the L-sit, wall handstand, planche lean and tuck front lever, each behind objective gates. A coaching convention with no training-outcome evidence found.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'First skills' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Phase 2</p>
+    <h1>First skills</h1>
+    <p class="lede">Four skills, each in small steps and each behind its own gates. You open a skill only when you meet all of its gates. Skills you are not ready for stay closed, and you carry on with the foundations.</p>
+  </section>
+
+  <BeginnerSafety />
+  <SkillSafety />
+
+  {skills.map(group => (
+    <section aria-labelledby={`skill-${group.id}`}>
+      <h2 id={`skill-${group.id}`}>{group.data.title}</h2>
+      <p class="prose">{group.data.summary}</p>
+      {group.data.requires && <p class="prose"><b>Needs:</b> {group.data.requires}</p>}
+      <h3>Gates: you need all of these first</h3>
+      <ul class="prose">{group.data.gates.map(gate => <li>{gate}</li>)}</ul>
+      <p class="muted small">The gate numbers are coaching conventions, not study results.</p>
+      <h3>Steps</h3>
+      <ol class="prose">
+        {exercisesInGroup(data, group.id).map(exercise => (
+          <li><a href={`/calisthenics/exercises/#${exercise.id}`}>{exercise.data.name}</a></li>
+        ))}
+      </ol>
+      <p class="prose">{group.data.test}</p>
+    </section>
+  ))}
+
+  <section aria-labelledby="plan">
+    <h2 id="plan">The plan</h2>
+    <p class="prose">The <a href="/calisthenics/weekly-plan/#first-skills">first-skills plan</a> is three short sessions a week for eight weeks. Do only the blocks whose gates you meet and use the foundations session for the rest.</p>
+  </section>
+</Base>

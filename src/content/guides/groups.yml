@@ -93,3 +93,123 @@
   section: plyometrics
   order: 4
   ladder: false
+- id: cal-prep
+  section: calisthenics
+  phase: foundations
+  order: 1
+  title: Prepare the wrists and shoulders
+  summary: Short, easy work before every session. Weight-bearing on the hands and straight-arm positions load the wrists and shoulders in ways most beginners are not used to.
+  ladder: false
+- id: cal-push
+  section: calisthenics
+  phase: foundations
+  order: 2
+  title: Push
+  summary: Chest, shoulders and the back of the arms. A higher hand position makes it easier. The last level is the first step towards the handstand.
+  ladder: true
+  test: 8 push-ups at the level with a 2 second lowering, the body in one line, stopping with 2 or 3 more possible.
+- id: cal-pull
+  section: calisthenics
+  phase: foundations
+  order: 3
+  title: Pull
+  summary: Upper back and the front of the arms. The first two levels need no equipment. From level 3 you need a stable table edge or a secure bar, so the ladder stops at level 2 until you have one.
+  ladder: true
+  test: 8 clean reps at the level (each side for the one-arm row), the shoulder blade moving before the elbow bends.
+- id: cal-squat
+  section: calisthenics
+  phase: foundations
+  order: 4
+  title: Squat and single-leg work
+  summary: Legs and hips, from two legs to one.
+  ladder: true
+  test: 8 slow reps with a 3 second lowering (each leg for single-leg levels), stopping with 2 or 3 more possible.
+- id: cal-bridge
+  section: calisthenics
+  phase: foundations
+  order: 5
+  title: Hip extension
+  summary: Glutes and the back of the thighs, lying down with no spinal load.
+  ladder: true
+  test: 8 reps with a 1 second pause at the top (each leg for the single-leg levels), stopping with 2 or 3 more possible.
+- id: cal-hollow
+  section: calisthenics
+  phase: foundations
+  order: 6
+  title: Hollow body
+  summary: The front of the trunk and hips, holding the lower back flat. The hollow shape is the base position for the L-sit and the front lever.
+  ladder: true
+  test: A 20 second hold at the level with the lower back staying on the floor and your breathing steady.
+- id: cal-plank
+  section: calisthenics
+  phase: foundations
+  order: 7
+  title: Plank
+  summary: Trunk and shoulders, holding a straight line from head to heels. The last level has straight arms, as the planche lean needs.
+  ladder: true
+  test: A 20 second hold at the level with a straight line and no sagging at the hips.
+- id: cal-side-plank
+  section: calisthenics
+  phase: foundations
+  order: 8
+  title: Side plank
+  summary: The sides of the trunk and hips.
+  ladder: true
+  test: A 15 second hold on each side at the level, breathing steadily.
+- id: cal-l-sit
+  section: calisthenics
+  phase: first-skills
+  order: 9
+  title: L-sit
+  summary: Hold your body off the floor on straight arms, with your legs lifted in front of you. It trains the trunk, hip flexors and the muscles that push the shoulders down.
+  ladder: true
+  test: Start at level 1. Move up only when you can hold the current level for 15 seconds with straight arms and no wrist pain.
+  gates:
+    - A 30 second plank held comfortably (plank, level 2 or higher).
+    - A 20 second hollow-body hold with the lower back flat (hollow body, level 3).
+    - 8 clean push-ups with no wrist pain (push, level 2).
+  convention: true
+- id: cal-handstand
+  section: calisthenics
+  phase: first-skills
+  order: 10
+  title: Wall handstand
+  summary: Build a handstand against a wall, facing the wall, in small steps. This is balance and shoulder strength practice, not a freestanding handstand.
+  ladder: true
+  test: Start at level 1. Move up only when you can hold the current level for 20 seconds, with straight arms and no wrist, shoulder or neck pain.
+  gates:
+    - 10 clean push-ups at least (push, level 2).
+    - 8 slow pike push-ups, or a 30 second pike hold with straight legs, with no shoulder pain (push, level 4).
+    - A 30 second straight-arm plank with no wrist pain (plank, level 3).
+    - A 20 second hollow-body hold (hollow body, level 3).
+    - No eye condition, uncontrolled high blood pressure or neck problem. If unsure, check with a doctor first, because the head is below the heart.
+  convention: true
+- id: cal-planche
+  section: calisthenics
+  phase: first-skills
+  order: 11
+  title: Planche lean
+  summary: Lean your shoulders forwards over your hands in a push-up position on straight arms. This builds the straight-arm shoulder and wrist strength the planche needs. It is not a planche.
+  ladder: true
+  test: Start at level 1. Move up only when you can hold the current level for 15 seconds with straight arms and no wrist pain.
+  gates:
+    - 10 clean push-ups (push, level 2).
+    - A 30 second straight-arm plank with no wrist pain (plank, level 3).
+    - 8 controlled scapular push-ups (prepare the wrists and shoulders).
+    - Wrist rocks with no pain, 10 slow rocks.
+  convention: true
+- id: cal-front-lever
+  section: calisthenics
+  phase: first-skills
+  order: 12
+  title: Tuck front lever
+  summary: Hang from a bar and hold the body horizontal with the knees tucked. Everything here needs a secure bar, so skip this ladder if you do not have one.
+  ladder: true
+  requires: A pull-up bar that is fixed to a wall, rack or ceiling, or a doorway bar rated for your weight and fitted exactly to its instructions.
+  test: Start at level 1. Move up only when you can hold the current level for 15 seconds, or do 5 slow reps, with no shoulder or elbow pain.
+  gates:
+    - A 30 second active hang (pull, level 4).
+    - 3 pull-ups with a controlled lowering (pull, level 6).
+    - A 20 second hollow-body hold (hollow body, level 3).
+    - No shoulder or elbow pain when hanging.
+  convention: true

@@ -1,0 +1,78 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import SkillSafety from '../../../components/SkillSafety.astro';
+import { exercisesInGroup, groupsInPhase, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const foundations = groupsInPhase(data, 'foundations').filter(group => group.data.ladder);
+const skills = groupsInPhase(data, 'first-skills');
+const names = (id: string) => exercisesInGroup(data, id).map(exercise => exercise.data.name).join(', then ');
+---
+<Base section="calisthenics" title="Progression" description="How to find your level in calisthenics, move up, hold or step back, retest, and check the gates before each first skill.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'Progression' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Progression</p>
+    <h1>Finding your level and moving up</h1>
+    <p class="lede">Instead of adding weight, you move up a ladder. The rules below are cautious planning conventions, not results from a trial.</p>
+  </section>
+
+  <BeginnerSafety />
+  <SkillSafety />
+
+  <section aria-labelledby="placement">
+    <h2 id="placement">Placement test: foundations</h2>
+    <p class="prose">Do each test once, on a day you feel normal, after a warm-up. Start on the first level where you can do the test cleanly. If you cannot do the easiest level without pain, skip that ladder and ask a clinician. For the pull ladder, stop at level 2 unless you have a stable table or a secure bar.</p>
+    <div class="table-wrap" role="region" aria-label="Placement tests" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Pattern</th><th scope="col">Test</th><th scope="col">Ladder, easier to harder</th></tr></thead>
+        <tbody>
+          {foundations.map(group => (
+            <tr>
+              <th scope="row"><a href={`/calisthenics/exercises/#group-${group.id}`}>{group.data.title}</a></th>
+              <td>{group.data.test}</td>
+              <td>{names(group.id)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="gates">
+    <h2 id="gates">Gates: first skills</h2>
+    <p class="prose">A skill opens only when you meet every gate for it. The numbers are coaching conventions. They are checks of readiness, not guarantees of safety.</p>
+    <div class="table-wrap" role="region" aria-label="Skill gates" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Skill</th><th scope="col">Gates, all required</th><th scope="col">Steps</th></tr></thead>
+        <tbody>
+          {skills.map(group => (
+            <tr>
+              <th scope="row"><a href={`/calisthenics/first-skills/#skill-${group.id}`}>{group.data.title}</a></th>
+              <td><ul class="small">{group.data.gates.map(gate => <li>{gate}</li>)}</ul></td>
+              <td>{names(group.id)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="rules">
+    <h2 id="rules">When to move up, hold or step back</h2>
+    <ul class="prose">
+      <li><b>Move up one level</b> when you reach the top of the rep or hold range on every set with the reps in reserve for that week, and your technique stayed clean on the last rep.</li>
+      <li><b>Add a rep or a second, not a level,</b> while you are still inside the range.</li>
+      <li><b>Hold</b> your level if technique slips, you are unusually sore the next day, your wrists or shoulders ache, or you slept badly.</li>
+      <li><b>Step back one level</b> after illness, a break of more than a couple of weeks, or any pain. If pain does not settle within 2 to 3 weeks, see a clinician.</li>
+      <li><b>Do not rush the skills.</b> Wrists, tendons and shoulders adapt more slowly than muscles feel. Take a full eight weeks on a block before you move up, unless the form is clearly easy.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="retest">
+    <h2 id="retest">After week 8</h2>
+    <p class="prose">Retest each ladder. If you moved up, repeat the eight weeks at the new level. Then check the gates for each skill. If you meet them, start the first-skills plan for that skill. If you do not, repeat the foundations.</p>
+    <p class="prose">When a skill ladder feels easy, or you want a freestanding handstand, a full planche or front lever, find a qualified coach. Those steps are beyond this guide.</p>
+  </section>
+</Base>

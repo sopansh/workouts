@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import GettingStartedSafety from '../../components/GettingStartedSafety.astro';
+import BeginnerSafety from '../../components/BeginnerSafety.astro';
 import StatusBadge from '../../components/StatusBadge.astro';
 import { exercisesInGroup, loadGuide } from '../../lib/guide';
 
@@ -20,7 +20,7 @@ const data = await loadGuide('getting-started');
     </div>
   </section>
 
-  <GettingStartedSafety />
+  <BeginnerSafety />
 
   <section aria-labelledby="start">
     <h2 id="start">How to begin</h2>

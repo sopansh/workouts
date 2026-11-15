@@ -25,9 +25,9 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | `/home/` landing page | Rendered from `src/content/sections.yml`. **Live** |
 | `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Live** (8 exercises, 3 phases). Now an Astro page; the 3D rig is in `src/scripts/core/` |
 | `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups |
-| `/getting-started/` Getting started with strength | **First slice built as a draft**: overview, 8-week plan, exercises (10 ladders, 20 exercises), progression, evidence. Home tile is **"Coming soon"** (`status: soon`) |
+| `/getting-started/` Getting started with strength | **First slice built as a draft**: overview, 8-week plan, exercises (10 ladders, 20 exercises), progression, evidence. Home tile is **live** |
 | `/plyometrics/` | **Built as a draft**: overview, weekly plan, exercises, progression, fascia and tendons. Personal plan, to follow once cleared to jump |
-| `/calisthenics/` | **Planned only**, home tile "Coming soon". See the plan doc |
+| `/calisthenics/` | **First build as a draft, tile live**: hub, start-here, foundations, first-skills, weekly-plan, exercises (41 in 12 ladders), progression, evidence. Two 8-week plans. Skills are gated and flagged as coaching convention. See the plan doc |
 | `/nutrition/` Health & Nutrition | Not started (tile "Coming soon") |
 | Cricket-specific tracks | Stubs in `/strength/cricket/`; planned for plyometrics and isometrics (hypertrophy plan section 12) |
 | Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). No CI yet. `npm run test:e2e` runs the browser tests |
@@ -64,7 +64,7 @@ src/
 |---|---|---|
 | `sections` | `sections.yml` | home tiles, each section's nav and footer links, page titles. `status: live` needs an `href` |
 | `groups`, `muscles`, `exercises`, `programs`, `principles`, `cricket`, `glossary`, `painRules` | `groups.yml`, `muscles/`, `exercises/`, `programs.yml`, `principles/*.md`, `cricket/*.md`, ... | strength |
-| `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups.yml`, `guides/exercises/*.yml`, `guides/plans.yml` | getting-started and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises |
+| `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups.yml`, `guides/exercises/*.yml`, `guides/plans.yml` | getting-started, calisthenics and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises. Optional `phase` (groups and plans, so one section can have two plans), `gates` (prerequisites), `requires` (kit the whole ladder needs) and `convention` (no training-outcome evidence). Guide ids are global, so calisthenics ids start `cal-` |
 | `corePhases`, `coreExercises` | `core/phases.yml`, `core/exercises.yml` | `/core/`. `poses` drive the 3D figures |
 | `sources`, `claims` | `sources.yml`, `claims/*.yml` | **every section**. Each entry has a `section` (default `strength`). Pages filter by section |
 
@@ -224,8 +224,9 @@ cycle, poses start/end, steps, mistakes). The card, nav and framing update thems
 ## 10. What to build next
 
 1. **Review pass** of the drafts (physiotherapist for anatomy, contraindications and pain rules; a CSCS coach for programs).
-2. **Calisthenics** (plan doc phases 4 and 5): foundations, then first skills, each gated by prerequisites and flagged as coaching
-   convention where no training evidence exists. It can reuse `guideGroups`, `guideExercises` and `guidePlans`.
+2. **Calisthenics, next pass:** adherence guidance, more handstand and wrist-load evidence, optional parallettes or rings, and a
+   coach's review of the gates (the gate numbers are conventions). It uses `guideGroups` with `phase`, `gates`, `requires` and
+   `convention`, and `guidePlans` with `phase` (two plans, foundations and first-skills).
 3. **Finish getting-started:** soreness and adherence guidance, deeper exercise notes, the remaining evidence gaps in the plan doc.
 4. **Deepen the other strength groups** (back, shoulders, arms, core) to the chest and legs standard.
 5. **Anatomy sources:** modern OpenStax regional references are linked beside the 1918 Gray source; verify each muscle page.
@@ -269,5 +270,5 @@ enforces the mechanical ones on every build; the rest are reviewed.
 ## 12. Starter prompt for a new session
 
 > Open `CONTEXT.md` (sections 3a, 8 and 11) and the relevant plan in `docs/`. Everything is Astro: pages in `src/pages/<section>/`,
-> content in `src/content/`, one layout. Next: <your goal, e.g. "build the calisthenics foundations section" or "add a deload
-> week to the getting-started plan">. Run `npm run check` and the smoke test before finishing.
+> content in `src/content/`, one layout. Next: <your goal, e.g. "add parallettes to the calisthenics L-sit ladder" or "add a deload
+> week to the getting-started plan">. Run `npm run check` and `npm run test:e2e` before finishing.

@@ -1,0 +1,378 @@
+# Calisthenics first skills. Every step here is a coaching convention: no training-outcome evidence was found for it.
+# Each ladder is gated by prerequisites on its group and every exercise has a regression. This guide teaches no kick-ups,
+# no freestanding handstand and no full planche or front lever.
+- id: cal-l-sit-support
+  order: 29
+  section: calisthenics
+  group: cal-l-sit
+  level: 1
+  name: Seated support hold
+  equipment:
+    - mat or soft floor
+  muscles: Shoulders, triceps, trunk
+  setup: Sit on the floor with your legs straight in front of you and your hands flat beside your hips, fingers pointing forwards. Bend your knees so your feet are flat.
+  steps:
+    - Press your hands into the floor and straighten your arms.
+    - Lift your hips a few centimetres off the floor, keeping your feet down.
+    - Push your shoulders down away from your ears and hold, then lower slowly.
+  cues:
+    - Push the floor away
+    - Shoulders away from the ears
+  mistakes:
+    - shrugging the shoulders to the ears
+    - bending the elbows
+    - holding the breath
+  contraindications:
+    - a current wrist, shoulder or elbow injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Keep the hips on the floor and press down with straight arms, or hold for fewer seconds.
+  progression: Move on to the tuck L-sit when you can hold 15 seconds with straight arms and no wrist pain.
+  painRule: wrist
+  status: draft
+- id: cal-tuck-l-sit
+  order: 30
+  section: calisthenics
+  group: cal-l-sit
+  level: 2
+  name: Tuck L-sit
+  equipment:
+    - mat or soft floor
+  muscles: Trunk, hip flexors, shoulders, triceps
+  setup: Sit with your hands beside your hips on the floor and your knees bent.
+  steps:
+    - Press down through straight arms and lift your hips off the floor.
+    - Bring your knees to your chest and lift your feet off the floor.
+    - Hold with your shoulders pushed down, breathing steadily, then lower slowly.
+  cues:
+    - Chest tall
+    - Shoulders away from the ears
+  mistakes:
+    - bending the elbows
+    - rounding the lower back
+    - shrugging
+  contraindications:
+    - a current wrist, shoulder or elbow injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Lift one foot at a time, or go back to the seated support hold.
+  progression: Move on to the one-leg L-sit when you can hold 15 seconds with straight arms.
+  painRule: wrist
+  status: draft
+- id: cal-one-leg-l-sit
+  order: 31
+  section: calisthenics
+  group: cal-l-sit
+  level: 3
+  name: One-leg L-sit
+  equipment:
+    - mat or soft floor
+  muscles: Trunk, hip flexors, shoulders, triceps
+  setup: Start in the tuck L-sit with straight arms and your shoulders pushed down.
+  steps:
+    - Extend one leg out in front of you, keeping the foot off the floor.
+    - Hold, keeping the other knee tucked, then return to the tuck and switch legs.
+  cues:
+    - Chest tall
+    - Push the floor away
+  mistakes:
+    - the hips dropping
+    - the arms bending
+    - leaning back to cheat
+  contraindications:
+    - a current wrist, shoulder or elbow injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Go back to the tuck L-sit, or extend the leg only part of the way.
+  progression: Move on to the full L-sit when you can hold 15 seconds on each leg with straight arms.
+  painRule: wrist
+  status: draft
+- id: cal-l-sit-full
+  order: 32
+  section: calisthenics
+  group: cal-l-sit
+  level: 4
+  name: L-sit
+  equipment:
+    - mat or soft floor
+  muscles: Trunk, hip flexors, shoulders, triceps
+  setup: Sit with your legs straight in front of you and your hands beside your hips, fingers pointing forwards.
+  steps:
+    - Press down through straight arms and lift your hips and both straight legs off the floor.
+    - Hold with your shoulders pushed down and your legs level or slightly below level.
+    - Breathe steadily, then lower slowly.
+  cues:
+    - Push down, not back
+    - Point the toes
+  mistakes:
+    - bending the knees
+    - rounding the back
+    - hips dropping
+  contraindications:
+    - a current wrist, shoulder or elbow injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Go back to the one-leg L-sit, or hold with the knees slightly bent.
+  progression: Hold for longer. Raising the legs higher, doing it on parallettes or other variations are beyond this guide.
+  painRule: wrist
+  status: draft
+- id: cal-wall-walk
+  order: 33
+  section: calisthenics
+  group: cal-handstand
+  level: 1
+  name: Wall walk, partial
+  equipment:
+    - wall
+    - mat or soft floor
+  muscles: Shoulders, back of the arms, trunk
+  setup: Clear the floor of objects, and place a mat if you have one. Start in a push-up position with your feet against the wall at the bottom.
+  steps:
+    - Walk your feet up the wall as you walk your hands in towards it, a small step at a time.
+    - Stop where your hips are above your shoulders and your arms are straight. This is partway up; do not go further.
+    - Hold briefly, then walk your hands out and your feet back down, one at a time.
+  cues:
+    - Push the floor away
+    - Ribs in
+  mistakes:
+    - going up too far too soon
+    - arching the lower back
+    - bending the elbows
+    - holding the breath
+  contraindications:
+    - a current wrist, shoulder or neck injury
+    - high blood pressure or an eye condition that has not been checked, because the head is below the heart
+    - dizziness when upside down
+  regression: Walk up only a short way, or stay in the pike push-up position on the floor.
+  progression: Walk a little further up each week, then move on to the chest-to-wall hold when you can hold 20 seconds at a steady position with straight arms.
+  painRule: wrist
+  status: draft
+- id: cal-chest-to-wall
+  order: 34
+  section: calisthenics
+  group: cal-handstand
+  level: 2
+  name: Chest-to-wall handstand hold
+  equipment:
+    - wall
+    - mat or soft floor
+  muscles: Shoulders, back of the arms, trunk
+  setup: Clear the floor of objects. Start in a push-up position with your feet against the wall. Only go up by walking, never by kicking up.
+  steps:
+    - Walk your feet up the wall and your hands in until your chest almost touches the wall.
+    - Hold with your arms straight, your shoulders pushed up to your ears and your body in a long line.
+    - Walk back down one foot at a time. If you feel unsteady or tired, walk down at once.
+  cues:
+    - Push the floor away
+    - Squeeze your glutes
+    - Look at the floor between your hands
+  mistakes:
+    - arching the lower back
+    - bending the elbows
+    - staying up when tired
+    - holding the breath
+  contraindications:
+    - a current wrist, shoulder or neck injury
+    - high blood pressure or an eye condition that has not been checked, because the head is below the heart
+    - dizziness when upside down
+  regression: Go back to the partial wall walk, or hold for less time.
+  progression: Hold longer, and move on to the heel pull when you can hold 20 seconds with a straight body.
+  painRule: wrist
+  status: draft
+- id: cal-wall-heel-pull
+  order: 35
+  section: calisthenics
+  group: cal-handstand
+  level: 3
+  name: Chest-to-wall hold with heel pulls
+  equipment:
+    - wall
+    - mat or soft floor
+  muscles: Shoulders, back of the arms, trunk
+  setup: Get into the chest-to-wall hold by walking up the wall.
+  steps:
+    - Hold the position with steady, straight arms.
+    - Gently pull your heels away from the wall for a second or two, then rest them back on it.
+    - Walk back down in control, one foot at a time.
+  cues:
+    - Small movements
+    - Keep pushing the floor away
+  mistakes:
+    - pulling too far away from the wall
+    - the arms bending
+    - holding on too long when tired
+  contraindications:
+    - a current wrist, shoulder or neck injury
+    - high blood pressure or an eye condition that has not been checked, because the head is below the heart
+    - dizziness when upside down
+  regression: Go back to the chest-to-wall hold.
+  progression: Hold for longer. A freestanding handstand, kick-ups and bailing out are beyond this guide, so consider a coach.
+  painRule: wrist
+  status: draft
+- id: cal-planche-lean-small
+  order: 36
+  section: calisthenics
+  group: cal-planche
+  level: 1
+  name: Small plank lean
+  equipment:
+    - mat or soft floor
+  muscles: Shoulders, chest, trunk, wrists
+  setup: Take a straight-arm plank on the floor, with your hands under your shoulders and your fingers spread.
+  steps:
+    - Push the floor away and lean your shoulders forwards a few centimetres past your wrists.
+    - Hold with straight arms and a straight body.
+    - Return to the start before the wrists feel tired or painful.
+  cues:
+    - Whole palm down
+    - Push the floor away
+  mistakes:
+    - bending the elbows
+    - the hips piking up
+    - leaning further than the wrists tolerate
+  contraindications:
+    - a current wrist or shoulder injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Hold the straight-arm plank without leaning, or rest on your knees.
+  progression: Move on to the planche lean when you can hold 15 seconds with no wrist pain.
+  painRule: wrist
+  status: draft
+- id: cal-planche-lean
+  order: 37
+  section: calisthenics
+  group: cal-planche
+  level: 2
+  name: Planche lean
+  equipment:
+    - mat or soft floor
+  muscles: Shoulders, chest, trunk, wrists
+  setup: Take a straight-arm plank on the floor, with your hands slightly further back than normal, beside your hips, and your fingers spread. A turned-out hand position may feel better on the wrists.
+  steps:
+    - Push the floor away and lean your shoulders forwards, past your hands.
+    - Hold with straight arms, a straight body and your toes on the floor.
+    - Return to the start before the wrists feel tired.
+  cues:
+    - Push the floor away
+    - Squeeze the glutes
+  mistakes:
+    - bending the elbows
+    - sagging at the hips
+    - leaning past what the wrists tolerate
+  contraindications:
+    - a current wrist or shoulder injury
+    - pain on the back of the wrist when the hands bear weight
+  regression: Go back to the small plank lean.
+  progression: Hold for longer. Taking the feet off the floor (a tuck planche) is beyond this guide, so consider a coach.
+  painRule: wrist
+  status: draft
+- id: cal-hollow-hang
+  order: 38
+  section: calisthenics
+  group: cal-front-lever
+  level: 1
+  name: Hollow hang
+  equipment:
+    - a secure pull-up bar
+  optional: true
+  muscles: Shoulders, upper back, trunk
+  setup: Use only a bar that is fixed to a wall, rack or ceiling, or a doorway bar rated for your weight and fitted exactly to its instructions. Test it first. Hold it with a shoulder-width, palms-away grip, with your feet on a step.
+  steps:
+    - Hang with straight arms and your shoulder blades gently pulled down and back.
+    - Press your lower back forward, curl your pelvis under and let your legs come slightly in front of you.
+    - Hold, breathing steadily, then step down.
+  cues:
+    - Shoulders away from the ears
+    - Ribs in
+  mistakes:
+    - arching the lower back
+    - shrugging
+    - bending the elbows
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Keep your toes on a step, or hold for less time.
+  progression: Move on to the hanging knee raise when you can hold 15 seconds with no shoulder or elbow pain.
+  painRule: shoulder
+  status: draft
+- id: cal-hanging-knee-raise
+  order: 39
+  section: calisthenics
+  group: cal-front-lever
+  level: 2
+  name: Hanging knee raise
+  equipment:
+    - a secure pull-up bar
+  optional: true
+  muscles: Trunk, hip flexors, shoulders
+  setup: Use a secure bar and hang with straight arms, the shoulders pulled down and your legs slightly in front of you.
+  steps:
+    - Raise your knees to your chest, curling your pelvis up at the top.
+    - Lower slowly to the hollow hang without swinging.
+  cues:
+    - Curl the pelvis
+    - Do not swing
+  mistakes:
+    - swinging
+    - bending the elbows
+    - shrugging the shoulders
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Raise only one knee, or lift your knees only partway.
+  progression: Move on to the partial tuck lever when you can do 8 slow reps with no swinging.
+  painRule: shoulder
+  status: draft
+- id: cal-partial-tuck-lever
+  order: 40
+  section: calisthenics
+  group: cal-front-lever
+  level: 3
+  name: Partial tuck front lever
+  equipment:
+    - a secure pull-up bar
+  optional: true
+  muscles: Upper back, shoulders, trunk
+  setup: Use a secure bar. From a hanging knee raise, tuck your knees tight to your chest with your arms straight.
+  steps:
+    - Pull your shoulder blades down and start leaning your back back, so your hips rise a little towards the bar.
+    - Hold when your back is at a steep angle, with straight arms and tucked knees, for a few seconds.
+    - Lower back to the hang in control.
+  cues:
+    - Straight arms
+    - Pull the bar towards the hips
+  mistakes:
+    - bending the elbows
+    - swinging
+    - holding the breath
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Go back to the hanging knee raise.
+  progression: Hold for longer and lower the back a little at a time. Move on to the tuck front lever when you can hold 5 seconds with a steady line.
+  painRule: shoulder
+  status: draft
+- id: cal-tuck-front-lever
+  order: 41
+  section: calisthenics
+  group: cal-front-lever
+  level: 4
+  name: Tuck front lever
+  equipment:
+    - a secure pull-up bar
+  optional: true
+  muscles: Upper back, shoulders, trunk
+  setup: Use a secure bar. Hang with straight arms, then tuck your knees tight to your chest.
+  steps:
+    - Pull your shoulder blades down and lean your back back until it is horizontal.
+    - Hold with straight arms and tucked knees, with your hips in line with your shoulders.
+    - Lower in control to the hang.
+  cues:
+    - Straight arms
+    - Back flat and horizontal
+  mistakes:
+    - bending the elbows
+    - letting the hips drop
+    - holding too long
+  contraindications:
+    - a current shoulder or elbow injury
+    - a bar that has not been checked as secure
+  regression: Go back to the partial tuck front lever.
+  progression: Hold for longer. Extending the legs or any other front-lever variation is beyond this guide, so consider a coach.
+  painRule: shoulder
+  status: draft

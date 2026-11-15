@@ -1,0 +1,72 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import SkillSafety from '../../../components/SkillSafety.astro';
+import GuideSession from '../../../components/GuideSession.astro';
+import GuideWeek from '../../../components/GuideWeek.astro';
+import { estimateMinutes, loadGuide, type GuideItem } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const phases = [
+  { phase: 'foundations', id: 'foundations', heading: 'Phase 1: foundations', skills: false,
+    lede: 'Three sessions, A, B and C. Week 1 has two sessions, then weeks 2 to 8 have three, with a rest day in between. Each exercise is a ladder, so you do your own level.' },
+  { phase: 'first-skills', id: 'first-skills', heading: 'Phase 2: first skills', skills: true,
+    lede: 'Three short sessions a week. Do only the blocks whose gates you meet, and use the matching foundations session for any block you skip.' },
+].map(entry => ({ ...entry, plan: data.plans.find(plan => plan.data.phase === entry.phase)! }));
+
+const rows = (items: GuideItem[]) => items.map(item => {
+  if (item.exercise) {
+    const exercise = data.exerciseById.get(item.exercise.id)!;
+    return { label: exercise.data.name, href: `/calisthenics/exercises/#${exercise.id}`, dose: item.reps ?? '', note: item.note };
+  }
+  const group = data.groupById.get(item.group!.id)!;
+  return { label: group.data.title, href: `/calisthenics/exercises/#group-${group.id}`, dose: item.reps ?? '', note: item.note };
+});
+const slug = (label: string) => label.replace(/\s+/g, '-').toLowerCase();
+---
+<Base section="calisthenics" title="Weekly plan" description="Two eight-week calisthenics plans, foundations then first skills, with the sessions, the week layout for each week, and time estimates.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'Weekly plan' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Weekly plan</p>
+    <h1>Two plans, session by session</h1>
+    <p class="lede">Start with the foundations plan. Move to the first-skills plan only for the skills whose gates you meet.</p>
+    <ul class="chip-list" aria-label="Jump to a plan">
+      {phases.map(entry => <li><a class="chip" href={`#${entry.id}`}>{entry.heading}</a></li>)}
+    </ul>
+  </section>
+
+  <BeginnerSafety />
+  <SkillSafety />
+
+  {phases.map(({ plan, id, heading, lede, skills }) => (
+    <section aria-labelledby={`${id}-heading`} id={id}>
+      <h2 id={`${id}-heading`}>{heading}</h2>
+      <p class="prose">{lede}</p>
+      <GuideSession id={`${id}-warmup`} title="Warm-up, every session" intro={plan.data.warmup.text} rows={rows(plan.data.warmup.items)} doseHeading="Dose" noteHeading="Notes" />
+      <h3>The sessions</h3>
+      <p class="prose">{skills
+        ? 'Rest 60 to 90 seconds between sets. Stop a hold early if the form slips: a clean short hold is worth more than a long messy one. Use the sets shown for the week. Click an exercise name to see its ladder.'
+        : 'Rest about 60 to 90 seconds between sets. Stop each set with the reps in reserve shown for that week, meaning you could have done that many more clean reps. Use the sets shown for the week. Click an exercise name to see its ladder.'}</p>
+      {plan.data.sessions.map(session => (
+        <GuideSession
+          id={`session-${id}-${session.id}`}
+          title={session.title}
+          intro={`${session.intro ?? ''} About ${estimateMinutes(plan, session, 2)} to ${estimateMinutes(plan, session, 3)} minutes at 2 to 3 sets, including the warm-up.`.trim()}
+          rows={rows(session.items)}
+          doseHeading="Reps or hold"
+        />
+      ))}
+      <p class="muted small">The time estimate allows {plan.data.timing!.secondsPerSet} seconds of work per set, {plan.data.timing!.restSeconds} seconds of rest, {plan.data.timing!.secondsBetweenExercises} seconds to set up each exercise and a {plan.data.timing!.warmUpMinutes}-minute warm-up. It is a planning estimate, not a timed measurement.</p>
+      <h3>Week by week</h3>
+      <p class="prose">Rest or walk on the days shown as Rest. If you miss a session, do not double up: carry on with the next one, and repeat the week if you missed more than one.</p>
+      {plan.data.weeks.map(week => (
+        <section class="week-block" aria-labelledby={`${id}-${slug(week.label)}`}>
+          <h4 id={`${id}-${slug(week.label)}`}>{week.label}</h4>
+          <p class="muted">{week.sets} sets of each exercise.{week.rir ? ` Stop with ${week.rir} reps in reserve.` : ''} {week.note}</p>
+          <GuideWeek week={week} sessionHref={sessionId => `#session-${id}-${sessionId}-title`} />
+        </section>
+      ))}
+    </section>
+  ))}
+</Base>

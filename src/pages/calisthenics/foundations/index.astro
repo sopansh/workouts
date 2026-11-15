@@ -1,0 +1,50 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import { exercisesInGroup, groupsInPhase, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const groups = groupsInPhase(data, 'foundations');
+const claim = data.claimById.get('cal-push-progressions')!;
+---
+<Base section="calisthenics" title="Foundations" description="Phase 1 of calisthenics: wrist and shoulder preparation, then push, pull, squat, hip, hollow-body, plank and side-plank ladders over eight weeks.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'Foundations' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Phase 1</p>
+    <h1>Foundations</h1>
+    <p class="lede">Eight weeks of three sessions a week: wrist and shoulder preparation first, then push, pull, legs, hips and the trunk. Every skill in phase 2 rests on these.</p>
+  </section>
+
+  <BeginnerSafety />
+
+  <section aria-labelledby="what">
+    <h2 id="what">What you do</h2>
+    <p class="prose">Three sessions a week, such as Monday, Wednesday and Friday, each about 30 to 45 minutes including an 8-minute warm-up. Each exercise is a ladder, so you work at your own level and move up when you reach the top of the rep range with the reps in reserve for that week. The <a href="/calisthenics/weekly-plan/#foundations">weekly plan</a> shows every session and week.</p>
+    <p class="prose">{claim.data.statement} <a href="/calisthenics/evidence/#claim-cal-push-progressions">See the claim and its limits</a>.</p>
+  </section>
+
+  <section aria-labelledby="ladders">
+    <h2 id="ladders">The exercises</h2>
+    <ul class="grid">
+      {groups.map(group => (
+        <li>
+          <div class="card" data-accent="p1">
+            <h3><a href={`/calisthenics/exercises/#group-${group.id}`}>{group.data.title}</a></h3>
+            <p>{group.data.summary}</p>
+            <ol class="small">
+              {exercisesInGroup(data, group.id).map(exercise => (
+                <li><a href={`/calisthenics/exercises/#${exercise.id}`}>{exercise.data.name}</a></li>
+              ))}
+            </ol>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="moveon">
+    <h2 id="moveon">Ready for the first skills?</h2>
+    <p class="prose">After week 8, retest each ladder on the <a href="/calisthenics/progression/">progression page</a>. A skill is open to you only when you meet every gate listed for it on the <a href="/calisthenics/first-skills/">first skills page</a>. If you do not meet them yet, repeat the foundations. That is a normal result, not a failure.</p>
+  </section>
+</Base>
