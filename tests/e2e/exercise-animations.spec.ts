@@ -1,9 +1,12 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { expect, test } from './fixtures';
 import type { Locator } from '@playwright/test';
 
-const entries = ['chest', 'legs'].flatMap(group => parse(readFileSync(`src/content/animations/${group}.yml`, 'utf8')) as Array<{ id: string; description: string }>);
+const entries = readdirSync('src/content/animations')
+  .filter(name => name.endsWith('.yml'))
+  .sort()
+  .flatMap(group => parse(readFileSync(`src/content/animations/${group}`, 'utf8')) as Array<{ id: string; description: string; motion?: 'move' | 'hold' }>);
 const snapshot = (canvas: Locator) => canvas.evaluate((el: HTMLCanvasElement) => el.toDataURL());
 const pixels = (canvas: Locator) => canvas.evaluate((el: HTMLCanvasElement) => {
   const data = el.getContext('2d')?.getImageData(0, 0, el.width, el.height).data;
@@ -21,7 +24,17 @@ for (const entry of entries) {
     await canvas.scrollIntoViewIfNeeded();
     await expect.poll(() => pixels(canvas)).toBeGreaterThan(500);
     const before = await snapshot(canvas);
-    await expect.poll(() => snapshot(canvas), { timeout: 7000 }).not.toBe(before);
+    if (entry.motion === 'hold') {
+      await page.waitForTimeout(300);
+      expect(await snapshot(canvas)).toBe(before);
+      await canvas.focus();
+      await page.keyboard.press('ArrowRight');
+      await expect.poll(() => snapshot(canvas)).not.toBe(before);
+      await page.keyboard.press('Home');
+      await expect.poll(() => snapshot(canvas)).toBe(before);
+    } else {
+      await expect.poll(() => snapshot(canvas), { timeout: 7000 }).not.toBe(before);
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
 }
@@ -70,10 +83,10 @@ test('reduced motion starts still and responds to a live preference change', asy
   await expect(page.locator('#pp')).toHaveAttribute('aria-pressed', 'true');
 });
 
-test('non-chest and non-leg pages do not load illustration assets', async ({ page }) => {
+test('an unanimated guide page does not load illustration assets', async ({ page }) => {
   const requests: string[] = [];
   page.on('request', request => requests.push(request.url()));
-  await page.goto('/strength/exercises/lat-pulldown/');
+  await page.goto('/getting-started/');
   await expect(page.locator('[data-exercise-animation], #pp, #speed')).toHaveCount(0);
   expect(requests.some(url => /three\.min\.js|animation-preview|exercise-figure/.test(url))).toBe(false);
 });

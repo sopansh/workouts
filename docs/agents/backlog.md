@@ -4,7 +4,7 @@ The executive owns the order. Each item names its owner. The long-term plans are
 
 | # | Item | Owner | Notes |
 |---|---|---|---|
-| 1 | **Extend the 3D rig:** all 34 chest/leg exercise pages illustrated; back, shoulders, arms and guide sections next | Executive (engineering via `general-purpose`), `strength-coach` (movement specs) | D-008: approximate proportions, angles and depth accepted; keep fixed limbs, accessibility, one renderer and explicit limits for partial clips. |
+| 1 | **Extend the 3D rig:** all 68 strength exercise pages illustrated; getting-started reuse, then calisthenics and plyometrics/cricket next | Executive (engineering via `general-purpose`), coaches (movement specs) | D-008: approximate proportions, angles and depth accepted; keep fixed limbs, sensible contacts, accessibility, one renderer and explicit partial-clip limits. Side plank is a still hold. Legacy `/core/` migration is optional, not required. |
 | 2 | **Nutrition:** plan written (`docs/nutrition-plan.md`), awaiting approval. Blocked on NIN permission for IFCT food data; needs `database` source type and validator rules N1 to N13 before pages | `nutrition-coach` | D-004. Tile is "Coming soon". Needs owner approval before pages. |
 | 3 | **Cricket only:** strength and plyometrics drafts built; complete review and remaining role stubs. Other sports deferred | `plyometrics-coach`, `strength-coach` | Owner decision: cricket first and only for now. Phase-scoped guide loading is implemented. |
 | 4 | **Human review** of all draft content by a physiotherapist and a strength coach | Owner | Nothing moves past draft without it. |

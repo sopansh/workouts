@@ -1,0 +1,145 @@
+# All geometry is illustrative engineering data, not measured anatomy.
+- id: pull-up
+  exercise: pull-up
+  order: 35
+  description: The body rises towards a fixed overhead bar as the elbows bend, then lowers to the hang. The clip shows a schematic hanging pull, not exact shoulder or elbow angles.
+  family: vertical-pull
+  variant: hanging
+  equipment: bars
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.45
+- id: lat-pulldown
+  exercise: lat-pulldown
+  order: 36
+  description: Seated under a high pulley, the bar travels towards the upper chest and returns overhead while the legs and torso stay supported.
+  family: vertical-pull
+  variant: seated
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: -0.45
+- id: straight-arm-pulldown
+  exercise: straight-arm-pulldown
+  order: 37
+  description: From an overhead cable, mostly straight arms sweep down towards the thighs and return; the elbows are schematic rather than individually measured.
+  family: straight-arm-pulldown
+  variant: standing
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [0, 140]
+  incline: 0
+  lean: 8
+  yaw: 0.55
+- id: chest-supported-row
+  exercise: chest-supported-row
+  order: 38
+  description: With the chest supported on a sloped pad, both elbows draw back and the hands return to a hanging reach.
+  family: row
+  variant: prone
+  equipment: machine
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 85]
+  incline: 25
+  lean: 0
+  yaw: 0.5
+- id: one-arm-dumbbell-row
+  exercise: one-arm-dumbbell-row
+  order: 39
+  description: "One side is shown: the same-side hand and knee rest on a bench while the opposite arm rows a dumbbell towards the ribs and lowers again."
+  family: row
+  variant: one-arm
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 85]
+  incline: 0
+  lean: 20
+  yaw: 0.55
+- id: seated-cable-row
+  exercise: seated-cable-row
+  order: 40
+  description: Seated with the feet braced, both hands draw a cable handle towards the lower ribs and reach forwards again.
+  family: row
+  variant: seated
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 85]
+  incline: 0
+  lean: 0
+  yaw: -0.45
+- id: barbell-row
+  exercise: barbell-row
+  order: 41
+  description: In a fixed hip hinge, the bar rows towards the lower ribs and lowers again; the clip does not validate spinal position or exact bar path.
+  family: row
+  variant: standing
+  equipment: barbell
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 85]
+  incline: 0
+  lean: 35
+  yaw: 0.5
+- id: deadlift
+  exercise: deadlift
+  order: 42
+  description: The bar moves from a raised low start near the shins to hip height as the hips and knees extend; floor contact and exact bar path are not modelled or validated.
+  family: hinge
+  variant: deadlift
+  equipment: barbell
+  tempo: [2.5, 0.5, 2, 0.5]
+  range: [0, 48]
+  incline: 0
+  lean: 0
+  yaw: 0.45
+- id: back-extension-45
+  exercise: back-extension-45
+  order: 43
+  description: The hips stay on a fixed sloped pad as the trunk lowers and returns towards a straight body line; no spinal detail is modelled or validated.
+  family: back-extension
+  variant: bench
+  equipment: bench
+  tempo: [2, 0.5, 2, 0.5]
+  range: [0, 45]
+  incline: 0
+  lean: 0
+  yaw: 0.45
+- id: bird-dog
+  exercise: bird-dog
+  order: 44
+  description: "One side is shown: the opposite arm and leg reach away from a hands-and-knees pose while the trunk stays schematic and still."
+  family: bird-dog
+  variant: kneeling
+  equipment: none
+  tempo: [1.5, 2, 1.5, 0.5]
+  range: [0, 75]
+  incline: 0
+  lean: 0
+  yaw: 0.6
+- id: suitcase-carry
+  exercise: suitcase-carry
+  order: 45
+  description: One side is shown carrying a dumbbell through one short walking step, then resetting to repeat; the clip does not represent a full walking distance.
+  family: carry
+  variant: suitcase
+  equipment: dumbbells
+  tempo: [1, 0.5, 1, 0.5]
+  range: [5, 25]
+  incline: 0
+  lean: 5
+  yaw: 0.5
+- id: shrug
+  exercise: shrug
+  order: 46
+  description: The shoulders and dumbbells lift slightly towards the ears, pause, and lower while the feet remain planted.
+  family: shrug
+  variant: standing
+  equipment: dumbbells
+  tempo: [1.5, 1, 2, 0.5]
+  range: [0, 15]
+  incline: 0
+  lean: 0
+  yaw: 0.35

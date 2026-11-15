@@ -63,7 +63,6 @@ for (const a of animations) {
   animationOrders.add(a.order);
   if (typeof a.description !== 'string' || a.description.length < 20) fail(`Animation ${a.id}: needs a movement text alternative`);
   const exercise = exercises.find(e => e.id === a.exercise);
-  if (exercise && !['chest', 'legs'].includes(exercise.group)) fail(`Animation ${a.id}: outside chest/legs scope`);
   try {
     validateAnimation(a);
     for (let frame = 0; frame <= 64; frame++) {
@@ -73,7 +72,7 @@ for (const a of animations) {
     }
   } catch (error) { fail(`Animation ${a.id}: ${error.message}`); }
 }
-for (const e of exercises.filter(e => ['chest', 'legs'].includes(e.group))) {
+for (const e of exercises) {
   if (!animationIds.has(e.id)) fail(`Exercise ${e.id}: missing movement illustration`);
 }
 

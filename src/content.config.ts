@@ -2,6 +2,7 @@ import { defineCollection, reference } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { yamlDir } from './loaders/yaml-dir';
+import { animationMotions, equipmentTypes, families, variants } from './scripts/core/exercise-math';
 
 const status = z.enum(['draft', 'verified', 'expert-reviewed']).default('draft');
 const grade = z.enum(['A', 'B', 'C', 'D', 'Mixed']);
@@ -364,9 +365,10 @@ const animations = defineCollection({
     exercise: reference('exercises'),
     order: z.number().int().positive(),
     description: z.string().min(20),
-    family: z.enum(['press', 'fly', 'pushup', 'plus', 'dip', 'punch', 'squat', 'lunge', 'leg-press', 'hinge', 'bridge', 'extension', 'curl', 'nordic', 'hip-machine', 'calf', 'tibialis']),
-    variant: z.enum(['flat', 'incline', 'seated', 'standing', 'prone', 'back', 'front', 'goblet', 'box', 'hack', 'bulgarian', 'walking', 'floor', 'bench', 'dowel', 'pull-through', 'abduction', 'adduction']),
-    equipment: z.enum(['none', 'barbell', 'dumbbells', 'goblet', 'cable', 'machine', 'dowel', 'bars', 'wall']),
+    family: z.enum(families),
+    variant: z.enum(variants),
+    equipment: z.enum(equipmentTypes),
+    motion: z.enum(animationMotions).default('move'),
     tempo: z.tuple([z.number().positive(), z.number().positive(), z.number().positive(), z.number().positive()]),
     range: z.tuple([z.number().finite(), z.number().finite()]),
     incline: z.number().min(0).max(45),

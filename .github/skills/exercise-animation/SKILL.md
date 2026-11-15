@@ -9,7 +9,7 @@ The site does not use GIFs or video. Exercises are shown as animated 3D figures 
 
 ## What exists today
 
-- `/core/` and all 34 chest/leg strength exercise pages have animations. `/strength/animation-preview/` reuses the bench-press and squat illustrations as a non-linked preview. Other strength groups, getting-started, calisthenics and plyometrics are not animated yet.
+- `/core/` retains its eight legacy animations; all 68 strength exercise pages have references (side plank is a still hold). `/strength/animation-preview/` reuses the bench-press and squat illustrations as a non-linked preview. Getting-started, calisthenics and plyometrics are not animated yet.
 - Data: `src/content/core/exercises.yml`, validated by the `coreExercises` schema in `src/content.config.ts`. Each exercise has `poses.start` and `poses.end`, `cycle` (seconds per rep), `glow` (`torso` and `hips` worked-region highlight) and optional `spineBend`.
 - A core pose uses joint coordinates `[x, y]` or `[x, y, z]` in SVG-style units: origin top-left, y grows down, floor at y = 150, centre x = 150; missing z defaults to zero. Joints: `head, shoulder, elbow, wrist, hip, knee, ankle, toe`, plus optional far-side `farElbow, farWrist, farKnee, farAnkle, farToe` (default to the near side).
 - Code: `src/scripts/core/` (`rig/figure.js`, `rig/pose.js`, `stage.js`, `main.js`). One shared WebGL context renders into per-card 2D canvases. Never create a renderer per card.
@@ -17,10 +17,11 @@ The site does not use GIFs or video. Exercises are shown as animated 3D figures 
 
 ## Strength illustration authoring
 
-- `src/content/animations/{chest,legs}.yml` holds one configuration per exercise: matching `id`/`exercise`, explicit `order`, movement `description`, `family`, `variant`, `equipment`, four-part `tempo` (out, hold, return, rest), illustrative `range`, `incline`, `lean` and camera `yaw`.
+- `src/content/animations/{chest,legs,back,shoulders,arms,core}.yml` holds one configuration per exercise: matching `id`/`exercise`, explicit `order`, movement `description`, `family`, `variant`, `equipment`, four-part `tempo` (out, hold, return, rest), illustrative `range`, `incline`, `lean` and camera `yaw`. Optional `motion` defaults to `move`; side plank uses `hold` and stays still.
 - `ExerciseAnimation.astro` renders the reference and safely passes JSON through a data attribute. `AnimationAssets.astro` and `AnimationControls.astro` share loading and toolbar controls; the controller supports one or several canvases with one Stage.
-- `exercise-math.ts` uses fixed-length chains and exercise-family paths; `exercise-figure.ts` draws them and simple props. The content checker rejects unsupported combinations, invalid geometry/timing and missing chest/leg illustrations.
+- `exercise-math.ts` uses fixed-length chains and exercise-family paths; `exercise-figure.ts` draws them and simple props. Shared enums define schema values. The content checker rejects unsupported combinations, invalid geometry/timing and missing illustrations for any strength exercise.
 - Walking lunges show one advancing step followed by a reset; Nordic curls omit the hand catch/assistance; push-up plus shows only the small plus phase. Keep these limits in both visible descriptions and canvas alternatives.
+- Bird dog and unilateral equipment movements show one side; suitcase carry shows one short step and reset. Deadlift's low start is schematic, cable crunch has a single torso segment and hanging leg raise omits a separate pelvic curl. Keep these limits visible. Finger positions, detailed shoulder rotation, scapula and spinal articulation remain limited.
 - These are schematic references, not measured anatomy, outcome claims or validated technique. Core's legacy position-interpolated rig is unchanged.
 
 ## Limits of the legacy core rig
@@ -40,7 +41,7 @@ References for joint conventions and limits, confirmed on Crossref on 2026-11-15
 
 ## Preparing an exercise for animation (coach task)
 
-Until the extended rig lands, deliver a **movement spec** with the exercise, kept next to its data or in the report:
+For a movement not yet supported by the extended rig, deliver a **movement spec** with the exercise, kept next to its data or in the report:
 
 1. Plane(s) of movement (sagittal, frontal, transverse) and the camera angle that shows the key joint action.
 2. Start and end positions as joint angles in plain degrees, for each joint that moves: hip, knee, ankle, spine, shoulder (flexion, abduction, rotation), elbow, wrist, scapula where it matters.
@@ -59,4 +60,5 @@ Label unsourced animation angles and proportions as illustrative engineering cho
 - Works with the keyboard, pause control and reduced motion.
 - No colour literals: use tokens. Reuse the shared stage and one WebGL context.
 - Animations are labelled draft until reviewed, like the text.
-- Add a Playwright check that the figure draws and animates.
+- Test the intended action and contacts, not just changing pixels. Inspect start and working poses with equipment and camera framing; an approximation still needs to depict the right movement.
+- Add a Playwright check that a moving reference draws and animates; an isometric hold stays still and remains keyboard-rotatable.

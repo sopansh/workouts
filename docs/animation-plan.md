@@ -1,6 +1,6 @@
 # Extending the 3D exercise rig: engineering plan
 
-Status: **owner approved the illustrative extension on 2026-11-15; illustrations integrated into all 12 chest and 22 leg exercise pages.** Other groups, guide sections and human review remain pending.
+Status: **owner approved the illustrative extension on 2026-11-15; references integrated into all 68 strength exercise pages.** Guide sections and human review remain pending. Side plank uses a still hold rather than invented repetitions.
 Related: [`CONTEXT.md`](../CONTEXT.md) (section 4 and the core rig notes), [`agents/directives.md`](./agents/directives.md) (D-001), `.github/skills/exercise-animation/SKILL.md`, `docs/animation-specs/` (movement specs, written by `strength-coach`).
 
 ## 1. Decision and goal
@@ -51,9 +51,22 @@ These movement configurations are illustrative engineering values, not a medical
 
 ### Chest and legs integration
 
-`src/content/animations/{chest,legs}.yml` contains 34 validated configurations referencing the existing exercises. The exercise template inserts `ExerciseAnimation.astro` after the written instructions without changing setup, safety, progression or evidence text. `AnimationAssets.astro`, `AnimationControls.astro` and the shared controller also serve the preview page. Pages outside chest and legs do not load Three.js or initialise an illustration.
+`src/content/animations/{chest,legs}.yml` contains the first 34 configurations referencing the existing exercises. The exercise template inserts `ExerciseAnimation.astro` after the written instructions without changing setup, safety, progression or evidence text. `AnimationAssets.astro`, `AnimationControls.astro` and the shared controller also serve the preview page. Pages with no illustration do not load its Three.js assets or initialise the illustration controller.
 
 `exercise-math.ts` defines fixed-length contact chains and movement-family paths; `exercise-figure.ts` reuses the prototype figure and shared Stage. Geometry, equipment and timing are engineering conventions, not clinical ranges. Walking lunge is a single advancing step with a reset, Nordic omits the catch and assistance, and push-up plus shows only the plus phase; these limits are stated next to each canvas.
+
+### Remaining strength integration
+
+`src/content/animations/{back,shoulders,arms,core}.yml` adds 12 back, 7 shoulder, 10 arm and 5 trunk references, ordered 35–68.
+Pulls, rows, overhead presses, raises, curls, extensions and trunk work use exercise-family paths and simple equipment on the
+same shared Stage. Every strength exercise now needs a matching configuration; adding an exercise without one fails validation.
+The original eight `/core/` illustrations and the unanimated guide sections are unchanged.
+
+Bird dog, one-arm row, cable lateral raise, external rotation and suitcase carry show one side; the carry is one short step and
+reset, not a complete walking distance. Side plank is explicitly `motion: hold` and stays still while the view can rotate.
+The deadlift has a low schematic start rather than a validated floor setup. Cable crunch uses a single torso segment and
+hanging leg raise omits a separate pelvic curl. Forearms and hands are simplified; finger positions and detailed scapula,
+spine and shoulder rotation are not represented. Descriptions beside the canvases state relevant limits.
 
 ## 5. Implemented data model
 
@@ -73,7 +86,11 @@ lean: 0
 yaw: 0.35
 ```
 
-The `animations` collection has a Zod schema in `content.config.ts`; `check-content.mjs` additionally validates family/equipment combinations, timing, geometry and exercise references. `ExerciseAnimation` renders the canvas and text alternative; toolbar controls are shared. Exercise pages look up the animation by matching exercise id. Where there is no animation, the page shows nothing extra.
+The `animations` collection has a Zod schema in `content.config.ts`, reusing the movement module's family, variant, equipment
+and motion enums. `check-content.mjs` additionally validates family/equipment combinations, timing, geometry, exercise
+references and complete strength coverage. `motion` defaults to `move`; the side-plank reference uses `hold`, preserving the
+same pose throughout the cycle. `ExerciseAnimation` renders the canvas and text alternative; toolbar controls are shared.
+Exercise pages look up the animation by matching exercise id.
 
 Per-muscle meshes, wrong-form clips, arbitrary angle keyframes and a pose-authoring editor remain future work; the implemented data should not imply those features exist.
 
@@ -89,7 +106,7 @@ The approved prototype uses explicit illustrative values, not measured human ran
 Gaps: Soucie covers elbow, shoulder flexion, hip, knee and ankle only, **not** scapula, spine, shoulder rotation or abduction range. Wu 2005 (Part II) covers the upper limb only. Its companion, Part I (ankle, hip and spine), is on Crossref as Wu et al. 2002, doi 10.1016/s0021-9290(01)00222-6, with a second record from 2003 (doi 10.1016/s0021-9290(02)00336-6) that may be a correction; the abstract of Part I **has not been read** and the 2003 record's type is unchecked. Any angle without a source is labelled a coaching approximation in its spec (as `strength-coach` has been told to do). Anthropometric segment proportions (for bone lengths) need their own verified source: de Leva 1996 and Plagenhoef 1983 are cited by a web page I read, but **I have not yet read or verified either**.
 
 Two further checks, neither a citation:
-1. **Engineering:** finite input, fixed segment length, contact and timing tests (through the executive); no claim that these certify human form.
+1. **Engineering:** finite input, fixed segment length, contact and timing tests (through the executive); no claim that these certify human form. Verify the exercise's intended joint action and stationary equipment, not merely that a pose or image changes. Holds must remain still. Inspect start and working poses, including desktop and mobile framing.
 2. **Human:** a physiotherapist or strength coach reviews each animation next to its page, because a wrong-looking squat teaches wrong form. All animations stay labelled draft.
 
 Plus the existing standards: text alternative for every canvas (exercise, movement, how to rotate), keyboard control, pause, reduced motion shows a still working pose, tokens for colour, one WebGL context.
@@ -101,8 +118,8 @@ Plus the existing standards: text alternative for every canvas (exercise, moveme
 | 0 | This plan and the movement specs for chest and legs (`docs/animation-specs/`) | Approved 2026-11-15 for illustrative references; unsourced values labelled approximate |
 | 1 | **Spike:** fixed-length motion and simple props, rendering barbell bench press and back squat on a non-linked prototype page | Recognisable motion, fixed limb lengths, sensible contacts, no console errors, keyboard/pause/reduced motion verified |
 | 2 | Animation collection, schema, validator rules, `<ExerciseAnimation>`, Playwright spec | `npm run check` and `test:e2e` pass; invalid animation inputs fail explicitly |
-| 3 | Chest and legs exercises animated and linked from their pages | Every animated exercise matches its spec; reduced motion and keyboard verified |
-| 4 | Back, shoulders, arms, core | Same checks |
+| 3 | Chest and legs exercises animated and linked from their pages | Implemented: 34 references; draft pending human review |
+| 4 | Back, shoulders, arms, core | Implemented: 34 further references, including the still side-plank hold; draft pending human review |
 | 5 | Getting started, calisthenics (inversions, levers and holds need the frontal plane and balance), plyometrics (jumps need flight and landing) | Specs first, per section |
 | 6 | Reviewer sign-off, then remove draft labels | Named human reviewers |
 
@@ -110,7 +127,7 @@ Plus the existing standards: text alternative for every canvas (exercise, moveme
 
 | Risk or question | Mitigation or decision needed |
 |---|---|
-| Effort: about 70 hypertrophy exercises, 69 guide exercises, 8 core. This is large | Do chest and legs first and judge the cost per exercise before committing to the rest |
+| Effort: strength's 68 references are implemented; guide coverage remains a separate wave | Reuse strength movements for getting-started before adding calisthenics balance or plyometric flight/landing |
 | Approximate form looks authoritative | Prominent draft/reference-only labels, text instructions and human review before claiming correctness |
 | Performance with many canvases on one page | Keep the single shared `Stage` and render only visible cards (as `/core/` does) |
 | Inverse kinematics complexity | Start with two-bone IK only for fixed contacts, keyframe everything else |

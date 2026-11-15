@@ -6,6 +6,7 @@ export class ExerciseFigure extends PrototypeFigure {
   config?: AnimationConfig;
   equipmentParts: Array<{ mesh: ReturnType<PrototypeFigure['addBone']>; kind: Prop['kind'] }> = [];
   shoulders: Array<ReturnType<PrototypeFigure['addBone']>> = [];
+  hands: Array<ReturnType<PrototypeFigure['addBone']>> = [];
 
   constructor(config: AnimationConfig) {
     super('squat');
@@ -17,6 +18,7 @@ export class ExerciseFigure extends PrototypeFigure {
     this.floorRadius = 1.5;
     this.shoulders = [this.addBone(0.055, this.bodyMaterial), this.addBone(0.055, this.bodyMaterial)];
     const pose = exercisePose(config, 0);
+    this.hands = pose.hands?.map(() => this.addBone(0.035, this.bodyMaterial)) ?? [];
     this.equipmentParts = pose.props.map(p => {
       const mesh = this.addBone(p.width, p.kind === 'pad' ? this.benchMaterial : this.equipmentMaterial);
       if (p.kind === 'pad') {
@@ -38,6 +40,7 @@ export class ExerciseFigure extends PrototypeFigure {
       this.placeBone(this.arms[i][0], arm.start, arm.joint);
       this.placeBone(this.arms[i][1], arm.joint, arm.end);
     });
+    pose.hands?.forEach((hand, i) => this.placeBone(this.hands[i], pose.arms[i].end, hand));
     pose.legs.forEach((leg, i) => {
       this.placeBone(this.legs[i][0], leg.start, leg.joint);
       this.placeBone(this.legs[i][1], leg.joint, leg.end);

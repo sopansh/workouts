@@ -1,0 +1,62 @@
+# All geometry is illustrative engineering data, not measured anatomy.
+- id: cable-crunch
+  exercise: cable-crunch
+  order: 64
+  description: Kneeling at a high cable, the trunk curls forward and returns; the torso bends as one segment, with no individual spinal detail modelled or validated.
+  family: trunk-flexion
+  variant: kneeling
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 45]
+  incline: 0
+  lean: 0
+  yaw: 0.5
+- id: hanging-leg-raise
+  exercise: hanging-leg-raise
+  order: 65
+  description: Hanging from a fixed overhead bar, the straight legs rise forwards and lower; a separate pelvic curl is not modelled.
+  family: leg-raise
+  variant: hanging
+  equipment: bars
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 90]
+  incline: 0
+  lean: 0
+  yaw: 0.5
+- id: ab-wheel-rollout
+  exercise: ab-wheel-rollout
+  order: 66
+  description: From the knees, the wheel rolls a short distance forwards and back; the clip is schematic and does not validate trunk bracing.
+  family: rollout
+  variant: kneeling
+  equipment: ab-wheel
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 65]
+  incline: 0
+  lean: 0
+  yaw: 0.6
+- id: pallof-press
+  exercise: pallof-press
+  order: 67
+  description: Facing sideways to a cable, both hands press forwards from the chest and return while the trunk stays facing ahead.
+  family: anti-rotation
+  variant: standing
+  equipment: cable
+  tempo: [1.5, 1, 1.5, 0.5]
+  range: [5, 70]
+  incline: 0
+  lean: 0
+  yaw: 0.9
+- id: side-plank
+  exercise: side-plank
+  order: 68
+  description: One side is shown in a still side-plank hold pose; no repetitions are added, and rotating the view does not change the hold.
+  family: side-plank
+  variant: hold
+  equipment: none
+  motion: hold
+  tempo: [1, 1, 1, 1]
+  range: [0, 1]
+  incline: 0
+  lean: 0
+  yaw: 0.6

@@ -1,0 +1,85 @@
+# All geometry is illustrative engineering data, not measured anatomy.
+- id: overhead-press
+  exercise: overhead-press
+  order: 47
+  description: Standing with planted feet, the bar travels from shoulder height to overhead and returns; the torso remains a simple rigid line.
+  family: vertical-press
+  variant: standing
+  equipment: barbell
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.4
+- id: seated-dumbbell-press
+  exercise: seated-dumbbell-press
+  order: 48
+  description: Supported upright on a bench, both dumbbells press from shoulder level to overhead and return.
+  family: vertical-press
+  variant: seated
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.45
+- id: dumbbell-lateral-raise
+  exercise: dumbbell-lateral-raise
+  order: 49
+  description: Both dumbbells rise out to the sides in a frontal-plane arc and lower again; the depth and shoulder path are approximate.
+  family: lateral-raise
+  variant: standing
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 75]
+  incline: 0
+  lean: 0
+  yaw: -1.3
+- id: cable-lateral-raise
+  exercise: cable-lateral-raise
+  order: 50
+  description: "One side is shown: the far hand raises a cable handle out to shoulder height and lowers it; the cable and side view are schematic."
+  family: lateral-raise
+  variant: standing
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 75]
+  incline: 0
+  lean: 0
+  yaw: 1.1
+- id: reverse-pec-deck
+  exercise: reverse-pec-deck
+  order: 51
+  description: Seated against a support, both arms sweep out and back from in front of the chest, then return; the machine arms are schematic.
+  family: rear-delt
+  variant: seated
+  equipment: machine
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 75]
+  incline: 0
+  lean: 0
+  yaw: 1
+- id: face-pull
+  exercise: face-pull
+  order: 52
+  description: Both hands draw a rope towards the face as the elbows move out, then return towards a cable pulley; forearm rotation is not detailed.
+  family: rear-delt
+  variant: standing
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 75]
+  incline: 0
+  lean: 0
+  yaw: 0.75
+- id: cable-external-rotation
+  exercise: cable-external-rotation
+  order: 53
+  description: "One side is shown: with the elbow tucked, the forearm rotates out against a cable and returns; the shoulder joint is schematic."
+  family: external-rotation
+  variant: standing
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 75]
+  incline: 0
+  lean: 0
+  yaw: -0.9

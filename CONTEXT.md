@@ -24,7 +24,7 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 |---|---|
 | `/home/` landing page | Rendered from `src/content/sections.yml`. **Live** |
 | `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Accessible, content draft** (8 illustrations, 3 exercise stages). General exercise education, not a rehabilitation timetable. The 3D rig is in `src/scripts/core/` |
-| `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers. All 12 chest and 22 leg exercise pages have approximate 3D illustrations |
+| `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers. All 68 exercise pages have approximate 3D references; side plank is a still hold |
 | `/getting-started/` Getting started with strength | **First slice built as a draft**: overview, 8-week plan, exercises (10 ladders, 20 exercises), progression, evidence. Home tile is **live** |
 | `/plyometrics/` | **Built as a draft**: overview, weekly plan, exercises, progression, fascia and tendons. Two-session base plan; for adults with no current injury who have been cleared to exercise |
 | `/calisthenics/` | **First build as a draft, tile live**: hub, start-here, foundations, first-skills, weekly-plan, exercises (41 in 12 ladders), progression, evidence. Two 8-week plans. Skills are gated and flagged as coaching convention. See the plan doc |
@@ -66,7 +66,7 @@ src/
 | `groups`, `muscles`, `exercises`, `programs`, `principles`, `cricket`, `glossary`, `painRules` | `groups.yml`, `muscles/`, `exercises/`, `programs.yml`, `principles/*.md`, `cricket/*.md`, ... | strength |
 | `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups/<section>.yml`, `guides/exercises/*.yml`, `guides/plans/<section>.yml` | getting-started, calisthenics and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises. Optional `phase` (groups, plans, and also claims and sources, so one section can hold independent stages; `loadGuide(section, { phase })` filters all of them, and the plyometrics base plan is phase `base`), `gates` (prerequisites), `requires` (kit the whole ladder needs) and `convention` (no training-outcome evidence). Guide ids are global, so calisthenics ids start `cal-` |
 | `corePhases`, `coreExercises` | `core/phases.yml`, `core/exercises.yml` | `/core/`. `poses` drive the 3D figures |
-| `animations` | `animations/{chest,legs}.yml` | Strength exercise illustrations. Each id matches its exercise reference; family, variant, equipment, tempo and illustrative geometry drive `ExerciseAnimation.astro` and the shared Stage |
+| `animations` | `animations/{chest,legs,back,shoulders,arms,core}.yml` | All strength exercise illustrations. Each id matches its exercise reference; family, variant, equipment, tempo, optional `motion: hold` and illustrative geometry drive `ExerciseAnimation.astro` and the shared Stage |
 | `sources`, `claims` | `sources.yml`, `claims/*.yml` | **every section**. Each entry has a `section` (default `strength`). Pages filter by section |
 
 Rules that follow from this:
@@ -178,7 +178,9 @@ Needs Node 22.23.4 or newer (Astro 7); Netlify uses Node 24. Notes:
 ## 8. Common tasks
 
 **Add a strength exercise.** Append to the right file in `src/content/exercises/` (copy a neighbour: setup, steps, mistakes,
-contraindications, regression, progression, a `painRule` id). Muscles and claims are referenced by id. Run `npm run check`.
+contraindications, regression, progression, a `painRule` id). Muscles and claims are referenced by id. Add its matching
+configuration in `src/content/animations/`; the validator requires an illustration for every strength exercise. Geometry is
+illustrative, not measured anatomy. Verify the intended action and contacts, not just changing pixels. Run `npm run check`.
 
 **Add a guide exercise** (getting-started or plyometrics). Append to `src/content/guides/exercises/<section>.yml`: `section`,
 `order`, `group`, `level` (ladder groups only), `equipment`, `muscles`, `setup`, `steps`, `mistakes`, `contraindications`,
@@ -234,7 +236,10 @@ cycle, poses start/end, steps, mistakes). The card, nav and framing update thems
 4. **Deepen the other strength groups** (back, shoulders, arms, core) to the chest and legs standard.
 5. **Anatomy sources:** modern OpenStax regional references are linked beside the 1918 Gray source; verify each muscle page.
 6. **Cricket research** (hypertrophy plan section 12).
-7. **Visuals:** all 34 chest and leg exercise pages now have approximate/draft illustrations (D-008). The non-linked `/strength/animation-preview/` reuses the same component for bench press and squat. Other groups and guide sections remain unanimated. Exact anthropometry and joint-depth modelling are not prerequisites.
+7. **Visuals:** all 68 strength exercise pages now have approximate/draft references (D-008), including a still side-plank hold.
+   The non-linked `/strength/animation-preview/` reuses the same component for bench press and squat. Next: getting-started reuse,
+   then calisthenics and plyometrics/cricket. Legacy `/core/` retains its eight illustrations and is not migrated. Exact
+   anthropometry and joint-depth modelling are not prerequisites; detailed wrist, scapula and spinal modelling remain limited.
 8. **Search and CI:** Pagefind for site search, and a GitHub Action that runs `npm run check` and a link check.
 
 ## 11. Coding standards

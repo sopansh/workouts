@@ -50,3 +50,9 @@ Issued by the executive. Each entry has an id, a date, the audience and a reason
 - **Rule:** Proceed with the in-house rig extension, starting with a bench-press and squat prototype. The owner accepts approximate proportions, angles and joint depth for reference illustrations. Do not wait for exact anthropometry or passive-range tables. Label visuals draft and approximate, not anatomical measurements or form validation. Keep recognisable movement, stable limb lengths and sensible equipment contacts; retain text instructions, keyboard controls, pause, reduced motion and one shared renderer.
 - **Reason:** The owner approved the plan as a visual reference, not a clinical or biomechanical simulation. Approximate animation values are engineering choices, not sourced health claims.
 
+## D-009 Verify the intended movement, not just changing pixels (2026-11-15)
+
+- **Audience:** all coaches and the executive.
+- **Rule:** Visual reviews must check the named action, direction, a meaningful movement range and stationary support contacts. Inspect start and working poses; test degree/radian conversions and one-sided movements explicitly. A hold stays still. A partial-clip label does not excuse showing a different exercise.
+- **Reason:** Remaining-strength integration exposed barely visible double-converted angles, same-side bird-dog reaches, floating equipment and reversed cable actions despite passing generic animation tests. Keep D-008's illustrative scope without weakening recognition or contact checks.
+

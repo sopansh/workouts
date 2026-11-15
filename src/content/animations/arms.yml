@@ -1,0 +1,121 @@
+# All geometry is illustrative engineering data, not measured anatomy.
+- id: barbell-curl
+  exercise: barbell-curl
+  order: 54
+  description: The bar curls from the thighs towards the shoulders while the elbows stay near the sides, then lowers.
+  family: biceps-curl
+  variant: standing
+  equipment: barbell
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 110]
+  incline: 0
+  lean: 0
+  yaw: 0.4
+- id: incline-dumbbell-curl
+  exercise: incline-dumbbell-curl
+  order: 55
+  description: Reclined on a sloped bench with the arms behind the torso, both dumbbells curl up and lower again.
+  family: biceps-curl
+  variant: incline
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 110]
+  incline: 45
+  lean: 0
+  yaw: -0.55
+- id: preacher-curl
+  exercise: preacher-curl
+  order: 56
+  description: Seated with the upper arms on a fixed pad, both hands curl a visible machine handle up and lower without leaving the support.
+  family: biceps-curl
+  variant: seated
+  equipment: machine
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 105]
+  incline: 0
+  lean: 0
+  yaw: -0.55
+- id: hammer-curl
+  exercise: hammer-curl
+  order: 57
+  description: Both dumbbells curl with a neutral arm path, then lower while the elbows remain near the sides.
+  family: biceps-curl
+  variant: standing
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 110]
+  incline: 0
+  lean: 0
+  yaw: 0.4
+- id: overhead-cable-triceps-extension
+  exercise: overhead-cable-triceps-extension
+  order: 58
+  description: With the arms overhead, the elbows bend and straighten against a cable; shoulder and forearm rotation are schematic.
+  family: triceps-extension
+  variant: overhead
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 110]
+  incline: 0
+  lean: 0
+  yaw: 0.55
+- id: triceps-pushdown
+  exercise: triceps-pushdown
+  order: 59
+  description: The elbows stay near the sides as the cable handle presses down and returns to a bent-arm position.
+  family: triceps-extension
+  variant: pushdown
+  equipment: cable
+  tempo: [2, 0.5, 2, 0.5]
+  range: [90, 5]
+  incline: 0
+  lean: 0
+  yaw: 0.45
+- id: skull-crusher
+  exercise: skull-crusher
+  order: 60
+  description: Lying on a bench, the elbows bend to lower the bar towards the forehead and extend to raise it; the exact bar path is schematic.
+  family: triceps-extension
+  variant: skull-crusher
+  equipment: barbell
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.55
+- id: close-grip-bench-press
+  exercise: close-grip-bench-press
+  order: 61
+  description: With a narrow grip on a flat bench, the bar lowers to the chest and presses back up while the feet stay planted.
+  family: press
+  variant: flat
+  equipment: barbell
+  tempo: [2, 0.5, 2, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.45
+- id: wrist-curl
+  exercise: wrist-curl
+  order: 62
+  description: Seated with the forearms and wrists supported, both short hand-and-weight shapes curl up and lower at the wrists; fingers are schematic.
+  family: forearm
+  variant: wrist-flexion
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [-25, 25]
+  incline: 0
+  lean: 0
+  yaw: 0.65
+- id: reverse-wrist-curl
+  exercise: reverse-wrist-curl
+  order: 63
+  description: Seated with the forearms and wrists supported, both short hand-and-weight shapes lift with palms down and lower at the wrists; fingers are schematic.
+  family: forearm
+  variant: wrist-extension
+  equipment: dumbbells
+  tempo: [2, 0.5, 2, 0.5]
+  range: [-25, 25]
+  incline: 0
+  lean: 0
+  yaw: 0.65

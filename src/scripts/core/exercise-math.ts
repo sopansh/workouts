@@ -1,7 +1,10 @@
-export const families = ['press', 'fly', 'pushup', 'plus', 'dip', 'punch', 'squat', 'lunge', 'leg-press', 'hinge', 'bridge', 'extension', 'curl', 'nordic', 'hip-machine', 'calf', 'tibialis'] as const;
-export const variants = ['flat', 'incline', 'seated', 'standing', 'prone', 'back', 'front', 'goblet', 'box', 'hack', 'bulgarian', 'walking', 'floor', 'bench', 'dowel', 'pull-through', 'abduction', 'adduction'] as const;
-export const equipmentTypes = ['none', 'barbell', 'dumbbells', 'goblet', 'cable', 'machine', 'dowel', 'bars', 'wall'] as const;
+export const families = ['press', 'fly', 'pushup', 'plus', 'dip', 'punch', 'squat', 'lunge', 'leg-press', 'hinge', 'bridge', 'extension', 'curl', 'nordic', 'hip-machine', 'calf', 'tibialis', 'vertical-pull', 'straight-arm-pulldown', 'row', 'back-extension', 'bird-dog', 'carry', 'shrug', 'lateral-raise', 'rear-delt', 'external-rotation', 'vertical-press', 'biceps-curl', 'triceps-extension', 'forearm', 'trunk-flexion', 'leg-raise', 'rollout', 'anti-rotation', 'side-plank'] as const;
+export const variants = ['flat', 'incline', 'seated', 'standing', 'prone', 'back', 'front', 'goblet', 'box', 'hack', 'bulgarian', 'walking', 'floor', 'bench', 'dowel', 'pull-through', 'abduction', 'adduction', 'deadlift', 'one-arm', 'overhead', 'pushdown', 'skull-crusher', 'wrist-flexion', 'wrist-extension', 'kneeling', 'hanging', 'suitcase', 'hold'] as const;
+export const equipmentTypes = ['none', 'barbell', 'dumbbells', 'goblet', 'cable', 'machine', 'dowel', 'bars', 'wall', 'bench', 'ab-wheel'] as const;
+export const animationMotions = ['move', 'hold'] as const;
 export interface AnimationConfig {
+  id?: string;
+  motion?: typeof animationMotions[number];
   family: typeof families[number];
   variant: typeof variants[number];
   equipment: typeof equipmentTypes[number];
@@ -17,6 +20,7 @@ export interface Prop { kind: 'pad' | 'bar' | 'weight' | 'cable'; start: Point; 
 export interface ExercisePose {
   hip: Point; shoulder: Point; head: Point;
   arms: Chain[]; legs: Chain[]; feet: Point[]; props: Prop[];
+  hands?: Point[];
 }
 const rad = (angle: number) => angle * Math.PI / 180;
 const add = (a: Point, b: Point): Point => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
@@ -43,25 +47,53 @@ export function chain(start: Point, end: Point, first: number, second: number, h
 }
 
 const combinations: Record<AnimationConfig['family'], string[]> = {
-  press: ['flat:barbell', 'flat:dumbbells', 'incline:barbell', 'incline:dumbbells', 'seated:machine'],
+  press: ['flat:barbell', 'flat:dumbbells', 'incline:barbell', 'incline:dumbbells', 'seated:machine', 'seated:dumbbells', 'standing:barbell'],
   fly: ['flat:dumbbells', 'standing:cable', 'seated:machine'],
   pushup: ['floor:none'], plus: ['floor:none'], dip: ['standing:bars'], punch: ['standing:cable'],
   squat: ['back:barbell', 'front:barbell', 'goblet:goblet', 'box:barbell', 'hack:machine'],
   lunge: ['bulgarian:dumbbells', 'walking:dumbbells'], 'leg-press': ['seated:machine'],
-  hinge: ['standing:barbell', 'pull-through:cable', 'dowel:dowel'],
+  hinge: ['standing:barbell', 'deadlift:barbell', 'pull-through:cable', 'dowel:dowel'],
   bridge: ['floor:none', 'bench:barbell'], extension: ['seated:machine'],
   curl: ['seated:machine', 'prone:machine'], nordic: ['floor:bars'],
   'hip-machine': ['abduction:machine', 'adduction:machine'],
   calf: ['standing:machine', 'seated:machine'], tibialis: ['standing:wall'],
+  'vertical-pull': ['hanging:bars', 'seated:cable', 'seated:machine'],
+  'straight-arm-pulldown': ['standing:cable'],
+  row: ['prone:machine', 'one-arm:dumbbells', 'seated:cable', 'standing:barbell'],
+  'back-extension': ['bench:bench'],
+  'bird-dog': ['kneeling:none'],
+  carry: ['suitcase:dumbbells'],
+  shrug: ['standing:dumbbells'],
+  'lateral-raise': ['standing:dumbbells', 'standing:cable'],
+  'rear-delt': ['seated:machine', 'standing:cable'],
+  'external-rotation': ['standing:cable'],
+  'vertical-press': ['standing:barbell', 'seated:dumbbells'],
+  'biceps-curl': ['standing:barbell', 'incline:dumbbells', 'seated:machine', 'standing:dumbbells'],
+  'triceps-extension': ['overhead:cable', 'pushdown:cable', 'skull-crusher:barbell'],
+  forearm: ['seated:dumbbells', 'wrist-flexion:dumbbells', 'wrist-extension:dumbbells'],
+  'trunk-flexion': ['kneeling:cable'],
+  'leg-raise': ['hanging:bars'],
+  rollout: ['kneeling:ab-wheel'],
+  'anti-rotation': ['standing:cable'],
+  'side-plank': ['hold:none'],
 };
 
 export function validateAnimation(config: AnimationConfig): void {
   if (!config || !families.includes(config.family) || !combinations[config.family].includes(`${config.variant}:${config.equipment}`)) throw new RangeError('Unsupported movement/equipment combination.');
+  if (config.motion !== undefined && !animationMotions.includes(config.motion)) throw new RangeError('Invalid animation motion semantics.');
+  if (config.family === 'side-plank' && config.motion !== 'hold') throw new RangeError('Side plank illustrations must use hold semantics.');
+  if (config.motion === 'hold' && config.family !== 'side-plank') throw new RangeError('Hold semantics are only supported for a still hold illustration.');
   if (!Array.isArray(config.tempo) || config.tempo.length !== 4 || !config.tempo.every(n => Number.isFinite(n) && n > 0 && n <= 10)) throw new RangeError('Invalid animation tempo.');
   if (!Array.isArray(config.range) || config.range.length !== 2 || !config.range.every(n => Number.isFinite(n) && n >= -40 && n <= 140) || config.range[0] === config.range[1]) throw new RangeError('Invalid illustrative range.');
   const limits: Partial<Record<AnimationConfig['family'], [number, number]>> = {
     curl: [0, 110], extension: [0, 100], nordic: [0, 56],
     'hip-machine': [0, 40], tibialis: [0, 25], hinge: [0, 65], fly: [0, 90],
+    'vertical-pull': [5, 110], row: [0, 100], 'back-extension': [0, 55],
+    'straight-arm-pulldown': [0, 155], 'vertical-press': [0, 120],
+    carry: [0, 100], shrug: [0, 20], 'lateral-raise': [0, 90], 'rear-delt': [0, 90],
+    'external-rotation': [0, 85], 'biceps-curl': [0, 125], 'triceps-extension': [0, 120],
+    forearm: [-30, 30], 'trunk-flexion': [0, 55], 'leg-raise': [0, 105], rollout: [0, 75],
+    'anti-rotation': [0, 80], 'side-plank': [0, 1],
   };
   const bounds = limits[config.family];
   if (bounds && config.range.some(n => n < bounds[0] || n > bounds[1])) throw new RangeError('Range exceeds illustrative movement bounds.');
@@ -70,6 +102,7 @@ export function validateAnimation(config: AnimationConfig): void {
 
 export function cycleWeight(config: AnimationConfig, progress: number): number {
   if (!Number.isFinite(progress) || progress < 0 || progress > 1) throw new RangeError('Invalid animation progress.');
+  if (config.motion === 'hold') return 0;
   const [out, hold, back, rest] = config.tempo;
   const t = progress * (out + hold + back + rest);
   const ease = (n: number) => n * n * (3 - 2 * n);
@@ -102,8 +135,10 @@ export function exercisePose(config: AnimationConfig, progress: number): Exercis
   let legs: Chain[] = [];
   let arms: Chain[] = [];
   let feet: Point[] = [];
+  let hands: Point[] | undefined;
   const legContact = (start: Point, end: Point) => chain(start, end, 0.46, 0.44, [1, 0, 0]);
   const armContact = (start: Point, end: Point, side: number) => chain(start, end, 0.32, 0.3, [0, -1, side]);
+  const armReach = (start: Point, end: Point, side: number, first = 0.34, second = 0.34) => chain(start, end, first, second, [0, -1, side]);
   const standingLegs = () => {
     legs = z.map(side => legContact(add(hip, [0, 0, side]), [0, 0.09, side]));
     feet = z.map(side => [0.2, 0.02, side]);
@@ -283,6 +318,15 @@ export function exercisePose(config: AnimationConfig, progress: number): Exercis
       break;
     }
     case 'hinge': {
+      if (config.variant === 'deadlift') {
+        hip = [-0.08 - 0.18 * w, 0.96 - 0.25 * w, 0];
+        const angle = rad(48 * w);
+        shoulder = add(hip, [0.6 * Math.sin(angle), 0.6 * Math.cos(angle), 0]);
+        standingLegs();
+        const barY = shoulder[1] - (0.88 - 0.01 * w);
+        arms = z.map(side => armReach(add(shoulder, [0, 0, side]), [shoulder[0], barY, side], Math.sign(side), 0.46, 0.44));
+        break;
+      }
       hip = [-0.1 - 0.22 * w, 0.95 - 0.05 * w, 0];
       shoulder = add(hip, [0.6 * Math.sin(a), 0.6 * Math.cos(a), 0]);
       standingLegs(); relaxedArms();
@@ -390,27 +434,428 @@ export function exercisePose(config: AnimationConfig, progress: number): Exercis
       relaxedArms();
       break;
     }
+    case 'vertical-pull': {
+      if (config.variant === 'hanging') {
+        hip = [-0.08, 1.02 + 0.32 * w, 0];
+        shoulder = add(hip, [0, 0.6, 0]);
+        legs = z.map(side => legContact(add(hip, [0, 0, side]), add(hip, [0.16, -0.72, side])));
+        feet = legs.map(leg => add(leg.end, [0.16, -0.04, 0]));
+        arms = z.map(side => armReach(add(shoulder, [0, 0, side]), [0, 2.08, side], Math.sign(side)));
+        prop('bar', [0, 2.08, -0.65], [0, 2.08, 0.65], 0.035);
+        prop('bar', [-0.65, 0.03, -0.65], [-0.65, 2.08, -0.65], 0.035);
+        prop('bar', [0.65, 0.03, 0.65], [0.65, 2.08, 0.65], 0.035);
+      } else {
+        seated();
+        arms = z.map(side => {
+          const start = add(shoulder, [0, 0, side]);
+          const end: Point = [shoulder[0] + 0.18 * w, shoulder[1] + 0.62 - 0.8 * w, side];
+          return armReach(start, end, Math.sign(side));
+        });
+        prop('bar', [0.12, 2.18, -0.55], [0.12, 2.18, 0.55], 0.035);
+        prop('bar', [0.28, 0.03, -0.48], [0.28, 2.18, -0.48], 0.035);
+        prop('bar', [0.28, 0.03, 0.48], [0.28, 2.18, 0.48], 0.035);
+        arms.forEach(arm => prop('cable', [0.12, 2.17, arm.end[2]], arm.end, 0.008));
+        prop('bar', [arms[0].end[0], arms[0].end[1], -0.36], [arms[1].end[0], arms[1].end[1], 0.36], 0.025);
+      }
+      break;
+    }
+    case 'straight-arm-pulldown': {
+      standingLegs();
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        const angle = a;
+        const end: Point = [start[0] + 0.62 * Math.sin(angle), start[1] + 0.62 * Math.cos(angle), side];
+        return armReach(start, end, Math.sign(side), 0.32, 0.3);
+      });
+      break;
+    }
+    case 'vertical-press': {
+      if (config.variant === 'seated') seated();
+      else standingLegs();
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        const isStandingBarbell = config.variant === 'standing';
+        const end: Point = [
+          start[0] + (isStandingBarbell ? 0.22 * (1 - w) : 0.24 * (1 - w)),
+          start[1] + (isStandingBarbell ? 0.58 * w : 0.03 + 0.58 * w),
+          side,
+        ];
+        return armReach(start, end, Math.sign(side));
+      });
+      break;
+    }
+    case 'row': {
+      if (config.variant === 'prone') {
+        hip = [0.16, 0.78, 0];
+        shoulder = [-0.42, 0.94, 0];
+        legs = z.map(side => legContact(add(hip, [0, 0, side]), [0.55, 0.1, side]));
+        feet = legs.map(leg => add(leg.end, [0.18, -0.06, 0]));
+        const supportStart = add(shoulder, [-0.15, -0.1, 0]);
+        const supportEnd = add(hip, [0.18, -0.1, 0]);
+        pad(supportStart, supportEnd, 0.5);
+        for (const endpoint of [supportStart, supportEnd]) {
+          prop('bar', [endpoint[0], 0.03, 0], [endpoint[0], endpoint[1] - 0.04, 0], 0.035);
+        }
+        arms = z.map(side => {
+          const start = add(shoulder, [0, 0, side]);
+          const end: Point = [start[0] + 0.1 - 0.25 * w, start[1] - 0.52 + 0.34 * w, side];
+          return armReach(start, end, Math.sign(side));
+        });
+        arms.forEach(arm => prop('bar', [arm.end[0], arm.end[1], arm.end[2] - 0.12], [arm.end[0], arm.end[1], arm.end[2] + 0.12], 0.025));
+      } else if (config.variant === 'one-arm') {
+        hip = [-0.02, 0.9, 0];
+        shoulder = add(hip, [0.48, 0.36, 0]);
+        legs = [
+          { start: add(hip, [0, 0, z[0]]), joint: [hip[0] + 0.46, hip[1], z[0]], end: [hip[0] + 0.46, hip[1] - 0.44, z[0]] },
+          legContact(add(hip, [0, 0, z[1]]), [0.2, 0.09, z[1]]),
+        ];
+        feet = legs.map((leg, i) => i === 0
+          ? add(leg.end, [0.16, -0.06, 0])
+          : add(leg.end, [0.16, -0.13, 0]));
+        pad([-0.25, 0.9, z[0]], [0.85, 0.9, z[0]], 0.5);
+        const support: Point = [0.6, 0.9, z[0]];
+        arms = [
+          armReach(add(shoulder, [0, 0, z[0]]), support, -1, 0.34, 0.34),
+          armReach(add(shoulder, [0, 0, z[1]]), [shoulder[0] + 0.12 - 0.3 * w, shoulder[1] - 0.55 + 0.3 * w, z[1]], 1, 0.34, 0.34),
+        ];
+      } else if (config.variant === 'seated') {
+        seated();
+        arms = z.map(side => {
+          const start = add(shoulder, [0, 0, side]);
+          const end: Point = [shoulder[0] + 0.6 - 0.48 * w, shoulder[1] - 0.18, side];
+          return armReach(start, end, Math.sign(side));
+        });
+        arms.forEach(arm => {
+          prop('cable', [1.12, 0.98, arm.end[2]], arm.end, 0.008);
+          prop('bar', [arm.end[0], arm.end[1], arm.end[2] - 0.12], [arm.end[0], arm.end[1], arm.end[2] + 0.12], 0.025);
+        });
+      } else {
+        hip = [-0.08, 0.94, 0];
+        shoulder = add(hip, [0.22, 0.55, 0]);
+        standingLegs();
+        arms = z.map(side => {
+          const start = add(shoulder, [0, 0, side]);
+          const end: Point = [0.04 + 0.2 * w, 0.88 + 0.25 * w, side];
+          return armReach(start, end, Math.sign(side));
+        });
+      }
+      break;
+    }
+    case 'back-extension': {
+      const angle = rad(40 + (config.range[1] - config.range[0]) * w);
+      hip = [0.12, 0.8, 0];
+      shoulder = add(hip, [-0.6 * Math.sin(angle), 0.6 * Math.cos(angle), 0]);
+      legs = z.map(side => legContact(add(hip, [0, 0, side]), [0.7, 0.12, side]));
+      feet = legs.map(leg => add(leg.end, [0.16, -0.06, 0]));
+      const supportStart: Point = [-0.12, 0.6, 0];
+      const supportEnd: Point = [0.42, 0.98, 0];
+      pad(supportStart, supportEnd, 0.48);
+      for (const endpoint of [supportStart, supportEnd]) {
+        prop('bar', [endpoint[0], 0.03, -0.32], [endpoint[0], endpoint[1], -0.32], 0.035);
+        prop('bar', [endpoint[0], 0.03, 0.32], [endpoint[0], endpoint[1], 0.32], 0.035);
+      }
+      relaxedArms();
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        return armReach(start, add(start, [-0.36, -0.02, 0]), Math.sign(side));
+      });
+      break;
+    }
+    case 'bird-dog': {
+      hip = [0.05, 0.52, 0];
+      shoulder = [-0.52, 0.72, 0];
+      head = [-0.72, 0.82, 0];
+      const reach = a;
+      arms = [
+        armReach(add(shoulder, [0, 0, z[0]]), [shoulder[0], 0, z[0]], -1, 0.36, 0.36),
+        armReach(add(shoulder, [0, 0, z[1]]), [shoulder[0] - 0.72 * Math.sin(reach), shoulder[1] - 0.72 * Math.cos(reach), z[1]], 1, 0.36, 0.36),
+      ];
+      legs = [
+        {
+          start: add(hip, [0, 0, z[0]]),
+          joint: [hip[0] + 0.46 * Math.sin(reach), hip[1] - 0.46 * Math.cos(reach), z[0]],
+          end: [hip[0] + 0.46 * Math.sin(reach) + 0.44, hip[1] - 0.46 * Math.cos(reach), z[0]],
+        },
+        { start: add(hip, [0, 0, z[1]]), joint: [hip[0], 0.06, z[1]], end: [hip[0] + 0.44, 0.06, z[1]] },
+      ];
+      feet = legs.map(leg => add(leg.end, [0.16, -0.04, 0]));
+      break;
+    }
+    case 'carry': {
+      const time = progress * config.tempo.reduce((sum, n) => sum + n, 0);
+      const step = Math.min(time / config.tempo[0], 1);
+      const reset = Math.max(0, Math.min((time - config.tempo[0] - config.tempo[1] - config.tempo[2]) / config.tempo[3], 1));
+      const stride = 0.28 * Math.max(0, step - reset);
+      hip = [-0.08 + 0.08 * w, 0.94 + 0.01 * Math.sin(Math.PI * w), 0];
+      const lean = rad(4 * w);
+      shoulder = add(hip, [-0.6 * Math.sin(lean), 0.6 * Math.cos(lean), 0]);
+      legs = z.map((side, i) => legContact(add(hip, [0, 0, side]), [i ? 0.12 : -0.12 + stride, 0.09, side]));
+      feet = legs.map(leg => add(leg.end, [0.18, -0.06, 0]));
+      relaxedArms();
+      arms[0] = armReach(add(shoulder, [0, 0, z[0]]), [shoulder[0], shoulder[1] - 0.58, z[0]], -1);
+      break;
+    }
+    case 'shrug': {
+      hip = [-0.08, 0.96, 0];
+      shoulder = add(hip, [-0.08, 0.6, 0]);
+      standingLegs();
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0.12 * w, side]);
+        return { start, joint: add(start, [0, -0.32, 0]), end: add(start, [0, -0.62, 0]) };
+      });
+      break;
+    }
+    case 'lateral-raise': {
+      standingLegs();
+      arms = z.map((side, i) => {
+        const start = add(shoulder, [0, 0, side]);
+        const activeSide = config.equipment === 'cable' && i === 1;
+        const angle = activeSide || config.equipment === 'dumbbells' ? a : 0;
+        const end: Point = [start[0], start[1] - 0.62 * Math.cos(angle), start[2] + Math.sign(side) * 0.62 * Math.sin(angle)];
+        return armReach(start, end, Math.sign(side), 0.32, 0.3);
+      });
+      break;
+    }
+    case 'rear-delt': {
+      if (config.variant === 'seated') seated();
+      else standingLegs();
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        if (config.variant === 'seated') {
+          const angle = a;
+          const end: Point = [start[0] - 0.58 * Math.cos(angle), start[1] + 0.08 * Math.sin(angle), start[2] + Math.sign(side) * 0.58 * Math.sin(angle)];
+          return armReach(start, end, Math.sign(side));
+        }
+        const end: Point = [start[0] - 0.52 + 0.38 * w, start[1] - 0.06 + 0.09 * w, Math.sign(side) * (0.16 + 0.08 * w)];
+        return armReach(start, end, Math.sign(side));
+      });
+      if (config.equipment === 'machine') {
+        arms.forEach(arm => pad([0.75, 1.05, arm.end[2] - 0.08], [0.75, 1.65, arm.end[2] + 0.08], 0.16));
+      } else {
+        arms.forEach(arm => prop('cable', [-0.82, shoulder[1], arm.end[2]], arm.end, 0.008));
+      }
+      break;
+    }
+    case 'external-rotation': {
+      standingLegs();
+      const side = z[0];
+      const start = add(shoulder, [0, 0, side]);
+      const elbow: Point = [start[0] + 0.16, start[1] - 0.28, side];
+      const angle = a;
+      const hand: Point = [elbow[0] + 0.3 * Math.cos(angle), elbow[1], side - 0.3 * Math.sin(angle)];
+      arms = [
+        { start, joint: elbow, end: hand },
+        { start: add(shoulder, [0, 0, z[1]]), joint: add(shoulder, [0, -0.32, z[1]]), end: add(shoulder, [0, -0.62, z[1]]) },
+      ];
+      prop('cable', [elbow[0] + 0.3, elbow[1], 0.6], hand, 0.008);
+      prop('bar', add(hand, [0, -0.04, 0]), add(hand, [0, 0.04, 0]), 0.02);
+      break;
+    }
+    case 'biceps-curl': {
+      if (config.variant === 'seated') seated();
+      else if (config.variant === 'incline') {
+        hip = [-0.1, 0.72, 0];
+        shoulder = [-0.42, 1.2, 0];
+        legs = z.map(side => legContact(add(hip, [0, 0, side]), [0.2, 0.09, side]));
+        feet = legs.map(leg => add(leg.end, [0.16, -0.13, 0]));
+        pad([-0.38, 0.65, 0], [0.2, 0.65, 0], 0.5);
+        const backPadStart: Point = [-0.58, 1.33, 0];
+        const backPadEnd: Point = [-0.19, 0.76, 0];
+        pad(backPadStart, backPadEnd, 0.5);
+        for (const endpoint of [backPadStart, backPadEnd]) {
+          for (const side of [-0.3, 0.3]) prop('bar', [endpoint[0], 0.03, side], [endpoint[0], endpoint[1], side], 0.035);
+        }
+      } else standingLegs();
+      if (config.variant === 'seated') {
+        const supportStart = add(shoulder, [-0.12, 0.11, 0]);
+        const supportEnd = add(shoulder, [0.24, -0.51, 0]);
+        pad(supportStart, supportEnd, 0.52);
+        for (const endpoint of [supportStart, supportEnd]) {
+          for (const side of [-0.32, 0.32]) prop('bar', [endpoint[0], 0.03, side], [endpoint[0], endpoint[1], side], 0.035);
+        }
+      }
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        const elbow = config.variant === 'incline'
+          ? add(start, [-0.18, -0.265, 0])
+          : config.variant === 'seated'
+            ? add(start, [0.16, -0.275, 0])
+            : add(start, [0, -0.32, 0]);
+        const angle = a;
+        const end: Point = [elbow[0] + 0.3 * Math.sin(angle), elbow[1] - 0.3 * Math.cos(angle), side];
+        return { start, joint: elbow, end };
+      });
+      if (config.variant === 'seated') {
+        const handleX = (arms[0].end[0] + arms[1].end[0]) / 2;
+        const handleY = (arms[0].end[1] + arms[1].end[1]) / 2;
+        prop('bar', [handleX, handleY, -0.36], [handleX, handleY, 0.36], 0.025);
+        prop('cable', [0.55, 0.72, 0], [handleX, handleY, 0], 0.008);
+        prop('pad', [0.48, 0.18, 0], [0.72, 0.72, 0], 0.18);
+      }
+      break;
+    }
+    case 'triceps-extension': {
+      if (config.variant === 'skull-crusher') {
+        lying();
+        arms = z.map(side => {
+          const start = add(shoulder, [0, 0, side]);
+          const elbow = add(start, [-0.12, 0.29, 0]);
+          const angle = a;
+          const end: Point = [elbow[0] - 0.3 * Math.sin(angle), elbow[1] - 0.3 * Math.cos(angle), side];
+          return { start, joint: elbow, end };
+        });
+      } else {
+        standingLegs();
+        arms = z.map(side => {
+          const start = add(shoulder, [0, 0, side]);
+          if (config.variant === 'pushdown') {
+            const elbow = add(start, [0, -0.32, 0]);
+            const angle = a;
+            return { start, joint: elbow, end: [elbow[0] + 0.3 * Math.sin(angle), elbow[1] - 0.3 * Math.cos(angle), side] };
+          }
+          const elbow = add(start, [-0.08, 0.3, 0]);
+          const angle = rad(-45) + a * 1.125;
+          return { start, joint: elbow, end: [elbow[0] + 0.3 * Math.cos(angle), elbow[1] + 0.3 * Math.sin(angle), side] };
+        });
+      }
+      break;
+    }
+    case 'forearm': {
+      seated();
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        const elbow = add(start, [0.15, -0.28, 0]);
+        const wrist: Point = [elbow[0] + 0.3, elbow[1], side];
+        const direction = a * (config.variant === 'wrist-flexion' ? 1 : -1);
+        hands ??= [];
+        hands.push([wrist[0] + 0.12 * Math.cos(direction), wrist[1] + 0.12 * Math.sin(direction), side]);
+        return { start, joint: elbow, end: wrist };
+      });
+      pad([-0.15, 0.92, 0], [0.44, 0.92, 0], 0.5);
+      break;
+    }
+    case 'trunk-flexion': {
+      const angle = rad(8) + a;
+      hip = [-0.08, 0.82, 0];
+      shoulder = add(hip, [-0.6 * Math.sin(angle), 0.6 * Math.cos(angle), 0]);
+      legs = z.map(side => ({
+        start: add(hip, [0, 0, side]),
+        joint: [hip[0], 0.12, side],
+        end: [hip[0] + 0.44, 0.12, side],
+      }));
+      feet = legs.map(leg => add(leg.end, [0.18, -0.16, 0]));
+      const headPoint = add(shoulder, scale(unit(sub(shoulder, hip)), 0.2));
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        const end: Point = [headPoint[0] - 0.12, headPoint[1] - 0.04, side];
+        return armReach(start, end, Math.sign(side));
+      });
+      prop('cable', [-0.95, 2.16, 0], arms[0].end, 0.008);
+      prop('bar', [arms[0].end[0], arms[0].end[1], -0.18], [arms[1].end[0], arms[1].end[1], 0.18], 0.025);
+      break;
+    }
+    case 'leg-raise': {
+      hip = [-0.08, 1.02, 0];
+      shoulder = add(hip, [0, 0.6, 0]);
+      arms = z.map(side => armReach(add(shoulder, [0, 0, side]), [0, 2.08, side], Math.sign(side)));
+      prop('bar', [0, 2.08, -0.65], [0, 2.08, 0.65], 0.035);
+      legs = z.map((side, i) => {
+        const t = a;
+        const knee = add(hip, [0.46 * Math.sin(t), -0.46 * Math.cos(t), side]);
+        const end: Point = [knee[0] + 0.44 * Math.sin(t), knee[1] - 0.44 * Math.cos(t), side];
+        return { start: add(hip, [0, 0, side]), joint: knee, end };
+      });
+      feet = legs.map(leg => add(leg.end, [0.12, -0.04, 0]));
+      break;
+    }
+    case 'rollout': {
+      const kneeX = 0.15;
+      const kneeY = 0.12;
+      const angle = rad(65 * w);
+      hip = [kneeX - 0.46 * Math.sin(angle), kneeY + 0.46 * Math.cos(angle), 0];
+      shoulder = add(hip, [-0.57, Math.sqrt(0.6 ** 2 - 0.57 ** 2), 0]);
+      legs = z.map(side => ({
+        start: add(hip, [0, 0, side]),
+        joint: [kneeX, kneeY, side],
+        end: [kneeX + 0.44, kneeY, side],
+      }));
+      feet = legs.map(leg => add(leg.end, [0.12, -0.16, 0]));
+      const wheel: Point = [shoulder[0] - 0.08 - 0.37 * w, 0.09, 0];
+      arms = z.map(side => armReach(add(shoulder, [0, 0, side]), [wheel[0], wheel[1], side], Math.sign(side), 0.36, 0.36));
+      prop('weight', [wheel[0], wheel[1], -0.16], [wheel[0], wheel[1], 0.16], 0.13);
+      break;
+    }
+    case 'anti-rotation': {
+      standingLegs();
+      const targetX = 0.12 + 0.36 * w;
+      arms = z.map(side => {
+        const start = add(shoulder, [0, 0, side]);
+        const end: Point = [start[0] + targetX, start[1] - 0.08, side];
+        return armReach(start, end, Math.sign(side));
+      });
+      prop('cable', [-0.85, shoulder[1] - 0.04, -0.55], [arms[0].end[0], arms[0].end[1], arms[0].end[2]], 0.008);
+      prop('bar', [arms[0].end[0], arms[0].end[1], arms[0].end[2] - 0.12], [arms[1].end[0], arms[1].end[1], arms[1].end[2] + 0.12], 0.025);
+      break;
+    }
+    case 'side-plank': {
+      hip = [0.06, 0.3, 0];
+      shoulder = [-0.54, 0.3, 0];
+      head = [-0.75, 0.38, 0];
+      legs = [
+        { start: hip, joint: [0.52, 0.3, 0], end: [0.96, 0.3, 0] },
+        { start: [hip[0], 0.34, 0], joint: [0.52, 0.34, 0], end: [0.96, 0.34, 0] },
+      ];
+      feet = [
+        [1.14, 0.02, 0],
+        [1.14, 0.06, 0],
+      ];
+      arms = [
+        { start: [-0.54, 0.32, 0], joint: [-0.54, 0.015, 0], end: [-0.24, 0.015, 0] },
+        { start: [-0.54, 0.34, 0], joint: [-0.34, 0.34, 0], end: [-0.04, 0.34, 0] },
+      ];
+      pad([-0.78, -0.025, 0], [-0.18, -0.025, 0], 0.45);
+      break;
+    }
   }
   if (!arms.length) relaxedArms();
-  head = add(shoulder, scale(unit(sub(shoulder, hip)), 0.2));
+  if (!['bird-dog', 'side-plank'].includes(config.family)) head = add(shoulder, scale(unit(sub(shoulder, hip)), 0.2));
   if (config.family === 'bridge') head = add(shoulder, [-0.2, 0, 0]);
   if (config.equipment === 'barbell' && !['squat', 'bridge'].includes(config.family)) {
     const mid = scale(add(arms[0].end, arms[1].end), 0.5);
     bar(mid);
   }
+  const loadPoints = hands ?? arms.map(arm => arm.end);
   if (config.equipment === 'dumbbells') {
-    arms.forEach(arm => {
-      prop('bar', add(arm.end, [0, 0, -0.1]), add(arm.end, [0, 0, 0.1]), 0.018);
-      for (const side of [-1, 1]) prop('weight', add(arm.end, [0, 0, side * 0.07]), add(arm.end, [0, 0, side * 0.12]), 0.075);
+    const loadedArms = config.family === 'carry'
+      ? [arms[0]]
+      : config.family === 'row' && config.variant === 'one-arm'
+        ? [arms[1]]
+        : arms;
+    const loadedPoints = config.family === 'forearm'
+      ? loadPoints
+      : loadedArms.map(arm => arm.end);
+    loadedPoints.forEach(point => {
+      prop('bar', add(point, [0, 0, -0.1]), add(point, [0, 0, 0.1]), 0.018);
+      for (const side of [-1, 1]) prop('weight', add(point, [0, 0, side * 0.07]), add(point, [0, 0, side * 0.12]), 0.075);
     });
   }
   if (config.equipment === 'goblet') {
     prop('weight', add(arms[0].end, [0, -0.1, 0]), add(arms[0].end, [0, 0.1, 0]), 0.1);
   }
-  if (config.equipment === 'cable') {
-    const working = config.family === 'punch' ? [arms[1]] : arms;
+  if (config.equipment === 'cable' && !['vertical-pull', 'row', 'rear-delt', 'external-rotation', 'trunk-flexion', 'anti-rotation'].includes(config.family)) {
+    const working = config.family === 'punch' ? [arms[1]] : config.family === 'lateral-raise' ? [arms[1]] : arms;
     working.forEach((arm, i) => {
-      const pulley: Point = config.family === 'fly' ? [-0.3, shoulder[1], i ? 1 : -1] : [-1.1, config.variant === 'pull-through' ? 0.15 : shoulder[1], arm.end[2]];
+      const pulley: Point = config.family === 'fly'
+        ? [-0.3, shoulder[1], i ? 1 : -1]
+        : config.family === 'straight-arm-pulldown'
+          ? [-0.8, 2.12, arm.end[2]]
+        : config.family === 'lateral-raise'
+          ? [-0.55, 0.08, arm.end[2] - 0.55]
+          : config.family === 'triceps-extension' && config.variant === 'overhead'
+            ? [-0.8, 1.2, arm.end[2]]
+            : config.family === 'triceps-extension'
+              ? [-0.8, 2.15, arm.end[2]]
+              : [-1.1, config.variant === 'pull-through' ? 0.15 : shoulder[1], arm.end[2]];
       prop('cable', pulley, arm.end, 0.008);
       prop('bar', add(arm.end, [0, -0.05, 0]), add(arm.end, [0, 0.05, 0]), 0.02);
     });
@@ -425,5 +870,5 @@ export function exercisePose(config: AnimationConfig, progress: number): Exercis
       }
     }
   }
-  return { hip, shoulder, head, arms, legs, feet, props };
+  return { hip, shoulder, head, arms, legs, feet, props, hands };
 }
