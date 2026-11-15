@@ -1,0 +1,265 @@
+# All geometry is illustrative engineering data, not measured anatomy.
+- id: back-squat
+  exercise: back-squat
+  order: 13
+  description: With a bar on the upper back and feet planted, the hips and knees bend to lower the body and extend to stand.
+  family: squat
+  variant: back
+  equipment: barbell
+  tempo: [3, 0.5, 1.5, 0.5]
+  range: [5, 120]
+  incline: 0
+  lean: 35
+  yaw: 0.35
+- id: front-squat
+  exercise: front-squat
+  order: 14
+  description: Holding the bar in front of the shoulders, the body lowers and stands with a relatively upright trunk and planted feet.
+  family: squat
+  variant: front
+  equipment: barbell
+  tempo: [3, 0.5, 1.5, 0.5]
+  range: [5, 120]
+  incline: 0
+  lean: 20
+  yaw: 0.35
+- id: goblet-squat
+  exercise: goblet-squat
+  order: 15
+  description: A compact weight stays at the chest while the hips and knees bend to squat and extend to stand; the feet remain planted.
+  family: squat
+  variant: goblet
+  equipment: goblet
+  tempo: [3, 0.5, 1, 0.5]
+  range: [5, 125]
+  incline: 0
+  lean: 20
+  yaw: 0.35
+- id: box-squat
+  exercise: box-squat
+  order: 16
+  description: With the bar on the upper back, the hips move back and down towards a stable box, pause at its top and rise again.
+  family: squat
+  variant: box
+  equipment: barbell
+  tempo: [3, 0.5, 1.5, 0.5]
+  range: [5, 88]
+  incline: 0
+  lean: 45
+  yaw: 0.35
+- id: hack-squat
+  exercise: hack-squat
+  order: 17
+  description: The supported, reclined trunk and machine pad lower together as the knees bend, then rise as the legs extend on the foot platform.
+  family: squat
+  variant: hack
+  equipment: machine
+  tempo: [3, 0.5, 1.5, 0.5]
+  range: [5, 115]
+  incline: 0
+  lean: -30
+  yaw: 0.35
+- id: leg-press
+  exercise: leg-press
+  order: 18
+  description: Reclined against the seat, the legs bend as the foot platform approaches and extend to press the platform away.
+  family: leg-press
+  variant: seated
+  equipment: machine
+  tempo: [3, 0.5, 1.5, 0.5]
+  range: [8, 100]
+  incline: 40
+  lean: 0
+  yaw: 0.35
+- id: bulgarian-split-squat
+  exercise: bulgarian-split-squat
+  order: 19
+  description: With the rear foot on a low bench and dumbbells at the sides, the front leg bends to lower the body and extends to rise. One side is shown.
+  family: lunge
+  variant: bulgarian
+  equipment: dumbbells
+  tempo: [2.5, 0.3, 1.5, 0.5]
+  range: [20, 95]
+  incline: 0
+  lean: 10
+  yaw: 0.4
+- id: walking-lunge
+  exercise: walking-lunge
+  order: 20
+  description: One forward walking-lunge step is shown with dumbbells at the sides. The leading foot plants, the body lowers and rises, and the trailing foot advances. The clip resets to repeat this step.
+  family: lunge
+  variant: walking
+  equipment: dumbbells
+  tempo: [2.3, 0.3, 1.2, 1]
+  range: [5, 97]
+  incline: 0
+  lean: 5
+  yaw: 0.35
+- id: leg-extension
+  exercise: leg-extension
+  order: 21
+  description: Seated with the thighs still, the lower legs straighten against the shin roller and lower back towards a bent-knee position.
+  family: extension
+  variant: seated
+  equipment: machine
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [90, 10]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: romanian-deadlift
+  exercise: romanian-deadlift
+  order: 22
+  description: With soft knees, the hips travel backwards as the trunk hinges forwards and the bar lowers close to the legs, then the body stands.
+  family: hinge
+  variant: standing
+  equipment: barbell
+  tempo: [3, 0.5, 1.5, 0.5]
+  range: [0, 55]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: glute-bridge
+  exercise: glute-bridge
+  order: 23
+  description: With shoulders on the floor and feet planted, the hips rise towards a line with the trunk and thighs, pause and lower.
+  family: bridge
+  variant: floor
+  equipment: none
+  tempo: [1, 1, 1.5, 0.5]
+  range: [60, 5]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: hip-thrust
+  exercise: hip-thrust
+  order: 24
+  description: With the shoulders supported on a bench and feet planted, the hips lift the padded bar towards a level trunk position and lower again.
+  family: bridge
+  variant: bench
+  equipment: barbell
+  tempo: [1.2, 1, 2, 0.5]
+  range: [80, 5]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: cable-pull-through
+  exercise: cable-pull-through
+  order: 25
+  description: Facing away from a low pulley, the hips hinge backwards with the rope passing between the legs, then extend to stand.
+  family: hinge
+  variant: pull-through
+  equipment: cable
+  tempo: [2.5, 0.3, 1.5, 0.5]
+  range: [0, 60]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: hip-hinge-dowel
+  exercise: hip-hinge-dowel
+  order: 26
+  description: The trunk and hips hinge as one block while a dowel stays aligned along the back, then return to standing with soft knees.
+  family: hinge
+  variant: dowel
+  equipment: dowel
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [0, 45]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: seated-leg-curl
+  exercise: seated-leg-curl
+  order: 27
+  description: Seated against a reclined back pad with thighs still, the lower legs curl down and back against the roller, then extend again.
+  family: curl
+  variant: seated
+  equipment: machine
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [5, 100]
+  incline: 20
+  lean: 0
+  yaw: 0.35
+- id: lying-leg-curl
+  exercise: lying-leg-curl
+  order: 28
+  description: Lying face down on the pad with hips still, the heels curl upwards against the roller and lower again.
+  family: curl
+  variant: prone
+  equipment: machine
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [5, 105]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: nordic-curl
+  exercise: nordic-curl
+  order: 29
+  description: Kneeling with the ankles anchored, the straight trunk and thighs lean forwards around the knees over a short controlled range. The return is schematic; assistance and the hand catch are not shown.
+  family: nordic
+  variant: floor
+  equipment: bars
+  tempo: [4, 0.5, 2, 0.5]
+  range: [0, 50]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: hip-abduction-machine
+  exercise: hip-abduction-machine
+  order: 30
+  description: Seated with the back supported, the knees and outer thigh pads move apart and return while the knee bend stays fixed.
+  family: hip-machine
+  variant: abduction
+  equipment: machine
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [5, 30]
+  incline: 0
+  lean: 0
+  yaw: -1.5
+- id: standing-calf-raise
+  exercise: standing-calf-raise
+  order: 31
+  description: Standing with nearly straight knees under shoulder pads, the heels rise around the balls of the feet and lower at the platform edge.
+  family: calf
+  variant: standing
+  equipment: machine
+  tempo: [1, 1, 2.5, 0.5]
+  range: [0, 35]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: seated-calf-raise
+  exercise: seated-calf-raise
+  order: 32
+  description: Seated with bent knees and a thigh pad, the heels rise around the balls of the feet and lower while the knee bend stays steady.
+  family: calf
+  variant: seated
+  equipment: machine
+  tempo: [1, 1, 2.5, 0.5]
+  range: [0, 35]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: adductor-machine
+  exercise: adductor-machine
+  order: 33
+  description: Seated with the back supported, the knees squeeze the inner thigh pads together and slowly open again with the knee bend held fixed.
+  family: hip-machine
+  variant: adduction
+  equipment: machine
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [30, 3]
+  incline: 0
+  lean: 0
+  yaw: -1.5
+- id: tibialis-raise
+  exercise: tibialis-raise
+  order: 34
+  description: Leaning back against a wall with heels planted, both forefeet lift towards the shins and lower again.
+  family: tibialis
+  variant: standing
+  equipment: wall
+  tempo: [1, 0.5, 2, 0.5]
+  range: [0, 20]
+  incline: 0
+  lean: -15
+  yaw: -0.35

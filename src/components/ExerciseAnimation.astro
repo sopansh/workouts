@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  animation: CollectionEntry<'animations'>;
+  name: string;
+  preview?: 'bench' | 'squat';
+}
+const { animation, name, preview } = Astro.props;
+const { description, ...data } = animation.data;
+---
+<section class="animation-preview" data-exercise-animation={animation.id} data-animation-preview={preview} data-animation-config={JSON.stringify(data)} aria-labelledby={`animation-${animation.id}`}>
+  <div class="animation-preview__body">
+    <h2 id={`animation-${animation.id}`}>{name}: movement illustration</h2>
+    <p><b>Draft · approximate reference.</b> Not anatomical measurements, a validated form check or a substitute for the written setup and safety instructions.</p>
+  </div>
+  <div class="animation-preview__stage">
+    <canvas class="animation-preview__canvas" tabindex="0" role="img" aria-label={`${name}, approximate draft animation. ${description} Drag sideways or use the left and right arrow keys to rotate; Home resets the view.`}></canvas>
+    <p class="animation-preview__fallback" role="status">3D illustration unavailable. Read the written exercise instructions.</p>
+    <span class="animation-preview__badge">Draft · approximate</span>
+  </div>
+  <div class="animation-preview__body">
+    <p>{description}</p>
+    <p class="muted small">Drag or focus the canvas and use ← / → to rotate; Home resets the view. Use the toolbar to pause, resume or change speed. Reduced motion starts paused.</p>
+  </div>
+</section>

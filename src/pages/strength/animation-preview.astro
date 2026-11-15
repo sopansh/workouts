@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import ExerciseAnimation from '../../components/ExerciseAnimation.astro';
+import AnimationAssets from '../../components/AnimationAssets.astro';
+import AnimationControls from '../../components/AnimationControls.astro';
+import { getEntry } from 'astro:content';
+const bench = await getEntry('animations', 'barbell-bench-press');
+const squat = await getEntry('animations', 'back-squat');
+if (!bench || !squat) throw new Error('The prototype animations are missing.');
+---
+<Base section="strength" title="Illustrative animation preview" description="Draft, approximate bench press and back squat motion references. These animations are not form checks or anatomical measurements." noindex>
+  <Fragment slot="head"><AnimationAssets /></Fragment>
+  <Fragment slot="controls"><AnimationControls /></Fragment>
+  <section class="hero page-head">
+    <p class="eyebrow">Strength visuals · Draft prototype</p>
+    <h1>Illustrative animation preview</h1>
+    <p class="lede">Approximate movement references for a barbell bench press and back squat. They are not anatomical measurements, validated form demonstrations or a substitute for the written instructions.</p>
+  </section>
+  <section class="animation-preview-grid" aria-label="Draft exercise animations">
+    <div>
+      <ExerciseAnimation animation={bench} name="Barbell bench press" preview="bench" />
+      <p><a href="/strength/exercises/barbell-bench-press/">Read the bench press instructions</a>.</p>
+    </div>
+    <div>
+      <ExerciseAnimation animation={squat} name="Barbell back squat" preview="squat" />
+      <p><a href="/strength/exercises/back-squat/">Read the back squat instructions</a>.</p>
+    </div>
+  </section>
+</Base>

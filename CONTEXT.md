@@ -23,13 +23,13 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | Area | Status |
 |---|---|
 | `/home/` landing page | Rendered from `src/content/sections.yml`. **Live** |
-| `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Live** (8 exercises, 3 phases). Now an Astro page; the 3D rig is in `src/scripts/core/` |
-| `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups |
+| `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Accessible, content draft** (8 illustrations, 3 exercise stages). General exercise education, not a rehabilitation timetable. The 3D rig is in `src/scripts/core/` |
+| `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers. All 12 chest and 22 leg exercise pages have approximate 3D illustrations |
 | `/getting-started/` Getting started with strength | **First slice built as a draft**: overview, 8-week plan, exercises (10 ladders, 20 exercises), progression, evidence. Home tile is **live** |
 | `/plyometrics/` | **Built as a draft**: overview, weekly plan, exercises, progression, fascia and tendons. Two-session base plan; for adults with no current injury who have been cleared to exercise |
 | `/calisthenics/` | **First build as a draft, tile live**: hub, start-here, foundations, first-skills, weekly-plan, exercises (41 in 12 ladders), progression, evidence. Two 8-week plans. Skills are gated and flagged as coaching convention. See the plan doc |
 | `/nutrition/` Health & Nutrition | Not started (tile "Coming soon") |
-| Cricket-specific tracks | Stubs in `/strength/cricket/`; planned for plyometrics and isometrics (hypertrophy plan section 12) |
+| Cricket-specific tracks | Five researched strength drafts and three role stubs in `/strength/cricket/`; five draft pages in `/plyometrics/sports/cricket/`. Other sports deferred by owner decision |
 | Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). `npm run check:links` crawls `dist/` after a build (also run by `test:e2e`). No CI yet. `npm run test:e2e` runs the browser tests |
 
 ## 3. Repo layout
@@ -66,6 +66,7 @@ src/
 | `groups`, `muscles`, `exercises`, `programs`, `principles`, `cricket`, `glossary`, `painRules` | `groups.yml`, `muscles/`, `exercises/`, `programs.yml`, `principles/*.md`, `cricket/*.md`, ... | strength |
 | `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups/<section>.yml`, `guides/exercises/*.yml`, `guides/plans/<section>.yml` | getting-started, calisthenics and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises. Optional `phase` (groups, plans, and also claims and sources, so one section can hold independent stages; `loadGuide(section, { phase })` filters all of them, and the plyometrics base plan is phase `base`), `gates` (prerequisites), `requires` (kit the whole ladder needs) and `convention` (no training-outcome evidence). Guide ids are global, so calisthenics ids start `cal-` |
 | `corePhases`, `coreExercises` | `core/phases.yml`, `core/exercises.yml` | `/core/`. `poses` drive the 3D figures |
+| `animations` | `animations/{chest,legs}.yml` | Strength exercise illustrations. Each id matches its exercise reference; family, variant, equipment, tempo and illustrative geometry drive `ExerciseAnimation.astro` and the shared Stage |
 | `sources`, `claims` | `sources.yml`, `claims/*.yml` | **every section**. Each entry has a `section` (default `strength`). Pages filter by section |
 
 Rules that follow from this:
@@ -95,6 +96,8 @@ floor first, box optional. The repo is public, so no personal or health details 
 - **Shared components, shared CSS.** `app.css` holds every shared component style (badges, notes, callout, tables, cards,
   claims, guide cards, week strips). Only `home.css` and `core.css` are page-specific. Class names are the contract; do not
   reuse a shared class name for a different look (core's exercise cards are `.demo`, not `.card`, for this reason).
+- **Full-width layout.** The shared `.wrap` spans the viewport with 16 px side gutters for the toolbar, main content and footer.
+  Grids and tables use the available width; prose and illustrations retain their own readable size limits.
 - **Content renders before 3D.** `/core/` is fully rendered at build time. `src/scripts/core/main.js` only attaches 3D to the
   cards already on the page and reads each exercise's poses from a JSON script tag. If three.js fails to load, the guide is
   still fully readable (`.no-3d` shows a fallback note).
@@ -231,7 +234,7 @@ cycle, poses start/end, steps, mistakes). The card, nav and framing update thems
 4. **Deepen the other strength groups** (back, shoulders, arms, core) to the chest and legs standard.
 5. **Anatomy sources:** modern OpenStax regional references are linked beside the 1918 Gray source; verify each muscle page.
 6. **Cricket research** (hypertrophy plan section 12).
-7. **Visuals:** per-muscle glow and 3D demos on the existing rig for strength exercises.
+7. **Visuals:** all 34 chest and leg exercise pages now have approximate/draft illustrations (D-008). The non-linked `/strength/animation-preview/` reuses the same component for bench press and squat. Other groups and guide sections remain unanimated. Exact anthropometry and joint-depth modelling are not prerequisites.
 8. **Search and CI:** Pagefind for site search, and a GitHub Action that runs `npm run check` and a link check.
 
 ## 11. Coding standards

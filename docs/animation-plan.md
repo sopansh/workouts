@@ -1,13 +1,13 @@
 # Extending the 3D exercise rig: engineering plan
 
-Status: **proposal, awaiting owner approval. No rig code has been changed.**
+Status: **owner approved the illustrative extension on 2026-11-15; illustrations integrated into all 12 chest and 22 leg exercise pages.** Other groups, guide sections and human review remain pending.
 Related: [`CONTEXT.md`](../CONTEXT.md) (section 4 and the core rig notes), [`agents/directives.md`](./agents/directives.md) (D-001), `.github/skills/exercise-animation/SKILL.md`, `docs/animation-specs/` (movement specs, written by `strength-coach`).
 
 ## 1. Decision and goal
 
-The owner chose to extend the in-house Three.js rig (no GIFs, video or imported models such as Mixamo) so joints and movement follow real human joint motion, starting with the **hypertrophy** exercises, then getting-started, calisthenics and plyometrics.
+The owner chose to extend the in-house Three.js rig (no GIFs, video or imported models such as Mixamo), starting with **hypertrophy**, then getting-started, calisthenics and plyometrics. These are approximate visual references, not anatomically exact simulations or clinical form checks. D-008 supersedes the precision prerequisites below: exact joint depth, anthropometry and passive-range tables are not blockers. Start with bench press and squat; retain stable limb lengths, recognisable motion, sensible contacts, accessibility and draft labels.
 
-## 2. What the rig does today
+## 2. Existing core rig
 
 | Part | Fact |
 |---|---|
@@ -31,9 +31,9 @@ The owner chose to extend the in-house Three.js rig (no GIFs, video or imported 
 
 Keep the look, the single shared `Stage`, the data-driven YAML and the playback controls. Replace the pose model.
 
-1. **Skeleton.** Bones of fixed length (proportions from a stated anthropometric table), joints with named degrees of freedom: pelvis (tilt, rotation), spine (a few segments, flexion, lateral flexion, rotation), scapula (elevation, protraction), shoulder (flexion, abduction, rotation), elbow (flexion), wrist (flexion, deviation), hip (flexion, abduction, rotation), knee (flexion), ankle (dorsiflexion, inversion). Left and right are independent.
+1. **Skeleton.** Bones of fixed illustrative length, with only the joint rotations needed for each prototype. More detailed pelvis, spine, scapula and wrist motion can follow when an exercise needs it; an anthropometric table is not a prerequisite.
 2. **Poses as angles.** An exercise's keyframes are joint angles in degrees, plus where the body is anchored (hands on a bar, feet on the floor, back on a bench). Forward kinematics places every bone, so limb length never changes.
-3. **Joint limits.** Each degree of freedom has a normal range. A build-time check fails any keyframe outside its range, with an explicit per-exercise override only where a source supports it.
+3. **Input checks.** Reject non-finite angles, invalid timing and impossible contact geometry. Illustrative engineering bounds are not normal human ranges; do not claim clinical validation.
 4. **Contacts.** Anchors keep a hand on a bar or a foot on the floor, and a validator checks the contact points stay put (no sliding feet in a squat). Start with simple two-bone inverse kinematics for limbs holding a fixed point.
 5. **Keyframes and timing.** More than two poses per rep (start, bottom, top), with per-segment easing for tempo (seconds down, hold, up).
 6. **Props.** Parametric simple shapes with real dimensions: barbell and plates, dumbbell, bench (flat, incline), box, wall, machine pad, cable and handle, pull-up bar, chair. Built once, shared across figures.
@@ -43,28 +43,43 @@ Keep the look, the single shared `Stage`, the data-driven YAML and the playback 
 
 Back-compatibility: the eight `/core/` exercises keep working through an adapter that converts their 2D joint positions, so the page does not regress while hypertrophy is built. Migrate `/core/` to angles last, if at all.
 
-## 5. Data model (sketch, to confirm before build)
+### Phase 1 implementation
+
+The non-linked, `noindex` prototype is at `/strength/animation-preview/`. It draws bench press and back squat using `prototype-math.js` (fixed-length, two-bone contact geometry) and `prototype-figure.js` (simple figure, bench and bar), with `animation-preview.ts` connecting the existing `Stage`, playback and rotation controls. No new renderer or dependency was added. The legacy `/core/` pose maths and renderer are unchanged; no adapter or core migration was needed.
+
+These movement configurations are illustrative engineering values, not a medical range table.
+
+### Chest and legs integration
+
+`src/content/animations/{chest,legs}.yml` contains 34 validated configurations referencing the existing exercises. The exercise template inserts `ExerciseAnimation.astro` after the written instructions without changing setup, safety, progression or evidence text. `AnimationAssets.astro`, `AnimationControls.astro` and the shared controller also serve the preview page. Pages outside chest and legs do not load Three.js or initialise an illustration.
+
+`exercise-math.ts` defines fixed-length contact chains and movement-family paths; `exercise-figure.ts` reuses the prototype figure and shared Stage. Geometry, equipment and timing are engineering conventions, not clinical ranges. Walking lunge is a single advancing step with a reset, Nordic omits the catch and assistance, and push-up plus shows only the plus phase; these limits are stated next to each canvas.
+
+## 5. Implemented data model
 
 ```yaml
-# src/content/animations/<exercise id>.yml, one file per exercise, id matches the exercise
+# Entry in src/content/animations/chest.yml
 id: barbell-bench-press
-camera: { yaw: 0.6, elevation: 12 }
-cycle: 4                       # seconds per rep
-props: [{ type: bench, angle: 0 }, { type: barbell, load: 60 }]
-anchors: { feet: floor, back: bench, hands: barbell }
-keyframes:
-  - at: 0.0                    # fraction of the cycle
-    pose: { shoulder: { flexion: 90, abduction: 45 }, elbow: { flexion: 0 }, ... }
-  - at: 0.4
-    pose: { ... }
-highlight: { primary: [pectoralis-major], secondary: [anterior-deltoid, triceps-brachii] }
+exercise: barbell-bench-press
+order: 1
+description: The bar lowers towards the chest and presses back up; the back rests on a flat bench and the feet stay planted.
+family: press
+variant: flat
+equipment: barbell
+tempo: [2.5, 0.5, 1.5, 0.5]     # out, hold, return, rest in seconds
+range: [5, 100]                 # illustrative family values, not a measured joint range
+incline: 0
+lean: 0
+yaw: 0.35
 ```
 
-A new `animations` collection, a Zod schema in `content.config.ts` (platform file, executive only), and a `<ExerciseAnimation>` component that renders the canvas, text alternative and controls. Exercise pages link to their animation by id. Where there is no animation, the page shows nothing extra.
+The `animations` collection has a Zod schema in `content.config.ts`; `check-content.mjs` additionally validates family/equipment combinations, timing, geometry and exercise references. `ExerciseAnimation` renders the canvas and text alternative; toolbar controls are shared. Exercise pages look up the animation by matching exercise id. Where there is no animation, the page shows nothing extra.
+
+Per-muscle meshes, wrong-form clips, arbitrary angle keyframes and a pose-authoring editor remain future work; the implemented data should not imply those features exist.
 
 ## 6. Verifying that motion is "real"
 
-Authoring from guesswork would defeat the purpose, so angles trace to references:
+The approved prototype uses explicit illustrative values, not measured human ranges. The references below remain optional research for later refinement; their inaccessible tables do not block implementation:
 
 | Reference | Verified on Crossref 2026-11-15 | Use |
 |---|---|---|
@@ -74,7 +89,7 @@ Authoring from guesswork would defeat the purpose, so angles trace to references
 Gaps: Soucie covers elbow, shoulder flexion, hip, knee and ankle only, **not** scapula, spine, shoulder rotation or abduction range. Wu 2005 (Part II) covers the upper limb only. Its companion, Part I (ankle, hip and spine), is on Crossref as Wu et al. 2002, doi 10.1016/s0021-9290(01)00222-6, with a second record from 2003 (doi 10.1016/s0021-9290(02)00336-6) that may be a correction; the abstract of Part I **has not been read** and the 2003 record's type is unchecked. Any angle without a source is labelled a coaching approximation in its spec (as `strength-coach` has been told to do). Anthropometric segment proportions (for bone lengths) need their own verified source: de Leva 1996 and Plagenhoef 1983 are cited by a web page I read, but **I have not yet read or verified either**.
 
 Two further checks, neither a citation:
-1. **Build-time:** joint-limit and contact checks in `check-content.mjs` (through the executive).
+1. **Engineering:** finite input, fixed segment length, contact and timing tests (through the executive); no claim that these certify human form.
 2. **Human:** a physiotherapist or strength coach reviews each animation next to its page, because a wrong-looking squat teaches wrong form. All animations stay labelled draft.
 
 Plus the existing standards: text alternative for every canvas (exercise, movement, how to rotate), keyboard control, pause, reduced motion shows a still working pose, tokens for colour, one WebGL context.
@@ -83,9 +98,9 @@ Plus the existing standards: text alternative for every canvas (exercise, moveme
 
 | Phase | Deliverable | Done when |
 |---|---|---|
-| 0 | This plan and the movement specs for chest and legs (`docs/animation-specs/`) | Owner approves; every angle in the specs is sourced or flagged |
-| 1 | **Spike:** skeleton, forward kinematics, joint limits and a prop or two, rendering one lift (barbell bench press) and one leg lift (back squat), behind a non-linked page | Both look correct to a trained eye, limbs never change length, feet and bar stay anchored, no console errors |
-| 2 | Animation collection, schema, validator rules, `<ExerciseAnimation>`, Playwright spec | `npm run check` and `test:e2e` pass; a deliberately out-of-range angle fails the build |
+| 0 | This plan and the movement specs for chest and legs (`docs/animation-specs/`) | Approved 2026-11-15 for illustrative references; unsourced values labelled approximate |
+| 1 | **Spike:** fixed-length motion and simple props, rendering barbell bench press and back squat on a non-linked prototype page | Recognisable motion, fixed limb lengths, sensible contacts, no console errors, keyboard/pause/reduced motion verified |
+| 2 | Animation collection, schema, validator rules, `<ExerciseAnimation>`, Playwright spec | `npm run check` and `test:e2e` pass; invalid animation inputs fail explicitly |
 | 3 | Chest and legs exercises animated and linked from their pages | Every animated exercise matches its spec; reduced motion and keyboard verified |
 | 4 | Back, shoulders, arms, core | Same checks |
 | 5 | Getting started, calisthenics (inversions, levers and holds need the frontal plane and balance), plyometrics (jumps need flight and landing) | Specs first, per section |
@@ -96,20 +111,20 @@ Plus the existing standards: text alternative for every canvas (exercise, moveme
 | Risk or question | Mitigation or decision needed |
 |---|---|
 | Effort: about 70 hypertrophy exercises, 69 guide exercises, 8 core. This is large | Do chest and legs first and judge the cost per exercise before committing to the rest |
-| Wrong form shown looks authoritative | Draft labels, sourced angles, human review, and no animation shipped without a spec |
+| Approximate form looks authoritative | Prominent draft/reference-only labels, text instructions and human review before claiming correctness |
 | Performance with many canvases on one page | Keep the single shared `Stage` and render only visible cards (as `/core/` does) |
 | Inverse kinematics complexity | Start with two-bone IK only for fixed contacts, keyframe everything else |
 | Muscle meshes could imply precision we lack | Highlight regions, not individual muscle shapes, and label as indicative |
 | **Owner decision:** Mixamo was declined. Reconsider only if the spike shows hand-authoring cost is too high | Revisit after phase 1 |
-| **Owner decision:** approve building the phase 1 spike now, or wait for the specs | Recommended: wait for the specs so the spike uses real angles |
+| **Owner decision:** build phase 1 now | Approved as illustrative; no wait for exact angles or joint depth |
 
-## 9. Findings from the movement specs (round one)
+## 9. Findings from the movement specs (round one, precision prerequisites superseded by D-008)
 
 `strength-coach` wrote 34 specs (12 chest, 22 legs) in `docs/animation-specs/`. Facts that change this plan:
 
 - **No global range table.** Because Soucie's numbers are unreadable, each spec states its own end value and a "never beyond" limit, and the build-time joint-limit check needs a per-exercise limit field until the tables are read.
 - **Sourced versus approximate.** 19 references were confirmed on Crossref. A few angles are sourced (back-squat knee flexion, knee-extension range, calf-raise ankle range, bench elbow flare studied, Nordic curl, dip shoulder extension). Scapula, spine, wrist, machine geometry and all tempos are coaching approximations. Hip flexion in squats and the bench-bottom elbow angle are derived from segment proportions that were **recalled, not verified**.
-- **Anthropometric table still needed.** Pick and verify one source for segment proportions before any pose is authored.
+- **Anthropometric table deferred.** Under D-008, prototype segment proportions are illustrative engineering choices, not measured anatomical values.
 - **Shoulder convention.** Specs use elevation, plane and rotation. The data model in section 5 must use the same, not `flexion` plus `abduction`, because the order of application changes the pose.
 - **Rig needs listed by the specs:** scapula joint, multi-segment spine, pelvis tilt and obliquity, forearm pronation, toe joint, foot and hand contact constraints with inverse kinematics, a moving figure for lunges, and bench, bar, box, dip-bar and machine props.
 

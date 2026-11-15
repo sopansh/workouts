@@ -20,6 +20,33 @@ const redirects = builtPages().filter(isRedirect);
 const pages = builtPages().filter(url => !isRedirect(url));
 
 test.describe('every page', () => {
+  test('shared layout fills mobile and wide displays with small side gutters', async ({ page }) => {
+    for (const width of [390, 1920, 2560]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const url of ['/home/', '/strength/', '/strength/weekly-plan/', '/strength/exercises/barbell-bench-press/', '/core/', '/getting-started/', '/calisthenics/', '/plyometrics/']) {
+        await page.goto(url);
+        const layout = await page.locator('.wrap').evaluateAll(elements => elements.map(element => {
+          const bounds = element.getBoundingClientRect();
+          const style = getComputedStyle(element);
+          return {
+            left: bounds.left,
+            right: document.documentElement.clientWidth - bounds.right,
+            leftGutter: parseFloat(style.paddingLeft),
+            rightGutter: parseFloat(style.paddingRight),
+          };
+        }));
+        expect(layout.length).toBeGreaterThanOrEqual(3);
+        for (const bounds of layout) {
+          expect(Math.abs(bounds.left)).toBeLessThanOrEqual(1);
+          expect(Math.abs(bounds.right)).toBeLessThanOrEqual(1);
+          expect(bounds.leftGutter).toBeLessThanOrEqual(16);
+          expect(bounds.rightGutter).toBeLessThanOrEqual(16);
+        }
+        expect(await hasNoHorizontalScroll(page), `${url} at ${width}px`).toBe(true);
+      }
+    }
+  });
+
   test('the build produced pages', () => {
     expect(pages.length).toBeGreaterThan(100);
   });

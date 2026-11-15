@@ -14,6 +14,14 @@ const drawnPixels = (canvas: Locator) =>
   });
 
 test.describe('core guide', () => {
+  test('shows draft educational scope and the shared lower-back pain rule', async ({ page }) => {
+    await page.goto('/core/');
+    await expect(page.getByText('Core exercise reference · Draft')).toBeVisible();
+    await expect(page.getByText('General education for healthy adults', { exact: false })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Lower-back pain rule' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Exercise stages' })).toBeVisible();
+  });
+
   test('exercise payload accepts 2D or 3D joint points', async ({ page }) => {
     await page.goto('/core/');
     const arities = await page.evaluate(() => {

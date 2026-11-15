@@ -9,24 +9,32 @@ The site does not use GIFs or video. Exercises are shown as animated 3D figures 
 
 ## What exists today
 
-- Only `/core/` has animations. Hypertrophy, getting-started, calisthenics and plyometrics have none yet.
+- `/core/` and all 34 chest/leg strength exercise pages have animations. `/strength/animation-preview/` reuses the bench-press and squat illustrations as a non-linked preview. Other strength groups, getting-started, calisthenics and plyometrics are not animated yet.
 - Data: `src/content/core/exercises.yml`, validated by the `coreExercises` schema in `src/content.config.ts`. Each exercise has `poses.start` and `poses.end`, `cycle` (seconds per rep), `glow` (`torso` and `hips` worked-region highlight) and optional `spineBend`.
-- A pose is side-on, 2D joint coordinates in SVG-style units: origin top-left, y grows down, floor at y = 150, centre x = 150. Joints: `head, shoulder, elbow, wrist, hip, knee, ankle, toe`, plus optional far-side `farElbow, farWrist, farKnee, farAnkle, farToe` (default to the near side).
+- A core pose uses joint coordinates `[x, y]` or `[x, y, z]` in SVG-style units: origin top-left, y grows down, floor at y = 150, centre x = 150; missing z defaults to zero. Joints: `head, shoulder, elbow, wrist, hip, knee, ankle, toe`, plus optional far-side `farElbow, farWrist, farKnee, farAnkle, farToe` (default to the near side).
 - Code: `src/scripts/core/` (`rig/figure.js`, `rig/pose.js`, `stage.js`, `main.js`). One shared WebGL context renders into per-card 2D canvases. Never create a renderer per card.
 - The page renders the cards at build time and passes the data to the script as JSON. The canvas has an `aria-label`, pause and speed controls, arrow-key rotation, and a still working pose under `prefers-reduced-motion`.
 
-## Limits of the current rig
+## Strength illustration authoring
+
+- `src/content/animations/{chest,legs}.yml` holds one configuration per exercise: matching `id`/`exercise`, explicit `order`, movement `description`, `family`, `variant`, `equipment`, four-part `tempo` (out, hold, return, rest), illustrative `range`, `incline`, `lean` and camera `yaw`.
+- `ExerciseAnimation.astro` renders the reference and safely passes JSON through a data attribute. `AnimationAssets.astro` and `AnimationControls.astro` share loading and toolbar controls; the controller supports one or several canvases with one Stage.
+- `exercise-math.ts` uses fixed-length chains and exercise-family paths; `exercise-figure.ts` draws them and simple props. The content checker rejects unsupported combinations, invalid geometry/timing and missing chest/leg illustrations.
+- Walking lunges show one advancing step followed by a reset; Nordic curls omit the hand catch/assistance; push-up plus shows only the small plus phase. Keep these limits in both visible descriptions and canvas alternatives.
+- These are schematic references, not measured anatomy, outcome claims or validated technique. Core's legacy position-interpolated rig is unchanged.
+
+## Limits of the legacy core rig
 
 - Side-on only. It cannot show frontal-plane or rotational movement faithfully (lateral raises, rotations, side-to-side hops, single-leg asymmetry, a handstand, a lever).
 - Poses blend by linearly interpolating joint positions. Limbs shorten mid-rep on large arcs, so big rotations look wrong.
 - No joint-angle limits and no props beyond a kettlebell. No box, bar, bench, chair, wall or cable.
 - Only a torso and hips glow, not individual muscles.
 
-If an exercise needs something the rig cannot do, **record the need and do not ship an approximation**: a wrong-looking movement teaches wrong form.
+If an exercise needs something the rig cannot do, record the need. Under D-008, clearly labelled illustrative approximations are approved; do not present them as validated form or measured anatomy.
 
 ## Owner decision: extend our own rig
 
-The owner chose to keep and extend the in-house rig (no Mixamo or other imported models), improving the joints and movements so they follow real human joint motion, starting with the hypertrophy section. The executive plans and delegates the engineering. Coaches do not edit `src/scripts/`.
+The owner approved extending the in-house rig (no Mixamo or other imported models), starting with hypertrophy. The visuals are reference illustrations: approximate angles, proportions and depth are acceptable, without waiting for exact range tables. Preserve recognisable movement, stable limb lengths and sensible contacts. The executive plans and delegates the engineering. Coaches do not edit `src/scripts/`.
 
 References for joint conventions and limits, confirmed on Crossref on 2026-11-15: Wu et al. 2005, ISB recommendation on joint coordinate systems for the shoulder, elbow, wrist and hand (doi 10.1016/j.jbiomech.2004.05.042), and its Part I companion for the ankle, hip and spine (Wu et al. 2002, doi 10.1016/s0021-9290(01)00222-6). Soucie et al., "Range of motion measurements: reference values and a database for comparison studies" (doi 10.1111/j.1365-2516.2010.02399.x, Crossref year 2010) is intended as the normal-range source but its full text is paywalled and its abstract has no numbers, so **take no angle from it until someone reads its tables**. The 19 references used by the chest and legs specs are in `docs/animation-specs/README.md` section 4. See `docs/animation-plan.md`.
 
@@ -43,7 +51,7 @@ Until the extended rig lands, deliver a **movement spec** with the exercise, kep
 7. Common faults worth showing as a second, labelled "wrong" clip, if any.
 8. Whether the exercise is bilateral or one-sided, and which side.
 
-Check every angle against a verified range-of-motion source before it is called correct, and keep the movement inside the exercise's contraindications.
+Label unsourced animation angles and proportions as illustrative engineering choices, not verified anatomical values. No exact range-of-motion research is required for the approved prototype. Keep the movement consistent with the exercise's text and contraindications.
 
 ## Standards for any animated exercise
 

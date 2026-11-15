@@ -42,6 +42,7 @@ a.btn { text-decoration: none; color: var(--ink); }
   font: 600 0.76rem var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
 }
 .badge b { font-weight: 700; }
+.badges > .badge { max-width: 100%; white-space: normal; }
 .badge[data-grade='A'] { --c: var(--p1); }
 .badge[data-grade='B'] { --c: var(--p2); }
 .badge[data-grade='C'] { --c: var(--p3); }
@@ -247,6 +248,33 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 .day[data-kind='a'] { --accent: var(--p1); }
 .day[data-kind='b'] { --accent: var(--p2); }
 .day[data-kind='c'] { --accent: var(--p3); }
+
+/* ---------- Draft exercise animation prototype ---------- */
+.animation-preview-grid { display: grid; gap: 20px; margin-top: 24px; }
+.animation-preview {
+  overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); margin-block: 24px; max-width: 850px;
+}
+.animation-preview__stage {
+  position: relative; overflow: hidden; aspect-ratio: 16 / 10;
+  background: linear-gradient(var(--stage-top), var(--stage-bottom));
+}
+.animation-preview__canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
+.animation-preview__canvas:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.is-dragging .animation-preview__canvas { cursor: grabbing; }
+.animation-preview__badge {
+  position: absolute; top: 12px; left: 12px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); color: var(--mut); font: 600 0.76rem var(--font-display); letter-spacing: 0.06em;
+}
+.animation-preview__fallback { display: none; padding: 18px; color: var(--mut); }
+.no-3d .animation-preview__fallback { display: block; }
+.no-3d .animation-preview__canvas { display: none; }
+.animation-preview__body { padding: 4px 20px 20px; }
+.animation-preview__body h2 { margin: 14px 0 8px; font-size: 1.4rem; }
+.animation-preview__body p { margin: 8px 0 0; }
+@media (min-width: 760px) {
+  .animation-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .card, .map .m { transition: none !important; }

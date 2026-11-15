@@ -357,4 +357,22 @@ const glossary = defineCollection({
   schema: z.object({ id: z.string(), term: z.string(), definition: z.string() }),
 });
 
-export const collections = { sections, corePhases, coreExercises, guideGroups, guideExercises, guidePlans, groups, sources, claims, painRules, muscles, exercises, programs, principles, cricket, glossary };
+const animations = defineCollection({
+  loader: yamlDir('src/content/animations'),
+  schema: z.object({
+    id: z.string(),
+    exercise: reference('exercises'),
+    order: z.number().int().positive(),
+    description: z.string().min(20),
+    family: z.enum(['press', 'fly', 'pushup', 'plus', 'dip', 'punch', 'squat', 'lunge', 'leg-press', 'hinge', 'bridge', 'extension', 'curl', 'nordic', 'hip-machine', 'calf', 'tibialis']),
+    variant: z.enum(['flat', 'incline', 'seated', 'standing', 'prone', 'back', 'front', 'goblet', 'box', 'hack', 'bulgarian', 'walking', 'floor', 'bench', 'dowel', 'pull-through', 'abduction', 'adduction']),
+    equipment: z.enum(['none', 'barbell', 'dumbbells', 'goblet', 'cable', 'machine', 'dowel', 'bars', 'wall']),
+    tempo: z.tuple([z.number().positive(), z.number().positive(), z.number().positive(), z.number().positive()]),
+    range: z.tuple([z.number().finite(), z.number().finite()]),
+    incline: z.number().min(0).max(45),
+    lean: z.number().min(-65).max(65),
+    yaw: z.number().finite(),
+  }),
+});
+
+export const collections = { animations, sections, corePhases, coreExercises, guideGroups, guideExercises, guidePlans, groups, sources, claims, painRules, muscles, exercises, programs, principles, cricket, glossary };

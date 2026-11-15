@@ -5,14 +5,19 @@ import ClaimList from '../../../components/ClaimList.astro';
 import EvidenceBadge from '../../../components/EvidenceBadge.astro';
 import PainRule from '../../../components/PainRule.astro';
 import StatusBadge from '../../../components/StatusBadge.astro';
+import ExerciseAnimation from '../../../components/ExerciseAnimation.astro';
+import AnimationAssets from '../../../components/AnimationAssets.astro';
+import AnimationControls from '../../../components/AnimationControls.astro';
+import { getCollection } from 'astro:content';
 import { loadAll, levelLabel, spinalLabel, url } from '../../../lib/content';
 
 export async function getStaticPaths() {
-  const d = await loadAll();
-  return d.exercises.map(exercise => ({ params: { id: exercise.id }, props: { exercise } }));
+  const [d, animations] = await Promise.all([loadAll(), getCollection('animations')]);
+  const byExercise = new Map(animations.map(animation => [animation.data.exercise.id, animation]));
+  return d.exercises.map(exercise => ({ params: { id: exercise.id }, props: { exercise, animation: byExercise.get(exercise.id) } }));
 }
 
-const { exercise } = Astro.props;
+const { exercise, animation } = Astro.props;
 const d = await loadAll();
 const e = exercise.data;
 const group = d.groupById.get(e.group.id)!;
@@ -29,6 +34,8 @@ const prev = siblings[index - 1];
 const next = siblings[index + 1];
 ---
 <Base section="strength" title={e.name} description={e.summary} accent={group.data.accent}>
+  <Fragment slot="head">{animation && <AnimationAssets />}</Fragment>
+  <Fragment slot="controls">{animation && <AnimationControls />}</Fragment>
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Exercises', href: url.exercises }, { label: e.name }]} />
   <section class="hero page-head">
     <p class="eyebrow">{group.data.name} · {e.pattern.replace(/-/g, ' ')}</p>
@@ -79,6 +86,8 @@ const next = siblings[index + 1];
     <p class="label">Common mistakes</p>
     <ul class="prose">{e.mistakes.map(m => <li>{m}</li>)}</ul>
   </section>
+
+  {animation && <ExerciseAnimation animation={animation} name={e.name} />}
 
   {e.variations.length > 0 && (
     <section aria-labelledby="variations">

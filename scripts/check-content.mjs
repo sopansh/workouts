@@ -5,6 +5,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parse } from 'yaml';
 import { estimateMinutes, guideSessionMinutes, peakSpinalLoad, SPINAL_RANK, sessionGaps, volumeStatus, weeklyVolume } from '../src/lib/plan.ts';
+import { exercisePose, validateAnimation } from '../src/scripts/core/exercise-math.ts';
 
 const root = new URL('../src/content/', import.meta.url).pathname;
 const errors = [];
@@ -36,6 +37,7 @@ const guideExercises = await yamlDir('guides/exercises');
 const guidePlans = await yamlDir('guides/plans');
 const corePhases = await yamlList('core/phases.yml');
 const coreExercises = await yamlList('core/exercises.yml');
+const animations = await yamlDir('animations');
 
 const idSet = list => {
   const set = new Set();
@@ -52,6 +54,28 @@ const ids = {
   coreExercise: idSet(coreExercises), corePhase: idSet(corePhases),
 };
 const ref = (kind, value, where) => { if (!ids[kind].has(value)) fail(`${where}: unknown ${kind} "${value}"`); };
+const animationIds = idSet(animations);
+const animationOrders = new Set();
+for (const a of animations) {
+  ref('exercise', a.exercise, `Animation ${a.id}`);
+  if (a.id !== a.exercise) fail(`Animation ${a.id}: id must match its exercise reference`);
+  if (!Number.isInteger(a.order) || a.order < 1 || animationOrders.has(a.order)) fail(`Animation ${a.id}: needs a unique positive order`);
+  animationOrders.add(a.order);
+  if (typeof a.description !== 'string' || a.description.length < 20) fail(`Animation ${a.id}: needs a movement text alternative`);
+  const exercise = exercises.find(e => e.id === a.exercise);
+  if (exercise && !['chest', 'legs'].includes(exercise.group)) fail(`Animation ${a.id}: outside chest/legs scope`);
+  try {
+    validateAnimation(a);
+    for (let frame = 0; frame <= 64; frame++) {
+      const pose = exercisePose(a, frame / 64);
+      const points = [pose.hip, pose.shoulder, pose.head, ...pose.arms.flatMap(l => [l.start, l.joint, l.end]), ...pose.legs.flatMap(l => [l.start, l.joint, l.end]), ...pose.feet, ...pose.props.flatMap(p => [p.start, p.end])];
+      if (points.some(p => !p.every(Number.isFinite))) throw new RangeError('Non-finite pose geometry.');
+    }
+  } catch (error) { fail(`Animation ${a.id}: ${error.message}`); }
+}
+for (const e of exercises.filter(e => ['chest', 'legs'].includes(e.group))) {
+  if (!animationIds.has(e.id)) fail(`Exercise ${e.id}: missing movement illustration`);
+}
 
 // Sources: DOI-backed entries must have been verified against Crossref.
 for (const s of sources) {

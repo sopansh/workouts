@@ -1,0 +1,145 @@
+# All geometry is illustrative engineering data, not measured anatomy.
+- id: barbell-bench-press
+  exercise: barbell-bench-press
+  order: 1
+  description: The bar lowers towards the chest and presses back up; the back rests on a flat bench and the feet stay planted.
+  family: press
+  variant: flat
+  equipment: barbell
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: dumbbell-bench-press
+  exercise: dumbbell-bench-press
+  order: 2
+  description: Two dumbbells lower beside the chest and press upwards and slightly together on a flat bench.
+  family: press
+  variant: flat
+  equipment: dumbbells
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [5, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.6
+- id: incline-barbell-press
+  exercise: incline-barbell-press
+  order: 3
+  description: The bar lowers towards the upper chest and presses upwards while the back rests on an inclined bench.
+  family: press
+  variant: incline
+  equipment: barbell
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [5, 110]
+  incline: 30
+  lean: 0
+  yaw: 0.35
+- id: incline-dumbbell-press
+  exercise: incline-dumbbell-press
+  order: 4
+  description: Two dumbbells lower beside the upper chest and press upwards and slightly together on an inclined bench.
+  family: press
+  variant: incline
+  equipment: dumbbells
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [5, 110]
+  incline: 30
+  lean: 0
+  yaw: 0.6
+- id: machine-chest-press
+  exercise: machine-chest-press
+  order: 5
+  description: Seated against a back pad, the hands press the machine handles forwards and return towards the chest.
+  family: press
+  variant: seated
+  equipment: machine
+  tempo: [2.5, 0.5, 1.5, 0.3]
+  range: [10, 100]
+  incline: 0
+  lean: 0
+  yaw: 0.5
+- id: cable-fly
+  exercise: cable-fly
+  order: 6
+  description: Standing between shoulder-height cables, the arms sweep forwards together and open again with a soft, fixed elbow bend.
+  family: fly
+  variant: standing
+  equipment: cable
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [0, 65]
+  incline: 0
+  lean: 10
+  yaw: -1.3
+- id: pec-deck-fly
+  exercise: pec-deck-fly
+  order: 7
+  description: Seated against the pad, the hands sweep the machine arms together and open again with the elbow bend held steady.
+  family: fly
+  variant: seated
+  equipment: machine
+  tempo: [1.5, 0.5, 2.5, 0.5]
+  range: [0, 65]
+  incline: 0
+  lean: 0
+  yaw: -1.3
+- id: dumbbell-fly
+  exercise: dumbbell-fly
+  order: 8
+  description: On a flat bench, the dumbbells open out to the sides and sweep back above the chest with a soft, fixed elbow bend.
+  family: fly
+  variant: flat
+  equipment: dumbbells
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [65, 0]
+  incline: 0
+  lean: 0
+  yaw: 1.1
+- id: push-up
+  exercise: push-up
+  order: 9
+  description: With hands and toes planted, the straight body lowers towards the floor and presses back up as the elbows bend and straighten.
+  family: pushup
+  variant: floor
+  equipment: none
+  tempo: [2.5, 0.5, 1.5, 0.5]
+  range: [5, 120]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: chest-dip
+  exercise: chest-dip
+  order: 10
+  description: Supported by fixed parallel bars, the forward-leaning body lowers and presses back up while bent legs remain off the floor.
+  family: dip
+  variant: standing
+  equipment: bars
+  tempo: [2.5, 0.3, 1.5, 0.5]
+  range: [5, 90]
+  incline: 0
+  lean: 25
+  yaw: 0.4
+- id: push-up-plus
+  exercise: push-up-plus
+  order: 11
+  description: From the straight-arm push-up position, the shoulders reach slightly further away from the planted hands and return. Only the small plus phase is shown.
+  family: plus
+  variant: floor
+  equipment: none
+  tempo: [1.5, 1, 1.5, 0.5]
+  range: [10, 25]
+  incline: 0
+  lean: 0
+  yaw: 0.35
+- id: cable-punch
+  exercise: cable-punch
+  order: 12
+  description: Facing away from a chest-height cable, one hand presses and reaches forwards, then returns; the other arm and trunk stay still.
+  family: punch
+  variant: standing
+  equipment: cable
+  tempo: [1, 1, 2, 0.5]
+  range: [5, 130]
+  incline: 0
+  lean: 10
+  yaw: 0.5

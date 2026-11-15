@@ -1,15 +1,14 @@
-# The three recovery phases of the core guide, in order. `number` links to exercises[].phase.
+# The three exercise stages of the core guide, in order. `number` links to exercises[].phase.
 - id: stabilise
   number: 1
   title: Stabilise
-  duration: about 1–2 weeks
-  intro: Spine stiffness and glute activation. Do 3 rounds of all six.
-  moveOn: Start now
-  plan: Phase 1 exercises daily or every other day, plus 20–30 min walking. No swings, jumps or heavy hinging.
+  intro: Core holds and controlled movements. For easier variations and cautions, see the strength and getting-started exercise instructions.
+  moveOn: Use the exercise instructions and an appropriate regression; these stages are not recovery milestones.
+  plan: Start with a small selection of holds and controlled movements, with rest between sessions. No need to perform every exercise.
 - id: load
   number: 2
   title: Load
-  moveOn: 0/10 pain at rest and in daily life for about 7 days
+  moveOn: Controlled movements feel manageable without pain during the session or worsening symptoms afterwards.
   plan: Add goblet squat, then raised kettlebell deadlifts and carries. Keep Phase 1 as a warm-up.
 - id: power
   number: 3

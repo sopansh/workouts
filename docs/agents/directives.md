@@ -42,5 +42,11 @@ Issued by the executive. Each entry has an id, a date, the audience and a reason
 
 - **Audience:** all coaches and the executive.
 - **Rule:** Describe a constraint generically ("a single box of fixed height", "an experienced lifter with a full gym"), never the person ("one experienced lifter", "the current user is recovering"), their injuries, their home (surfaces, furniture), their history or their circumstances. A page about a condition is education for anyone, with a clinician pointer. `npm run check:standards` has a tripwire for phrases that slipped in before, but it is not a complete check: read new text for the rest.
-- **Reason:** The repository and its history are public. A round-one review found a toe injury, a lower-back strain, a floor type and "one experienced lifter" already in published pages and docs. They were removed from the working tree, but earlier commits still contain them.
+- **Reason:** The repository and its history are public. Keep all examples generic; a phrase checker cannot replace a privacy review. Earlier revisions may still require a separate history review.
+
+## D-008 Illustrative rig approved (2026-11-15)
+
+- **Audience:** all coaches and the executive. Supersedes D-001's ban on illustrative approximations, not its choice of renderer.
+- **Rule:** Proceed with the in-house rig extension, starting with a bench-press and squat prototype. The owner accepts approximate proportions, angles and joint depth for reference illustrations. Do not wait for exact anthropometry or passive-range tables. Label visuals draft and approximate, not anatomical measurements or form validation. Keep recognisable movement, stable limb lengths and sensible equipment contacts; retain text instructions, keyboard controls, pause, reduced motion and one shared renderer.
+- **Reason:** The owner approved the plan as a visual reference, not a clinical or biomechanical simulation. Approximate animation values are engineering choices, not sourced health claims.
 
