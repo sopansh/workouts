@@ -1,0 +1,123 @@
+---
+import Base from '../../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../../../components/ClaimList.astro';
+import GuideExerciseCard from '../../../../../components/GuideExerciseCard.astro';
+import PainRule from '../../../../../components/PainRule.astro';
+import PlyometricsSafety from '../../../../../components/PlyometricsSafety.astro';
+import StatusBadge from '../../../../../components/StatusBadge.astro';
+import { exercisesInGroup, loadGuide, painRuleIds, painRuleLinks } from '../../../../../lib/guide';
+
+const data = await loadGuide('plyometrics', { phase: 'cricket' });
+const here = '/plyometrics/sports/cricket/';
+const evidence = `${here}evidence/`;
+const started = '/getting-started/exercises/#';
+const rotation = data.groupById.get('cricket-rotation')!;
+const painIds = [...new Set(exercisesInGroup(data, rotation.id).flatMap(painRuleIds))];
+const claimIds = ['plyo-cricket-core-limits', 'plyo-cricket-throw-correlates', 'plyo-cricket-medicine-ball-trial', 'plyo-cricket-ipp-kinematics', 'plyo-cricket-side-strain', 'cricket-back-injuries'];
+
+// The anti-rotation block uses cards that already exist elsewhere on the site, so they are linked and not copied (same exercise, same cautions).
+// Gates are coaching conventions.
+const antiRotation = [
+  { name: 'Dead bug', href: `${started}dead-bug`, where: 'Getting started', kit: 'None', gate: '8 slow reps on each side with the lower back not arching and steady breathing.' },
+  { name: 'Bird dog', href: `${started}bird-dog`, where: 'Getting started', kit: 'None', gate: '8 slow reps on each side with the trunk still and no pain.' },
+  { name: 'Side plank on the knees', href: `${started}side-plank-knees`, where: 'Getting started', kit: 'None', gate: '20 seconds on each side in a straight line, breathing steadily.' },
+  { name: 'Side plank', href: '/strength/exercises/side-plank/', where: 'Strength', kit: 'None', gate: '20 seconds on each side with the hips level and no sagging.' },
+  { name: 'Pallof press', href: '/strength/exercises/pallof-press/', where: 'Strength', kit: 'A band or cable on a secure anchor (optional). With no kit, repeat the slow dead bug.', gate: '8 slow presses on each side without the trunk turning.' },
+  { name: 'Suitcase carry', href: '/strength/exercises/suitcase-carry/', where: 'Strength', kit: 'One weight you can hold comfortably (optional). Not needed for the rotation gates.', gate: 'A short walk on each side without leaning towards or away from the weight.' },
+];
+---
+<Base section="plyometrics" title="Cricket rotation and core" description="Draft: anti-rotation work first, then hip-led turns and light-ball throws for recreational and club cricketers, gated behind the back-safe core guide, with the evidence graded and the gaps stated.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Cricket', href: here }, { label: 'Rotation and core' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Cricket · Rotation and core</p>
+    <h1>Rotation and core: anti-rotation first, rotation last</h1>
+    <p class="lede">Rotation is the part of cricket most worth training and the part with the least evidence. This page trains the trunk to resist twisting first, then adds hip-led turns, and only at the end light-ball throws. Every step is behind a gate, and the back-safe core guide comes before all of it.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Adults only</span>
+      <span class="badge" data-tone="warn">Gated behind the back-safe guide</span>
+      <span class="badge">Coaching convention</span>
+      <StatusBadge status={data.plan.data.status} />
+    </div>
+  </section>
+
+  <PlyometricsSafety />
+
+  <aside class="note note--warn" role="note" aria-labelledby="draft-note">
+    <h3 id="draft-note">Draft, and a convention</h3>
+    <p>Not reviewed by a physiotherapist or a strength and conditioning coach. No study of rotational power training in cricketers was found, so the ladder below is a coaching convention and a hypothesis, not a proven method. If you have had back, rib or side pain, work with a physiotherapist and the <a href="/core/">back-safe core guide</a>, not this page. Start from the <a href={here}>cricket overview</a> if you have not read it.</p>
+  </aside>
+
+  <section aria-labelledby="why">
+    <h2 id="why">Why this order</h2>
+    <ul class="prose">
+      <li><b>Core training is not a power fix.</b> In healthy trained people, core strength training raised trunk strength a lot but had only small-to-medium effects on fitness and performance measures. This page does not present core work as a way to get more power. See the <a href="#evidence">evidence</a>.</li>
+      <li><b>Twisting is where back injuries are discussed.</b> In young fast bowlers, shoulder counter-rotation and sideways trunk bend in the delivery stride have been linked to back injury, in observational studies. In one trial in adolescents, an exercise programme differed from usual cricket by a few degrees in those two angles. Whether that lowers injury was not shown, and it is adolescent evidence.</li>
+      <li><b>One study looked at the side-bridge.</b> In professional fast bowlers, side strain was not associated with side-bridge endurance. That does not show the exercise helps or does not help.</li>
+      <li><b>Throwing power has been measured, not trained, in cricketers.</b> Rotation-throw velocity went with throwing speed in a small group of sub-elite men, and a six-week medicine-ball trial in women handball players was followed by a larger gain in throwing velocity than in the control group. Neither tested batting, bowling or club cricketers.</li>
+    </ul>
+    <p class="prose">So the order is: resist twisting, then turn from the hips with no load, then add a light ball, then a throw, each only when the gate before it is met.</p>
+  </section>
+
+  <section aria-labelledby="not-here">
+    <h2 id="not-here">What is not on this page</h2>
+    <ul class="prose">
+      <li>No bowling technique, run-up or delivery drills, and no bowling-load advice. The <a href="/strength/cricket/fast-bowlers/">strength section's fast-bowler page</a> and <a href="/strength/cricket/season-planning/">season page</a> are where that belongs, and they are stubs for now.</li>
+      <li>No overhead ball throws, heavy balls, throws at full effort, or twisting under fatigue or against a load.</li>
+      <li>No programme for under-18s.</li>
+      <li>No treatment of any back, rib, side or shoulder problem. Rehabilitation and return to play are clinician-led.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="anti">
+    <h2 id="anti">Step 1: the anti-rotation and anti-side-bend block</h2>
+    <p class="prose">These exercises already exist on this site, so they are linked and not copied. Their setup, mistakes, cautions and pain rules are on those cards, and the linked card is the reference. This page adds only the order and the gate for moving on. Do 2 sets at the step you have reached before the rotation ladder in Session B. If any step hurts your back, go back to the <a href="/core/">back-safe core guide</a>.</p>
+    <div class="table-wrap" role="region" aria-label="The anti-rotation block, in order" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Step</th><th scope="col">Exercise</th><th scope="col">Kit</th><th scope="col">Gate to move on (a convention)</th></tr></thead>
+        <tbody>
+          {antiRotation.map((row, index) => (
+            <tr>
+              <th scope="row">{index + 1}</th>
+              <td><a href={row.href}>{row.name}</a> <span class="muted small">({row.where} section)</span></td>
+              <td>{row.kit}</td>
+              <td>{row.gate}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">The gate numbers are coaching conventions, not study results. The rotation gates below ask for the dead bug, the side plank and the Pallof press (or the slow dead bug as the no-kit alternative). The other steps build towards them, and step 6 is optional.</p>
+  </section>
+
+  <section aria-labelledby={`group-${rotation.id}`}>
+    <h2 id={`group-${rotation.id}`}>Step 2: {rotation.data.title}</h2>
+    <p class="prose">{rotation.data.summary}</p>
+    <h3>Gates: you need all of these first</h3>
+    <ul class="prose">{rotation.data.gates.map(gate => <li>{gate}</li>)}</ul>
+    <p class="muted small">The gate numbers are coaching conventions, not study results.</p>
+    <h3>Find your level</h3>
+    <p class="prose">{rotation.data.test}</p>
+    <p class="prose"><b>Only if the wall is solid.</b> Levels 3 and 4 need a solid masonry wall with nothing breakable and nobody behind it, and a soft, light ball made for wall throws. If you have neither, stay at level 2. There is no animation for these movements: turning cannot be shown faithfully by the current 3D figures, so the cards are text and cues only.</p>
+    <div class="guide-list">
+      {exercisesInGroup(data, rotation.id).map(exercise => (
+        <GuideExerciseCard exercise={exercise} painRules={painRuleLinks(data, exercise)} heading={`Level ${exercise.data.level}: ${exercise.data.name}`} />
+      ))}
+    </div>
+    <p class="prose">Rotation and the throws are in Session B of the <a href={`${here}#sessions`}>two-session week</a>, after the stopping work and the anti-rotation block. Throws are not counted as foot contacts. Keep the same dose from week to week and change only one thing at a time: the level, the effort, or the number of sets.</p>
+  </section>
+
+  <section aria-labelledby="pain">
+    <h2 id="pain">Pain rules</h2>
+    <p class="prose">Stay at 2/10 discomfort or lower, and no worse the next morning. Pain in the lower back, ribs or side during a turn or a throw, or any shoulder or elbow pain when you throw, means stop the set and go back a level. Do not push through it, and do not add speed or a heavier ball to get past it.</p>
+    <div class="cols">
+      {painIds.map(id => <div id={`pain-${id}`}><PainRule rule={data.painById.get(id)!} /></div>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">What the research does and does not show</h2>
+    <ClaimList claims={claimIds} claimById={data.claimById} sourceById={data.sourceById} sourcesHref={evidence} />
+    <p class="prose">No controlled study of rotation, medicine-ball or throwing-power training in recreational or club cricketers was found, so no claim here says it improves batting, bowling or throwing, or lowers injury. All claims, the sources and the gaps are on the <a href={evidence}>evidence page</a>.</p>
+  </section>
+</Base>

@@ -1,0 +1,169 @@
+---
+import Base from '../../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../../../components/ClaimList.astro';
+import GuideExerciseCard from '../../../../../components/GuideExerciseCard.astro';
+import PainRule from '../../../../../components/PainRule.astro';
+import PlyometricsSafety from '../../../../../components/PlyometricsSafety.astro';
+import StatusBadge from '../../../../../components/StatusBadge.astro';
+import { exercisesInGroup, loadGuide, painRuleIds, painRuleLinks } from '../../../../../lib/guide';
+
+const data = await loadGuide('plyometrics', { phase: 'cricket' });
+const here = '/plyometrics/sports/cricket/';
+const evidence = `${here}evidence/`;
+const groups = ['cricket-landing', 'cricket-hops', 'cricket-decelerate'].map(id => data.groupById.get(id)!);
+const painIds = [...new Set(groups.flatMap(group => exercisesInGroup(data, group.id).flatMap(painRuleIds)))];
+const levels = groups.reduce((sum, group) => sum + exercisesInGroup(data, group.id).length, 0);
+
+// Foot contacts: every landing (or stop) in a session. A ladder counts at its heaviest schedule, so this is a ceiling for someone on the top levels.
+const scheduled = data.exercises.filter(exercise => exercise.data.schedule);
+const blocks = scheduled[0].data.schedule!.map(step => step.weeks);
+const { plan } = data;
+const contacts = (sessionId: string, index: number) => {
+  const session = plan.data.sessions.find(s => s.id === sessionId)!;
+  return session.items.reduce((sum, item) => {
+    if (!item.group) return sum;
+    const heaviest = exercisesInGroup(data, item.group.id).reduce((max, exercise) => {
+      const step = exercise.data.schedule?.[index];
+      return Math.max(max, step ? step.sets * step.reps : 0);
+    }, 0);
+    return sum + heaviest;
+  }, 0);
+};
+const sessionIds = plan.data.sessions.map(session => session.id);
+const claimIds = ['plyo-cricket-plyometric-adults', 'plyo-cricket-landing-instruction', 'plyo-cricket-plyometric-bowlers', 'plyo-cricket-throw-correlates'];
+---
+<Base section="plyometrics" title="Cricket power" description="Draft: gated landing, single-leg hop and stopping ladders for recreational and club cricketers, with foot contacts counted, readiness gates and the evidence stated.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Cricket', href: here }, { label: 'Power' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Cricket · Power</p>
+    <h1>Power: landing, hops and stopping</h1>
+    <p class="lede">Three gated ladders. Landing comes first, then small single-leg hops that end in a held landing, then slowing down and stopping. Floor before step, low contacts before high, vertical before sideways. Nothing here is jumped down from.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Adults only</span>
+      <span class="badge">{groups.length} ladders, {levels} levels</span>
+      <span class="badge">Coaching convention</span>
+      <StatusBadge status={plan.data.status} />
+    </div>
+  </section>
+
+  <PlyometricsSafety />
+
+  <aside class="note note--warn" role="note" aria-labelledby="draft-note">
+    <h3 id="draft-note">Draft, and a convention</h3>
+    <p>Not reviewed by a physiotherapist or a strength and conditioning coach. The order, the gates and every dose below are coaching conventions: no study of this sequence in recreational or club cricketers was found. See <a href="#evidence">what the research does and does not show</a>. Start from the <a href={here}>cricket overview</a> if you have not read it.</p>
+  </aside>
+
+  <section aria-labelledby="gates">
+    <h2 id="gates">Before you start</h2>
+    <p class="prose">The gates for the landing ladder apply to everything on this page. Each ladder then lists its own. If you cannot meet a gate, stay with the <a href="/plyometrics/weekly-plan/">base plan</a> and its regressions. The gate numbers are coaching conventions, not study results.</p>
+    <ul class="prose">{groups[0].data.gates.map(gate => <li>{gate}</li>)}</ul>
+  </section>
+
+  <section aria-labelledby="how">
+    <h2 id="how">How the ladders work</h2>
+    <ul class="prose">
+      <li><b>Find your level.</b> Each ladder ends with a test. Stay at a level until you can pass its test in two sessions in a row and feel fine the next day.</li>
+      <li><b>The order is the point.</b> Landing, then hops, then stopping. Two feet before one foot, in place before forward, forward before sideways, a step before nothing higher. If a landing is loud or wobbly, do not move up.</li>
+      <li><b>Reps are landings.</b> A set of 6 single-leg hops is 3 on each leg. A stop counts as one landing.</li>
+      <li><b>Change one thing at a time.</b> When you move up a level, keep the sets and reps you were on. Do not add height, speed, distance and sets together.</li>
+      <li><b>Stop a set</b> when landings turn loud or uncontrolled, or if anything feels sharp, pinching or catching. Rest roughly 60 to 90 seconds between sets, longer if you need it.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="surface">
+    <h2 id="surface">Surface, shoes and the step</h2>
+    <ul class="prose">
+      <li>A clear, flat, dry, non-slip floor, and flat supportive trainers. Not studs or spikes. Wet, uneven or slippery ground, including damp grass, is a reason not to hop or stop.</li>
+      <li><b>Only if the step is solid.</b> Levels 3 and 4 of the landing ladder need one low step (about 15 to 20 cm, such as a bottom stair). It must not flex, slide or tip, and its top and the floor in front must be non-slip. If you have no step like that, stay at level 2. Do not use a chair, stool, box or sofa.</li>
+      <li>You step down from a step and never jump down from it. This guide uses no box at all.</li>
+      <li>No animations: landing from the side and turning cannot be shown faithfully by the current 3D figures, so these cards are text and cues only.</li>
+    </ul>
+  </section>
+
+  {groups.map(group => (
+    <section aria-labelledby={`group-${group.id}`}>
+      <h2 id={`group-${group.id}`}>{group.data.title}</h2>
+      <p class="prose">{group.data.summary}</p>
+      <h3>Gates: you need all of these first</h3>
+      <ul class="prose">{group.data.gates.map(gate => <li>{gate}</li>)}</ul>
+      <p class="muted small">The gate numbers are coaching conventions, not study results.</p>
+      <h3>Find your level</h3>
+      <p class="prose">{group.data.test}</p>
+      <div class="guide-list">
+        {exercisesInGroup(data, group.id).map(exercise => (
+          <GuideExerciseCard exercise={exercise} painRules={painRuleLinks(data, exercise)} heading={`Level ${exercise.data.level}: ${exercise.data.name}`} />
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section aria-labelledby="contacts">
+    <h2 id="contacts">Foot contacts and the eight weeks</h2>
+    <p class="prose">A foot contact is one landing or one stop. Foot contacts never fall from one block of weeks to the next, and a lighter week repeats the previous row instead of cutting it. The table shows each ladder exercise's sets × reps, then the contacts in a session for someone on the top level of every ladder in it, which is the most the plan asks for. At lower levels there are fewer. The holds, calf raises, balance work and the rotation throws are not counted. These doses are planning conventions, not a validated prescription.</p>
+    <div class="table-wrap" role="region" aria-label="Sets and reps by block of weeks" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Exercise (sets × reps)</th>
+            {blocks.map(label => <th scope="col">{label}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {scheduled.map(exercise => (
+            <tr>
+              <th scope="row"><a href={`#${exercise.id}`}>{exercise.data.name}</a></th>
+              {exercise.data.schedule!.map(step => <td>{step.sets} × {step.reps}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap" role="region" aria-label="Foot contacts per session" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Foot contacts in a session</th>
+            {blocks.map(label => <th scope="col">{label}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {sessionIds.map(id => (
+            <tr>
+              <th scope="row">Session {id}, top levels</th>
+              {blocks.map((_, index) => <td>{contacts(id, index)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <h3>When to move up, hold or step back</h3>
+    <ul class="prose">
+      <li><b>Move up</b> a level when you pass its test in two sessions in a row, and you felt fine during and the day after. Keep the sets and reps you were on.</li>
+      <li><b>Hold</b> the row for another week if landings got noisy, you were unusually sore or tired the next day, you missed a session, or you bowled or fielded a lot in a match.</li>
+      <li><b>Step back</b> a level, or to the base plan's regression, after illness, a break of more than a couple of weeks, or any pain. That is a response to illness or pain and overrides the table. If pain does not settle within 2 to 3 weeks, see a clinician.</li>
+      <li><b>After week 8</b> do not add more. Repeat weeks 5 to 8, or take an easier week that repeats the previous row, and keep landings clean. The aim is repetition, not escalation.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="pain">
+    <h2 id="pain">Pain rules</h2>
+    <p class="prose">Stay at 2/10 discomfort or lower, and no worse the next morning. Sharp, pinching or catching pain in the back, hip, knee, ankle, foot or Achilles, or a hamstring pull, means stop the set and use the easier version. Do not push through it. Each exercise names the rules for its body areas.</p>
+    <div class="cols">
+      {painIds.map(id => <div id={`pain-${id}`}><PainRule rule={data.painById.get(id)!} /></div>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">What the research does and does not show</h2>
+    <ul class="prose">
+      <li>Lower-body plyometric training was associated with small-to-moderate gains in jump, sprint and strength tests in healthy adults. Those tests are not injuries, and the training was set by researchers, so it is not a beginner's dose.</li>
+      <li>Short landing instruction was associated with softer landing mechanics in adult athletes. That is a risk factor measured in a lab or with a scoring system, not an injury.</li>
+      <li>In professional fast bowlers, a combined plyometric and strength programme improved jump and knee-strength tests. It was not an injury study, and the programme is not described in the abstract, so these ladders do not copy it.</li>
+      <li>Throwing speed went with several kinds of power in a small group of sub-elite men, as a correlation. It does not show that training them raises throwing speed.</li>
+      <li>No trial of this order of drills in recreational or club cricketers was found, and none shows fewer injuries or a faster bowling or throwing speed. None is claimed here.</li>
+    </ul>
+    <ClaimList claims={claimIds} claimById={data.claimById} sourceById={data.sourceById} sourcesHref={evidence} />
+    <p class="prose">All claims, the sources and the gaps are on the <a href={evidence}>evidence page</a>.</p>
+  </section>
+</Base>

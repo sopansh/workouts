@@ -8,7 +8,7 @@
   level: intermediate
   spinalLoad: low
   summary: A bodyweight vertical pull that scales by adding load or using assistance.
-  setup: Take a shoulder-width or slightly wider overhand grip. Hang with the shoulder blades packed down and the legs together.
+  setup: Only use a bar that is fixed to a wall, rack or ceiling, or a doorway bar rated for your weight and fitted exactly to its instructions. Test it first with your feet on the floor. Take a shoulder-width or slightly wider overhand grip. Hang with the shoulder blades packed down and the legs together.
   steps:
     - Pull the elbows down and back so the chin passes the bar.
     - Lower under control to a full hang with the shoulders still engaged.
@@ -18,7 +18,7 @@
   contraindications:
     - Shoulder or elbow pain in the hanging position
     - Biceps tendon or elbow tendon pain not cleared for loading
-  regression: Lat pulldown or band-assisted pull-up.
+  regression: Lat pulldown. The pull-up needs a secure bar; with none, use the floor pull ladder in the beginner section instead (prone Y raise, then backpack row).
   progression: Weighted pull-ups, slower lowering or pauses at the top.
   painRule: shoulder
   variations:
@@ -96,7 +96,7 @@
   level: intermediate
   spinalLoad: none
   summary: A row with the chest on a pad, so the lower back is supported and the load goes to the upper back.
-  setup: Adjust the pad so the chest rests firmly with the arms able to hang fully. Grip the handles.
+  setup: Adjust the pad so the chest rests firmly with the arms able to hang fully. If you use an incline bench, it must be stable, cannot slide or tip and be rated for your weight plus the dumbbells; press down on it with your hands first. Grip the handles.
   steps:
     - Pull the elbows back and slightly down, bringing the shoulder blades together.
     - Return slowly to a full stretch.
@@ -105,7 +105,7 @@
     - Using the arms rather than the back
   contraindications:
     - Shoulder pain in the stretched position
-  regression: Lighter load.
+  regression: Lighter load. With no machine and no stable bench this exercise needs one of them; the backpack row in the beginner section needs no machine or bench.
   progression: Pauses at the top, longer lowering or higher volume.
   painRule: shoulder
   variations:
@@ -128,7 +128,7 @@
   level: intermediate
   spinalLoad: low
   summary: A supported single-arm row that adds range and reduces lower-back demand.
-  setup: Place one hand and the same-side knee on a bench with the spine flat. Hold the dumbbell with the arm hanging.
+  setup: Only use a bench that is stable, cannot slide or tip and is rated for your weight plus the dumbbell. Press down on it with your hands first. Place one hand and the same-side knee on it with the spine flat. Hold the dumbbell with the arm hanging.
   steps:
     - Pull the elbow up and back toward the hip, keeping the trunk still.
     - Lower under control to a full stretch.
@@ -137,7 +137,7 @@
     - Shrugging the shoulder
   contraindications:
     - Shoulder pain in the hanging position
-  regression: Lighter dumbbell.
+  regression: Lighter dumbbell. With no stable bench, the backpack row in the beginner section is the same movement with a wall or a chair pushed against a wall (check it first).
   progression: Heavier dumbbell or pauses.
   painRule: shoulder
   variations: []
@@ -243,7 +243,7 @@
   level: intermediate
   spinalLoad: moderate
   summary: A hinge on a 45-degree bench. A rounded upper back biases the erectors; a neutral spine with a posterior pelvic tilt biases the glutes.
-  setup: Set the pads below the hip crease so the hips can hinge freely, with the ankles secured.
+  setup: Only use a station that is fixed, cannot tip or shift and is rated for your weight, and check it before the first rep. Set the pads below the hip crease so the hips can hinge freely, with the ankles secured.
   steps:
     - Hinge forwards from the hips with a neutral spine to a comfortable stretch.
     - Extend back up until the body forms a straight line; do not hyperextend.
@@ -252,7 +252,7 @@
     - Hyperextending at the top
   contraindications:
     - Acute low-back pain provoked by the movement
-  regression: Bodyweight with a shorter range, or the dowel hip hinge.
+  regression: Bodyweight with a shorter range, or the dowel hip hinge. With no stable station, the wall hip hinge in the beginner section needs no equipment.
   progression: Hold a plate or dumbbell at the chest, or slow the tempo.
   painRule: lower-back
   variations:
@@ -279,12 +279,16 @@
   setup: On all fours with the hands under the shoulders and the knees under the hips. Gentle brace.
   steps:
     - Extend one arm and the opposite leg until they are in line with the trunk, without letting the pelvis rotate.
-    - Hold for a few seconds, then return and switch sides.
+    - Hold for 2 to 5 seconds, building to 5 seconds, then return and switch sides.
+  cues:
+    - Imagine a glass of water on your back
   mistakes:
     - Arching the lower back or twisting the pelvis
     - Rushing the reps
   contraindications:
     - Acute low-back pain that is provoked by the position
+    - Wrist or knee pain on hands and knees
+    - Back pain that is not yet assessed
   regression: Extend the arm or the leg only.
   progression: Longer holds, a small band or a light ankle weight. See the core guide for further progressions.
   painRule: lower-back

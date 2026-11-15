@@ -289,6 +289,8 @@
   regression: Keep your toes on a step, or hold for less time.
   progression: Move on to the hanging knee raise when you can hold 15 seconds with no shoulder or elbow pain.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-hanging-knee-raise
   order: 39
@@ -315,8 +317,10 @@
     - a current shoulder or elbow injury
     - a bar that has not been checked as secure
   regression: Raise only one knee, or lift your knees only partway.
-  progression: Move on to the partial tuck lever when you can do 8 slow reps with no swinging.
+  progression: Move on to the partial tuck lever when you can do 5 slow reps with no swinging.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-partial-tuck-lever
   order: 40
@@ -346,6 +350,8 @@
   regression: Go back to the hanging knee raise.
   progression: Hold for longer and lower the back a little at a time. Move on to the tuck front lever when you can hold 5 seconds with a steady line.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-tuck-front-lever
   order: 41
@@ -375,4 +381,6 @@
   regression: Go back to the partial tuck front lever.
   progression: Hold for longer. Extending the legs or any other front-lever variation is beyond this guide, so consider a coach.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft

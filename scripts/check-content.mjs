@@ -31,9 +31,9 @@ const principles = await markdownDir('principles');
 const cricket = await markdownDir('cricket');
 const glossary = await yamlList('glossary.yml');
 const sections = await yamlList('sections.yml');
-const guideGroups = await yamlList('guides/groups.yml');
+const guideGroups = await yamlDir('guides/groups');
 const guideExercises = await yamlDir('guides/exercises');
-const guidePlans = await yamlList('guides/plans.yml');
+const guidePlans = await yamlDir('guides/plans');
 const corePhases = await yamlList('core/phases.yml');
 const coreExercises = await yamlList('core/exercises.yml');
 
@@ -90,6 +90,10 @@ for (const e of exercises) {
   const where = `Exercise ${e.id}`;
   ref('group', e.group, where);
   ref('pain', e.painRule, where);
+  for (const rule of e.alsoPainRules ?? []) {
+    ref('pain', rule, where);
+    if (rule === e.painRule) fail(`${where}: alsoPainRules repeats the main pain rule "${rule}"`);
+  }
   for (const x of [...e.primary, ...(e.secondary ?? [])]) ref('muscle', x, where);
   for (const x of e.claims ?? []) ref('claim', x, where);
   for (const x of e.alternatives ?? []) ref('exercise', x, where);
@@ -162,6 +166,8 @@ for (const sec of sections) {
 const groupById = new Map(guideGroups.map(g => [g.id, g]));
 const guideExerciseById = new Map(guideExercises.map(e => [e.id, e]));
 const outcomePromises = /\b(burn fat|burns fat|tone up|toned|spot[- ]reduce|lose weight|weight loss|guaranteed?|sculpt\w*)\b/i;
+// Injury promises are checked in claim statements and exercise text only: a caveat may say "does not show that it prevents injury".
+const injuryPromises = /\b(prevents|prevented|heals|cures|injury[- ]proof|bulletproof)\b/i;
 const guideSections = [...new Set(guideGroups.map(g => g.section))];
 
 for (const g of guideGroups) {
@@ -174,6 +180,10 @@ for (const e of guideExercises) {
   ref('section', e.section, where);
   ref('guideGroup', e.group, where);
   ref('pain', e.painRule, where);
+  for (const rule of e.alsoPainRules ?? []) {
+    ref('pain', rule, where);
+    if (rule === e.painRule) fail(`${where}: alsoPainRules repeats the main pain rule "${rule}"`);
+  }
   for (const field of ['steps', 'mistakes', 'contraindications', 'equipment']) if (!e[field]?.length) fail(`${where}: no ${field}`);
   for (const field of ['setup', 'regression', 'progression', 'muscles']) if (!e[field]) fail(`${where}: no ${field}`);
   if (group && group.section !== e.section) fail(`${where}: belongs to section ${e.section} but its group is in ${group.section}`);
@@ -184,11 +194,18 @@ for (const e of guideExercises) {
     // Foot contacts per session must never fall from one block of weeks to the next.
     e.schedule.reduce((prev, step) => { if (step.sets * step.reps < prev) fail(`${where}: schedule goes down at ${step.weeks}`); return step.sets * step.reps; }, 0);
   }
+  if (injuryPromises.test(JSON.stringify(e))) fail(`${where}: makes an injury promise (${JSON.stringify(e).match(injuryPromises)[0]})`);
   if (outcomePromises.test(JSON.stringify(e))) fail(`${where}: makes an outcome promise (${JSON.stringify(e).match(outcomePromises)[0]})`);
   if (emphasisWords.test(e.muscles)) fail(`${where}: emphasis wording in "muscles" without a claim`);
 }
+const sourceById = new Map(sources.map(x => [x.id, x]));
+const GRADE_RANK = { A: 4, B: 3, C: 2, D: 1, Mixed: 0 };
 for (const c of claims.filter(x => guideSections.includes(x.section))) {
-  if (outcomePromises.test(`${c.statement} ${c.caveats}`)) fail(`Claim ${c.id}: makes an outcome promise`);
+  if (outcomePromises.test(`${c.statement} ${c.caveats}`) || injuryPromises.test(c.statement)) fail(`Claim ${c.id}: makes an outcome promise`);
+  // Observational, cross-sectional and narrative-review sources cannot support a trial-level grade (A or B).
+  const types = c.sources.map(id => sourceById.get(id)?.type);
+  if (types.every(t => ['cohort', 'cross-sectional'].includes(t)) && GRADE_RANK[c.grade] > GRADE_RANK.C) fail(`Claim ${c.id}: grade ${c.grade} rests only on observational sources (cap is C)`);
+  if (types.every(t => t === 'review') && GRADE_RANK[c.grade] > GRADE_RANK.C) fail(`Claim ${c.id}: grade ${c.grade} rests only on narrative reviews (cap is C)`);
 }
 for (const g of guideGroups.filter(x => x.ladder)) {
   const levels = guideExercises.filter(e => e.group === g.id).map(e => e.level).sort((a, b) => a - b);
@@ -198,9 +215,22 @@ for (const g of guideGroups.filter(x => x.ladder)) {
   if (first?.optional && !g.requires) fail(`Guide group ${g.id}: level 1 must not need optional equipment (or set "requires" on the group)`);
 }
 // First skills are coaching convention: they must say so and be gated behind objective prerequisites.
-for (const g of guideGroups.filter(x => x.phase === 'first-skills')) {
-  if (!g.convention) fail(`Guide group ${g.id}: a skill group must be flagged convention: true`);
-  if ((g.gates ?? []).length < 2) fail(`Guide group ${g.id}: a skill group needs at least 2 gates`);
+// Any later stage (not the base plan, not foundations) is a progression that must be gated and flagged: first skills, cricket, and so on.
+const GATED_PHASE = g => g.phase && !['base', 'foundations'].includes(g.phase);
+for (const g of guideGroups.filter(GATED_PHASE)) {
+  if (!g.convention) fail(`Guide group ${g.id}: a group in phase "${g.phase}" must be flagged convention: true`);
+  if ((g.gates ?? []).length < 2) fail(`Guide group ${g.id}: a group in phase "${g.phase}" needs at least 2 gates`);
+}
+
+// A phase set on a plan should exist on at least one group of the same section, so a typo cannot hide a plan's content.
+for (const plan of guidePlans.filter(x => x.phase)) {
+  if (!guideGroups.some(g => g.section === plan.section && g.phase === plan.phase)) fail(`Guide plan ${plan.id}: no group in section ${plan.section} has phase "${plan.phase}"`);
+}
+
+for (const [label, list] of [['Source', sources], ['Claim', claims]]) {
+  for (const item of list.filter(x => x.phase)) {
+    if (!guideGroups.some(g => g.section === item.section && g.phase === item.phase)) fail(`${label} ${item.id}: no guide group in section ${item.section ?? 'strength'} has phase "${item.phase}"`);
+  }
 }
 
 for (const plan of guidePlans) {

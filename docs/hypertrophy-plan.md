@@ -40,9 +40,8 @@ exercise variations bias which muscle, how to program it, and how it applies to 
 3. **Say what is unknown.** Where evidence is mixed (it often is for "which variation grows which part"), the page says so.
 4. **Modular by default.** Muscles, exercises, programs, principles and cricket modules are separate content types that
    reference each other by ID. Adding a muscle or exercise means adding one file, not editing five pages.
-5. **Safety is part of the content, not a footer.** Each exercise has contraindications, regressions and a pain rule. This
-   matters here in particular: the current user is recovering from a lower-back strain, so "back-safe?" is a first-class
-   filter.
+5. **Safety is part of the content, not a footer.** Each exercise has contraindications, regressions and a pain rule. A
+   "back-safe?" filter is a first-class feature because many lifters have a sensitive lower back.
 6. **Honest provenance.** Every page shows status (Draft / Verified / Expert-reviewed), who reviewed it and when.
 
 **Important limitation, stated plainly.** I can research, structure and draft this material, and I can verify citations
@@ -305,7 +304,7 @@ Synergists are linked, not duplicated: anterior deltoid and triceps brachii.
 with front-deltoid and triceps volume from the same sessions?
 
 **Chest day page.** Built *last*: it links to the above, justifies the exercise order, and offers a back-safe variant (e.g.
-supported/bench-based pressing instead of loaded standing patterns while the back is recovering).
+supported/bench-based pressing instead of loaded standing patterns for readers with a sensitive back).
 
 **Cricket tie-in.** Pressing/pulling balance and shoulder health for throwing and bowling; core-to-limb force transfer in
 batting. Treated as hypotheses until sourced (section 12).
@@ -499,7 +498,7 @@ in search and in the relevant index.
 4. **URL for isometrics:** keep `/core/` as is with a future `/isometrics/` hub that links to it (recommended), or move to
    `/isometrics/core/` with a redirect?
 5. **Context to tailor to:** training age, equipment available (gym vs home; kettlebell, dumbbells, bands), time per session,
-   and current back-recovery stage (so "back-safe" is set correctly).
+   and whether back-safe options should be shown first.
 6. **Cricket scope:** your role (batter, bowler type, all-rounder), level and format, and the age group, since youth and adult
    content differ.
 7. **Visuals:** OK to draw our own SVG anatomy and demos (recommended), or do you want photos/videos of your own?
@@ -510,7 +509,7 @@ in search and in the relevant index.
 | Question | Decision |
 |---|---|
 | 3. Stack | Draft implemented in Astro 7; explicit approval of the build change was not recorded |
-| 5. Personal context | 10+ years training. Gym access, days per week, session length and lower-back recovery remain unconfirmed assumptions |
+| 5. Audience context | Experienced lifter. Gym access, days per week and session length remain unconfirmed assumptions |
 | 6. Cricket | Stub pages for every role and topic; no prescriptions until researched |
 | 8. Pilot | Chest and legs (including glutes and lower back) are the detailed groups |
 | Level | No beginner-level programming. `foundation` exercises exist only for squat, glute and lower-back work |

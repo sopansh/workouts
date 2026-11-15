@@ -1,0 +1,602 @@
+# Cricket phase of the plyometrics section. Every step is a coaching convention: no study of these drills in recreational or club
+# cricketers was found. Each ladder is gated on its group, and every exercise has a regression and a pain rule.
+# Reps for hops, step-downs and stops count landings (or stops) in total, split evenly between the legs, so they add up as foot contacts.
+# No exercise here uses a box. A step is stepped down from, never jumped down from. The existing base exercises are linked, not copied.
+- id: cricket-landing-position-hold
+  order: 9
+  section: plyometrics
+  group: cricket-landing
+  level: 1
+  name: Landing-position hold (no impact)
+  equipment:
+    - floor
+  muscles: Quadriceps, glutes, calves, trunk (rehearses the landing shape)
+  dose: 2 sets of 5, holding each for 3 seconds
+  setup: Stand with your feet hip-width apart on a clear, non-slip floor, in flat supportive shoes. There is no jumping in this exercise.
+  steps:
+    - Stand tall, then bend the ankles, knees and hips together into a quarter squat, as if landing from a small step.
+    - Keep your weight over the middle of your feet, your knees over your toes, your chest tall and your ribs over your pelvis.
+    - Hold for 3 seconds, breathing normally, then stand tall again and reset before the next rep.
+  cues:
+    - Knees over toes
+    - Quiet and balanced
+    - Ribs over pelvis
+  mistakes:
+    - knees drifting inwards
+    - heels lifting off the floor
+    - rounding the lower back
+    - dropping into the position fast and loud
+  contraindications:
+    - sharp pain in the knee, hip or back in a quarter squat
+    - a knee, hip or ankle problem that has not been assessed
+    - dizziness or balance problems that have not been assessed
+  regression: Make the squat shallower, or rest one hand on a wall or a firm chair.
+  progression: Move to the split-stance landing hold when you can hold 3 seconds for 5 reps with steady knees and no pain.
+  painRule: jumping
+  alsoPainRules:
+    - knee
+  status: draft
+- id: cricket-split-stance-landing-hold
+  order: 10
+  section: plyometrics
+  group: cricket-landing
+  level: 2
+  name: Split-stance landing hold (no impact)
+  equipment:
+    - floor
+  muscles: Quadriceps, glutes, hamstrings, calves (rehearses a braking shape)
+  dose: 2 sets of 5 on each leg, holding each for 3 seconds
+  setup: Clear about 2 metres of non-slip floor in front of you, wear flat supportive shoes and stand tall with your feet hip-width apart.
+  steps:
+    - Take one controlled step forward, about a short lunge length, and place the whole foot down softly.
+    - Let the front knee bend a little over the middle of the foot, with the back heel lifted and the chest tall.
+    - Hold for 3 seconds without wobbling, then push back to standing.
+    - Do all 5 reps with one leg leading, then the other.
+  cues:
+    - Whole foot down softly
+    - Front knee over the middle of the foot
+    - Tall chest
+  mistakes:
+    - stepping so far that you cannot hold the position
+    - the front knee drifting inwards
+    - stamping the foot down loudly
+    - leaning forward and rounding the back
+  contraindications:
+    - sharp pain at the front of the knee, or in the groin or hip, in a lunge position
+    - a hamstring or groin strain that is recent or has not been assessed
+    - a knee, hip or ankle problem that has not been assessed
+  regression: Take a shorter step, or rest one hand on a wall.
+  progression: With a low, solid step, move to the step-down and stick once you can hold 5 reps on each leg with quiet landings and no wobble. Without a step, stay at this level for the landing ladder and move to the hops ladder only if you meet its gates.
+  painRule: knee
+  alsoPainRules:
+    - hip
+  status: draft
+- id: cricket-step-down-stick
+  order: 11
+  section: plyometrics
+  group: cricket-landing
+  level: 3
+  name: Step-down and stick
+  equipment:
+    - one low, solid step (about 15 to 20 cm), such as a bottom stair
+  optional: true
+  muscles: Quadriceps, glutes, calves, ankle stabilisers
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 1
+      reps: 3
+    - weeks: Weeks 3–4
+      sets: 2
+      reps: 3
+    - weeks: Weeks 5–8
+      sets: 2
+      reps: 3
+  setup: "Only use a step that is solid. It must not flex, slide or tip, its top and the floor in front must be non-slip, and you need about a metre of clear landing space. If you have no step like that, do level 2 instead. Do not use a chair, stool, box or sofa. Reps are landings."
+  steps:
+    - Stand on the step with both feet near the edge.
+    - Step off with one foot and let the other follow, so that you land on both feet together. Do not jump up or off.
+    - Land in the landing position from level 1, hold for 2 seconds, then walk back up and reset.
+  cues:
+    - Land as quietly as you stepped
+    - Same shape as the landing hold
+  mistakes:
+    - landing loud and flat-footed
+    - knees drifting inwards
+    - leaning far forward
+    - using a step that is too high to land quietly
+  contraindications:
+    - recent or unassessed pain in the ankle, knee, hip or Achilles
+    - a back problem that has not been assessed
+    - balance problems that have not been assessed
+    - no solid, non-slip step available
+  regression: A lower step, or the split-stance landing hold (level 2) with no step.
+  progression: Move to the single-leg step-down and stick when 6 landings in a row are quiet and held. Keep the sets and reps you were on when you change level, and never jump down from a step or box.
+  painRule: jumping
+  alsoPainRules:
+    - knee
+    - ankle-foot
+  status: draft
+- id: cricket-single-leg-step-down-stick
+  order: 12
+  section: plyometrics
+  group: cricket-landing
+  level: 4
+  name: Single-leg step-down and stick
+  equipment:
+    - one low, solid step (about 15 to 20 cm), such as a bottom stair
+  optional: true
+  muscles: Quadriceps, glutes, calves, ankle and foot stabilisers
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 1
+      reps: 4
+    - weeks: Weeks 3–4
+      sets: 2
+      reps: 4
+    - weeks: Weeks 5–8
+      sets: 2
+      reps: 4
+  setup: "Only use a step that is solid. It must not flex, slide or tip, its top and the floor in front must be non-slip, and you need about a metre of clear landing space. With no such step, use the no-step version below. Reps are landings, half on each leg."
+  steps:
+    - Stand on the step with both feet near the edge.
+    - Step off forward with the right foot and let the left foot leave the step, so that you land on the right foot only.
+    - Hold the landing position for 2 seconds with the left foot off the floor, then put it down and walk back up.
+    - Alternate the landing leg on each rep.
+  cues:
+    - Soft knee over the middle of the foot
+    - Hold still before you move
+  mistakes:
+    - the landing knee collapsing inwards
+    - the trunk dropping to one side
+    - hopping again to rescue the balance
+    - raising the step to a higher one
+  contraindications:
+    - an ankle that has given way recently, or a knee, hip or Achilles problem that has not been assessed
+    - a back problem that has not been assessed
+    - balance problems that have not been assessed
+    - no solid, non-slip step available
+  regression: Level 3 (both feet). With no step, stand on one leg beside a wall for balance and sink slowly into a quarter squat for 3 seconds, with no weight on the wall.
+  progression: This is the top of the landing ladder. Keep the dose, never raise the step, never jump down from a step or box, and use the hops ladder for further work.
+  painRule: jumping
+  alsoPainRules:
+    - knee
+    - ankle-foot
+  status: draft
+- id: cricket-single-leg-hop-stick
+  order: 13
+  section: plyometrics
+  group: cricket-hops
+  level: 1
+  name: Single-leg hop and stick in place
+  equipment:
+    - floor
+  muscles: Calves, quadriceps, glutes, ankle and foot stabilisers
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 2
+      reps: 6
+    - weeks: Weeks 3–4
+      sets: 2
+      reps: 8
+    - weeks: Weeks 5–8
+      sets: 3
+      reps: 8
+  setup: Stand on one leg on a clear, non-slip floor in flat supportive shoes, with a wall within reach in case you need it. Reps are landings in total, half on each leg, so a set of 6 is 3 on each leg.
+  steps:
+    - Dip a little at the ankle, knee and hip, then hop a few centimetres straight up on one leg.
+    - Land on the same leg with the knee soft over the middle of the foot, and hold still for 2 seconds.
+    - Put the other foot down, reset fully, and repeat on the other leg.
+  cues:
+    - A few centimetres is enough
+    - Hold the landing like a statue
+  mistakes:
+    - hopping for height instead of a clean landing
+    - landing stiff-legged and loud
+    - the knee drifting inwards
+    - hopping again before the landing is held
+  contraindications:
+    - pain in the Achilles, calf, knee, hip or foot that has not been assessed
+    - an ankle sprain in the last few months, or an ankle that gives way
+    - a back problem that has not been assessed
+    - balance problems that have not been assessed
+  regression: The two-foot vertical jump and stick or ankle hops from the base plan, or level 3 or 4 of the landing ladder.
+  progression: Move to the forward hop and stick when 6 landings in a row are quiet and held. Keep the sets and reps you were on, and change only one thing at a time.
+  painRule: jumping
+  alsoPainRules:
+    - ankle-foot
+  status: draft
+- id: cricket-forward-hop-stick
+  order: 14
+  section: plyometrics
+  group: cricket-hops
+  level: 2
+  name: Single-leg forward hop and stick
+  equipment:
+    - floor
+    - tape or a line on the floor as a marker
+  muscles: Calves, quadriceps, hamstrings, glutes
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 2
+      reps: 6
+    - weeks: Weeks 3–4
+      sets: 2
+      reps: 8
+    - weeks: Weeks 5–8
+      sets: 3
+      reps: 8
+  setup: Stick a marker on a clear, non-slip floor about 30 to 50 cm in front of you, in flat supportive shoes. Reps are landings in total, half on each leg.
+  steps:
+    - Stand on one leg behind the marker and hop forward over it, landing on the same leg.
+    - Land with the foot under the knee, not out in front, and hold still for 2 seconds.
+    - Put the other foot down, reset, and repeat on the other leg.
+  cues:
+    - Foot lands under the knee
+    - Short hop, long hold
+  mistakes:
+    - hopping too far to hold the landing
+    - landing with the foot well ahead of the knee
+    - the trunk collapsing forward
+    - the knee drifting inwards
+  contraindications:
+    - pain in the hamstring, knee, hip, Achilles or foot that has not been assessed
+    - a hamstring or calf strain in the last few weeks
+    - a back problem that has not been assessed
+    - an ankle that gives way
+  regression: Level 1 (in place), or a shorter distance.
+  progression: Move to the lateral hop when 6 landings in a row are quiet and held. Change only the distance or the dose at one time.
+  painRule: jumping
+  alsoPainRules:
+    - knee
+    - hamstring
+  status: draft
+- id: cricket-lateral-single-leg-hop-stick
+  order: 15
+  section: plyometrics
+  group: cricket-hops
+  level: 3
+  name: Small lateral hop and stick
+  equipment:
+    - floor
+    - two strips of tape as markers
+  muscles: Hip abductors and adductors, calves, ankle stabilisers
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 2
+      reps: 6
+    - weeks: Weeks 3–4
+      sets: 2
+      reps: 8
+    - weeks: Weeks 5–8
+      sets: 3
+      reps: 8
+  setup: Stick two strips of tape on a clear, non-slip floor about 30 to 40 cm apart, in flat supportive shoes. Reps are landings in total, half on each leg.
+  steps:
+    - Stand on one leg beside one strip and hop sideways to the other strip, landing on the opposite leg.
+    - Land with the knee soft over the middle of the foot, and hold still for 2 seconds.
+    - Hop back the other way and repeat.
+  cues:
+    - Land under your hips
+    - Knee over the middle of the foot
+  mistakes:
+    - hopping wide before landings are quiet
+    - the landing knee falling inwards
+    - twisting on the landing foot
+    - landing on the outside edge of the foot
+  contraindications:
+    - an ankle sprain in the last few months, or an ankle that gives way
+    - pain in the groin, hip, knee or Achilles that has not been assessed
+    - a back problem that has not been assessed
+  regression: The two-foot side-to-side hop from the base plan, or a sideways step and stick.
+  progression: Move to the lateral bound only after several weeks of quiet landings at this level. Widen the gap a little and change nothing else.
+  painRule: jumping
+  alsoPainRules:
+    - ankle-foot
+    - hip
+  status: draft
+- id: cricket-lateral-bound-stick
+  order: 16
+  section: plyometrics
+  group: cricket-hops
+  level: 4
+  name: Lateral bound and stick
+  equipment:
+    - floor
+    - two strips of tape as markers
+  muscles: Hip abductors and adductors, calves, quadriceps, ankle stabilisers
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 2
+      reps: 6
+    - weeks: Weeks 3–4
+      sets: 2
+      reps: 8
+    - weeks: Weeks 5–8
+      sets: 3
+      reps: 8
+  setup: Use the same marker set-up as level 3, but with the strips a little further apart. Widen the gap only when landings at the smaller gap have been quiet for several weeks. Reps are landings in total, half on each leg.
+  steps:
+    - Stand on one leg beside one strip and bound sideways to the other strip, landing on the opposite leg.
+    - Absorb the landing with a soft knee, hold still for 2 seconds, then bound back.
+  cues:
+    - Stick it before you go back
+    - Quiet like the small hop
+  mistakes:
+    - widening the gap before the small hop is quiet
+    - landing with a stiff knee
+    - the trunk collapsing sideways
+    - rushing the reset
+  contraindications:
+    - an ankle sprain in the last few months, or an ankle that gives way
+    - pain in the groin, hip, knee or Achilles that has not been assessed
+    - a back problem that has not been assessed
+  regression: Level 3, or a narrower gap.
+  progression: This is the top of the hops ladder. Keep the dose and the gap, and do not add height, speed or a continuous bounce on your own.
+  painRule: jumping
+  alsoPainRules:
+    - ankle-foot
+    - hip
+  status: draft
+- id: cricket-walk-stop
+  order: 17
+  section: plyometrics
+  group: cricket-decelerate
+  level: 1
+  name: Walk and stop in a split stance
+  equipment:
+    - floor
+    - about 5 metres of clear ground
+  muscles: Quadriceps, hamstrings, glutes, calves
+  dose: 2 sets of 4 stops with each leg leading, holding each for 3 seconds
+  setup: Use about 5 metres of clear, flat, dry, non-slip ground in flat supportive shoes. If the surface is wet, uneven or slippery, do not do this.
+  steps:
+    - Walk at an easy pace for four steps.
+    - Over the last two steps, slow down and finish in a split stance with the lead foot flat and the front knee over the middle of the foot.
+    - Hold for 3 seconds with the chest tall, then walk back and repeat.
+  cues:
+    - Slow down early
+    - Whole foot down softly
+  mistakes:
+    - braking late and lurching to a stop
+    - stamping the lead foot down loudly
+    - the front knee drifting inwards
+    - leaning forward and rounding the back
+  contraindications:
+    - a hamstring, groin, calf, knee or ankle strain that is recent or has not been assessed
+    - pain in the knee, hip or back in a lunge position
+    - a wet, uneven or slippery surface
+  regression: The split-stance landing hold from the landing ladder, with no walking.
+  progression: Move to the jog and stop when 4 stops in a row are controlled and held. Change one thing at a time.
+  painRule: knee
+  alsoPainRules:
+    - hamstring
+  status: draft
+- id: cricket-jog-stop
+  order: 18
+  section: plyometrics
+  group: cricket-decelerate
+  level: 2
+  name: Jog and stop
+  equipment:
+    - floor
+    - about 8 metres of clear ground
+  muscles: Quadriceps, hamstrings, glutes, calves
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 2
+      reps: 4
+    - weeks: Weeks 3–4
+      sets: 3
+      reps: 4
+    - weeks: Weeks 5–8
+      sets: 3
+      reps: 5
+  setup: Use about 8 metres of clear, flat, dry, non-slip ground with a clear run-off at the far end, in flat supportive shoes. Each stop counts as one landing. If the surface is wet, uneven or slippery, do not do this.
+  steps:
+    - Jog at an easy pace for most of the distance.
+    - Over the last three steps, slow down early and finish in a split stance with the front knee over the middle of the foot.
+    - Hold for 2 seconds, then walk back and rest before the next stop.
+  cues:
+    - Slow down early, stop in the space you have
+    - Quiet steps
+  mistakes:
+    - jogging too fast to stop in the space
+    - skidding or stamping to stop
+    - the front knee drifting inwards
+    - cutting the rest short
+  contraindications:
+    - a hamstring, groin, calf, knee or ankle strain that is recent or has not been assessed
+    - pain in the knee, hip or back when stopping
+    - a wet, uneven or slippery surface
+  regression: Level 1 (walk and stop).
+  progression: Move to the run and stop when 4 stops in a row are controlled and held. Keep the sets and reps you were on when you change level.
+  painRule: knee
+  alsoPainRules:
+    - hamstring
+    - jumping
+  status: draft
+- id: cricket-run-stop
+  order: 19
+  section: plyometrics
+  group: cricket-decelerate
+  level: 3
+  name: Brisk run and stop
+  equipment:
+    - floor
+    - about 10 metres of clear ground plus a clear run-off
+  muscles: Quadriceps, hamstrings, glutes, calves
+  schedule:
+    - weeks: Weeks 1–2
+      sets: 2
+      reps: 4
+    - weeks: Weeks 3–4
+      sets: 3
+      reps: 4
+    - weeks: Weeks 5–8
+      sets: 3
+      reps: 5
+  setup: Use about 10 metres of clear, flat, dry, non-slip ground with a clear run-off at the far end, in flat supportive shoes (not studs or spikes). Each stop counts as one landing. The pace is brisk but controlled, a convention of about three quarters of your top speed, and never flat out.
+  steps:
+    - Run at a brisk, controlled pace for most of the distance.
+    - Slow down over the last three or four steps and finish in a split stance with the front knee over the middle of the foot.
+    - Hold for 2 seconds, then walk back and rest fully before the next stop.
+  cues:
+    - Stop well inside the space
+    - Quiet steps, tall chest
+  mistakes:
+    - running faster than you can stop
+    - braking late and skidding
+    - the trunk collapsing forward
+    - rushing the rest
+  contraindications:
+    - a hamstring, groin, calf, knee or ankle strain that is recent or has not been assessed
+    - pain in the knee, hip or back when stopping
+    - a wet, uneven or slippery surface, or no clear run-off
+  regression: Level 2 (jog and stop).
+  progression: This is the top of this ladder. Keep the dose and the pace, and do not add speed, change of direction or a sprint on your own.
+  painRule: hamstring
+  alsoPainRules:
+    - knee
+    - jumping
+  status: draft
+- id: cricket-hip-turn
+  order: 20
+  section: plyometrics
+  group: cricket-rotation
+  level: 1
+  name: Hip-led turn
+  equipment:
+    - floor
+  muscles: Hips, glutes, trunk (rehearses turning from the hips)
+  dose: 2 sets of 8 slow turns each way
+  setup: Stand with your feet a little wider than shoulder-width on a clear, non-slip floor, knees soft and arms folded across your chest.
+  steps:
+    - Turn your hips and chest together to one side by pivoting on the balls of your feet, letting the back heel lift as you turn.
+    - Feel your weight move onto the front leg, with your knees pointing the same way as your feet.
+    - Return to the middle under control, then turn to the other side.
+  cues:
+    - Hips lead, chest follows
+    - Ribs stay over the pelvis
+    - Small and slow
+  mistakes:
+    - twisting the lower back while the hips stay still
+    - the knee twisting while the foot stays planted
+    - swaying or leaning back
+    - going fast before it is smooth
+  contraindications:
+    - back, rib or side pain when turning
+    - a back, rib or trunk side strain that is recent or has not been assessed
+    - a knee or hip problem that has not been assessed
+  regression: Make the turn smaller, keep both feet flat and rest one hand on a wall.
+  progression: Move to the turn with a light ball when 8 slow turns each way have been pain-free for two weeks.
+  painRule: trunk-rotation
+  alsoPainRules:
+    - knee
+  status: draft
+- id: cricket-ball-hip-turn
+  order: 21
+  section: plyometrics
+  group: cricket-rotation
+  level: 2
+  name: Hip-led turn with a light ball
+  equipment:
+    - a light ball or a rolled towel
+  optional: true
+  muscles: Hips, glutes, trunk
+  dose: 2 sets of 8 slow turns each way
+  setup: Hold a light ball (or a rolled towel) at your chest with both hands. Stand as in level 1 on a clear, non-slip floor. The ball is held, not thrown.
+  steps:
+    - Turn your hips and chest together to one side, keeping the ball close to your chest.
+    - Return to the middle under control, then turn to the other side.
+    - Keep each turn smooth and the same size on both sides.
+  cues:
+    - Hips lead, ball follows
+    - Same size both sides
+  mistakes:
+    - the arms swinging the ball round
+    - twisting the lower back
+    - choosing a ball that is too heavy to control
+    - speeding up before it is smooth
+  contraindications:
+    - back, rib or side pain when turning
+    - a back, rib or trunk side strain that is recent or has not been assessed
+    - a shoulder or elbow problem that has not been assessed
+  regression: Level 1 (no ball). Use a rolled towel if you have no ball.
+  progression: Move to the wall side throw when 8 slow turns each way with the ball have been pain-free for two weeks and you have a solid wall.
+  painRule: trunk-rotation
+  alsoPainRules:
+    - knee
+  status: draft
+- id: cricket-wall-side-throw
+  order: 22
+  section: plyometrics
+  group: cricket-rotation
+  level: 3
+  name: Light-ball side throw to a wall
+  equipment:
+    - a light, soft ball made for wall throws
+    - a solid wall
+  optional: true
+  muscles: Hips, glutes, trunk, shoulders
+  dose: 2 sets of 5 throws on each side, resting about 90 seconds, the first set at about half effort
+  setup: "Only use a solid masonry wall with no window, picture or anything breakable, and nobody behind it. Stand about 1.5 metres side-on to the wall on a clear, non-slip floor. The ball must be soft, light and made for wall throws, so it does not bounce back hard. With no such wall or ball, stay at level 2 and do the turn a little faster. Effort levels are conventions, and you never throw at full effort."
+  steps:
+    - Hold the ball at your hip with both hands, with the wall on the side you are turning towards.
+    - Turn your hips and chest towards the wall and push the ball into it, keeping your feet planted.
+    - Let the ball bounce or roll away, collect it, reset your stance and repeat. Catch it only once you are comfortable with how it comes back.
+    - Finish all throws on one side, then switch sides.
+  cues:
+    - Hips first, then the ball
+    - Feet still, ribs over pelvis
+  mistakes:
+    - throwing with the arms and shoulders only
+    - twisting the lower back with the hips still
+    - throwing at full effort too early
+    - catching a hard rebound with stiff arms
+  contraindications:
+    - back, rib or side pain or strain that is recent or has not been assessed
+    - shoulder, elbow or wrist pain or injury
+    - no solid wall, or a ball that bounces back hard
+  regression: Level 2 (turn with the ball, no throw).
+  progression: Move to the step side throw when the throws are smooth and pain-free for two weeks. Change effort, distance or the number of sets one at a time.
+  painRule: trunk-rotation
+  alsoPainRules:
+    - overhead-throwing
+  status: draft
+- id: cricket-step-side-throw
+  order: 23
+  section: plyometrics
+  group: cricket-rotation
+  level: 4
+  name: Light-ball step and side throw
+  equipment:
+    - a light, soft ball made for wall throws
+    - a solid wall
+  optional: true
+  muscles: Hips, glutes, trunk, shoulders, legs
+  dose: 2 sets of 5 throws on each side, resting about 90 seconds, the first set at about half effort
+  setup: "Use the same solid wall and soft ball checks as level 3, with about 2 metres of clear floor. With no such wall or ball, stay at level 3. You never throw at full effort."
+  steps:
+    - Stand side-on to the wall holding the ball at your hip, with the foot nearest the wall slightly back.
+    - Take one short step towards the wall and turn your hips and chest into the throw as the front foot lands.
+    - Let the ball bounce or roll away, reset your stance and repeat. Finish all throws on one side, then switch.
+  cues:
+    - Step, then turn
+    - Land the whole foot first
+  mistakes:
+    - stepping too far
+    - starting the turn before the foot lands
+    - leaning back
+    - throwing harder than you can control
+  contraindications:
+    - back, rib or side pain or strain that is recent or has not been assessed
+    - shoulder, elbow or wrist pain or injury
+    - knee or ankle pain when stepping
+    - no solid wall, or a ball that bounces back hard
+  regression: Level 3 (feet planted).
+  progression: This is the top of the rotation ladder. Keep the dose and the ball, and do not add a heavier ball, a bigger step, overhead throws or full-effort throws on your own.
+  painRule: trunk-rotation
+  alsoPainRules:
+    - overhead-throwing
+    - knee
+  status: draft

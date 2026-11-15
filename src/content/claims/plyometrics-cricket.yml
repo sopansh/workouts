@@ -1,0 +1,194 @@
+# Claims for the cricket pages of the plyometrics section (phase cricket). Every statement paraphrases an abstract that was read on
+# 2026-11-15; no full text was read. Numbers are quoted only where the abstract states them with their population.
+# Not published, because the abstract does not give the population (level, age, sex) needed to apply the result:
+# Ramachandran 2021 (bowling-speed correlations) and Houghton 2013 (plyometrics in cricketers). See the cricket evidence page.
+- id: plyo-cricket-injury-sites
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: In Australian first-class (state and national) cricketers surveyed over six seasons (three prospectively, three retrospectively), the most common injuries were hamstring strains, side strains, groin injuries, wrist and hand injuries and lumbar soft-tissue injuries. At any given time 14% of pace bowlers were out injured, against 4% of spin bowlers, 4% of batters and 2% of wicketkeepers.
+  grade: C
+  sources:
+    - orchard-2002-injuries
+  population: Australian state and national first-class cricketers, 1995/1996 to 2000/2001. The abstract does not state sex or age.
+  caveats: Observational and now over twenty years old. An injury generally had to cost playing time in a major match, so smaller problems are not counted. Prevalence is the share of players missing at one time, not the chance of injury. It is elite data and says nothing about recreational or club players.
+- id: plyo-cricket-bowling-overs
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: In the same first-class survey, bowlers who had bowled more than 20 match overs in the week before a match had a higher risk of a bowling injury (risk ratio 1.91, 95% CI 1.28 to 2.85), and bowling second in a match (batting first) was also associated with more bowling injuries (risk ratio 1.62, 95% CI 1.04 to 2.50).
+  grade: C
+  sources:
+    - orchard-2002-injuries
+  population: Australian first-class cricketers (see the injury-sites claim).
+  caveats: Observational, so other differences between bowlers may explain it. The 20-over figure describes this group and is not a safe limit for anyone. It must not be turned into a workload rule for club players.
+- id: plyo-cricket-boundary-fence
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: The first-class survey named colliding with the boundary fence as a risk factor for injury while fielding. The authors recommended that grounds mark a boundary line on the playing field to keep players away from fences.
+  grade: C
+  sources:
+    - orchard-2002-injuries
+  population: Australian first-class cricketers.
+  caveats: The abstract gives no rate for fence collisions. It is a risk factor named by the authors, not a measured effect size, and it concerns the ground rather than training.
+- id: plyo-cricket-lumbar-stress-professional
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: In 368 professional English county fast bowlers followed from 2010 to 2016, 57 lumbar stress fractures were reported (mean age 22.8), an annual incidence of 2.46 per 100 fast bowlers, most often in July and September. A peak 7-day workload of more than 234 deliveries was associated with 11-fold higher odds of lumbar stress fracture than fewer than 197 deliveries.
+  grade: C
+  sources:
+    - alway-2019-lumbar-stress
+  population: Professional English county fast bowlers (368 in the study). The abstract does not state sex.
+  caveats: Observational (cases compared with non-injured controls), match workload only. The delivery counts describe this group and are not safe limits. The authors' recommendation about reducing workload is aimed at young fast bowlers. It says nothing about adult club bowlers.
+- id: plyo-cricket-side-strain
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: In 207 professionally contracted male first-class fast bowlers aged 18 or over, more than half had had at least one trunk side strain in their career, 77% of first injuries occurred in bowlers aged 24 or under, and recurrence occurred in 30%. The abstract reports side strain as associated with the volume of first-class cricket played and not with the other factors measured, which included side-bridge endurance and trunk lateral-flexion range.
+  grade: C
+  sources:
+    - nealon-2018-side-strain
+  population: Male professional first-class fast bowlers aged 18 or over in Australia and England, 2011.
+  caveats: A retrospective case series, so it shows an association at one time point only. Finding no link with side-bridge endurance does not show that the exercise helps or does not help. It is professional men, not club players.
+- id: plyo-cricket-throw-correlates
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: In 17 sub-elite male cricketers, throwing velocity from a stretch was related to dominant-side medicine-ball rotation-throw velocity (r = 0.73), medicine-ball chest-pass distance (r = 0.67), dominant-leg lateral-to-medial jump distance (r = 0.71) and dominant shoulder internal-rotation strength (r = 0.55). It was not related to 1RM squat (p = 0.57), 1RM bench press (p = 0.90), height or weight.
+  grade: C
+  sources:
+    - freeston-2016-throwing
+  population: 17 male cricketers, mean age 21.1, from an elite athlete programme (the authors call them sub-elite).
+  caveats: A cross-sectional study of 17 men. Correlation does not show that training these qualities raises throwing speed. The authors' advice to develop power goes beyond what the design can show. A vertical-jump relationship was a non-significant trend from the stretch and significant after a shuffle step. It does not apply to women, older players or recreational players.
+- id: plyo-cricket-plyometric-bowlers
+  kind: programming
+  section: plyometrics
+  phase: cricket
+  statement: In 42 professional fast bowlers randomly assigned to a 12-week plyometric-based programme or their usual training, the programme group improved jump performance and eccentric knee strength, and fewer bowlers had poor bilateral strength asymmetry or dynamic control ratios on isokinetic testing.
+  grade: C
+  sources:
+    - krishna-2019-plyometric-bowlers
+  population: 42 professional fast bowlers (21 per group). The abstract does not state sex or age.
+  caveats: Outcomes were jump and isokinetic strength tests, not injuries. The abstract's closing sentence that this training reduces injury risk is not shown by what was measured. It describes a combined plyometric and strength programme without giving its content. It is graded C because the abstract gives no detail on randomisation or blinding. It is professional bowlers, so it does not show what a recreational club player should do.
+- id: plyo-cricket-ipp-risk-factors
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: In a cluster-randomised trial of 65 male adolescent pace bowlers aged 14 to 17, an 8-week exercise programme done at training was associated with better shoulder strength (at 90 degrees per second), hamstring strength (at 60 degrees per second), hip adductor strength, balance reach distance and back endurance than usual cricket activity. It showed no difference for lumbopelvic stability, shoulder or hamstring strength at 180 degrees per second, or single-leg-squat knee valgus angle.
+  grade: B
+  sources:
+    - forrest-2020-ipp-risk-factors
+  population: 65 male community-level pace bowlers aged 14 to 17 from eight cricket organisations.
+  caveats: The outcomes are measures of strength, endurance and control, not injuries. The authors say a reduction in injuries still needs confirming. Participants were not blinded. The exercises are not described in the abstract. It is adolescent evidence and does not apply to adults. The site does not programme for under-18s.
+- id: plyo-cricket-ipp-kinematics
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: In the same trial, the exercise programme group differed from the control group in shoulder counter-rotation (3.8 degrees less, 95% CI 0.3 to 7.2) and in lateral trunk flexion relative to the pelvis (2.2 degrees less, 95% CI 0.5 to 4.0), and shoulder counter-rotation also rose by 2.2 degrees in the control group. It made no difference to pelvis rotation, front hip or knee angles, or ball velocity (1.1 km/h, 95% CI -7.5 to 9.7).
+  grade: B
+  sources:
+    - forrest-2020-ipp-kinematics
+  population: Male community-level adolescent pace bowlers (the same trial).
+  caveats: The differences are a few degrees. The authors suggest this could lower injury risk, but injuries were not measured. It is adolescent evidence and does not apply to adults.
+- id: plyo-cricket-ipp-review
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: A narrative review of injury prevention for adolescent pace bowlers proposes that exercise programmes include eccentric work for the back of the shoulder, the hip adductors and the hamstrings, dynamic neuromuscular control, and trunk-extensor endurance, alongside measured bowling load and attention to bowling technique. Its own example programme was not yet tested.
+  grade: D
+  sources:
+    - forrest-2018-ipp-review
+  population: Adolescent cricket pace bowlers (a review of the literature).
+  caveats: A narrative review with an untested example programme, so it shows what the authors suggest and nothing about effect. It is used only as an outline of what a prevention programme might contain.
+- id: plyo-cricket-community-injuries
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: A systematic review of six studies of medically treated injuries in community cricket (five of hospital-treated injuries, one of insurance claims) found fractures the most frequent type in the hospital studies, being struck by the ball the most common mechanism, and the upper and lower limbs (age 15 and over) and the head (under 15) the most common regions. The insurance-claims study reported soft-tissue injuries as the main type. The authors recommended research into whether properly fitted, approved protective equipment is worn and effective.
+  grade: C
+  sources:
+    - mcleod-2020-medical-attention
+  population: Community-level cricketers of all ages in six studies, two at low risk of bias.
+  caveats: Hospital and claims data capture more serious, acute injuries and miss overuse problems. It covers all ages and gives no rates for adults. It does not show which equipment works.
+- id: plyo-cricket-community-evidence
+  kind: cricket
+  section: plyometrics
+  phase: cricket
+  statement: A systematic review of 13 studies of injury in community-level cricket found that most studies focused on junior levels or adolescent bowlers, that data completeness against the international consensus statement averaged 3.5 out of 10, that stress fractures were the most common injury in studies of bowlers, and that batting accounted for most injuries (7% to 49%) in studies that included all activities.
+  grade: C
+  sources:
+    - mcleod-2020-prospective
+  population: Community-level cricketers in 13 studies, mostly juniors and adolescent bowlers.
+  caveats: Eight of the 13 studies were rated unclear for likelihood of bias and one high. A wide range such as 7% to 49% shows how inconsistent the studies are. It describes the state of the research, so it supports a gap statement and does not give an injury rate for adult club cricket.
+- id: plyo-cricket-plyometric-adults
+  kind: programming
+  section: plyometrics
+  phase: cricket
+  statement: In healthy adults, lower-body plyometric training lasting 4 to 12 weeks was associated with small-to-moderate improvements in jump height (standardised mean difference 0.45, 95% CI 0.16 to 0.75), sprint time (-0.59, 95% CI -1.01 to -0.17) and lower-body strength (0.33, 95% CI 0.03 to 0.63). The sprint and strength results varied between studies.
+  grade: A
+  sources:
+    - oxfeldt-2019-plyometric-adults
+  population: Healthy adults aged 18 or over, recreationally active or athletes (25 studies).
+  caveats: The outcomes were jumping, sprinting and strength tests, not injuries or cricket skills. The training in those studies was set by researchers for their own participants, so it is not a safe starting dose for a beginner. The sprint and strength results were not consistent between studies.
+- id: plyo-cricket-landing-instruction
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: In 31 studies with 974 adult athletes, technique training (instruction and feedback) and dynamic strengthening that included plyometrics were associated with a greater knee flexion angle when landing (g = 0.77, 95% CI 0.33 to 1.21). The authors note that even a single session of simple technique training, such as an instruction to land softly, was studied.
+  grade: C
+  sources:
+    - bathe-2023-landing
+  population: Adult athletes in 31 studies (974 participants), with amateur sport in mind.
+  caveats: The outcome is a biomechanical risk factor measured in a lab or with a scoring system, not injuries, so it is graded C. It mixes controlled and non-randomised designs. It does not show that injuries fall.
+- id: plyo-cricket-acl-programmes
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: In nine cluster-randomised trials with 14,394 participants, injury prevention programmes that included plyometric exercises were associated with a lower rate of anterior cruciate ligament injury than a usual warm-up (injury rate ratio 0.40, 95% CI 0.26 to 0.63). The association appeared stronger for non-contact ACL injuries (0.34, 95% CI 0.18 to 0.65), with sex subgroup estimates less precise.
+  grade: A
+  sources:
+    - alattar-2022-acl-plyometric
+  population: Sporting participants of any age, sex or level in nine trials. The abstract does not name the sports.
+  caveats: The programmes had several parts, so the effect cannot be put down to plyometrics alone. ACL injuries are uncommon, so event numbers are small. The abstract does not say whether cricket was included or how often ACL injury occurs in cricket, so it supports general knee education only.
+- id: plyo-cricket-strength-training-injuries
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: In six randomised trials (five different interventions, 7,738 participants aged 12 to 40), strength-training programmes were associated with fewer sports injuries, acute and overuse, than the control conditions (relative risk 0.34, 95% CI 0.24 to 0.48).
+  grade: A
+  sources:
+    - lauersen-2018-strength
+  population: Sporting participants aged 12 to 40 in six trials. The abstract does not name the sports.
+  caveats: Only six trials of five different kinds of programme, and adolescents were included. The authors' own wording ("superior", "dose-dependent") is stronger than this site uses. It does not show what a cricket-specific programme should contain or that it works for adult club players.
+- id: plyo-cricket-core-limits
+  kind: programming
+  section: plyometrics
+  phase: cricket
+  statement: In healthy trained people aged 16 to 44, core strength training had a large effect on trunk-strength measures (standardised mean difference 1.07) but only small-to-medium effects on fitness and athletic performance measures (0 to 0.71) compared with no training or regular training, and trunk strength itself was only weakly related to performance (r from -0.05 to 0.18). The authors concluded that trunk strength plays a minor role in fitness and athletic performance in trained people.
+  grade: A
+  sources:
+    - prieske-2015-trunk
+  population: Healthy trained individuals aged 16 to 44 (15 correlation studies and 16 intervention studies).
+  caveats: The quality of the training studies was low (median PEDro score 4). It includes some under-18s and many sports. It says nothing about injury. It is the reason this site does not present core work as a route to power.
+- id: plyo-cricket-medicine-ball-trial
+  kind: programming
+  section: plyometrics
+  phase: cricket
+  statement: In 28 competitive female handball players randomly assigned to 6 weeks of medicine-ball training three times a week or to a control group, throwing velocity rose by 14% in the training group and by 3.7% in the control group. Throwing precision did not differ, and dominant-arm concentric shoulder internal-rotation strength rose by 15% in the training group with no significant change in the control group. Both groups also did a supervised elastic-tube shoulder programme.
+  grade: B
+  sources:
+    - raeder-2015-medicine-ball
+  population: 28 competitive female handball players, mean age 20.8 (15 training, 13 control).
+  caveats: A short, supervised trial in women playing a different throwing sport. Whether medicine-ball work changes cricket throwing or batting has not been tested in what was found. It is the nearest tested example, used only as a reason to treat rotational throws as a hypothesis worth a cautious, gated trial.
+- id: plyo-cricket-shoulder-programmes
+  kind: safety
+  section: plyometrics
+  phase: cricket
+  statement: A systematic review of seven studies of shoulder injury prevention in overhead athletes found that two studies reported lower odds of shoulder injury after strengthening and flexibility exercises (odds ratios 0.72, 95% CI 0.52 to 0.98, and 0.22, 95% CI 0.06 to 0.75) and one reported a lower hazard after stretching the posterior capsule (0.36, 95% CI 0.13 to 0.95), but the authors concluded that no conclusions can be made about effectiveness, because only three studies were favourable and only one was at low risk of bias.
+  grade: Mixed
+  sources:
+    - wright-2021-shoulder
+  population: Overhead athletes in seven studies. The abstract does not name the sports, so it is not confirmed that cricket is among them.
+  caveats: Limited research, mixed results and mostly high risk of bias. It is the reason the shoulder part of the cricket injury page is a statement of uncertainty and not a recommendation.

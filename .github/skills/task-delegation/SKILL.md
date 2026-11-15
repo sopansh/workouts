@@ -33,7 +33,7 @@ Report: the standard report from protocols.md; unresolved items under Open and R
 
 ## Parallelism and ownership
 
-- Run tasks in parallel only when their file sets are disjoint. `sources.yml`, `pain-rules.yml`, `sections.yml`, `guides/groups.yml`, `guides/plans.yml`, `claims/*.yml` of other sections, `app.css`, `Base.astro` and `content.config.ts` are shared hotspots. Two coaches touching the same hotspot run one after the other, or one coach appends only its own entries and the executive merges.
+- Run tasks in parallel only when their file sets are disjoint. `sources.yml`, `pain-rules.yml`, `sections.yml`, `claims/*.yml` of other sections, `app.css`, `Base.astro` and `content.config.ts` are shared hotspots. Two coaches touching the same hotspot run one after the other, or one coach appends only its own entries and the executive merges.
 - The coaches share one working tree. Tell them which files are theirs. Never ask two coaches to edit one file at once.
 - Use background mode for independent long tasks, do your own independent work meanwhile, and read the result once when notified. Do not poll.
 

@@ -35,7 +35,7 @@
   level: advanced
   spinalLoad: low
   summary: A leg raise from a hang. The hip flexors do a lot of the work unless the pelvis is curled up.
-  setup: Hang from a bar with the shoulders engaged and the legs straight.
+  setup: Only use a bar that is fixed to a wall, rack or ceiling, or a doorway bar rated for your weight and fitted exactly to its instructions. Test it first with your feet on the floor. Hang from it with the shoulders engaged and the legs straight.
   steps:
     - Raise the knees or straight legs, curling the pelvis up at the top.
     - Lower slowly without swinging.
@@ -45,7 +45,7 @@
   contraindications:
     - Shoulder, elbow or grip problems in the hanging position
     - Back pain provoked by hip-flexor loading
-  regression: Bent-knee raises or a captain's chair.
+  regression: Bent-knee raises or a captain's chair. This exercise needs a secure bar; with none, the dead bug and the side plank from the knees in the beginner section are floor alternatives.
   progression: Straight legs or toes to bar.
   painRule: lower-back
   variations: []
@@ -119,15 +119,23 @@
   steps:
     - Lift the hips until the body forms a straight line from the head to the feet.
     - Hold, breathing normally, then lower and switch sides.
+  cues:
+    - Ribs stacked, hips forward
+    - Shoulder stays above the elbow
   mistakes:
-    - Letting the hips sag
-    - Rotating the trunk forwards or backwards
+    - Hips sagging
+    - Hips rolling backwards
+    - Shoulder drifting ahead of the elbow
+    - Holding the breath
   contraindications:
-    - Shoulder or hip pain in the position
-  regression: A bent-knee side plank.
-  progression: A longer hold or a leg lift.
+    - Shoulder or lower-back pain in the position, or a shoulder or back condition not yet assessed
+    - Hip pain in the position
+  regression: A bent-knee side plank. If 20 seconds is too long, hold for as long as you can keep the line.
+  progression: Add about 5 seconds a week, up to 45 seconds on each side, then a leg lift.
   painRule: lower-back
+  alsoPainRules:
+    - shoulder
   variations: []
-  dose: 2 to 3 holds of 20 to 45 seconds each side. See the core guide for more.
+  dose: "2 to 3 holds of 20 seconds, building to 45 seconds each side. The time is a progression cue, not a safety limit: the pain rule applies whatever the clock says. See the core guide for more."
   alternatives: [pallof-press, bird-dog]
   status: draft

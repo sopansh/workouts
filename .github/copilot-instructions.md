@@ -20,7 +20,7 @@ Static training-guide site at workouts.theroningamer.com. **Read `CONTEXT.md` (a
 ## Verify before pushing (pushing `main` deploys to production)
 - `npm run check` (content, standards, agent setup and tests; the content and standards checks also run before `npm run build`); add `-- --report` to `check:content` after changing `programs.yml`.
 - `npm run build && npm run preview` and open `/home/` (the local server has no redirects). Don't build while a browser test is reading `dist/`.
-- After a refactor, compare the new build's page text with the previous commit's (git worktree) and crawl `dist/` for broken links and anchors.
+- After a refactor, compare the new build's page text with the previous commit's (git worktree). `npm run check:links` (after a build) crawls `dist/` for broken links and anchors.
 - `npm run test:e2e` (Playwright, builds first): every page loads without console errors or horizontal scroll, home -> a section -> back works, theme persists, `/core/` 3D renders and animates. Add a spec in `tests/e2e/` for any new interactive feature.
 
 ## Avoid

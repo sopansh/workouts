@@ -8,7 +8,7 @@
   level: intermediate
   spinalLoad: low
   summary: The heaviest chest press most lifters can load, and a benchmark of upper-body strength.
-  setup: Lie with eyes under the bar, feet flat and planted under the knees. Squeeze the shoulder blades back and down and hold them there. Take a grip about 1.5 times shoulder width so the forearms are vertical at the bottom. Unrack with straight arms over the shoulders.
+  setup: Lie with eyes under the bar, feet flat and planted under the knees. Squeeze the shoulder blades back and down and hold them there. Take a grip about 1.5 times shoulder width so the forearms are vertical at the bottom. Unrack with straight arms over the shoulders. Only use a bench and rack that are stable, cannot slide or tip and are rated for your weight plus the bar. Press down on them with your hands first. Use the rack's safety arms or pins, set below the lowest bar position, as is usual practice.
   steps:
     - Take a breath and brace, then lower the bar under control to the lower chest or sternum over 2 to 3 seconds.
     - Touch or stop just above the chest with the forearms vertical and elbows about 45 to 70 degrees from the torso.
@@ -25,7 +25,7 @@
   contraindications:
     - Recent pectoralis major, biceps tendon or shoulder injury not cleared for loading
     - Painful shoulder at the bottom position
-  regression: Dumbbell bench press with a lighter load and a neutral grip, or a machine chest press.
+  regression: Dumbbell bench press with a lighter load and a neutral grip, or a machine chest press. With no stable bench or rack, a push-up on the floor needs no equipment.
   progression: Add load while keeping a pause on the chest, then use tempo or a longer pause for difficulty.
   painRule: shoulder
   variations:
@@ -53,7 +53,7 @@
   level: intermediate
   spinalLoad: low
   summary: A press with a deeper stretch and independent arms, kinder to the shoulders for many people.
-  setup: Sit with the dumbbells on the thighs, lie back and kick them up as you go. Set the shoulder blades back and down. Start with the dumbbells over the shoulders with a neutral or slightly turned-in grip.
+  setup: Sit with the dumbbells on the thighs, lie back and kick them up as you go. Set the shoulder blades back and down. Start with the dumbbells over the shoulders with a neutral or slightly turned-in grip. Only use a bench that is stable, cannot slide or tip and is rated for your weight plus the dumbbells. Press down on it with your hands before you lie back.
   steps:
     - Lower the dumbbells in an arc to the sides of the chest, elbows about 45 to 70 degrees from the torso.
     - Stop when the upper arms are level with the torso or when you feel a good chest stretch without shoulder pain.
@@ -68,7 +68,7 @@
   contraindications:
     - Recent pectoralis major or shoulder injury not cleared for loading
     - Painful shoulder at the stretch position
-  regression: A lighter pair with a neutral grip, a shorter range, or a machine chest press.
+  regression: A lighter pair with a neutral grip, a shorter range, or a machine chest press. With no stable bench, a push-up on the floor needs no equipment.
   progression: Heavier pairs, a slow lowering phase, or single-arm presses.
   painRule: shoulder
   variations:
@@ -93,7 +93,7 @@
   level: intermediate
   spinalLoad: low
   summary: A barbell press at a raised bench angle that adds front-shoulder work to the chest press.
-  setup: Set the bench at 30 degrees. Lie back with the shoulder blades set and the bar over the upper chest. Plant the feet and keep the lower back in a natural arch without lifting the hips.
+  setup: Set the bench at 30 degrees. Lie back with the shoulder blades set and the bar over the upper chest. Plant the feet and keep the lower back in a natural arch without lifting the hips. Only use a bench and rack that are stable, cannot slide or tip and are rated for your weight plus the bar. Press down on them with your hands first. Use the rack's safety arms or pins, set below the lowest bar position, as is usual practice.
   steps:
     - Lower the bar to the upper chest just below the collarbone with forearms vertical.
     - Pause briefly, then press back up in a straight line to arms-length.
@@ -103,7 +103,7 @@
   contraindications:
     - Recent pectoralis major, biceps tendon or shoulder injury not cleared for loading
     - Shoulder pain overhead or at the bottom position
-  regression: Incline dumbbell press with a lighter load.
+  regression: Incline dumbbell press with a lighter load. With no stable bench or rack, a push-up on the floor needs no equipment.
   progression: Add load, add a pause, or move to a deficit tempo.
   painRule: shoulder
   variations:
@@ -129,7 +129,7 @@
   level: intermediate
   spinalLoad: low
   summary: A raised-bench dumbbell press that allows a deep stretch and a natural arc.
-  setup: Set the bench at 30 degrees. Bring the dumbbells to the shoulders as you sit back, set the shoulder blades back and down, and start over the upper chest.
+  setup: Set the bench at 30 degrees. Bring the dumbbells to the shoulders as you sit back, set the shoulder blades back and down, and start over the upper chest. Only use a bench that is stable, cannot slide or tip and is rated for your weight plus the dumbbells. Press down on it with your hands before you sit back.
   steps:
     - Lower the dumbbells to the sides of the upper chest, forearms vertical, elbows about 45 to 70 degrees from the torso.
     - Press up and slightly together to arms-length.
@@ -139,7 +139,7 @@
   contraindications:
     - Recent pectoralis major or shoulder injury not cleared for loading
     - Painful shoulder at the stretch position
-  regression: Lighter dumbbells, a neutral grip, or the machine incline press.
+  regression: Lighter dumbbells, a neutral grip, or the machine incline press. With no stable bench, a push-up on the floor needs no equipment.
   progression: Heavier dumbbells and slower lowering.
   painRule: shoulder
   variations:
@@ -258,7 +258,7 @@
   level: intermediate
   spinalLoad: low
   summary: A free-weight fly that loads the chest hardest at the stretched position.
-  setup: Lie on a flat or slight-incline bench with the dumbbells over the chest, palms facing in and a soft bend at the elbows.
+  setup: Lie on a flat or slight-incline bench with the dumbbells over the chest, palms facing in and a soft bend at the elbows. Only use a bench that is stable, cannot slide or tip and is rated for your weight plus the dumbbells. Press down on it with your hands before you lie back.
   steps:
     - Lower the dumbbells in a wide arc until the elbows are about level with the torso.
     - Reverse the arc, bringing the dumbbells back together over the chest.
@@ -288,15 +288,20 @@
   summary: A closed-chain press with the trunk as a plank. Easy to add load or change leverage.
   setup: Hands slightly wider than the shoulders, body in one line from head to heels with the glutes and abdomen tight.
   steps:
-    - Lower the chest between the hands with the elbows about 45 degrees from the torso.
+    - Lower the chest between the hands to a hand-width above the floor, or as far as you can keep the body in one line, with the elbows about 45 degrees from the torso.
     - Press the floor away until the arms are straight, finishing with the shoulder blades spread.
+  cues:
+    - Body like a moving plank
+    - Elbows about 45 degrees
   mistakes:
-    - Sagging at the hips so the lower back arches
-    - Flaring the elbows wide to 90 degrees
+    - Hips sagging or piking
+    - Partial range
+    - Elbows flaring wide
+    - Head dropping forwards
   contraindications:
-    - Wrist pain in the extended position
+    - Pain on the back of the wrist when the hands bear weight
     - Painful shoulder at the bottom
-  regression: Hands on a raised surface, or a slower lowering phase.
+  regression: Hands on a wall, or on a raised surface only if it is fixed and cannot slide or tip (lean on it first), or a slower lowering phase. If the wrist aches, use the incline or wall version.
   progression: Feet elevated, weighted vest, deficit on handles, or slow tempo.
   painRule: shoulder
   variations:
@@ -304,7 +309,7 @@
       change: Hands on raised handles so the chest drops lower.
       emphasis: A larger stretch under load; the cost-benefit versus a normal range is not established here.
     - name: Feet elevated
-      change: Feet on a bench.
+      change: Feet on a bench or step that is stable and cannot slide or tip.
       emphasis: More load through the upper chest and shoulders.
     - name: Weighted
       change: Plate or vest on the back.
@@ -322,17 +327,17 @@
   level: advanced
   spinalLoad: low
   summary: A heavy bodyweight press with a forward lean that adds lower-chest and shoulder load.
-  setup: Take a firm grip on the bars with the arms straight and shoulders down. Lean the trunk forwards about 20 to 30 degrees and cross the ankles behind you.
+  setup: Only use bars that are fixed, cannot move or tip and are rated for your body weight, and test them with your feet on the floor first (lean and press down on them before you lift your feet). Take a firm grip on the bars with the arms straight and shoulders down. Lean the trunk forwards about 20 to 30 degrees and cross the ankles behind you.
   steps:
-    - Lower with control until the upper arms are about parallel to the floor, elbows pointing slightly out.
+    - Lower with control until the upper arms are at or just above parallel to the floor, elbows pointing slightly out, and stop sooner if the front of the shoulder aches.
     - Press up to straight arms, keeping the shoulders away from the ears.
   mistakes:
     - Dropping too deep so the shoulder rolls forwards under load
     - Swinging or kipping through the reps
   contraindications:
-    - Any shoulder pain, pec or biceps tendon injury not cleared for loading
+    - Any shoulder pain, including an ache at the front of the shoulder in the lowered position, or a pec or biceps tendon injury not cleared for loading
     - Anterior shoulder instability
-  regression: Machine-assisted dips or a push-up with a heavier plate.
+  regression: Machine-assisted dips, or a push-up on the floor with no equipment.
   progression: Add load on a belt and slow the tempo.
   painRule: shoulder
   variations:
@@ -360,9 +365,9 @@
     - Letting the lower back sag while reaching
     - Rushing the reach so there is no pause at the top
   contraindications:
-    - Wrist pain in the extended position
-  regression: Hands on a raised surface or wall.
-  progression: Slow the reach and hold for 2 seconds, or put the feet on a bench.
+    - Pain on the back of the wrist when the hands bear weight
+  regression: Hands on a wall, or on a raised surface only if it is fixed and cannot slide or tip (lean on it first). If the wrist aches, use the incline or wall version.
+  progression: Slow the reach and hold for 2 seconds, or put the feet on a bench that is stable and cannot slide or tip.
   painRule: shoulder
   variations: []
   dose: 2 sets of 10 to 15 reps as a warm-up or finisher

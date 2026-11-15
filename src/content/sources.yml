@@ -591,6 +591,7 @@
   venue: Frontiers in Physiology
   doi: 10.3389/fphys.2025.1683281
   section: plyometrics
+  phase: base
   verifiedOn: 2026-11-14
 - id: fu-2026-achilles
   type: meta-analysis
@@ -602,6 +603,7 @@
   venue: Frontiers in Sports and Active Living
   doi: 10.3389/fspor.2026.1782503
   section: plyometrics
+  phase: base
   verifiedOn: 2026-11-14
 - id: openstax-muscle-2022
   type: textbook
@@ -613,6 +615,7 @@
   note: Textbook description of muscle connective tissue; not a source for
     training outcomes.
   section: plyometrics
+  phase: base
 - id: nhs-back-pain
   type: guideline
   authors: NHS
@@ -622,6 +625,7 @@
   url: https://www.nhs.uk/conditions/back-pain/
   note: Page last reviewed 5 March 2026.
   section: plyometrics
+  phase: base
 - id: flanagan-2003
   type: cohort
   authors: Flanagan SP, Vanderburgh PM, Borchers SG, Kohstall CD
@@ -702,3 +706,594 @@
   doi: 10.1034/j.1600-0838.2003.02477.x
   section: calisthenics
   verifiedOn: 2026-11-14
+- id: feil-2023
+  type: meta-analysis
+  authors: Feil K, Fritsch J, Rhodes RE
+  year: 2023
+  title: "The intention-behaviour gap in physical activity: a systematic review
+    and meta-analysis of the action control framework"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2022-106640
+  note: Physical activity in general, not strength training.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: reljic-2019
+  type: meta-analysis
+  authors: Reljic D, Lampe D, Wolf F, Zopf Y, Herrmann HJ, Fischer J
+  year: 2019
+  title: "Prevalence and predictors of dropout from high-intensity interval
+    training in sedentary individuals: A meta-analysis"
+  venue: Scandinavian Journal of Medicine and Science in Sports
+  doi: 10.1111/sms.13452
+  note: Interval aerobic training in trials, not strength training. Cited as
+    indirect evidence only.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: martonovich-2025
+  type: cohort
+  authors: Martonovich N, Maman D, Mahamid A, Alfandari L, Behrbalk E
+  year: 2025
+  title: "The Wrist as a Weightbearing Joint in Adult Handstand Practitioners: A
+    Cross-Sectional Survey of Chronic Pain and Training-Related Factors"
+  venue: Journal of Functional Morphology and Kinesiology
+  doi: 10.3390/jfmk10040372
+  note: An online cross-sectional survey of 321 adults, self-selected through
+    social media.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: kox-2015
+  type: systematic-review
+  authors: Kox LS, Kuijer PP, Kerkhoffs GM, Maas M, Frings-Dresen MH
+  year: 2015
+  title: "Prevalence, incidence and risk factors for overuse injuries of the wrist
+    in young athletes: a systematic review"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2014-094492
+  note: Athletes under 18, mostly gymnasts.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: polovinets-2018
+  type: biomechanics
+  authors: Polovinets O, Wolf A, Wollstein R
+  year: 2018
+  title: Force transmission through the wrist during performance of push-ups on a
+    hyperextended and a neutral wrist
+  venue: Journal of Hand Therapy
+  doi: 10.1016/j.jht.2017.04.005
+  note: Laboratory study of 14 volunteers, no injury outcomes.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: polovinets-2026
+  type: biomechanics
+  authors: Polovinets O, Wolf A, Friedlander S, Wollstein R
+  year: 2026
+  title: "Push-Up Techniques Affect Elbows and Shoulders: How Should They Be Used?"
+  venue: Handchirurgie Mikrochirurgie Plastische Chirurgie
+  doi: 10.1055/a-2862-1658
+  note: Laboratory study of 14 healthy right-handed men, no injury outcomes.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: majima-2008
+  type: biomechanics
+  authors: Majima M, Horii E, Matsuki H, Hirata H, Genda E
+  year: 2008
+  title: Load Transmission Through the Wrist in the Extended Position
+  venue: Journal of Hand Surgery
+  doi: 10.1016/j.jhsa.2007.10.018
+  note: A computer model built from CT scans of 7 wrists.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: benjamin-2017
+  type: review
+  authors: Benjamin HJ, Engel SC, Chudzik D
+  year: 2017
+  title: "Wrist Pain in Gymnasts: A Review of Common Overuse Wrist Pathology in
+    the Gymnastics Athlete"
+  venue: Current Sports Medicine Reports
+  doi: 10.1249/jsr.0000000000000398
+  note: A narrative expert review in gymnasts, not a trial.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: heck-2021
+  type: cohort
+  authors: Heck K, Zeppieri G, Bruner M, Moser M, Farmer KW, Pozzi F
+  year: 2021
+  title: Preseason Upper Extremity Range of Motion and Strength in Relation to
+    In-Season Injuries in NCAA Division I Gymnasts
+  venue: Orthopaedic Journal of Sports Medicine
+  doi: 10.1177/2325967120977090
+  note: 15 female collegiate gymnasts over four seasons.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: malir-2024
+  type: cohort
+  authors: Malíř R, Chrudimský J, Provazník A, Třebický V
+  year: 2024
+  title: Are the shoulder joint function, stability, and mobility tests predictive
+    of handstand execution?
+  venue: PLOS ONE
+  doi: 10.1371/journal.pone.0302922
+  note: 111 novice college athletes. Outcome was handstand quality, not injury.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: miyaki-2020
+  type: cohort
+  authors: Miyaki T, Kida T, Oosuka S, Fukumoto M, Sato T, Nakajima M, Ikeda T
+  year: 2020
+  title: "Valsalva retinopathy induced by handstand: a case report"
+  venue: BMC Ophthalmology
+  doi: 10.1186/s12886-020-01638-z
+  note: A case report of one 15-year-old. It cannot show how common the problem is.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: johnson-2009
+  type: cohort
+  authors: Johnson D, Lynch J, Nash K, Cygan J, Mayhew JL
+  year: 2009
+  title: Relationship of Lat-Pull Repetitions and Pull-Ups to Maximal Lat-Pull and
+    Pull-Up Strength in Men and Women
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0b013e3181a2d7f5
+  note: Cross-sectional study of 35 college men and 23 college women.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: mersmann-2017
+  type: review
+  authors: Mersmann F, Bohm S, Arampatzis A
+  year: 2017
+  title: "Imbalances in the Development of Muscle and Tendon as Risk Factor for
+    Tendinopathies in Youth Athletes: A Review of Current Evidence and Concepts
+    of Prevention"
+  venue: Frontiers in Physiology
+  doi: 10.3389/fphys.2017.00987
+  note: A narrative review. Knee and Achilles tendons in young athletes.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+- id: epro-2019
+  type: biomechanics
+  authors: Epro G, Hunter S, König M, Schade F, Karamanidis K
+  year: 2019
+  title: "Evidence of a Uniform Muscle-Tendon Unit Adaptation in Healthy Elite
+    Track and Field Jumpers: A Cross Sectional Investigation"
+  venue: Frontiers in Physiology
+  doi: 10.3389/fphys.2019.00574
+  note: 67 elite jumpers, calf muscle and Achilles tendon only.
+  section: calisthenics
+  verifiedOn: 2026-11-15
+# Cricket power, rotation and injury-prevention sources (plyometrics section, phase cricket). Abstracts read on 2026-11-15; no full text.
+- id: orchard-2002-injuries
+  type: cohort
+  authors: Orchard J, James T, Alcott E, Carter S, Farhart P
+  year: 2002
+  title: Injuries in Australian cricket at first class level 1995/1996 to 2000/2001
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsm.36.4.270
+  note: Australian state and national teams. Three seasons surveyed prospectively
+    and three retrospectively. An injury generally had to cost playing time in a
+    major match.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: alway-2019-lumbar-stress
+  type: cohort
+  authors: Alway P, Brooke-Wavell K, Langley B, King M, Peirce N
+  year: 2019
+  title: Incidence and prevalence of lumbar stress fracture in English County
+    Cricket fast bowlers, association with bowling workload and seasonal
+    variation
+  venue: BMJ Open Sport & Exercise Medicine
+  doi: 10.1136/bmjsem-2019-000529
+  note: 368 professional English county fast bowlers, 2010 to 2016. Case and
+    non-injured control comparison.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: freeston-2016-throwing
+  type: cohort
+  authors: Freeston JL, Carter T, Whitaker G, Nicholls O, Rooney KB
+  year: 2016
+  title: Strength and Power Correlates of Throwing Velocity on Subelite Male
+    Cricket Players
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000001246
+  note: Cross-sectional study of 17 sub-elite male cricketers (mean age 21). Typed
+    as a cohort because the registry has no cross-sectional type.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: krishna-2019-plyometric-bowlers
+  type: rct
+  authors: Krishna SA, Alwar TK, Sibeko S, Ranjit S, Sivaraman A
+  year: 2019
+  title: Plyometric-based Training for Isokinetic Knee Strength and Jump
+    Performance in Cricket Fast Bowlers
+  venue: International Journal of Sports Medicine
+  doi: 10.1055/a-0970-5564
+  note: 42 professional fast bowlers, randomised, 12 weeks. Outcomes were strength
+    and jump tests, not injuries.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: forrest-2020-ipp-risk-factors
+  type: rct
+  authors: Forrest MRL, Hebert JJ, Scott BR, Dempsey AR
+  year: 2020
+  title: "Exercise-based injury prevention for community-level adolescent cricket
+    pace bowlers: A cluster-randomised controlled trial"
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/j.jsams.2019.12.009
+  note: 65 male pace bowlers aged 14 to 17 in eight community cricket
+    organisations, 8 weeks. Adolescents, so not adult evidence.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: forrest-2020-ipp-kinematics
+  type: rct
+  authors: Forrest MRL, Hebert JJ, Scott BR, Dempsey AR
+  year: 2020
+  title: "Modifying bowling kinematics in cricket pace bowlers with exercise-based
+    injury prevention: A cluster-randomised controlled trial"
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/j.jsams.2020.06.014
+  note: Same trial as the risk-factor paper, bowling kinematics outcomes.
+    Adolescents, so not adult evidence.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: forrest-2018-ipp-review
+  type: review
+  authors: Forrest MRL, Scott BR, Hebert JJ, Dempsey AR
+  year: 2018
+  title: Injury Prevention Strategies for Adolescent Cricket Pace Bowlers
+  venue: Sports Medicine
+  doi: 10.1007/s40279-018-0981-6
+  note: Narrative review with an example programme that its authors say is untested.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: mcleod-2020-medical-attention
+  type: systematic-review
+  authors: McLeod G, O'Connor S, Morgan D, Kountouris A, Finch CF, Fortington LV
+  year: 2020
+  title: "Medical-attention injuries in community cricket: a systematic review"
+  venue: BMJ Open Sport & Exercise Medicine
+  doi: 10.1136/bmjsem-2019-000670
+  note: Six studies of hospital-treated or insurance-claim injuries in community
+    cricketers of all ages.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: mcleod-2020-prospective
+  type: systematic-review
+  authors: McLeod G, O'Connor S, Morgan D, Kountouris A, Finch CF, Fortington LV
+  year: 2020
+  title: "Prospective reporting of injury in community-level cricket: A systematic
+    review to identify research priorities"
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/j.jsams.2020.04.023
+  note: Thirteen studies of community cricketers. Mostly junior levels or
+    adolescent bowlers.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: nealon-2018-side-strain
+  type: cohort
+  authors: Nealon AR, Cook JL
+  year: 2018
+  title: Trunk Side Strain Has a High Incidence in First-Class Cricket Fast
+    Bowlers in Australia and England
+  venue: Clinical Journal of Sport Medicine
+  doi: 10.1097/jsm.0000000000000450
+  note: Retrospective case series of 207 professionally contracted male fast
+    bowlers aged 18 or over.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: oxfeldt-2019-plyometric-adults
+  type: meta-analysis
+  authors: Oxfeldt M, Overgaard K, Hvid LG, Dalgas U
+  year: 2019
+  title: "Effects of plyometric training on jumping, sprint performance, and lower
+    body muscle strength in healthy adults: A systematic review and
+    meta-analyses"
+  venue: Scandinavian Journal of Medicine & Science in Sports
+  doi: 10.1111/sms.13487
+  note: 25 studies of healthy adults aged 18 and over, recreationally active or
+    athletes.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: bathe-2023-landing
+  type: meta-analysis
+  authors: Bathe C, Fennen L, Heering T, Greif A, Dubbeldam R
+  year: 2023
+  title: "Training interventions to reduce the risk of injury to the lower
+    extremity joints during landing movements in adult athletes: a systematic
+    review and meta-analysis"
+  venue: BMJ Open Sport & Exercise Medicine
+  doi: 10.1136/bmjsem-2022-001508
+  note: 31 studies, 974 adult athletes. The outcome is a landing-mechanics risk
+    factor, not injuries.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: prieske-2015-trunk
+  type: meta-analysis
+  authors: Prieske O, Muehlbauer T, Granacher U
+  year: 2015
+  title: "The Role of Trunk Muscle Strength for Physical Fitness and Athletic
+    Performance in Trained Individuals: A Systematic Review and Meta-Analysis"
+  venue: Sports Medicine
+  doi: 10.1007/s40279-015-0426-4
+  note: Healthy trained people aged 16 to 44. Published online 2015, in print
+    2016; the registry holds the Crossref issued year.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: raeder-2015-medicine-ball
+  type: rct
+  authors: Raeder C, Fernandez-Fernandez J, Ferrauti A
+  year: 2015
+  title: Effects of Six Weeks of Medicine Ball Training on Throwing Velocity,
+    Throwing Precision, and Isokinetic Strength of Shoulder Rotators in Female
+    Handball Players
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000000847
+  note: 28 competitive female handball players, 6 weeks. Handball, not cricket.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: wright-2021-shoulder
+  type: systematic-review
+  authors: Wright AA, Ness BM, Donaldson M, Hegedus EJ, Salamh P, Cleland JA
+  year: 2021
+  title: "Effectiveness of shoulder injury prevention programs in an overhead
+    athletic population: A systematic review"
+  venue: Physical Therapy in Sport
+  doi: 10.1016/j.ptsp.2021.09.004
+  note: Seven studies in overhead athletes. The abstract does not list the sports.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: lauersen-2018-strength
+  type: meta-analysis
+  authors: Lauersen JB, Andersen TE, Andersen LB
+  year: 2018
+  title: "Strength training as superior, dose-dependent and safe prevention of
+    acute and overuse sports injuries: a systematic review, qualitative analysis
+    and meta-analysis"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2018-099078
+  note: Six randomised trials, 7,738 participants aged 12 to 40. The title's
+    wording is the authors' own and is stronger than this site uses.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+- id: alattar-2022-acl-plyometric
+  type: meta-analysis
+  authors: Al Attar WSA, Bakhsh JM, Khaledi EH, Ghulam H, Sanders RH
+  year: 2022
+  title: "Injury prevention programs that include plyometric exercises reduce the
+    incidence of anterior cruciate ligament injury: a systematic review of
+    cluster randomised trials"
+  venue: Journal of Physiotherapy
+  doi: 10.1016/j.jphys.2022.09.001
+  note: Nine cluster-randomised trials, 14,394 participants. The abstract does not
+    name the sports. The title's wording is the authors' own.
+  section: plyometrics
+  phase: cricket
+  verifiedOn: 2026-11-15
+# Cricket strength, trunk, season and hamstring sources (strength section). Abstracts read on 2026-11-15; no full text.
+- id: maker-2021-combined-training
+  type: cohort
+  authors: Maker R, Taliep MS
+  year: 2021
+  title: The effects of a four weeks combined resistance training programme on
+    cricket bowling velocity
+  venue: South African Journal of Sports Medicine
+  doi: 10.17159/2078-516x/2021/v33i1a9002
+  note: 18 adult male club pace bowlers, 9 per group, 4 weeks. The abstract says
+    the bowlers were allocated, not that they were randomised, so it is typed as
+    a cohort (a two-group comparison) and not as a randomised trial.
+  verifiedOn: 2026-11-15
+- id: callaghan-2021-strength-bowlers
+  type: cohort
+  authors: Callaghan SJ, Lockie RG, Tallent J, Chipchase RF, Andrews WA, Nimphius S
+  year: 2021
+  title: The effects of strength training upon front foot contact ground reaction
+    forces and ball release speed among high-level cricket pace bowlers
+  venue: Sports Biomechanics
+  doi: 10.1080/14763141.2021.1942540
+  note: Ten elite-academy pace bowlers, 8 weeks, pre and post with no control
+    group. Crossref issued year 2021, print year 2024. Typed as a cohort because
+    there is no comparison group.
+  verifiedOn: 2026-11-15
+- id: wormgoor-2010-predictors
+  type: cross-sectional
+  authors: Wormgoor S, Harden L, Mckinon W
+  year: 2010
+  title: Anthropometric, biomechanical, and isokinetic strength predictors of ball
+    release speed in high-performance cricket fast bowlers
+  venue: Journal of Sports Sciences
+  doi: 10.1080/02640411003774537
+  note: 28 high-performance fast bowlers, mean age 22.0, correlations only.
+  verifiedOn: 2026-11-15
+- id: farhart-2023-intrinsic-lbp
+  type: systematic-review
+  authors: Farhart P, Beakley D, Diwan A, Duffield R, Rodriguez EP, Chamoli U,
+    Watsford M
+  year: 2023
+  title: "Intrinsic variables associated with low back pain and lumbar spine
+    injury in fast bowlers in cricket: a systematic review"
+  venue: BMC Sports Science, Medicine and Rehabilitation
+  doi: 10.1186/s13102-023-00732-1
+  note: 25 observational studies, none at low risk of bias.
+  verifiedOn: 2026-11-15
+- id: morton-2013-lbp
+  type: systematic-review
+  authors: Morton S, Barton CJ, Rice S, Morrissey D
+  year: 2013
+  title: "Risk factors and successful interventions for cricket-related low back
+    pain: a systematic review"
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2012-091782
+  note: 12 risk-factor studies and 5 low-quality intervention studies. Crossref
+    issued year 2013, print year 2014.
+  verifiedOn: 2026-11-15
+- id: perrett-2020-workload-lbp
+  type: systematic-review
+  authors: Perrett C, Lamb P, Bussey M
+  year: 2020
+  title: Is there an association between external workload and lower-back injuries
+    in cricket fast bowlers? A systematic review
+  venue: Physical Therapy in Sport
+  doi: 10.1016/j.ptsp.2019.11.007
+  note: Eight articles, low quality of evidence.
+  verifiedOn: 2026-11-15
+- id: orchard-2015-workload-tissue
+  type: cohort
+  authors: Orchard JW, Blanch P, Paoloni J, Kountouris A, Sims K, Orchard JJ, Brukner P
+  year: 2015
+  title: Cricket fast bowling workload patterns as risk factors for tendon,
+    muscle, bone and joint injuries
+  venue: British Journal of Sports Medicine
+  doi: 10.1136/bjsports-2014-093683
+  note: 235 fast bowlers, 14,600 player innings, 15 years. The abstract does not
+    state the level or country.
+  verifiedOn: 2026-11-15
+- id: orchard-2017-hamstring
+  type: cohort
+  authors: Orchard JW, Kountouris A, Sims K
+  year: 2017
+  title: Risk factors for hamstring injuries in Australian male professional
+    cricket players
+  venue: Journal of Sport and Health Science
+  doi: 10.1016/j.jshs.2017.05.004
+  note: 276 match time-loss hamstring injuries over 20 seasons at Australian state
+    or national level.
+  verifiedOn: 2026-11-15
+- id: chalker-2016-eccentric
+  type: cross-sectional
+  authors: Chalker WJ, Shield AJ, Opar DA, Keogh JW
+  year: 2016
+  title: Comparisons of eccentric knee flexor strength and asymmetries across
+    elite, sub-elite and school level cricket players
+  venue: PeerJ
+  doi: 10.7717/peerj.1594
+  note: 74 male cricketers at three levels, Nordic hamstring exercise on a device.
+  verifiedOn: 2026-11-15
+- id: chesterton-2021-nordic-uptake
+  type: cross-sectional
+  authors: Chesterton P, Tears C
+  year: 2021
+  title: The uptake of the Nordic hamstring exercise programme as an injury
+    prevention strategy in professional cricket in the United Kingdom and
+    barriers to implementation
+  venue: Physical Therapy in Sport
+  doi: 10.1016/j.ptsp.2021.03.013
+  note: Online survey of 15 professional clubs (75% response).
+  verifiedOn: 2026-11-15
+- id: taliep-2010-batting
+  type: cross-sectional
+  authors: Taliep MS, Prim SK, Gray J
+  year: 2010
+  title: Upper body muscle strength and batting performance in cricket batsmen
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0b013e3181e7261b
+  note: 18 provincial-level elite batsmen, correlations only.
+  verifiedOn: 2026-11-15
+- id: christie-2019-shuttles
+  type: rct
+  authors: Christie CJ, Sheppard B, Goble D, Pote L, Noakes TD
+  year: 2019
+  title: Strength and Sprint Time Changes in Response to Repeated Shuttles Between
+    the Wickets During Batting in Cricket
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000002585
+  note: 20 batters each did a high-volume and a moderate-volume running condition.
+    Acute effects, not training. The abstract does not state sex, age or level.
+  verifiedOn: 2026-11-15
+- id: scanlan-2016-batting-demands
+  type: review
+  authors: Scanlan AT, Berkelmans DM, Vickery WM, Kean CO
+  year: 2016
+  title: A Review of the Internal and External Physiological Demands Associated
+    With Batting in Cricket
+  venue: International Journal of Sports Physiology and Performance
+  doi: 10.1123/ijspp.2016-0169
+  note: Brief narrative review. The authors say few studies exist.
+  verifiedOn: 2026-11-15
+- id: weldon-2021-profiling
+  type: cross-sectional
+  authors: Weldon A, Clarke ND, Pote L, Bishop C
+  year: 2021
+  title: "Physical profiling of international cricket players: an investigation
+    between bowlers and batters"
+  venue: Biology of Sport
+  doi: 10.5114/biolsport.2021.100148
+  note: 19 international male cricketers (11 bowlers, 8 batters).
+  verifiedOn: 2026-11-15
+- id: carr-2017-season
+  type: cohort
+  authors: Carr C, McMahon JJ, Comfort P
+  year: 2017
+  title: Changes in Strength, Power, and Speed Across a Season in English County
+    Cricketers
+  venue: International Journal of Sports Physiology and Performance
+  doi: 10.1123/ijspp.2015-0524
+  note: 12 male English county cricketers, one season, no comparison group.
+  verifiedOn: 2026-11-15
+- id: herridge-2020-offseason
+  type: cohort
+  authors: Herridge R, Turner A, Bishop C
+  year: 2020
+  title: Monitoring Changes in Power, Speed, Agility, and Endurance in Elite
+    Cricketers During the Off-Season Period
+  venue: Journal of Strength and Conditioning Research
+  doi: 10.1519/jsc.0000000000002077
+  note: 14 elite male cricketers, tested at weeks 1 and 18 of a 20-week
+    off-season. Training content not described in the abstract.
+  verifiedOn: 2026-11-15
+- id: cuthbert-2021-frequency
+  type: meta-analysis
+  authors: Cuthbert M, Haff GG, Arent SM, Ripley N, McMahon JJ, Evans M, Comfort P
+  year: 2021
+  title: "Effects of Variations in Resistance Training Frequency on Strength
+    Development in Well-Trained Populations and Implications for In-Season
+    Athlete Training: A Systematic Review and Meta-analysis"
+  venue: Sports Medicine
+  doi: 10.1007/s40279-021-01460-7
+  note: Well-trained participants, 6 to 12 weeks. The abstract does not give the
+    number of studies or name the sports. Not cricket.
+  verifiedOn: 2026-11-15
+- id: goggins-2020-injuries
+  type: cohort
+  authors: Goggins L, Peirce N, Ranson C, McCaig S, Newman D, Langley B, Griffin
+    S, Young M, McKay C, Stokes K, Williams S
+  year: 2020
+  title: "Injuries in England and Wales elite men's domestic cricket: A nine
+    season review from 2010 to 2018"
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/j.jsams.2020.03.009
+  note: Prospective surveillance of elite men's domestic cricket, 2010 to 2018.
+  verifiedOn: 2026-11-15
+- id: dutton-2019-shoulder
+  type: cohort
+  authors: Dutton M, Tam N, Brown JC, Gray J
+  year: 2019
+  title: "The cricketer's shoulder: Not a classic throwing shoulder"
+  venue: Physical Therapy in Sport
+  doi: 10.1016/j.ptsp.2019.03.014
+  note: 105 elite South African cricketers, one season. The abstract does not
+    state sex.
+  verifiedOn: 2026-11-15
+- id: stuelcken-2008-shoulder
+  type: cross-sectional
+  authors: Stuelcken MC, Ginn KA, Sinclair PJ
+  year: 2008
+  title: Shoulder strength and range of motion in elite female cricket fast
+    bowlers with and without a history of shoulder pain
+  venue: Journal of Science and Medicine in Sport
+  doi: 10.1016/j.jsams.2007.06.007
+  note: 26 elite Australian female fast bowlers, 12 with a history of shoulder pain.
+  verifiedOn: 2026-11-15

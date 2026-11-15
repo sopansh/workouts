@@ -1,0 +1,217 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import SkillSafety from '../../../components/SkillSafety.astro';
+import StatusBadge from '../../../components/StatusBadge.astro';
+import EvidenceBadge from '../../../components/EvidenceBadge.astro';
+import ClaimList from '../../../components/ClaimList.astro';
+import { estimateMinutes, exercisesInGroup, loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const plan = data.plans.find(entry => entry.data.phase === 'foundations')!;
+const session = (id: string) => plan.data.sessions.find(entry => entry.id === id)!;
+const minutes = (id: string) => `${estimateMinutes(plan, session(id), 2)} minutes`;
+
+// A level written as "level 3, Pause push-up", read from the ladder so the names cannot drift.
+const level = (groupId: string, n: number) => {
+  const exercise = exercisesInGroup(data, groupId).find(entry => entry.data.level === n)!;
+  return `level ${n}, ${exercise.data.name}`;
+};
+
+// Every number in this table is a coaching convention. It says where to try first; the placement test decides.
+const placement = [
+  { ladder: 'Wrists and shoulders', can: 'Anything', first: 'Do all three preparation exercises from the first session.', basis: 'Convention. Strength elsewhere does not place you here.' },
+  { ladder: 'Push', can: '8 slow floor push-ups with 2 or 3 reps left', first: `Test at ${level('cal-push', 2)}, then ${level('cal-push', 3)}.`, basis: 'This is the ladder\u2019s own placement test.' },
+  { ladder: 'Push', can: 'Bench press for 8 clean reps with about your body mass or more', first: `Test at ${level('cal-push', 3)} first.`, basis: 'Convention. One small study of trained men links bench press and weighted push-up strength; it is not graded here (see the gaps below).' },
+  { ladder: 'Push', can: 'Any overhead pressing number', first: `No shortcut. Pass ${level('cal-push', 3)}, then test ${level('cal-push', 4)}.`, basis: 'Convention. No evidence found for overhead press and the pike push-up.' },
+  { ladder: 'Pull', can: 'Lat pulldown for 8 clean reps with about your body mass or more, or strict pull-ups already', first: `Test at ${level('cal-pull', 4)} (30 seconds), then ${level('cal-pull', 5)}, then ${level('cal-pull', 6)}. Needs a secure bar.`, basis: 'Convention, informed by one study of college students. The link was weak in women.' },
+  { ladder: 'Pull', can: 'Barbell or dumbbell rows', first: `Test at ${level('cal-pull', 3)}. Needs a very heavy table or a bar fixed to a rack.`, basis: 'Convention.' },
+  { ladder: 'Pull', can: 'No bar and no stable table', first: `Stop at ${level('cal-pull', 2)}.`, basis: 'The existing rule for the pull ladder.' },
+  { ladder: 'Squat', can: 'Back, front or goblet squat for 5 or more reps with about your body mass or more', first: `Skip level 1. Test at ${level('cal-squat', 2)}, then ${level('cal-squat', 3)}. Level 4 only by passing the test at level 3.`, basis: 'Convention. Single-leg depth tests balance and knee control, which a two-leg squat does not.' },
+  { ladder: 'Hip extension', can: 'Deadlift or hip thrust at any load', first: `Test at ${level('cal-bridge', 2)}, then ${level('cal-bridge', 3)}.`, basis: 'Convention.' },
+  { ladder: 'Hollow body', can: 'No lifting number places you', first: `Test at ${level('cal-hollow', 2)}, then ${level('cal-hollow', 3)}. If your lower back lifts off the floor at any level, drop one level.`, basis: 'Convention. Keeping the lower back down with the legs lifted is not the same task as bracing under a bar.' },
+  { ladder: 'Plank and side plank', can: 'No lifting number places you', first: 'Take the tests on the progression page.', basis: 'Convention. The muscle-activity study cited here found most plank-type holds below 45% of maximum.' },
+  { ladder: 'First skills', can: 'No number opens a skill', first: 'Every gate on the first skills page, with no exceptions.', basis: 'The existing rule: experienced lifters are not exempt.' },
+];
+
+const evidenceIds = ['cal-pulldown-pullup-strength', 'cal-trunk-activity', 'cal-wrist-loading', 'cal-wrist-pain-prevalence', 'cal-wrist-neutral', 'cal-wrist-prevention-gap', 'cal-handstand-screening', 'cal-handstand-eye', 'cal-tendon-timing', 'cal-soreness'];
+const gaps = [
+  'No study was found that links any lifting number to the hollow-body hold, plank, side plank, wrist loading, the hang or any of the four skills. For those, the page says to take the test and gives no number.',
+  'One small study of 11 trained men reports a strong link between bench press and weighted push-up strength. We have not read the full text to see how the push-up load was defined, so we do not grade it and the bench row above is a convention.',
+  'No trial or review of how to progress to a first pull-up was found, and none on assisted or slow-lowering methods. The pull ladder is a coaching convention.',
+  'No validated screen for handstand readiness was found, so the skill gates stay conventions. The one adult wrist survey was self-selected and cannot give a risk for beginners.',
+  'Every number in the placement table and the fast-start week is a coaching convention. None has a source.',
+  'This page has not been reviewed by a physiotherapist or a strength coach, and stays labelled draft until it is.',
+];
+---
+<Base section="calisthenics" title="If you already lift" description="A placement guide for people who already lift: which ladder level to test first, what lifters find hard, a fast-start week, and what not to skip. Coaching convention, draft.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'If you already lift' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">For people who already lift</p>
+    <h1>If you already lift</h1>
+    <p class="lede">Strength from lifting helps with some of the ladders and not with others. This page shows where to test first. It is placement by test, not by years of training, and every number on it is a coaching convention.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Placement by test</span>
+      <span class="badge">Numbers are conventions</span>
+      <StatusBadge status="draft" />
+    </div>
+  </section>
+
+  <BeginnerSafety />
+  <SkillSafety />
+
+  <section aria-labelledby="who">
+    <h2 id="who">Who this is for</h2>
+    <p class="prose">Adults who already train regularly, with weights or another sport, and want to start the ladders above level 1. You are defined by what you can do on the tests, not by how long you have trained. If you are unsure about any of the safety questions above, speak to a GP and complete the PAR-Q+ first.</p>
+    <p class="prose">Lifters are not exempt from the checks. A heavy barbell squat does not satisfy a hollow-body gate or a wrist gate.</p>
+  </section>
+
+  <section aria-labelledby="carries-over">
+    <h2 id="carries-over">What carries over, and what does not</h2>
+    <p class="prose">Only two links between lifting and the ladders have any data, and both are limited.</p>
+    <ul class="prose">
+      <li><b>Lat pulldown to pull-up.</b> In college students the heaviest pull-up and the heaviest pulldown were correlated in men, but not significantly in women. A pulldown number is a rough guide only. <a href="#claim-cal-pulldown-pullup-strength">See the claim and its limits</a>.</li>
+      <li><b>Bench press to push-up.</b> One small study of trained men found a strong link. It is not graded here because the full text has not been read (see the gaps below).</li>
+    </ul>
+    <p class="prose">Nothing was found that links a lifting number to the hollow-body hold, the planks, wrist loading, the hang or the skills. For those the answer is to take the test.</p>
+  </section>
+
+  <section aria-labelledby="placement">
+    <h2 id="placement">Where to test first</h2>
+    <p class="prose"><EvidenceBadge grade="D" short /> <b>Every number in this table is a coaching convention.</b> It has no source. It says where to <em>try</em> first. The <a href="/calisthenics/progression/#placement">placement test on the progression page</a> decides your level, and the test overrides the table.</p>
+    <div class="table-wrap" role="region" aria-label="Where to test first, by ladder" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Ladder</th><th scope="col">If you can already do this</th><th scope="col">Try first</th><th scope="col">Basis</th></tr></thead>
+        <tbody>
+          {placement.map(row => (
+            <tr>
+              <th scope="row">{row.ladder}</th>
+              <td>{row.can}</td>
+              <td>{row.first}</td>
+              <td>{row.basis}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">Being below these numbers does not mean you are behind: take the test and start where it says. The studies behind the pull and push rows were in students or trained men, so if you do not match the numbers, the test is still the answer.</p>
+  </section>
+
+  <section aria-labelledby="hard">
+    <h2 id="hard">What lifters usually find hard</h2>
+    <p class="prose">These are expectations from coaching practice, labelled as convention. Where a source bears on one, it is linked.</p>
+    <ol class="prose">
+      <li><b>Straight-arm weight on the hands.</b> Barbells, dumbbells and machines rarely load an extended wrist. <a href="#claim-cal-wrist-neutral">Laboratory work</a> shows load passes through the wrist differently in a neutral position, and <a href="#claim-cal-wrist-pain-prevalence">one survey</a> found chronic wrist pain common in adults who handstand.</li>
+      <li><b>The hollow shape.</b> Keeping the lower back down while the legs are lifted is a different task from bracing under a load. No source; the test is the check.</li>
+      <li><b>Hanging and grip.</b> Hang time may be limited by the grip and the shoulder blades before the back muscles. No source that we grade was found.</li>
+      <li><b>Single-leg balance and knee control at depth.</b> No source.</li>
+      <li><b>Holds and slow tempo.</b> There is no weight on the bar to add. Progress comes from leverage, then range, then tempo. No source.</li>
+      <li><b>Soreness from new slow work.</b> The <a href="#claim-cal-soreness">repeated-bout effect</a> protects against repeats of a movement you have already done. It is a reasoned inference, not a tested result in lifters, that it does not protect you against a movement or hold that is new to you.</li>
+      <li><b>Shoulder range overhead.</b> In the two studies found, shoulder range and stability tests did not predict handstand quality or injury (<a href="#claim-cal-handstand-screening">claim</a>), so the page offers no mobility pass mark. The existing gates stay.</li>
+      <li><b>Skipping gates because you are strong.</b> This is the main safety reason for the page.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="fast-start">
+    <h2 id="fast-start">A fast-start week</h2>
+    <p class="prose">After you have found your levels, this week replaces week 1 of the <a href="/calisthenics/weekly-plan/#foundations">foundations plan</a>. From week 2 you follow that plan at your placed levels, and Session C joins. It uses the plan's own sessions: no new sessions are added. The days are an example, and any days with a rest day between them work. Do the 8-minute preparation first every time, on the placement day too.</p>
+    <div class="table-wrap" role="region" aria-label="Fast-start week" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col">What</th><th scope="col">Notes</th></tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">Monday</th>
+            <td><b>Placement day.</b> After the preparation, do one set of each test on the <a href="/calisthenics/progression/#placement">progression page</a>, once, stopping with 2 or 3 reps left. Write down the level for each ladder.</td>
+            <td>It is a test, not a workout. Do not repeat sets to improve a result. Pain at any level: stop that ladder and use its pain rule. Without a bar or stable table, test the pull ladder to level 2 only.</td>
+          </tr>
+          <tr><th scope="row">Tuesday</th><td>Rest</td><td>A walk is fine.</td></tr>
+          <tr>
+            <th scope="row">Wednesday</th>
+            <td><a href="/calisthenics/weekly-plan/#session-foundations-A-title">Session A</a> at your placed levels: 2 sets, stopping with 3 or more reps left.</td>
+            <td>About {minutes('A')} at 2 sets, including the warm-up (a planning estimate, not timed).</td>
+          </tr>
+          <tr><th scope="row">Thursday</th><td>Rest</td><td></td></tr>
+          <tr>
+            <th scope="row">Friday</th>
+            <td><a href="/calisthenics/weekly-plan/#session-foundations-B-title">Session B</a> at your placed levels: 2 sets, stopping with 3 or more reps left.</td>
+            <td>About {minutes('B')} at 2 sets, including the warm-up. No bar? Pull stays at level 2.</td>
+          </tr>
+          <tr><th scope="row">Weekend</th><td>Rest</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="prose">
+      <li><b>Start joint preparation at its base level, whatever your strength,</b> every session, for all eight weeks.</li>
+      <li>This guide does not schedule any other training. As a cautious convention, do not add volume on top of the plan in weeks 1 and 2.</li>
+      <li>If you do not meet a gate, repeat the foundations and retest. That is a normal result, not a failure.</li>
+    </ul>
+    <p class="muted small">The structure of this week is a coaching convention. No study tested a placement week for people who lift.</p>
+  </section>
+
+  <section aria-labelledby="not-skip">
+    <h2 id="not-skip">What not to skip</h2>
+    <div class="table-wrap" role="region" aria-label="What not to skip" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Do not skip</th><th scope="col">Why</th><th scope="col">Honest evidence position</th></tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="/calisthenics/exercises/#group-cal-prep">Wrist rocks, scapular push-ups and wall slides</a>, before every session</th>
+            <td>Hand-bearing and straight-arm positions are new to most lifters.</td>
+            <td>Convention. In the one adult survey, warm-up routines, braces and grip devices were not linked to less chronic wrist pain, so we do not say preparation prevents wrist pain. We call it a gradual first exposure. <a href="#claim-cal-wrist-prevention-gap">The review that states the gap</a>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Gradual exposure and the eight-week block</th>
+            <td>Different tissues may adapt over different times.</td>
+            <td>Mixed: <a href="#claim-cal-tendon-timing">one review and one study disagree</a>, and both are about the knee and calf tendons. Nothing was found for adult wrist, elbow or shoulder tendons. Treat as convention.</td>
+          </tr>
+          <tr>
+            <th scope="row">The pain rules, <a href="/calisthenics/exercises/#pain-wrist">wrist</a> and <a href="/calisthenics/exercises/#pain-shoulder">shoulder</a></th>
+            <td>Pain on the back of the wrist when it bears weight is a reason to see a clinician. A neutral wrist moves some load to the shoulder.</td>
+            <td>Grade C, in patients or in the laboratory. <a href="#claim-cal-wrist-loading">See the claim</a>.</td>
+          </tr>
+          <tr>
+            <th scope="row">The gates</th>
+            <td>A heavy lift does not test straight-arm wrists, a hollow body or hanging tolerance.</td>
+            <td>Convention. No validated screen was found.</td>
+          </tr>
+          <tr>
+            <th scope="row">The no-kick-up rule</th>
+            <td>A fall or a loaded neck is the risk, and the wall handstand gate asks about eye and blood-pressure conditions.</td>
+            <td>Convention. <a href="#claim-cal-handstand-eye">One case report</a> of an eye injury after a short handstand explains the gate and gives no risk.</td>
+          </tr>
+          <tr>
+            <th scope="row">Rest days between sessions</th>
+            <td>Joints can load on more days than the muscles feel.</td>
+            <td>Convention, and the plan's own rule.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills">
+    <h2 id="skills">The skills stay behind their gates</h2>
+    <p class="prose">No lifting number opens the L-sit, wall handstand, planche lean or tuck front lever. Each opens only when you meet every gate on the <a href="/calisthenics/first-skills/">first skills page</a>; the gates are listed together on the <a href="/calisthenics/progression/#gates">progression page</a>. This guide teaches no kick-ups, no freestanding handstand and no full planche or front lever. Anything past the last level goes to a qualified coach.</p>
+  </section>
+
+  <section aria-labelledby="gaps">
+    <h2 id="gaps">Gaps and limits</h2>
+    <ul class="prose">{gaps.map(gap => <li>{gap}</li>)}</ul>
+  </section>
+
+  <section aria-labelledby="scope">
+    <h2 id="scope">What this page does not cover</h2>
+    <ul class="prose">
+      <li>It is not a personal prescription, and it does not tell you how to combine this guide with any other training programme.</li>
+      <li>It is for healthy adults. It does not cover under-18s, pregnancy and the first months after birth, older adults with frailty, or anyone with a heart, lung, joint or nerve condition or a current injury.</li>
+      <li>It makes no promise about results, weight or the shape of any body part.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">The evidence behind this page</h2>
+    <p class="prose">Each claim has a grade, its limits and its sources. The full list is on the <a href="/calisthenics/evidence/">evidence page</a>.</p>
+    <ClaimList claims={evidenceIds} claimById={data.claimById} sourceById={data.sourceById} sourcesHref="/calisthenics/evidence/" />
+  </section>
+</Base>

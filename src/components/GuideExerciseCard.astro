@@ -3,13 +3,12 @@ import { doseText, sentenceCase, type GuideExercise } from '../lib/guide';
 
 interface Props {
   exercise: GuideExercise;
-  painRuleTitle: string;
-  /** Pain rules are listed once at the foot of the page; cards link to them. */
-  painRuleHref: string;
+  /** One entry per pain rule the exercise points at. Rules are listed once at the foot of the page; cards link to them. */
+  painRules: { title: string; href: string }[];
   heading?: string;
 }
 
-const { exercise, painRuleTitle, painRuleHref, heading } = Astro.props;
+const { exercise, painRules, heading } = Astro.props;
 const e = exercise.data;
 const dose = doseText(exercise);
 ---
@@ -41,5 +40,5 @@ const dose = doseText(exercise);
       <p>{e.progression}</p>
     </div>
   </div>
-  <p class="small muted">Pain rule: <a href={painRuleHref}>{painRuleTitle}</a></p>
+  <p class="small muted">{painRules.length > 1 ? 'Pain rules' : 'Pain rule'}: {painRules.map((rule, i) => <>{i > 0 && ', '}<a href={rule.href}>{rule.title}</a></>)}</p>
 </article>

@@ -12,9 +12,9 @@ Related: [`CONTEXT.md`](../CONTEXT.md), [`hypertrophy-plan.md`](./hypertrophy-pl
 | Calisthenics reach | Foundations, **plus first skill steps** (L-sit, wall handstand work, planche lean, tuck front lever) |
 | Tile state | Added now as "Coming soon". Flip `status` to `live` (and set an `href`) in `src/content/sections.yml` when a section is ready |
 | Independence | Calisthenics is self-contained: it does not assume the person also does strength training, and it does not link into the strength programs as a prerequisite |
-| Audience | General adults. Not the owner's personal plan (unlike plyometrics). It must be safe for strangers, so the safety stance is stricter |
+| Audience | General adults. It must be safe for strangers, so the safety stance is stricter |
 
-## 2. Safety stance (stricter than the personal plans)
+## 2. Safety stance (strict, because the readers cannot be screened)
 
 The repo is public and these pages are for people we cannot see. The rules:
 

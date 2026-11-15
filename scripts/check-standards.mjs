@@ -99,6 +99,19 @@ else {
   for (const name of attr) if (!media.has(name)) fail(path.join(root, 'src/styles/tokens.css'), 0, `${name} differs between the two dark blocks`);
 }
 
+// Privacy: the repository is public, so personal or medical details about any real person must never appear in it.
+// This is a tripwire for the phrases that slipped in before, not a complete check: read new content for the rest.
+const PRIVACY = /\b(futon|tatami|toe wound|wound heals|current user|the user is recovering|recovering from a|my (back|knee|toe|injury)|owner'?s (back|injury|health|medical)|one experienced lifter)\b/i;
+const privacyFiles = [...files.filter(f => ['.astro', '.ts', '.js', '.yml', '.md', '.mjs'].includes(ext(f))), ...await walk(path.join(root, 'docs')), path.join(root, 'CONTEXT.md')]
+  .filter(f => !f.includes(`${path.sep}docs${path.sep}agents${path.sep}`) && !f.endsWith('check-standards.mjs'));
+for (const file of new Set(privacyFiles)) {
+  if (!['.astro', '.ts', '.js', '.yml', '.md', '.mjs'].includes(ext(file))) continue;
+  (await readFile(file, 'utf8')).split('\n').forEach((line, i) => {
+    const hit = line.match(PRIVACY);
+    if (hit) fail(file, i + 1, `possible personal detail "${hit[0]}": the repository is public (see the Hard rules)`);
+  });
+}
+
 if (errors.length) {
   for (const e of errors) console.error(`error: ${e}`);
   console.error(`\n${errors.length} standards error(s).`);

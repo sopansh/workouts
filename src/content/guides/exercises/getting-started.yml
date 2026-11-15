@@ -8,7 +8,7 @@
   equipment:
     - sturdy chair
   muscles: Quadriceps, glutes
-  setup: Use a chair without wheels, pushed against a wall so it cannot slide. Sit on the front half with your feet hip-width apart and your arms crossed on your chest.
+  setup: Use a chair without wheels, pushed against a wall so it cannot slide. Lean on it to check before you start. Sit on the front half with your feet hip-width apart and your arms crossed on your chest.
   steps:
     - Lean slightly forwards and stand up using your legs.
     - Stand fully upright.
@@ -35,7 +35,7 @@
   equipment:
     - sturdy chair
   muscles: Quadriceps, glutes
-  setup: Stand in front of a chair pushed against a wall, feet shoulder-width apart, toes turned out slightly.
+  setup: Stand in front of a chair without wheels, pushed against a wall so it cannot slide. Lean on it to check before you start. Stand with your feet shoulder-width apart, toes turned out slightly.
   steps:
     - Push your hips back and bend your knees until you lightly touch the seat.
     - "Do not sit and relax: touch, then drive up through the whole foot."
@@ -65,7 +65,7 @@
   muscles: Quadriceps, glutes, adductors
   setup: Stand with your feet shoulder-width apart and toes turned out slightly. Hold your arms out in front or crossed on your chest.
   steps:
-    - Push your hips back and down to a depth you can control, keeping your heels on the floor.
+    - Push your hips back and down to a depth you can control, heels down, back neutral.
     - Keep your chest tall and your knees tracking over your toes.
     - Stand up by pushing the floor away.
   cues:
@@ -96,16 +96,20 @@
     - Bend your elbows to bring your chest towards the wall, with the elbows about 45 degrees from your sides.
     - Push back to the start.
   cues:
-    - Straight line, ribs down
+    - Body like a moving plank
+    - Elbows about 45 degrees
   mistakes:
-    - sagging at the hips
-    - flaring the elbows straight out
-    - shrugging the shoulders
+    - hips sagging or piking
+    - partial range
+    - elbows flaring wide
+    - head dropping forwards
   contraindications:
     - shoulder, elbow or wrist pain that is not yet assessed
   regression: Stand a little closer to the wall.
   progression: Move on to the incline push-up when 12 slow reps feel easy.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: incline-push-up
   order: 5
@@ -121,16 +125,21 @@
     - Lower your chest towards the edge of the surface with your elbows about 45 degrees from your sides.
     - Push back to the start without your hips sagging.
   cues:
-    - Squeeze the glutes to keep the line
+    - Body like a moving plank
+    - Elbows about 45 degrees
   mistakes:
-    - using a surface that can slide or tip
-    - sagging at the hips
+    - hips sagging or piking
+    - partial range
+    - elbows flaring wide
     - head dropping forwards
+    - using a surface that can slide or tip
   contraindications:
     - shoulder, elbow or wrist pain that is not yet assessed
   regression: Use a higher surface, or go back to the wall push-up.
   progression: Use a lower surface. Move on to the knee push-up when 12 slow reps feel easy.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: knee-push-up
   order: 6
@@ -146,17 +155,22 @@
     - Lower your chest towards the floor with your elbows about 45 degrees from your sides.
     - Push back up, keeping the straight line from knees to head.
   cues:
-    - Straight line from knees to head
+    - Body like a moving plank
+    - Elbows about 45 degrees
   mistakes:
-    - hips piking up or sagging
-    - only moving the head
+    - hips sagging or piking
+    - partial range
     - elbows flaring wide
+    - head dropping forwards
   contraindications:
     - shoulder, elbow or wrist pain that is not yet assessed
+    - pain on the back of the wrist when the hands bear weight
     - knee pain when kneeling
   regression: Go back to the incline push-up.
   progression: Move on to the full push-up when 12 slow reps feel easy.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: push-up
   order: 7
@@ -169,20 +183,24 @@
   muscles: Chest, front of the shoulders, back of the arms, trunk
   setup: Hands under your shoulders and a little wider, feet together or hip-width apart, body in one straight line from head to heels.
   steps:
-    - Lower your chest to the floor with your elbows about 45 degrees from your sides.
+    - Lower your chest to a hand-width above the floor, or as far as you can keep the body in one line, with your elbows about 45 degrees from your sides.
     - Push the floor away until your arms are straight.
   cues:
-    - Brace the trunk as if bracing for a light punch
+    - Body like a moving plank
+    - Elbows about 45 degrees
   mistakes:
-    - hips sagging
+    - hips sagging or piking
     - partial range
     - elbows flaring wide
     - head dropping forwards
   contraindications:
     - shoulder, elbow or wrist pain that is not yet assessed
-  regression: Go back to the knee push-up.
+    - pain on the back of the wrist when the hands bear weight
+  regression: Go back to the knee push-up. If your wrist aches, use the incline push-up or the wall push-up instead.
   progression: Slow the lowering to 3 seconds, or pause for 1 second at the bottom. This plan stops at the full push-up.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: glute-bridge
   order: 8
@@ -193,7 +211,7 @@
   equipment:
     - mat or soft floor
   muscles: Glutes, back of the thighs
-  setup: Lie on your back with your knees bent and your feet flat on the floor, hip-width apart, arms by your sides.
+  setup: Lie on your back with your knees bent and your feet flat on the floor, hip-width apart, with your heels about 25 to 30 centimetres from your hips. This is a practical starting point, not a sourced figure. If your hamstrings cramp, move your feet closer. Arms by your sides.
   steps:
     - Press through your heels and lift your hips until your shoulders, hips and knees are in a line.
     - Pause for 1 second without arching your lower back.
@@ -207,7 +225,8 @@
     - rushing the lowering
   contraindications:
     - back pain that is not yet assessed
-    - repeated hamstring cramping (shorten the range)
+    - acute hamstring pain
+    - repeated hamstring cramping
   regression: Lift a smaller height.
   progression: Move on to the marching bridge when 12 reps with a pause feel easy.
   painRule: lower-back
@@ -436,7 +455,8 @@
   muscles: Abdominals, hip flexors
   setup: Lie on your back with your hips and knees at 90 degrees and your arms pointing at the ceiling.
   steps:
-    - Keeping your lower back comfortable on the floor, slowly lower one arm overhead and the opposite leg towards the floor.
+    - Press your lower back lightly towards the floor. If that hurts, keep it comfortable and reduce the range.
+    - Slowly lower one arm overhead and the opposite leg towards the floor.
     - Return to the start and swap sides.
   cues:
     - Move as slowly as you can control
@@ -446,8 +466,8 @@
     - holding the breath
   contraindications:
     - back pain that is not yet assessed
-  regression: Move only the legs, tapping a heel to the floor.
-  progression: Extend the arm and leg further, or slow each rep to 5 seconds. This plan stops there.
+  regression: Move only the legs, with the arms held up, tapping a heel to the floor.
+  progression: Slow each rep to 5 seconds, or extend the arm and leg further. This plan stops there.
   painRule: lower-back
   status: draft
 - id: side-plank-knees
@@ -464,17 +484,22 @@
     - Lift your hips until your shoulder, hip and knees form one line.
     - Hold, breathing steadily, then lower.
     - Do all holds on one side, then swap.
+    - Start at 20 seconds on each side and add about 5 seconds a week. The time is a progression cue, not a safety limit, so the pain rule applies whatever the clock says.
   cues:
-    - Ribs stacked, hips up
+    - Ribs stacked, hips forward
+    - Shoulder stays above the elbow
   mistakes:
     - hips sagging
-    - rolling the hips back
+    - hips rolling backwards
+    - shoulder drifting ahead of the elbow
     - holding the breath
   contraindications:
-    - shoulder or back pain that is not yet assessed
-  regression: Shorten the hold or lift the hips only a little.
-  progression: Build to 30 seconds. This plan stops there.
+    - shoulder or lower-back pain in the position, or a shoulder or back condition not yet assessed
+  regression: Hold for less than 20 seconds, for as long as you can keep the line, or lift the hips only a little.
+  progression: Add about 5 seconds a week. At 30 seconds on each side, with steady breathing, you have met the move-on point. This plan stops there.
   painRule: shoulder
+  alsoPainRules:
+    - lower-back
   status: draft
 - id: bird-dog
   order: 19
@@ -489,7 +514,7 @@
   steps:
     - Brace your trunk and keep your back flat.
     - Reach one arm forward and the opposite leg straight back to hip height.
-    - Hold for 2 to 5 seconds, return with control, then swap.
+    - Hold for 2 to 5 seconds, building to 5 seconds, return with control, then swap.
   cues:
     - Imagine a glass of water on your back
   mistakes:

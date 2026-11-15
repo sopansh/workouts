@@ -1,0 +1,90 @@
+# Plans for the plyometrics section. Guide ids are global across sections.
+- id: two-session-week
+  section: plyometrics
+  phase: base
+  name: Two sessions a week, repeated
+  warmup:
+    text: About 8 minutes. Easy and unhurried.
+    items:
+      - exercise: march-ankle-circles
+      - exercise: squat-to-calf-raise
+  sessions:
+    - id: A
+      title: "Session A: vertical power"
+      intro: The main vertical jump, plus the shared ankle, calf and balance work.
+      items:
+        - exercise: ankle-hop
+        - exercise: vertical-jump-stick
+        - exercise: standing-calf-raise
+        - exercise: bent-knee-calf-raise
+        - exercise: single-leg-balance
+    - id: B
+      title: "Session B: lateral control"
+      intro: The cone-marked side-to-side hop, plus the same shared ankle, calf and balance work.
+      items:
+        - exercise: ankle-hop
+        - exercise: lateral-hop
+        - exercise: standing-calf-raise
+        - exercise: bent-knee-calf-raise
+        - exercise: single-leg-balance
+  weeks:
+    - label: Every week
+      days:
+        Wednesday: A
+        Friday: B
+      note: "An example: any two days at least 48 hours apart work. Wednesday and Friday are rest days in the paired strength split."
+  status: draft
+# Cricket phase. A cricket selection for the same two weekly impact slots as the base plan, not extra sessions.
+# Ladders are done at the level reached; the base exercises are linked, not copied. Contacts never fall from one block to the next.
+- id: cricket-two-session-week
+  section: plyometrics
+  phase: cricket
+  name: Cricket power, two sessions a week, repeated
+  warmup:
+    text: About 8 minutes, easy and unhurried. If anything hurts during the warm-up, do not continue to the working sets.
+    items:
+      - exercise: march-ankle-circles
+      - exercise: squat-to-calf-raise
+  sessions:
+    - id: A
+      title: "Session A: land and hop"
+      intro: Landing, then small single-leg hops that end in a held landing, then the shared calf and balance work. Do the level you have reached on each ladder, not the highest.
+      items:
+        - group: cricket-landing
+          note: Level 1 and 2 are holds with no impact. Levels 3 and 4 need a solid step and count as landings.
+        - group: cricket-hops
+          note: Reps are landings in total, half on each leg.
+        - exercise: standing-calf-raise
+        - exercise: bent-knee-calf-raise
+        - exercise: single-leg-balance
+    - id: B
+      title: "Session B: slow down, stop and turn"
+      intro: Slowing down and stopping, then the hip-led turns and light-ball throws, then the shared calf and balance work. Start with the anti-rotation block from the rotation page, at the step you have reached.
+      items:
+        - group: cricket-decelerate
+          note: Each stop counts as one landing.
+        - group: cricket-rotation
+          note: Only after the gates on the rotation page. Throws are not foot contacts.
+        - exercise: standing-calf-raise
+        - exercise: bent-knee-calf-raise
+        - exercise: single-leg-balance
+  weeks:
+    - label: Off-season or pre-season (no match that week)
+      sets: 3
+      days:
+        Tuesday: A
+        Friday: B
+      note: "An example: any two days at least 48 hours apart work. Keep a rest day between the sessions."
+    - label: In-season (one match at the weekend)
+      sets: 3
+      days:
+        Monday: A
+        Wednesday: B
+      note: "An example for a match on Saturday or Sunday: both sessions are early in the week and none falls on the day before a match. Keep the same sets and reps as the pre-season rows. Do not cut contacts to fit the week; hold the row, or step back a level, if you are not recovered."
+  timing:
+    secondsPerSet: 20
+    restSeconds: 75
+    secondsBetweenExercises: 45
+    warmUpMinutes: 8
+    maxMinutes: 45
+  status: draft

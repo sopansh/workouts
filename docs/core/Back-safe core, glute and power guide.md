@@ -12,7 +12,7 @@ Working muscle
 | --- | --- | --- |
 | **1. Stabilise** about 1–2 weeks | Start now | Phase 1 exercises daily or every other day, plus 20–30 min walking. No swings, jumps or heavy hinging. |
 | **2. Load** | 0/10 pain at rest and in daily life for about 7 days | Add goblet squat, then raised kettlebell deadlifts and carries. Keep Phase 1 as a warm-up. |
-| **3. Power** | Phase 2 loads feel easy and pain-free | Kettlebell swings, then low-volume squat and broad jumps. Wear shoes while the toe wound heals. |
+| **3. Power** | Phase 2 loads feel easy and pain-free | Kettlebell swings, then low-volume squat and broad jumps. |
 
 ## Phase 1: stabilise
 

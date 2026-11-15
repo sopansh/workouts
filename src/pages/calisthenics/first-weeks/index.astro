@@ -1,0 +1,122 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BeginnerSafety from '../../../components/BeginnerSafety.astro';
+import StatusBadge from '../../../components/StatusBadge.astro';
+import PainRule from '../../../components/PainRule.astro';
+import { loadGuide } from '../../../lib/guide';
+
+const data = await loadGuide('calisthenics');
+const claim = (id: string) => data.claimById.get(id)!;
+const soreness = claim('cal-soreness');
+const gap = claim('cal-intention-gap');
+const dropout = claim('cal-session-length-dropout');
+const general = data.painById.get('general')!;
+
+const trackerColumns = ['Week', 'Day', 'Session', 'Level used', 'Sets and reps or seconds', 'Reps left', 'Soreness', 'Pain (none, or which rule)', 'Notes'];
+const blankRows = [1, 2, 3, 4];
+
+const missed = [
+  { what: 'You miss one session', rule: 'Carry on with the next session. Do not double up.', basis: 'The plan\u2019s own rule.' },
+  { what: 'You miss two or more sessions in a week', rule: 'Repeat the week.', basis: 'The plan\u2019s own rule.' },
+  { what: 'A break of two weeks or more', rule: 'Step back one level on each ladder, then retest.', basis: 'The progression page\u2019s rule.' },
+  { what: 'A break of about four weeks or more', rule: 'Restart from week 1, with the placement test.', basis: 'A new convention.' },
+  { what: 'After an illness', rule: 'Return when you feel well, one level lower. If you are unsure, speak to a clinician first.', basis: 'The progression page\u2019s rule, with the clinician advice.' },
+];
+
+const gaps = [
+  'No study of what keeps healthy beginners doing home bodyweight training was found when searching Europe PMC. The only calisthenics adherence item found was a trial protocol with no results, which is not cited.',
+  'The two graded claims on this page are general: one is about physical activity of every kind, the other about interval training in trials. Neither tests a bodyweight plan, and neither says how long a plan or a session should be.',
+  'A meta-analysis of plans that state when and where to exercise exists, but we have not read its full text to see what its reinforcement involved, so no claim from it is made. The fill-in below is a coaching convention.',
+  'The plan length, the session size, the minimum session, the tracker and every missed-session rule are coaching conventions with no source.',
+  'This page has not been reviewed by a physiotherapist or a strength coach, and stays labelled draft until it is.',
+];
+---
+<Base section="calisthenics" title="The first weeks" description="What to expect in the first weeks of calisthenics, how to fix your training days, a minimum session, a copyable tracker, and what to do when you miss a session. Coaching convention, draft.">
+  <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'First weeks' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">The first weeks</p>
+    <h1>The first weeks, and sticking with it</h1>
+    <p class="lede">What to expect, how to set your days, what to do on a short day, and what to do when you miss a session. The evidence on this is thin and indirect, and most of this page is coaching convention, labelled as such.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Mostly convention</span>
+      <span class="badge">No data stored</span>
+      <StatusBadge status="draft" />
+    </div>
+  </section>
+
+  <BeginnerSafety />
+
+  <section aria-labelledby="expect">
+    <h2 id="expect">What to expect</h2>
+    <p class="prose">{soreness.data.statement} The plan therefore starts with 2 sets and stays short of failure, with 3 or more reps in reserve, in weeks 1 and 2. Some muscle soreness early on is common and eases. Sharp, pinching or joint pain is different: use the pain rule for that exercise. The size of the first-week reduction is a coaching convention. <a href="/calisthenics/evidence/#claim-cal-soreness">See the claim and its limits</a>.</p>
+  </section>
+
+  <section aria-labelledby="gap">
+    <h2 id="gap">Many people who mean to train do not</h2>
+    <p class="prose">{gap.data.statement} That is common, and it is a reason the plan names the days for you. It does not show how to close the gap. <a href="/calisthenics/evidence/#claim-cal-intention-gap">See the claim and its limits</a>.</p>
+  </section>
+
+  <section aria-labelledby="fix-days">
+    <h2 id="fix-days">Fix the days</h2>
+    <p class="prose">Decide your three days, a cue, and a place before week 1. Fill in this sentence once and keep it where you will see it:</p>
+    <p class="note"><b>If it is</b> [day] <b>after</b> [cue, such as a meal or finishing work], <b>I will do Session</b> [A, B or C] <b>at</b> [place].</p>
+    <p class="prose">Choose non-consecutive days, such as Monday, Wednesday and Friday, as the <a href="/calisthenics/weekly-plan/#foundations">weekly plan</a> does. This is a coaching convention. We found no study of it in bodyweight training and do not claim it works.</p>
+  </section>
+
+  <section aria-labelledby="minimum">
+    <h2 id="minimum">The minimum session</h2>
+    <p class="prose">On a day with little time, do the 8-minute preparation (wrist rocks, scapular push-ups and wall slides), then one push exercise and one hollow-body hold at your level, with the sets shown for that week. Then stop. A short session counts as a session. This is a coaching convention and is not part of the plan's schedule.</p>
+    <p class="prose">Indirect support only: {dropout.data.statement} It does not set a session length for this guide. <a href="/calisthenics/evidence/#claim-cal-session-length-dropout">See the claim and its limits</a>.</p>
+  </section>
+
+  <section aria-labelledby="tracker">
+    <h2 id="tracker">A tracker you can copy</h2>
+    <p class="prose">Copy these column headings into a notebook or a notes app. This page stores nothing and runs no script. Keep your own records private.</p>
+    <div class="table-wrap" role="region" aria-label="Weekly tracker template" tabindex="0">
+      <table>
+        <thead><tr>{trackerColumns.map(column => <th scope="col">{column}</th>)}</tr></thead>
+        <tbody>
+          {blankRows.map(() => <tr>{trackerColumns.map(() => <td></td>)}</tr>)}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small">Reps left means how many more clean reps you could have done. Pain: write none, or the name of the pain rule that applied.</p>
+  </section>
+
+  <section aria-labelledby="missed">
+    <h2 id="missed">If you miss a session</h2>
+    <p class="prose">Missing sessions happens. These are coaching conventions: none of the numbers has a source.</p>
+    <div class="table-wrap" role="region" aria-label="What to do after missed sessions" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">What happened</th><th scope="col">What to do</th><th scope="col">Where it comes from</th></tr></thead>
+        <tbody>
+          {missed.map(row => (
+            <tr>
+              <th scope="row">{row.what}</th>
+              <td>{row.rule}</td>
+              <td>{row.basis}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="repeat">
+    <h2 id="repeat">Repeating a week, and easy weeks</h2>
+    <p class="prose">Repeating a week is a normal choice, not a setback. Week 8 of each plan is already an easier week. If you carry on past eight weeks without repeating the block, put an easy week in about every sixth to eighth week. That timing is a coaching convention. After the plan, retest each ladder on the <a href="/calisthenics/progression/">progression page</a> and repeat the eight weeks at your new levels.</p>
+  </section>
+
+  <section aria-labelledby="hurts">
+    <h2 id="hurts">When training hurts instead of tires</h2>
+    <p class="prose">A dull muscle effort is expected. Anything sharp, pinching or in a joint is a reason to stop the set and use the easier version. The exercises page gives a pain rule for each body area.</p>
+    <PainRule rule={general} />
+  </section>
+
+  <section aria-labelledby="gaps">
+    <h2 id="gaps">What the evidence does not cover</h2>
+    <ul class="prose">{gaps.map(item => <li>{item}</li>)}</ul>
+    <p class="prose">The graded claims and their sources are on the <a href="/calisthenics/evidence/">evidence page</a>.</p>
+  </section>
+</Base>

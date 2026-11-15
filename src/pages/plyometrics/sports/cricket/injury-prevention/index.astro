@@ -1,0 +1,241 @@
+---
+import Base from '../../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../../../components/ClaimList.astro';
+import PainRule from '../../../../../components/PainRule.astro';
+import PlyometricsSafety from '../../../../../components/PlyometricsSafety.astro';
+import StatusBadge from '../../../../../components/StatusBadge.astro';
+import { loadGuide } from '../../../../../lib/guide';
+
+const data = await loadGuide('plyometrics', { phase: 'cricket' });
+const here = '/plyometrics/sports/cricket/';
+const evidence = `${here}evidence/`;
+const claimHref = (id: string) => `${evidence}#claim-${id}`;
+// Card links into the getting-started exercises page, built from the id so the anchors are not read as colour literals.
+const started = '/getting-started/exercises/#';
+
+// Claims shown in full on this page; the others are linked to their entry on the evidence page.
+const trainingClaims = [
+  'plyo-cricket-strength-training-injuries',
+  'plyo-cricket-acl-programmes',
+  'plyo-cricket-landing-instruction',
+  'plyo-cricket-ipp-risk-factors',
+  'plyo-cricket-ipp-kinematics',
+  'plyo-cricket-ipp-review',
+  'plyo-cricket-shoulder-programmes',
+  'nordic-hamstring-injury',
+];
+const painIds = ['lower-back', 'trunk-rotation', 'hamstring', 'knee', 'shoulder', 'overhead-throwing', 'jumping', 'ankle-foot'];
+
+const sites: { id: string; title: string; population: string; text: string; claims: [string, string][]; link?: { href: string; label: string } }[] = [
+  {
+    id: 'lumbar',
+    title: 'Lower back',
+    population: 'Professional and young fast bowlers. No rate was found for adult club bowlers.',
+    text: 'Lumbar stress fractures were reported in professional English county fast bowlers, and a vertebral stress fracture occurred in a minority of young high-performance fast bowlers in one season. Lumbar soft-tissue injuries were among the most common injuries in first-class cricket. Back pain that persists or keeps coming back, especially in a bowler, is a reason to see a clinician early and not to train through it. This page does not say what such pain is.',
+    claims: [['plyo-cricket-lumbar-stress-professional', 'lumbar stress fracture, professionals'], ['cricket-back-injuries', 'back injuries, young bowlers'], ['plyo-cricket-injury-sites', 'injury sites, first-class']],
+    link: { href: '/core/', label: 'Back-safe core guide' },
+  },
+  {
+    id: 'side',
+    title: 'Side of the trunk (side strain)',
+    population: 'Professional male fast bowlers aged 18 or over.',
+    text: 'Side strain was common in this group, mostly in bowlers aged 24 or under, and recurrence was common. It was associated with the volume of first-class cricket played, and not with side-bridge endurance or trunk side-flexion range.',
+    claims: [['plyo-cricket-side-strain', 'side strain']],
+  },
+  {
+    id: 'hamstring',
+    title: 'Hamstring',
+    population: 'First-class cricketers for the injury list. Athletes in several sports, mostly football, for the Nordic exercise.',
+    text: 'Hamstring strains were the first-listed common injury in first-class cricket. Programmes that included the Nordic hamstring exercise were associated with fewer hamstring injuries in athletes in several sports. No trial of it in cricketers was found, and it causes a lot of soreness when started, so it is introduced gradually.',
+    claims: [['plyo-cricket-injury-sites', 'injury sites, first-class'], ['nordic-hamstring-injury', 'Nordic hamstring exercise']],
+    link: { href: '/strength/exercises/nordic-curl/', label: 'Nordic hamstring curl (strength section)' },
+  },
+  {
+    id: 'shoulder',
+    title: 'Shoulder',
+    population: 'Overhead athletes in a review that does not name the sports. Adolescent pace bowlers in a narrative review.',
+    text: 'Bowlers and fielders load the shoulder repeatedly. Shoulder injury prevention programmes had mixed results, and the review concluded that no firm conclusion can be drawn. A narrative review of adolescent bowlers suggests strengthening the back of the shoulder, but its own example programme was untested. No rate was found for adult club cricketers, so this page makes no recommendation beyond the pain rule below.',
+    claims: [['plyo-cricket-shoulder-programmes', 'shoulder programmes'], ['plyo-cricket-ipp-review', 'adolescent review']],
+  },
+  {
+    id: 'knee',
+    title: 'Knee and ankle, landing and stopping',
+    population: 'Sporting participants of any age in nine trials, and adult athletes in a landing review. Neither names cricket.',
+    text: 'Programmes that included plyometrics were associated with a lower rate of ACL injury in trials of mixed sports, and short landing instruction was associated with softer landing mechanics. No cricket knee or ankle injury rate was found in what was searched, so the landing and stopping ladders rest on the site\'s landing-first rule and these general findings, and not on cricket evidence.',
+    claims: [['plyo-cricket-acl-programmes', 'ACL programmes'], ['plyo-cricket-landing-instruction', 'landing instruction']],
+    link: { href: `${here}power/`, label: 'Landing, hops and stopping ladders' },
+  },
+  {
+    id: 'ball',
+    title: 'Hands, head and face (struck by the ball) and fence collisions',
+    population: 'Community cricketers of all ages, hospital and insurance data. First-class cricketers for the fence.',
+    text: 'In community cricket, being struck by the ball was the most common mechanism in hospital-treated injuries, and fractures were the most frequent type. Colliding with the boundary fence was named as a fielding risk. Use protective equipment that is properly fitted and suited to your role. The review did not test which equipment works, and no equipment standard was read for this page, so none is named.',
+    claims: [['plyo-cricket-community-injuries', 'community injuries'], ['plyo-cricket-boundary-fence', 'boundary fence']],
+  },
+];
+
+const exercises = [
+  {
+    area: 'Lower back and trunk',
+    cards: [['Back-safe core guide', '/core/'], ['Dead bug', `${started}dead-bug`], ['Bird dog', `${started}bird-dog`], ['Side plank', '/strength/exercises/side-plank/'], ['Rotation ladder', `${here}rotation-and-core/`]],
+    evidence: 'No cricket trial. Core training raised trunk strength but only modestly changed performance measures in trained people, and the one side-strain study found no link with side-bridge endurance.',
+  },
+  {
+    area: 'Hamstring',
+    cards: [['Nordic hamstring curl', '/strength/exercises/nordic-curl/'], ['Hip hinge', '/getting-started/exercises/#bodyweight-hip-hinge'], ['Stopping ladder', `${here}power/#group-cricket-decelerate`]],
+    evidence: 'The Nordic exercise has a graded claim (grade A) from several sports, mostly football. The hinge and the stopping ladder are conventions.',
+  },
+  {
+    area: 'Shoulder',
+    cards: [['Face pull', '/strength/exercises/face-pull/'], ['Cable external rotation', '/strength/exercises/cable-external-rotation/']],
+    evidence: 'Limited and mixed. No firm conclusion on shoulder programmes in overhead athletes. Both cards need kit that is on the strength section.',
+  },
+  {
+    area: 'Knee, ankle and landing',
+    cards: [['Landing ladder', `${here}power/#group-cricket-landing`], ['Hops ladder', `${here}power/#group-cricket-hops`], ['Calf raises (base plan)', '/plyometrics/exercises/#standing-calf-raise'], ['Single-leg balance (base plan)', '/plyometrics/exercises/#single-leg-balance']],
+    evidence: 'General evidence only: landing instruction changed landing angles in adult athletes, and plyometric-including programmes were associated with fewer ACL injuries in mixed sports.',
+  },
+  {
+    area: 'Groin and hip adductors',
+    cards: [['Adductor machine (strength section)', '/strength/exercises/adductor-machine/']],
+    evidence: 'Groin injuries were among the common injuries in first-class cricket. Hip adductor strength was one measure that differed in adolescent bowlers after a programme. No cricket groin-prevention trial was found. The card needs a gym machine.',
+  },
+];
+
+const tiers = [
+  { tier: 'Urgent (emergency services or same day)', signs: 'Any head injury symptom after a knock (confusion, vomiting, worsening headache, drowsiness). Chest pain, fainting or unusual breathlessness during exercise. A blow to the eye with pain, blood or any change in vision. Back pain with leg weakness, numbness around the saddle area, or new bladder or bowel changes. A visibly deformed limb or a suspected broken bone.', action: 'Stop. Get help now. Do not train. Do not "see how it feels".' },
+  { tier: 'Prompt (see a clinician within days)', signs: 'A sudden pop, snap or tearing sensation. Being unable to bear weight or use the limb. Swelling that does not settle. Numbness or tingling. Sudden loss of strength. A joint that gives way. Pain at night.', action: 'Stop the activity and see a clinician before returning to training.' },
+  { tier: 'Routine', signs: 'Pain that is not improving after 2 to 3 weeks. Pain that returns every time a movement is repeated. Pain that is worse the next morning after repeated sessions.', action: 'Use the easier level, rest the area, and see a physiotherapist if it persists.' },
+];
+---
+<Base section="plyometrics" title="Cricket injury prevention" description="Draft education for recreational and club cricketers: what is commonly injured, what training is associated with lower risk with the population stated, load management, red flags and when to see a clinician. Not diagnosis, rehabilitation or return to play.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Cricket', href: here }, { label: 'Injury prevention' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Cricket · Injury prevention</p>
+    <h1>Cricket injuries: what is common, what the research says, and when to see someone</h1>
+    <p class="lede">Education only. It says what tends to get injured in cricket, what training is associated with lower risk and how good that evidence is, how to build load sensibly, and when to see a clinician. It cannot tell you what you have, plan your rehabilitation or decide when you can play again.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Adults only</span>
+      <span class="badge" data-tone="warn">Education, not treatment</span>
+      <StatusBadge status={data.plan.data.status} />
+    </div>
+  </section>
+
+  <PlyometricsSafety />
+
+  <aside class="note note--warn" role="note" aria-labelledby="draft-note">
+    <h3 id="draft-note">Draft: education, not treatment</h3>
+    <p>A physiotherapist and a cricket-experienced reviewer have not yet reviewed this page. It does not diagnose. It does not give a rehabilitation plan or a return-to-play decision, which are clinician-led. If you are hurt, or think you might be, see a clinician. The exercises linked here are general training, not rehabilitation.</p>
+  </aside>
+
+  <section aria-labelledby="who">
+    <h2 id="who">Who this is for</h2>
+    <p class="prose">Healthy adults (18 and over) who play recreational or club cricket. It is not for under-18s, who are the group most studied for back injury and need qualified supervision, nor for pregnancy and the first months after birth, frailty, heart, lung, joint or nerve conditions, a current injury or recent surgery, or anyone not cleared to exercise. Elite players should work with a qualified coach. The <a href="/strength/cricket/injury-prevention/">strength section's cricket injury page</a> is a separate stub, and this page does not repeat it.</p>
+  </section>
+
+  <section aria-labelledby="sites">
+    <h2 id="sites">What is commonly injured, by area</h2>
+    <p class="prose">Almost all cricket injury research is in professional or young players. Each area says who was studied. Statements use "was associated with" because these studies mostly cannot show cause. Rates for adult recreational and club cricketers were not found.</p>
+    {sites.map(site => (
+      <section aria-labelledby={`site-${site.id}`}>
+        <h3 id={`site-${site.id}`}>{site.title}</h3>
+        <p class="muted small">Population studied: {site.population}</p>
+        <p class="prose">{site.text}</p>
+        <ul class="chip-list" aria-label={`Evidence for ${site.title}`}>
+          {site.claims.map(([id, label]) => <li><a class="chip" href={claimHref(id)}>{label}</a></li>)}
+          {site.link && <li><a class="chip" href={site.link.href}>{site.link.label}</a></li>}
+        </ul>
+      </section>
+    ))}
+  </section>
+
+  <section aria-labelledby="training">
+    <h2 id="training">What training is associated with lower risk</h2>
+    <p class="prose">The claims below are graded, with the population studied and the limits. Read the limits first: none of these was tested in adult recreational or club cricketers, and none shows that a cricket programme lowers cricket injuries.</p>
+    <ul class="prose">
+      <li>The cricket-specific trials are in adolescent bowlers (and professional bowlers) and measured strength, endurance, joint angles or jump tests, not injuries.</li>
+      <li>The injury-outcome evidence is from other sports and mixed groups, and the programmes had several parts, so the effect cannot be put down to one exercise.</li>
+      <li>"Is associated with" is not "causes". No claim here says that an exercise stops an injury from happening.</li>
+    </ul>
+    <ClaimList claims={trainingClaims} claimById={data.claimById} sourceById={data.sourceById} sourcesHref={evidence} />
+  </section>
+
+  <section aria-labelledby="load">
+    <h2 id="load">Load and building up</h2>
+    <ul class="prose">
+      <li>In professional and young fast bowlers, both a sudden jump in workload and very little bowling have been associated with injury, and workload ratios are contested. See the claims on <a href={claimHref('plyo-cricket-bowling-overs')}>bowling overs before a match</a>, <a href={claimHref('cricket-workload-spikes')}>spikes</a>, <a href={claimHref('cricket-workload-low-and-high')}>low and high workloads</a> and <a href={claimHref('acwr-contested')}>the contested ratio</a>.</li>
+      <li>The delivery counts in those studies describe the groups studied. They are not safe limits, and this page gives no number for you.</li>
+      <li>A sensible habit, not a tested rule: build up gradually after a break, and avoid a sudden jump in what you do in a week, whether that is balls bowled, throws, sprints or training sessions.</li>
+      <li>On this site's power work: short sessions, early in the week, never on consecutive days and never the day before a match. That is a convention.</li>
+      <li>Workload and season planning are on the <a href="/strength/cricket/season-planning/">strength section's season page</a>.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="exercises">
+    <h2 id="exercises">Exercises on this site by area</h2>
+    <p class="prose">All of these are linked, not copied, and each card has its own cautions and pain rule. They are general training, not rehabilitation. The last column says how strong the evidence is for the area.</p>
+    <div class="table-wrap" role="region" aria-label="Exercises by injury area" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Area</th><th scope="col">Cards</th><th scope="col">Evidence</th></tr></thead>
+        <tbody>
+          {exercises.map(row => (
+            <tr>
+              <th scope="row">{row.area}</th>
+              <td>
+                <ul class="chip-list">{row.cards.map(([label, href]) => <li><a class="chip" href={href}>{label}</a></li>)}</ul>
+              </td>
+              <td>{row.evidence}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="red-flags">
+    <h2 id="red-flags">Red flags and when to see a clinician</h2>
+    <div class="table-wrap" role="region" aria-label="Referral tiers" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Tier</th><th scope="col">Signs</th><th scope="col">What to do</th></tr></thead>
+        <tbody>
+          {tiers.map(row => (
+            <tr>
+              <th scope="row">{row.tier}</th>
+              <td>{row.signs}</td>
+              <td>{row.action}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <h3>Cricket-specific signs</h3>
+    <ul class="prose">
+      <li><b>Back pain that persists or keeps returning, especially in a bowler.</b> See a clinician early rather than train through it. Back pain with leg weakness, numbness around the saddle area or new bladder or bowel changes is urgent.</li>
+      <li><b>A blow to the head or face from the ball, or a collision with the boundary fence.</b> Treat any head injury symptom as urgent. No concussion consensus statement was read for this page, so this is a general red flag and not guidance on concussion.</li>
+      <li><b>A sudden pull in the side of the trunk or the back of the thigh,</b> especially with a pop or tearing sensation, while bowling, sprinting or throwing. Prompt tier.</li>
+      <li><b>Shoulder pain with throwing or bowling</b> that disturbs sleep, builds across sessions or stops you training, or any loss of strength.</li>
+      <li><b>A hand or finger struck by the ball</b> that looks deformed, cannot be moved, or swells quickly.</li>
+    </ul>
+    <p class="prose">Return to play after any of these is decided with a clinician. This page does not set a rehabilitation plan or a return-to-play date.</p>
+  </section>
+
+  <section aria-labelledby="pain">
+    <h2 id="pain">Pain rules for these areas</h2>
+    <p class="prose">Stay at 2/10 discomfort or lower, and no worse the next morning. Sharp, pinching or catching pain, a pop, or pain that keeps building means stop and use the easier version.</p>
+    <div class="cols">
+      {painIds.map(id => <div id={`pain-${id}`}><PainRule rule={data.painById.get(id)!} /></div>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="gaps">
+    <h2 id="gaps">What was not found</h2>
+    <ul class="prose">
+      <li>No trial of a power, rotation or injury-prevention programme with injury outcomes in adult recreational or club cricketers.</li>
+      <li>Nothing found on batting rotation, running between the wickets, spin bowling, wicketkeeping or women's cricket. The searches were not exhaustive.</li>
+      <li>No source for a safe throwing or bowling build-up at club level, and no cricket-specific knee or shoulder injury rate in adults.</li>
+      <li>No concussion consensus statement and no protective-equipment standard were read.</li>
+    </ul>
+    <p class="prose">The full list, the sources and the claims withheld are on the <a href={evidence}>evidence page</a>.</p>
+  </section>
+</Base>

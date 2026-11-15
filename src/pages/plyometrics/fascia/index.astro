@@ -6,7 +6,7 @@ import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
 import SourceList from '../../../components/SourceList.astro';
 import { loadGuide } from '../../../lib/guide';
 
-const data = await loadGuide('plyometrics');
+const data = await loadGuide('plyometrics', { phase: 'base' });
 ---
 <Base section="plyometrics" title="Fascia and tendons" description="What fascia is, what calf and hopping work does and does not show, and the graded sources behind this plan.">
   <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Fascia and tendons' }]} />

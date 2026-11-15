@@ -63,6 +63,7 @@ export const sourceTypeLabel: Record<string, string> = {
   'meta-analysis': 'Meta-analysis',
   rct: 'Randomised trial',
   cohort: 'Cohort study',
+  'cross-sectional': 'Cross-sectional study',
   biomechanics: 'Biomechanics / EMG',
   review: 'Review',
   consensus: 'Consensus',

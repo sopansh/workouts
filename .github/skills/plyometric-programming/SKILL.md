@@ -7,7 +7,7 @@ description: How to design safe, progressive plyometric and jump programmes for 
 
 ## What exists
 
-The plyometrics section (`/plyometrics/`) has a two-session week (`two-session-week` in `guides/plans.yml`): session A for vertical power and session B for lateral control, with shared ankle, calf and balance work. Exercises are in `guides/exercises/plyometrics.yml`. Jump exercises carry a weekly `schedule` of `weeks`, `sets`, `reps`. The page also explains tendons and connective tissue, with graded claims in `claims/plyometrics.yml` (the "fascia" topic is connective tissue and tendon, not a single structure; the Achilles review ranks plyometrics and isometrics differently for size and stiffness).
+The plyometrics section (`/plyometrics/`) has a two-session week (`two-session-week` in `guides/plans/plyometrics.yml`, phase `base`): session A for vertical power and session B for lateral control, with shared ankle, calf and balance work. Exercises are in `guides/exercises/plyometrics.yml`. Jump exercises carry a weekly `schedule` of `weeks`, `sets`, `reps`. The page also explains tendons and connective tissue, with graded claims in `claims/plyometrics.yml` (the "fascia" topic is connective tissue and tendon, not a single structure; the Achilles review ranks plyometrics and isometrics differently for size and stiffness).
 
 ## Progression continuum
 

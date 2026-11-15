@@ -4,7 +4,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
 import { loadGuide } from '../../../lib/guide';
 
-const data = await loadGuide('plyometrics');
+const data = await loadGuide('plyometrics', { phase: 'base' });
 const jumps = data.exercises.filter(exercise => exercise.data.schedule);
 const weeks = jumps[0].data.schedule!.map(step => step.weeks);
 
@@ -65,7 +65,7 @@ const sessionIds = data.plan.data.sessions.map(session => session.id);
 
   <section aria-labelledby="box">
     <h2 id="box">The box</h2>
-    <p class="prose">Your box can be set at roughly 50, 60 or 70 cm. Those heights are high for learning, so this plan does not use it, and nothing in the eight weeks depends on it. It is optional.</p>
+    <p class="prose">A plyometric box typically offers roughly 50, 60 or 70 cm, depending on the face. Those heights are high for learning, so this plan does not use it, and nothing in the eight weeks depends on it. It is optional.</p>
     <ul class="prose">
       <li>Consider it only after the floor jumps feel comfortable and controlled for several weeks, and ideally after a coach or physiotherapist has seen you jump.</li>
       <li>Check the box is stable in the chosen orientation and that you have clear, non-slip space to land on.</li>

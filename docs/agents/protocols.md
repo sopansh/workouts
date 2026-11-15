@@ -14,7 +14,7 @@ Read by every coach at the start of a task, and applied by the executive when re
 | Nutrition | `nutrition-coach` | `docs/nutrition-plan.md`, future `src/pages/nutrition/**`, `claims/nutrition.yml` |
 | Platform | executive | `src/layouts/`, `src/scripts/`, `src/styles/`, `scripts/`, `src/content.config.ts`, `tests/`, `.github/`, `docs/agents/`, build and deploy config |
 
-**Shared hotspots:** `sources.yml`, `pain-rules.yml`, `sections.yml`, `guides/groups.yml`, `guides/plans.yml`, `src/styles/app.css`. A coach appends or edits only its own entries. Two coaches never edit the same hotspot at the same time, so the executive sequences them. The cricket pages are strength's; power, rotation and injury-prevention drills for cricket are plyometrics'. They link to each other.
+**Per-section guide data:** each guide section has its own `src/content/guides/groups/<section>.yml`, `plans/<section>.yml` and `exercises/<prefix>-*.yml`, so coaches can edit their own section in parallel. **Shared hotspots:** `sources.yml`, `pain-rules.yml`, `sections.yml`, `src/styles/app.css`. A coach appends or edits only its own entries. Two coaches never edit the same hotspot at the same time, so the executive sequences them. The cricket pages are strength's; power, rotation and injury-prevention drills for cricket are plyometrics'. They link to each other.
 
 ## 2. Delegation brief
 

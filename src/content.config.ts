@@ -45,8 +45,10 @@ const sources = defineCollection({
   loader: file('src/content/sources.yml'),
   schema: z.object({
     id: z.string(),
-    type: z.enum(['systematic-review', 'meta-analysis', 'rct', 'cohort', 'biomechanics', 'review', 'consensus', 'guideline', 'preprint', 'textbook']),
+    type: z.enum(['systematic-review', 'meta-analysis', 'rct', 'cohort', 'cross-sectional', 'biomechanics', 'review', 'consensus', 'guideline', 'preprint', 'textbook']),
     section: reference('sections').default(strengthSection),
+    /** Limits the source to one stage of a guide section (see loadGuide). */
+    phase: z.string().optional(),
     authors: z.string(),
     year: z.number(),
     title: z.string(),
@@ -65,6 +67,8 @@ const claims = defineCollection({
     id: z.string(),
     kind: z.enum(['emphasis', 'programming', 'mechanism', 'safety', 'health', 'nutrition', 'cricket']),
     section: reference('sections').default(strengthSection),
+    /** Limits the claim to one stage of a guide section (see loadGuide). */
+    phase: z.string().optional(),
     statement: z.string(),
     grade,
     sources: z.array(reference('sources')).min(1),
@@ -142,6 +146,8 @@ const exercises = defineCollection({
     regression: z.string(),
     progression: z.string(),
     painRule: reference('painRules'),
+    /** Further rules for other joints the exercise loads. */
+    alsoPainRules: z.array(reference('painRules')).default([]),
     variations: z.array(variation).default([]),
     claims: z.array(reference('claims')).default([]),
     dose: z.string().optional(),
@@ -153,7 +159,7 @@ const exercises = defineCollection({
 
 // Guides (getting started, plyometrics): groups of exercises, the exercises themselves, and the plan that schedules them.
 const guideGroups = defineCollection({
-  loader: file('src/content/guides/groups.yml'),
+  loader: yamlDir('src/content/guides/groups'),
   schema: z.object({
     id: z.string(),
     section: reference('sections'),
@@ -200,6 +206,8 @@ const guideExercises = defineCollection({
     regression: z.string(),
     progression: z.string(),
     painRule: reference('painRules'),
+    /** Further rules for other joints the exercise loads (for example wrist as well as shoulder). */
+    alsoPainRules: z.array(reference('painRules')).default([]),
     status,
   }),
 });
@@ -212,7 +220,7 @@ const guideItem = z.object({
 });
 
 const guidePlans = defineCollection({
-  loader: file('src/content/guides/plans.yml'),
+  loader: yamlDir('src/content/guides/plans'),
   schema: z.object({
     id: z.string(),
     section: reference('sections'),

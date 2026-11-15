@@ -49,6 +49,8 @@
   href: /calisthenics/
   nav:
     - { label: Start here, href: /calisthenics/start-here/ }
+    - { label: If you lift, href: /calisthenics/lifters/ }
+    - { label: First weeks, href: /calisthenics/first-weeks/ }
     - { label: Foundations, href: /calisthenics/foundations/ }
     - { label: First skills, href: /calisthenics/first-skills/ }
     - { label: Weekly plan, href: /calisthenics/weekly-plan/ }
@@ -73,6 +75,7 @@
     - { label: Exercises, href: /plyometrics/exercises/ }
     - { label: Progression, href: /plyometrics/progression/ }
     - { label: Fascia and tendons, href: /plyometrics/fascia/ }
+    - { label: Cricket, href: /plyometrics/sports/cricket/ }
   footer:
     - { label: Sources and evidence grades, href: /plyometrics/fascia/#evidence }
     - { label: Strength section, href: /strength/ }

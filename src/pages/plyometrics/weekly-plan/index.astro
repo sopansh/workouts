@@ -6,7 +6,7 @@ import GuideWeek from '../../../components/GuideWeek.astro';
 import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
 import { doseText, loadGuide, type GuideItem } from '../../../lib/guide';
 
-const data = await loadGuide('plyometrics');
+const data = await loadGuide('plyometrics', { phase: 'base' });
 const { plan } = data;
 const rows = (items: GuideItem[]) => items.map(item => {
   const exercise = data.exerciseById.get(item.exercise!.id)!;

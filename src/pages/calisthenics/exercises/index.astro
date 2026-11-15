@@ -5,10 +5,10 @@ import BeginnerSafety from '../../../components/BeginnerSafety.astro';
 import SkillSafety from '../../../components/SkillSafety.astro';
 import GuideExerciseCard from '../../../components/GuideExerciseCard.astro';
 import PainRule from '../../../components/PainRule.astro';
-import { exercisesInGroup, groupsInPhase, loadGuide } from '../../../lib/guide';
+import { exercisesInGroup, groupsInPhase, loadGuide, painRuleLinks, usedPainRuleIds } from '../../../lib/guide';
 
 const data = await loadGuide('calisthenics');
-const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRule.id))];
+const painIds = usedPainRuleIds(data);
 const phases = [
   { id: 'foundations', title: 'Foundations', groups: groupsInPhase(data, 'foundations') },
   { id: 'first-skills', title: 'First skills', groups: groupsInPhase(data, 'first-skills') },
@@ -50,13 +50,11 @@ const phases = [
           {group.data.ladder && <p class="prose"><b>{group.data.gates.length > 0 ? 'Moving up.' : 'Placement test.'}</b> {group.data.test}{group.data.gates.length === 0 && ' Start on the first level where you can do this cleanly.'}</p>}
           <div class="guide-list">
             {exercisesInGroup(data, group.id).map(exercise => {
-              const pain = data.painById.get(exercise.data.painRule.id)!;
               return (
                 <GuideExerciseCard
                   exercise={exercise}
                   heading={exercise.data.level ? `Level ${exercise.data.level}: ${exercise.data.name}` : exercise.data.name}
-                  painRuleTitle={pain.data.title}
-                  painRuleHref={`#pain-${pain.id}`}
+                  painRules={painRuleLinks(data, exercise)}
                 />
               );
             })}

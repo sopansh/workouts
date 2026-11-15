@@ -2,10 +2,6 @@
 import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import BeginnerSafety from '../../../components/BeginnerSafety.astro';
-import { loadGuide } from '../../../lib/guide';
-
-const data = await loadGuide('calisthenics');
-const soreness = data.claimById.get('cal-soreness')!;
 ---
 <Base section="calisthenics" title="Start here" description="What to build first in calisthenics and why, what you need, and how to check you are ready for the foundations.">
   <Breadcrumbs items={[{ label: 'Calisthenics', href: '/calisthenics/' }, { label: 'Start here' }]} />
@@ -41,8 +37,8 @@ const soreness = data.claimById.get('cal-soreness')!;
     <p class="prose">Do the <a href="/calisthenics/progression/">placement test</a> for each ladder. If you cannot do the easiest level of a ladder without pain, skip that ladder and ask a clinician. If you have never trained before, you may find the <a href="/getting-started/">getting-started plan</a> an easier way in, but you do not need it.</p>
   </section>
 
-  <section aria-labelledby="soreness">
-    <h2 id="soreness">The first weeks and soreness</h2>
-    <p class="prose">{soreness.data.statement} The plan therefore starts with 2 sets and stays short of failure for the first weeks. Some muscle soreness early on is common and eases. Sharp, pinching or joint pain is different: use the pain rule for that exercise. <a href="/calisthenics/evidence/#claim-cal-soreness">See the claim and its limits</a>.</p>
+  <section aria-labelledby="first-weeks">
+    <h2 id="first-weeks">The first weeks</h2>
+    <p class="prose">What to expect in the first weeks, including muscle soreness, how to fix your training days and what to do if you miss a session are on <a href="/calisthenics/first-weeks/">The first weeks</a>. Already lifting? <a href="/calisthenics/lifters/">If you already lift</a> shows where to test first. The soreness claim and its limits are on the <a href="/calisthenics/evidence/#claim-cal-soreness">evidence page</a>.</p>
   </section>
 </Base>

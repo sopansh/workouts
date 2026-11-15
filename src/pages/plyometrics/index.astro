@@ -4,7 +4,7 @@ import PlyometricsSafety from '../../components/PlyometricsSafety.astro';
 import StatusBadge from '../../components/StatusBadge.astro';
 import { loadGuide } from '../../lib/guide';
 
-const data = await loadGuide('plyometrics');
+const data = await loadGuide('plyometrics', { phase: 'base' });
 const pages = [
   { href: '/plyometrics/weekly-plan/', title: 'Weekly plan', blurb: 'The week at a glance, the shared warm-up and the two sessions.', accent: 'p3' },
   { href: '/plyometrics/exercises/', title: 'Exercises', blurb: 'Setup, steps, mistakes, who should not do it and a regression for each exercise.', accent: 'p2' },
@@ -29,7 +29,7 @@ const pages = [
 
   <section aria-labelledby="who">
     <h2 id="who">Who this is for</h2>
-    <p class="prose">Written for one experienced lifter who wants basic, repeatable work to build jump power and look after the feet, ankles and calves. It is for <b>later</b>, when a doctor or physiotherapist has said that jumping is appropriate. The strength section's beginner-only rule for squats, glutes and the lower back does not apply to jumping: here, everything starts at the beginning.</p>
+    <p class="prose">Written for adults who already train and want basic, repeatable work to build jump power and look after the feet, ankles and calves. Start only if you have no current injury or pain and have been cleared to exercise; speak to a doctor or physiotherapist first if you are unsure. The strength section's beginner-only rule for squats, glutes and the lower back does not apply to jumping: here, everything starts at the beginning.</p>
   </section>
 
   <section aria-labelledby="pages">
@@ -49,9 +49,9 @@ const pages = [
   <section aria-labelledby="equipment">
     <h2 id="equipment">Equipment and the box</h2>
     <ul class="prose">
-      <li><b>Floor.</b> A stable, non-slip surface with clear space overhead. Do not jump on the futon. If the tatami is slippery or gives under your feet, choose another surface.</li>
+      <li><b>Floor.</b> A stable, non-slip surface with clear space overhead. Do not jump on a soft or uneven surface such as a mattress or thick mat. If the floor is slippery or gives under your feet, choose another surface.</li>
       <li><b>Cones.</b> Used as flat markers for the side-to-side hop, about 30 to 40 cm apart. You do not jump over them.</li>
-      <li><b>Box.</b> Yours can be set at roughly 50, 60 or 70 cm depending on the face. Those are all high for learning, so the first eight weeks do not use it. See <a href="/plyometrics/progression/#box">when and whether to bring it in</a>.</li>
+      <li><b>Box.</b> A plyometric box typically offers roughly 50, 60 or 70 cm depending on the face. Those are all high for learning, so the first eight weeks do not use it. See <a href="/plyometrics/progression/#box">when and whether to bring it in</a>.</li>
     </ul>
   </section>
 

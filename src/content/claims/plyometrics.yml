@@ -2,6 +2,7 @@
 - id: plyo-jump-performance
   kind: programming
   section: plyometrics
+  phase: base
   statement: In healthy athletes, plyometric training improved countermovement-jump performance more than routine training. Squat jump and overall vertical jump showed no significant difference in the same review.
   grade: A
   sources:
@@ -10,6 +11,7 @@
 - id: plyo-tendon
   kind: mechanism
   section: plyometrics
+  phase: base
   statement: In healthy adults, short-term plyometric jump training ranked highest for increasing Achilles tendon cross-sectional area, and long-term isometric plantar-flexion training ranked highest for stiffness. Stretching-focused programs generally ranked low.
   grade: B
   sources:

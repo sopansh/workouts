@@ -34,7 +34,7 @@
   level: intermediate
   spinalLoad: none
   summary: A curl on an incline bench with the arms behind the body, which lengthens the long head of the biceps.
-  setup: Set the bench at 45 to 60 degrees. Sit back with the arms hanging behind the body.
+  setup: Set the bench at 45 to 60 degrees. Only use a bench that is stable, cannot slide or tip and is rated for your weight plus the dumbbells. Press down on it with your hands before you sit back. Sit back with the arms hanging behind the body.
   steps:
     - Curl the dumbbells up without moving the upper arms forwards.
     - Lower slowly to a full stretch.
@@ -43,7 +43,7 @@
     - Swinging the weights
   contraindications:
     - Pain at the front of the shoulder in the stretched position
-  regression: Lighter dumbbells or a smaller range.
+  regression: Lighter dumbbells or a smaller range. With no stable bench, use a standing dumbbell curl instead (for example the hammer curl) rather than a chair or sofa.
   progression: Slower lowering and a pause at the stretch.
   painRule: elbow
   variations:
@@ -181,7 +181,7 @@
   level: intermediate
   spinalLoad: low
   summary: A lying triceps extension with a cambered bar.
-  setup: Lie on a bench holding the bar over the chest with the arms straight.
+  setup: Only use a bench that is stable, cannot slide or tip and is rated for your weight plus the bar. Press down on it with your hands before you lie back. Lie on it holding the bar over the chest with the arms straight.
   steps:
     - Bend only at the elbows to lower the bar to just above the forehead or behind the head.
     - Extend until the arms are straight.
@@ -190,7 +190,7 @@
     - Letting the upper arms drift
   contraindications:
     - Elbow pain not cleared for loading
-  regression: A lighter bar or a cable version.
+  regression: A lighter bar or a cable version. The bar travels over the face, so stop a few reps short of failure. With no stable bench this exercise needs one; use a cable triceps extension instead.
   progression: Slower lowering.
   painRule: elbow
   variations: []
@@ -207,7 +207,7 @@
   level: intermediate
   spinalLoad: low
   summary: A bench press with a narrower grip to put more load on the triceps.
-  setup: Lie as for a bench press and take a grip about shoulder width.
+  setup: Lie as for a bench press and take a grip about shoulder width. Only use a bench and rack that are stable, cannot slide or tip and are rated for your weight plus the bar. Press down on them with your hands first. Use the rack's safety arms or pins, set below the lowest bar position, as is usual practice.
   steps:
     - Lower the bar to the lower chest with the elbows tucked.
     - Press back up in a straight line.
@@ -216,7 +216,7 @@
     - Flaring the elbows
   contraindications:
     - Wrist or elbow pain not cleared for loading
-  regression: A lighter bar.
+  regression: A lighter bar. This exercise needs a stable bench and rack; with neither, a push-up on the floor needs no equipment.
   progression: Add load.
   painRule: elbow
   variations: []

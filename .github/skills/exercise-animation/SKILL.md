@@ -28,7 +28,7 @@ If an exercise needs something the rig cannot do, **record the need and do not s
 
 The owner chose to keep and extend the in-house rig (no Mixamo or other imported models), improving the joints and movements so they follow real human joint motion, starting with the hypertrophy section. The executive plans and delegates the engineering. Coaches do not edit `src/scripts/`.
 
-Candidate references for joint limits and conventions, **found on Europe PMC and not yet verified on Crossref** (verify with `evidence-and-sources` before any page cites them): Soucie et al. 2011, "Range of motion measurements: reference values and a database for comparison studies" (doi 10.1111/j.1365-2516.2010.02399.x); Wu et al. 2005, ISB recommendation on joint coordinate systems for the shoulder, elbow, wrist and hand (doi 10.1016/j.jbiomech.2004.05.042).
+References for joint conventions and limits, confirmed on Crossref on 2026-11-15: Wu et al. 2005, ISB recommendation on joint coordinate systems for the shoulder, elbow, wrist and hand (doi 10.1016/j.jbiomech.2004.05.042), and its Part I companion for the ankle, hip and spine (Wu et al. 2002, doi 10.1016/s0021-9290(01)00222-6). Soucie et al., "Range of motion measurements: reference values and a database for comparison studies" (doi 10.1111/j.1365-2516.2010.02399.x, Crossref year 2010) is intended as the normal-range source but its full text is paywalled and its abstract has no numbers, so **take no angle from it until someone reads its tables**. The 19 references used by the chest and legs specs are in `docs/animation-specs/README.md` section 4. See `docs/animation-plan.md`.
 
 ## Preparing an exercise for animation (coach task)
 

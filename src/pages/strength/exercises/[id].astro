@@ -17,7 +17,7 @@ const d = await loadAll();
 const e = exercise.data;
 const group = d.groupById.get(e.group.id)!;
 const muscleLink = (id: string) => { const m = d.muscleById.get(id)!; return { href: url.muscle(m.data.group.id, m.id), name: m.data.name }; };
-const pain = d.painById.get(e.painRule.id)!;
+const pains = [e.painRule.id, ...e.alsoPainRules.map(rule => rule.id)].map(id => d.painById.get(id)!);
 const claimIds = [...new Set([...e.claims.map(c => c.id), ...e.variations.map(v => v.claim?.id).filter(Boolean) as string[]])];
 const usedIn = d.programs.flatMap(p => p.data.days.flatMap(day => {
   const rx = day.exercises.find(x => x.exercise.id === exercise.id);
@@ -65,7 +65,7 @@ const next = siblings[index + 1];
         <p class="label">Progression (make it harder)</p>
         <p class="prose">{e.progression}</p>
       </div>
-      <PainRule rule={pain} />
+      {pains.map(pain => <PainRule rule={pain} />)}
     </div>
   </section>
 

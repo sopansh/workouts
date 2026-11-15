@@ -74,3 +74,93 @@
   sources:
     - mchugh-2003
   caveats: A review of mechanisms, from studies mostly of controlled eccentric exercise. It is the reason the plan starts with 2 sets and stays short of failure in the first weeks; the exact size and length of the first-week reduction in sets are a planning convention.
+# Added for the lifters and first-weeks pages. Each statement paraphrases the abstract of its sources (abstracts only; no full text read).
+# Four claims were drafted and held back until their full text is read: when-and-where plans (Silva 2018), the push-up load
+# definition behind the bench-press link (van den Tillaar 2025), the pull-up routine (Sepehri Rahnama 2025) and the
+# exercises tested for the planche (Rosaci 2025). They are listed as unresolved on the evidence page.
+- id: cal-intention-gap
+  kind: programming
+  section: calisthenics
+  statement: A meta-analysis of 25 samples (29,600 people) found that 33.0% of people were unsuccessful intenders, meaning they intended to be physically active and were not, while 38.7% were successful intenders. The authors put the overall intention-behaviour gap at 47.6% and conclude that intention is necessary but, for many people, not enough.
+  grade: C
+  sources:
+    - feil-2023
+  caveats: A meta-analysis of observational studies of physical activity in general, not strength or bodyweight training. It shows that the gap is common; it does not show how to close it, so it is graded C and not A. Each sample used its own way of measuring intention and activity.
+  population: Adults in 25 samples from 22 articles, mixed groups.
+- id: cal-session-length-dropout
+  kind: programming
+  section: calisthenics
+  statement: In 55 studies of high-intensity interval training in sedentary healthy adults (1,318 people), the pooled dropout rate was 17.6%. Longer sessions and more time per week predicted more dropout, while exercise intensity was not related to dropout.
+  grade: C
+  sources:
+    - reljic-2019
+  caveats: Interval aerobic training in supervised trials of at least 4 weeks, not strength or bodyweight training. Dropout in a trial is not the same as sticking with a plan in daily life. It is indirect support for keeping sessions short, and it sets no session length for this guide.
+  population: Sedentary healthy adults in interval-training trials.
+- id: cal-wrist-pain-prevalence
+  kind: safety
+  section: calisthenics
+  statement: In an online survey of 321 adults who practise handstands at least weekly, 182 (56.7%) reported chronic wrist pain. Younger age was linked to more pain (p = 0.042). No significant link was found with weekly training hours, warm-up routines, brace use or grip devices. In athletes under 18, mostly gymnasts, a systematic review found wrist pain in 32 to 73% across studies.
+  grade: C
+  sources:
+    - martonovich-2025
+    - kox-2015
+  caveats: The survey was self-selected through social media, used a questionnaire written for the study, and relied on self-reported pain with no scan or examination. The review covers under-18s, which this guide does not, and only one study gave risk factors. Neither source gives a risk for adult beginners, and neither shows that warm-ups do or do not help.
+  population: Adults who handstand weekly (survey); athletes under 18 (review).
+- id: cal-wrist-neutral
+  kind: mechanism
+  section: calisthenics
+  statement: In 14 volunteers, push-ups on a hyperextended wrist sent force more towards the back of the wrist, over a wider area and towards the little-finger side than push-ups on a neutral wrist, and the authors judge the neutral wrist likely safer for the ligaments. In 14 healthy men the shoulder took more load and the elbow less with a neutral wrist. A model built from CT scans of 7 wrists put more force through the scaphoid fossa in maximum extension (62%) than in neutral (52%).
+  grade: C
+  sources:
+    - polovinets-2018
+    - polovinets-2026
+    - majima-2008
+  caveats: Laboratory and modelling studies with no injury outcomes and no training period. "Likely safer" is the authors' inference. It supports the wrist pain rule's options of a raised hand position or fists, and it is a reason the shoulder rule still applies when the wrist is kept straight.
+  population: Fourteen healthy volunteers, fourteen healthy right-handed men, and seven healthy wrists (model).
+- id: cal-wrist-prevention-gap
+  kind: safety
+  section: calisthenics
+  statement: A review of wrist overuse injuries in gymnasts says little is known about effective sport-specific injury prevention. Its general guidelines for overuse injury prevention (limiting excessive loading of the wrist, keeping wrist flexibility, proper technique, and wrist and core strengthening) are described as seeming beneficial.
+  grade: D
+  sources:
+    - benjamin-2017
+  caveats: A narrative expert review in gymnasts, not a trial, so the guidelines are opinion. It is used here to state the gap, not to promise that wrist preparation prevents pain.
+  population: Gymnasts.
+- id: cal-handstand-screening
+  kind: safety
+  section: calisthenics
+  statement: In 111 novice college athletes, shoulder stability and mobility test scores were not related to the quality of their handstands. In 15 female collegiate gymnasts followed for four seasons, preseason range of motion and strength did not differ between those who had an overuse upper-limb injury and those who did not.
+  grade: C
+  sources:
+    - malir-2024
+    - heck-2021
+  caveats: Two small studies in different groups, each with one outcome (handstand quality in one, overuse injury in the other). The authors of the first suggest that novices could not yet handstand well enough for the tests to show a link. It means no validated readiness screen was found, so the gates in this guide are coaching conventions.
+  population: Novice college athletes (aged 19 to 23); female collegiate gymnasts.
+- id: cal-handstand-eye
+  kind: safety
+  section: calisthenics
+  statement: A case report describes a 15-year-old with bleeding in the eye that was probably caused by straining, after doing a handstand for about 10 seconds. The bleeding had resolved by four months.
+  grade: C
+  sources:
+    - miyaki-2020
+  caveats: One case, so it gives no estimate of risk and does not show that handstands are likely to cause it. It is the reason the wall handstand gate asks about eye and blood-pressure conditions before the head goes below the heart.
+  population: One 15-year-old boy.
+- id: cal-pulldown-pullup-strength
+  kind: programming
+  section: calisthenics
+  statement: In 35 college men and 23 college women, the heaviest single pull-up (body mass plus added or taken-off load) was higher relative to body mass than the heaviest lat pulldown (men 1.16 against 0.93 times body mass, women 0.73 against 0.55). The two maximums were correlated in men (r = 0.78, p < 0.01), but in women the correlation (r = 0.44) was not significant (p > 0.05).
+  grade: C
+  sources:
+    - johnson-2009
+  caveats: A cross-sectional study of college students. A weak, non-significant link in women means a pulldown number is only a rough guide to where to try the pull ladder. It is used only for that, and the placement test still decides.
+  population: College men and women.
+- id: cal-tendon-timing
+  kind: mechanism
+  section: calisthenics
+  statement: A narrative review says that muscle and tendon differ in how fast they adapt to loading and in which stimuli they respond to, and links imbalance to tendon overload injuries in adolescent athletes. However, a study of 67 elite jumpers found that calf muscle strength and Achilles tendon stiffness adapted in line with each other.
+  grade: Mixed
+  sources:
+    - mersmann-2017
+    - epro-2019
+  caveats: Both sources concern lower-limb tendons, in adolescents and in elite adults, and the second is cross-sectional. Nothing was found for the wrist, elbow or shoulder tendons of adult beginners. It does not show that tendons lag muscle in this audience, so the slow, staged progression here is a coaching convention.
+  population: Young athletes (review); 67 elite track and field jumpers.

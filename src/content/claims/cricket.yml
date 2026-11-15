@@ -1,4 +1,10 @@
-# Cricket claims. Role pages are stubs for now; these are the evidence-backed starting points only.
+# Cricket claims (strength section). The first five are the original evidence-backed starting points. The rest were added on 2026-11-15
+# from abstracts that were read, with no full text, for the fast-bowler, batter, injury-prevention and season-planning pages.
+# Claims graded for the plyometrics section (ids starting plyo-cricket-, in claims/plyometrics-cricket.yml) are linked by id from the
+# page text and are not repeated or regraded here. Not published, because the abstract could not confirm what is needed, and listed on
+# the pages as gaps: Opar 2021 (a correction notice exists and was not read), Tysoe 2020 (implausibly wide intervals), Felton 2025
+# (a simulation, not training), Krishna 2024 (a correlation with a conclusion the data cannot support) and Hydar Abbas 2019 (truncated
+# abstract, uncontrolled). Read and not needed: Olivier 2018, Bishop 2021, Jacobs 2024. Seen by title only: Pote 2016 and 2020.
 - id: cricket-workload-spikes
   kind: cricket
   grade: C
@@ -32,3 +38,143 @@
   statement: An international consensus statement on youth resistance training exists, endorsed by organisations in sports medicine, paediatrics and strength and conditioning. Read it before programming for under-18s.
   sources: [lloyd-2014-youth]
   caveats: Only the existence of the statement is claimed here; its recommendations still need to be extracted from the full text and checked.
+- id: cricket-club-pace-combined-training
+  kind: cricket
+  grade: C
+  statement: In 18 adult male club-level pace bowlers allocated to a 4-week combined programme (two sessions a week of core and lower-body strength exercises, plyometric exercises and weighted-implement training) or to usual bowling only, ball release velocity rose by 6% (5.1 km/h, effect size 0.65) in the programme group and did not change in the comparison group (effect size 0.0). Bowling accuracy and lower-body neuromuscular performance showed no significant difference. The authors report that the rise in velocity was not related to any of the neuromuscular measures they took.
+  sources: [maker-2021-combined-training]
+  population: 18 adult male club-level pace bowlers, 9 per group. The abstract gives no mean age and does not name the country.
+  caveats: Very small and only 4 weeks. The abstract says the bowlers were allocated but not how, and does not mention blinding, so it is graded C. Four kinds of training were combined, so no single part can be credited, and the exercises, loads and the weighted-implement protocol are not in the abstract. This site does not programme weighted-implement throwing. The outcome is speed in a test, not injury or match performance, and since no measured strength or power change explained the rise, the reason for it is unknown. It does not show the programme is safe or useful for any particular bowler.
+- id: cricket-offseason-strength-pace-bowlers
+  kind: cricket
+  grade: C
+  statement: In 10 elite-academy pace bowlers who completed an 8-week off-season strength training programme, isometric mid-thigh pull force rose with a moderate effect and peak normalised vertical force in double-leg and single-leg drop landings fell with large effects, which the authors count as better eccentric capacity. Ball release speed did not change significantly (31.55 to 31.79 m/s) and front-foot contact forces during bowling did not change.
+  sources: [callaghan-2021-strength-bowlers]
+  population: 10 elite-academy pace bowlers. The abstract does not state sex or age.
+  caveats: Ten people, 8 weeks, with no control group, so changes cannot be separated from the effect of testing twice. The strength work was done without skills training and the authors say it neither improved nor reduced bowling speed in that condition, so the result does not show what happens when strength work and bowling practice are combined. The outcomes are tests, not injuries. It is academy-level, not club-level. Crossref records the issued year as 2021 and the print year as 2024.
+- id: cricket-bowling-speed-correlates
+  kind: cricket
+  grade: C
+  statement: In 28 high-performance fast bowlers (mean age 22.0, mean release speed 34.0 m/s), ball release speed was associated with front-knee extension at release (r = 0.52), shoulder alignment at front-foot strike (r = 0.47), ankle height in the delivery stride (r = 0.44) and shoulder extension strength (r = 0.39). The abstract names no other isokinetic knee or shoulder strength measure as significantly associated, and the variables could not be combined into a multivariate model.
+  sources: [wormgoor-2010-predictors]
+  population: 28 high-performance fast bowlers, mean age 22.0. The abstract does not state sex.
+  caveats: Correlations from one delivery per bowler, so they do not show that training any quality raises speed. Speed is not injury or match performance. The authors note that factors found in other groups may not apply to high-performance bowlers. It says nothing about club bowlers.
+- id: cricket-lbp-intrinsic-review
+  kind: cricket
+  grade: Mixed
+  statement: A systematic review of 25 studies of intrinsic variables (bowling kinematics and kinetics, trunk and lumbar anatomy, body measurements, age and neuromuscular characteristics) found conflicting results for their link with low back pain and lumbar spine injury in fast bowlers. None was at low risk of bias (two moderate, 23 high), and the authors suggest that the continuing high occurrence of these injuries may reflect an absence of low-bias studies to inform prevention.
+  sources: [farhart-2023-intrinsic-lbp]
+  population: Cricket fast bowlers in 25 studies. The abstract does not give their levels, ages or sex.
+  caveats: Observational studies only. It shows that the evidence is thin and inconsistent, not that any physical quality is unimportant. The abstract does not say which neuromuscular measures were studied, so it cannot say whether trunk strength or trunk endurance matters for the back, and this site does not claim that they do.
+- id: cricket-lbp-risk-interventions
+  kind: cricket
+  grade: C
+  statement: A systematic review of 12 studies of risk factors (six of high quality) and five studies of interventions for cricket-related low back pain reported moderate evidence that acute bone stress on MRI is a risk factor for lumbar stress fracture, and moderate evidence that increased shoulder counter-rotation (associated with mixed bowling actions) and decreased anterior abdominal fascial slide may be associated with low back pain. The five intervention studies were of low quality, and the authors concluded that they were insufficient to draw firm conclusions about which interventions work.
+  sources: [morton-2013-lbp]
+  population: Cricketers in 17 studies. The abstract describes back pain as especially common in adolescent fast bowlers, but does not give the ages or levels of the included studies.
+  caveats: Its search is now over ten years old and it is observational, so the associations are not causes. MRI screening is a clinical matter and this site gives no advice about it. Crossref records the issued year as 2013 and the print year as 2014.
+- id: cricket-workload-lbp-review
+  kind: cricket
+  grade: C
+  statement: A systematic review of eight articles found a low quality of evidence and a high risk of bias in the measurement of both external bowling workload and lower-back injury, and concluded that the association between external bowling workload and lower-back injuries in fast bowlers has minimal strength.
+  sources: [perrett-2020-workload-lbp]
+  population: Cricket fast bowlers in eight studies. The abstract does not give their levels, ages or sex.
+  caveats: It describes the weakness of the research, not an absence of any link. Single cohorts in this register still report workload patterns that went with injury. Do not read it as showing that workload does not matter, or as a basis for any workload number.
+- id: cricket-workload-tissue-types
+  kind: cricket
+  grade: C
+  statement: In a prospective cohort of 235 fast bowlers followed over 15 years (14,600 player innings), the preceding workload pattern that went with injury depended on the tissue injured. High acute match workload and high previous-season workload were risk factors for tendon injury while high 3-month workload was protective. High medium-term workload and low career workload were risk factors for bone stress injury. High previous-season and career workload were risk factors for joint injury, and muscle injury had little relationship with workload. The authors recommend gradual upgrades in workload, particularly at the start of a bowler's career.
+  sources: [orchard-2015-workload-tissue]
+  population: 235 fast bowlers. The abstract does not state their level, country or sex.
+  caveats: Observational. The abstract does not define high or low workload, so no threshold can be taken from it. The authors say workload planning may need to be individualised. Protective here means an association in this group, not a tested effect. It supports building up gradually and says nothing about strength sessions.
+- id: cricket-hamstring-risk-factors
+  kind: cricket
+  grade: C
+  statement: In Australian state and national male professional cricketers over 20 seasons (1995/1996 to 2014/2015), there were 276 match time-loss hamstring injuries, an overall match-onset rate of 22.5 per 1000 team days. Fast-bowling onset injuries had the highest rate (10.9 per 1000 team days) and batting-onset injuries were particularly common in 50-over matches. The risk factors found were previous hamstring injury, being a fast bowler (relative risk 2.5, 95% CI 1.3 to 4.5) and playing a match in Australia rather than overseas (2.3, 95% CI 1.3 to 3.9).
+  sources: [orchard-2017-hamstring]
+  population: Australian male professional cricketers at state or national level.
+  caveats: Observational and elite. Only injuries that cost match time are counted. It shows where hamstring injuries cluster. It does not test strength or any exercise, and the reason for the higher risk in Australia is not explained in the abstract. It does not give a rate for club cricketers.
+- id: cricket-eccentric-hamstring-levels
+  kind: cricket
+  grade: C
+  statement: In 74 male cricketers at elite, sub-elite and school level who did the Nordic hamstring exercise on a force device, mean peak eccentric knee flexor force and between-limb asymmetry did not differ significantly between skill levels, between bowlers and batters, or between front and back leg.
+  sources: [chalker-2016-eccentric]
+  population: 74 male cricketers at three levels, including school-age players.
+  caveats: Cross-sectional, so it cannot say whether any strength level predicts injury. The authors say future work should test whether strength thresholds predict hamstring injury in cricket and whether specific eccentric strengthening reduces it. It shows only that eccentric hamstring strength on this test did not separate the groups.
+- id: cricket-nordic-uptake
+  kind: cricket
+  grade: D
+  statement: In a survey answered by 15 of the professional cricket clubs in the United Kingdom (75%), 12 had a formal hamstring injury prevention programme and the Nordic hamstring exercise and other eccentric exercises were the most used interventions, yet only three clubs had used the full Nordic programme and one was classed as fully compliant. Medical staff partly agreed that it reduces injuries, and 60% named players not viewing the programme positively and 60% named the need for a cultural change as barriers.
+  sources: [chesterton-2021-nordic-uptake]
+  population: Medical teams at 15 professional men's cricket clubs in the United Kingdom.
+  caveats: A questionnaire of opinion and practice, so it is not evidence that the exercise works in cricket. It shows only that the exercise is used and is hard to implement. Professional clubs, not club cricket.
+- id: cricket-batting-upper-body-strength
+  kind: cricket
+  grade: C
+  statement: In 18 provincial-level elite batsmen, upper-body strength measured by one-repetition-maximum bench press was positively correlated with maximum hitting distance in a batting task (p = 0.0052), but not with batting average or strike rate in one-day and Twenty20 matches.
+  sources: [taliep-2010-batting]
+  population: 18 provincial-level elite batsmen. The abstract does not state sex or age.
+  caveats: A correlation in 18 players, so it does not show that raising bench press raises hitting distance. Hitting distance in a task is not batting performance, which the study found was not related. The authors' suggestion about choosing a batting line-up goes beyond what a correlation can show. It is not club-level evidence.
+- id: cricket-batting-repeated-shuttles
+  kind: cricket
+  grade: C
+  statement: In 20 batters who each completed two conditions of 42 deliveries, twelve sprints between the wickets per over (high volume) lowered knee extensor peak torque by about 18% and knee flexor peak torque by 16.7%, and raised sprint times from as early as the third over. Six sprints per over (moderate volume) lowered knee extensor peak torque by about 10% but did not significantly lower knee flexor torque (8%) or slow sprint times.
+  sources: [christie-2019-shuttles]
+  population: 20 batters in a simulated batting task. The abstract does not state sex, age or level.
+  caveats: A short, acute, simulated study of how running between the wickets tires the legs. It is not a training study and measures no injuries. The authors' advice to add middle-wicket practices is not tested by the design. Torque was measured on a laboratory device, so what it means for a long match is a hypothesis.
+- id: cricket-batting-demands-review
+  kind: cricket
+  grade: D
+  statement: A brief review of the physiological demands of batting reports that these demands have been neglected, with most cricket research on bowling responses and batting technique, that they differ between match formats from multi-day to Twenty20, and that few studies exist, so more research is needed.
+  sources: [scanlan-2016-batting-demands]
+  population: Batters in the studies reviewed. The abstract does not give levels, ages or sex.
+  caveats: A narrative review whose abstract gives no figures. It is used only to say that the demands of batting are poorly measured, so every demand statement for batters on this site is a hypothesis.
+- id: cricket-profiles-bowlers-batters
+  kind: cricket
+  grade: C
+  statement: In 19 international male cricketers (11 bowlers, 8 batters) tested on power, speed, strength and aerobic fitness, batters scored significantly higher in the countermovement jump and the squat jump. Differences in sprint times, grip strength, the Yo-Yo intermittent recovery test and a 5 km time trial were small and not significant, and differences between seam and spin bowlers and between individuals were also seen.
+  sources: [weldon-2021-profiling]
+  population: 19 international male cricketers, mean age 24.1 (bowlers) and 22.9 (batters).
+  caveats: A snapshot of a small elite group. It links no quality to performance or injury and does not say what a player should have. The authors advise treating individual profiles as well as team profiles.
+- id: cricket-season-strength-decline
+  kind: cricket
+  grade: C
+  statement: In 12 male English county cricketers, back-squat strength rose over the pre-season (absolute 12.9%, relative 15.8%) with countermovement jump height up 5.3% and no significant change in sprint performance. Across the competitive season, absolute strength fell 14.3%, relative strength 15.0%, jump height 4.2% and sprint performance 3.8%. The authors conclude that the demands of the season and the in-season training practice at that time did not give enough stimulus to maintain these qualities, and they recommend more frequent, higher-load strength training in season.
+  sources: [carr-2017-season]
+  population: 12 male English county cricketers, mean age 24.4.
+  caveats: One group with no comparison and only 12 players, so the fall cannot be put down to too little strength work rather than fatigue, travel or other causes. The authors' recommendation was not tested. It describes professionals with a full match schedule. It does not show what a club player, who plays weekly, would see.
+- id: cricket-offseason-fitness
+  kind: cricket
+  grade: C
+  statement: In 14 elite male cricketers (mean age 26.2) tested at week 1 and week 18 of a 20-week off-season, performance improved significantly on every test except pro-agility (p = 0.076). The tests were the Yo-Yo intermittent recovery test, jumps, reactive strength index and 5, 10 and 20 m sprints, with effect sizes from 0.26 to 2.8. The authors conclude that the off-season allows adequate time to improve the physical qualities needed in season.
+  sources: [herridge-2020-offseason]
+  population: 14 elite male cricketers, mean age 26.2.
+  caveats: One group, no comparison, and the abstract does not describe the training done, so the gains cannot be tied to strength work or to anything else. Repeat testing can itself improve scores. It is professional, so it does not show what a recreational player will gain.
+- id: cricket-training-frequency-meta
+  kind: cricket
+  grade: B
+  statement: In a systematic review and meta-analysis of resistance training in well-trained people, maximal strength rose at every training frequency, and over 6 to 12 weeks there was no clear difference in strength gain between frequencies (small effects between frequencies, upper body g up to 0.58 and lower body g up to 0.45). The authors suggest that weekly strength training could be spread over shorter, more frequent sessions to fit around competition.
+  sources: [cuthbert-2021-frequency]
+  population: Well-trained participants. The abstract does not give the number of studies, the sports or the sexes.
+  caveats: The outcome is maximal strength, not muscle growth, injury or cricket performance. The abstract does not say whether any study took place during a competitive season, and the authors' suggestion is a hypothesis. It is not cricket evidence. For hypertrophy, see the frequency principle on this site, which is a separate and mixed body of evidence.
+- id: cricket-domestic-injuries
+  kind: cricket
+  grade: C
+  statement: In prospective surveillance of elite men's domestic cricket in England and Wales over nine seasons (2010 to 2018), the average match injury incidence was 102 injuries per 1000 days of play (One-Day 254, Twenty20 136, First-Class 68). Most match injuries occurred in bowling (41.6 per 1000 days), then fielding (26.8) and batting (22.3). The thigh was the most commonly injured area (7.4 injuries per 100 players per season), lumbar spine injuries were the most prevalent (1.3% of players unavailable on any given day) and, counting all injuries, 7.5% of players were unavailable on any given day.
+  sources: [goggins-2020-injuries]
+  population: Elite male domestic cricketers in England and Wales, 2010 to 2018.
+  caveats: Observational and professional, with a heavy match schedule. The rates cannot be applied to club cricketers. It records where injuries occur and not why, and it tests no exercise.
+- id: cricket-shoulder-screening
+  kind: cricket
+  grade: C
+  statement: In 105 elite South African cricketers followed for one season, 17% (95% CI 9 to 24%) sustained a non-contact injury to the dominant shoulder. The authors describe the cricketer's shoulder as different from the classic throwing shoulder of baseball, report that two of 17 pre-season screening tests (a thickened dominant supraspinatus tendon and a shortened non-dominant pectoralis minor) were risk factors, and call for research into strengthening, flexibility and throwing workload management.
+  sources: [dutton-2019-shoulder]
+  population: 105 elite South African cricketers, mean age 27. The abstract does not state sex.
+  caveats: Observational. The test statistics are cut off in the abstract. The two risk factors were ultrasound and flexibility findings, not strength measures, and they were screening associations in an elite group. It tests no exercise. It is not evidence for or against any shoulder strengthening.
+- id: cricket-shoulder-strength-female
+  kind: cricket
+  grade: C
+  statement: In 26 elite Australian female fast bowlers, 12 of whom had a history of shoulder pain, there were no differences in rotation range of motion, rotator torques or torque ratios in the bowling shoulder between those with and without that history. There were no bilateral differences in average torques, and concentric internal-rotation torque of the bowling shoulder was associated with years of fast bowling (rank correlation 0.45).
+  sources: [stuelcken-2008-shoulder]
+  population: 26 elite Australian female fast bowlers.
+  caveats: Small, cross-sectional and now old. A history of shoulder pain is not a measure of future injury, and no difference at one time point does not show that strength is unimportant. The authors say larger studies are needed. It is elite women, not club players.

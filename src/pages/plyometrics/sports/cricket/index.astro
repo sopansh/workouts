@@ -1,0 +1,244 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import GuideSession from '../../../../components/GuideSession.astro';
+import GuideWeek from '../../../../components/GuideWeek.astro';
+import PlyometricsSafety from '../../../../components/PlyometricsSafety.astro';
+import StatusBadge from '../../../../components/StatusBadge.astro';
+import { doseText, estimateMinutes, loadGuide, type GuideItem } from '../../../../lib/guide';
+
+const data = await loadGuide('plyometrics', { phase: 'cricket' });
+// The base exercises used in the cricket plan are linked, not copied, so their cards come from the base phase.
+const base = await loadGuide('plyometrics', { phase: 'base' });
+const { plan } = data;
+const here = '/plyometrics/sports/cricket/';
+const evidence = `${here}evidence/`;
+const groupPage: Record<string, string> = {
+  'cricket-landing': `${here}power/`,
+  'cricket-hops': `${here}power/`,
+  'cricket-decelerate': `${here}power/`,
+  'cricket-rotation': `${here}rotation-and-core/`,
+};
+const rows = (items: GuideItem[]) => items.map(item => {
+  if (item.group) {
+    const group = data.groupById.get(item.group.id)!;
+    return { label: `${group.data.title} (ladder)`, href: `${groupPage[group.id]}#group-${group.id}`, dose: 'At the level you have reached', note: item.note };
+  }
+  const exercise = base.exerciseById.get(item.exercise!.id)!;
+  return { label: exercise.data.name, href: `/plyometrics/exercises/#${exercise.id}`, dose: doseText(exercise), note: exercise.data.muscles };
+});
+const week = plan.data.weeks[0];
+
+const pages = [
+  { href: `${here}power/`, title: 'Power', blurb: 'Landing, single-leg hops and stopping, each a gated ladder with the foot contacts counted.', accent: 'p3' },
+  { href: `${here}rotation-and-core/`, title: 'Rotation and core', blurb: 'Anti-rotation first, then hip-led turns and light-ball throws behind the back-safe guide.', accent: 'p2' },
+  { href: `${here}injury-prevention/`, title: 'Injury prevention', blurb: 'What is commonly injured, what the research can and cannot say, red flags and when to see a clinician.', accent: 'p1' },
+  { href: evidence, title: 'Evidence', blurb: 'Every claim with its grade, population and limits, the sources, and what could not be confirmed.', accent: 'p4' },
+];
+
+// Working hypotheses unless a claim is linked. "Partly sourced" means a graded claim backs part of the row, in the population that claim states.
+const demands = [
+  {
+    role: 'Fast bowler',
+    hypothesis: 'A run-up sprint, a delivery stride and braking on the front leg, with trunk side-flexion and rotation combined at front-foot contact, repeated across many deliveries.',
+    status: 'Partly sourced',
+    note: 'Injury sites and workload are described in professional and young bowlers. What a recreational or club bowler is exposed to is not sourced.',
+    claims: [['plyo-cricket-injury-sites', 'injury sites'], ['plyo-cricket-lumbar-stress-professional', 'lumbar stress fracture'], ['plyo-cricket-side-strain', 'side strain']],
+  },
+  {
+    role: 'Spin bowler',
+    hypothesis: 'Repeated rotational effort across a high number of balls, with finger, wrist and forearm demands.',
+    status: 'Hypothesis',
+    note: 'No spin-specific source was found. The only sourced detail is how often spin bowlers were injured in first-class cricket, which does not say why.',
+    claims: [['plyo-cricket-injury-sites', 'injury sites']],
+  },
+  {
+    role: 'Batter',
+    hypothesis: 'Short sprints, turns and calls between the wickets, rotation for stroke play and long periods in a stance.',
+    status: 'Hypothesis',
+    note: 'Nothing was found on batting rotation or running between the wickets. In community cricket, being struck by the ball was a common way to be injured.',
+    claims: [['plyo-cricket-community-injuries', 'community injuries'], ['plyo-cricket-community-evidence', 'community evidence']],
+  },
+  {
+    role: 'Fielder',
+    hypothesis: 'Short sprints, diving and sliding, and long throws that load the shoulder and trunk.',
+    status: 'Partly sourced',
+    note: 'In a small group of sub-elite men the qualities that went with throwing speed were measured, as correlations only. Colliding with the boundary fence is named as a risk.',
+    claims: [['plyo-cricket-throw-correlates', 'throwing correlates'], ['plyo-cricket-boundary-fence', 'boundary fence']],
+  },
+  {
+    role: 'Wicketkeeper',
+    hypothesis: 'Repeated squatting and recovering across a long day in the field, with reactive agility and fast hand movements.',
+    status: 'Hypothesis',
+    note: 'No keeper-specific source was found.',
+    claims: [['plyo-cricket-injury-sites', 'injury sites']],
+  },
+];
+
+const strengthPages = [
+  { href: '/strength/cricket/', label: 'Overview' },
+  { href: '/strength/cricket/fast-bowlers/', label: 'Fast bowlers' },
+  { href: '/strength/cricket/spin-bowlers/', label: 'Spin bowlers' },
+  { href: '/strength/cricket/batters/', label: 'Batters' },
+  { href: '/strength/cricket/wicketkeepers/', label: 'Wicketkeepers' },
+  { href: '/strength/cricket/fielders/', label: 'Fielders' },
+  { href: '/strength/cricket/injury-prevention/', label: 'Injury prevention (strength side)' },
+  { href: '/strength/cricket/season-planning/', label: 'Season planning' },
+];
+---
+<Base section="plyometrics" title="Cricket" description="A draft for adults who play recreational or club cricket: gated landing, hop and stopping work, hip-led rotation, and plain-language injury-prevention education, with the evidence graded and the gaps stated.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Cricket' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Plyometrics · Cricket</p>
+    <h1>Cricket: power, rotation and injury-prevention education</h1>
+    <p class="lede">A draft for adults who play recreational or club cricket: gated landing, hop and stopping work, hip-led rotation, and plain-language education on common cricket injuries. It is a coaching selection with a stated evidence base, not a programme shown to work for cricketers.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Adults only</span>
+      <span class="badge" data-tone="info">2 sessions a week</span>
+      <span class="badge">8 weeks, repeated</span>
+      <span class="badge">Gated</span>
+      <StatusBadge status={plan.data.status} />
+    </div>
+  </section>
+
+  <PlyometricsSafety />
+
+  <aside class="note note--warn" role="note" aria-labelledby="draft-note">
+    <h3 id="draft-note">Draft: education, not treatment</h3>
+    <p>This is education written by an AI coach. A physiotherapist, a strength and conditioning coach and a cricket-experienced reviewer have not yet reviewed it. It is not a diagnosis, a treatment, a rehabilitation plan or a return-to-play plan. Coming back to cricket after any injury is decided with a clinician, not with this page.</p>
+  </aside>
+
+  <section aria-labelledby="who">
+    <h2 id="who">Who this is for, and who it is not for</h2>
+    <div class="cols">
+      <div>
+        <p class="label">For</p>
+        <ul class="prose">
+          <li>Healthy adults (18 and over) who play recreational or club cricket.</li>
+          <li>People who have finished the <a href="/plyometrics/progression/">base plan's eight weeks</a> with quiet landings, or have equivalent jumping experience.</li>
+          <li>People with no current injury and no reason from a doctor or physiotherapist to avoid jumping.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="label label--warn">Not for</p>
+        <ul class="prose">
+          <li>Anyone under 18. Young bowlers are the group most studied for back injury, and they need qualified supervision, not this page. The <a href="/strength/cricket/">strength section</a> points to a youth consensus statement.</li>
+          <li>Pregnancy and the first months after birth, frailty, and anyone with a heart, lung, joint or nerve condition.</li>
+          <li>Anyone with a current or recent injury, a recent operation, or who has not been cleared to exercise. Ask a doctor or physiotherapist for a plan that fits you.</li>
+          <li>Elite or professional players, who should work with a qualified coach.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="prose">If you are unsure about any of this, speak to a GP first. The official <a href="https://eparmedx.com/" rel="noopener">PAR-Q+ questionnaire</a> is a free way to check whether you should.</p>
+  </section>
+
+  <section aria-labelledby="demands">
+    <h2 id="demands">What cricket asks of the body, by role (hypotheses unless sourced)</h2>
+    <p class="prose">These are working hypotheses written from how the game is played. A row is marked <b>Partly sourced</b> only where a graded claim backs a part of it, in the population that claim states. No source was found for adult recreational or club cricketers, so nothing below is a measured demand of your game.</p>
+    <div class="table-wrap" role="region" aria-label="Cricket demands by role" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Role</th><th scope="col">Working hypothesis</th><th scope="col">Status</th><th scope="col">What is sourced</th></tr></thead>
+        <tbody>
+          {demands.map(row => (
+            <tr>
+              <th scope="row">{row.role}</th>
+              <td>{row.hypothesis}</td>
+              <td><span class="badge" data-tone={row.status === 'Hypothesis' ? 'warn' : 'info'}>{row.status}</span></td>
+              <td>
+                {row.note}
+                <ul class="chip-list">
+                  {row.claims.map(([id, label]) => <li><a class="chip" href={`${evidence}#claim-${id}`}>{label}</a></li>)}
+                </ul>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="fit">
+    <h2 id="fit">How this fits with the rest of the site</h2>
+    <ul class="prose">
+      <li><b>The base plan.</b> The two sessions below are an alternative selection for the same two weekly impact slots as the <a href="/plyometrics/weekly-plan/">base weekly plan</a>. They replace it, they are not extra sessions, and they come after it. Do not stack them on top of the base sessions.</li>
+      <li><b>The strength pages.</b> <a href="/strength/cricket/">Cricket in the strength section</a> covers gym strength, workload and season planning. Those pages are still stubs with no prescriptions, so nothing here depends on them and nothing here repeats them. This part covers landing, hops, stopping, rotation and the injury-prevention education.</li>
+      <li><b>The back-safe core guide.</b> Rotation work is gated behind the <a href="/core/">back-safe core guide</a>. If your back is not pain-free, stay with that guide.</li>
+    </ul>
+    <p class="prose">The strength-section cricket pages, by role:</p>
+    <ul class="chip-list" aria-label="Cricket pages in the strength section">
+      {strengthPages.map(page => <li><a class="chip" href={page.href}>{page.label}</a></li>)}
+    </ul>
+  </section>
+
+  <section aria-labelledby="pages">
+    <h2 id="pages">What is on each page</h2>
+    <ul class="grid">
+      {pages.map(page => (
+        <li>
+          <a class="card" data-accent={page.accent} href={page.href}>
+            <h3>{page.title}</h3>
+            <p>{page.blurb}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="week">
+    <h2 id="week">The two-session week</h2>
+    <p class="prose">{plan.data.name}. Session A is landing and hops. Session B is slowing down, stopping and turning. Both end with the shared calf and balance work from the base plan, which is linked and not copied. Keep a rest day between the sessions.</p>
+    {plan.data.weeks.map(w => (
+      <div>
+        <h3>{w.label}</h3>
+        <p class="prose">{w.note}</p>
+        <GuideWeek week={w} label={w.label} sessionHref={id => `#session-${id}-title`} />
+      </div>
+    ))}
+  </section>
+
+  <section aria-labelledby="sessions">
+    <h2 id="sessions">The sessions</h2>
+    <p class="prose">Do the level you have reached on each ladder, not the highest. Rest roughly 60 to 90 seconds between jump sets, longer if landings get noisy, and stop a set when landings turn loud, uncontrolled or painful. Doses are on the exercise cards and the <a href={`${here}power/#contacts`}>contacts table</a> shows how they build over the weeks.</p>
+    <GuideSession id="warmup" title="Warm-up for both sessions (about 8 minutes)" intro={plan.data.warmup.text} rows={rows(plan.data.warmup.items)} doseHeading="Dose" noteHeading="Works" />
+    {plan.data.sessions.map(session => (
+      <GuideSession id={`session-${session.id}`} title={session.title} intro={session.intro} rows={rows(session.items)} doseHeading="Dose" noteHeading="Notes" />
+    ))}
+    <p class="prose muted small">Time. Each session is estimated from the plan's own assumptions at {week.sets} sets per exercise: {plan.data.sessions.map(session => `Session ${session.id} about ${estimateMinutes(plan, session, week.sets ?? 3)} minutes`).join(' and ')}, including the {plan.data.timing?.warmUpMinutes}-minute warm-up. This is an estimate from the listed sets and rests, not a timed measurement.</p>
+  </section>
+
+  <section aria-labelledby="season">
+    <h2 id="season">Around matches (a convention)</h2>
+    <ul class="prose">
+      <li>Keep the sessions short, early in the week and never on the day before a match.</li>
+      <li>Never on consecutive days, and never added to a heavy gym leg day without checking how recovery feels.</li>
+      <li>Keep the same sets and reps from week to week. Foot contacts never fall from one block of weeks to the next, so a lighter week repeats the previous row. If you are not recovered, hold the row or go back to an easier level, and do not skip impact work in one week and double it in the next.</li>
+      <li>This rule is a planning convention. No source was found for the best way to schedule power work around club matches. Workload and season planning belong to the <a href="/strength/cricket/season-planning/">strength section's season page</a>.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="kit">
+    <h2 id="kit">Surface, shoes and kit</h2>
+    <ul class="prose">
+      <li><b>Surface.</b> A clear, flat, dry, non-slip floor. Wet, uneven or slippery ground, including damp grass or a worn outfield, is a reason not to hop or stop. Check the ground for holes and debris first.</li>
+      <li><b>Shoes.</b> Flat, supportive trainers. Not studs or spikes.</li>
+      <li><b>A low step (optional).</b> One low, solid step such as a bottom stair, only if it does not flex, slide or tip and its top and the floor in front are non-slip. You step down from it and never jump down from it. Without one, stay at the no-step levels. No box is used anywhere in this guide.</li>
+      <li><b>A wall and a soft ball (optional).</b> Only a solid masonry wall with nothing breakable and nobody behind it, and a soft, light ball made for wall throws. Without them, stay at the no-kit levels.</li>
+      <li><b>No animations.</b> Landing in the side-to-side plane and turning cannot be shown faithfully by the current 3D figures, so this guide uses text and cues and nothing approximate.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="red-flags">
+    <h2 id="red-flags">Red flags: stop and get help</h2>
+    <ul class="prose">
+      <li><b>Urgent, same day or emergency services:</b> any head injury symptom after a knock (confusion, vomiting, worsening headache, drowsiness), a blow to the eye with pain or any change in vision, chest pain or fainting, back pain with leg weakness, numbness around the saddle area or new bladder or bowel changes, or a visibly deformed limb. Do not train.</li>
+      <li><b>Prompt, within days:</b> a sudden pop, snap or tearing sensation, being unable to bear weight or use a limb, swelling that does not settle, numbness or tingling, sudden loss of strength, a joint that gives way, or pain at night. Stop and see a clinician before training again.</li>
+      <li><b>Routine:</b> pain that has not improved after 2 to 3 weeks, or that returns every time a movement is repeated. Use the easier level and see a physiotherapist if it persists.</li>
+    </ul>
+    <p class="prose">The full list, with the cricket-specific signs, is on the <a href={`${here}injury-prevention/#red-flags`}>injury-prevention page</a>.</p>
+  </section>
+
+  <section aria-labelledby="convention">
+    <h2 id="convention">What is a convention here</h2>
+    <p class="prose">Every number in this guide (the gates, the sets and reps, the distances, the step height, the effort levels, the eight weeks and the match-week layout) is a coaching convention and not a study result. Where a source exists it is graded on the <a href={evidence}>evidence page</a> with its population and limits. No page here promises a faster bowling speed, a better throw, a better innings or fewer injuries.</p>
+  </section>
+</Base>

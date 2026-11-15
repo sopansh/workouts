@@ -51,7 +51,7 @@
   order: 2
   phase: 1
   name: Side plank
-  dose: 3 sets of 20 seconds per side. Progress by 5 seconds per week
+  dose: "3 sets of 20 seconds per side, adding about 5 seconds a week. At 30 seconds per side you can move from the knees to the full side plank. The time is a progression cue, not a safety limit: the pain rule applies whatever the clock says"
   muscles: Obliques, quadratus lumborum, glute medius
   glow:
     - torso
@@ -87,16 +87,18 @@
       farAnkle: [268, 135]
       farToe: [276, 138]
   steps:
-    - Lie on your side with your elbow directly under your shoulder and knees bent at 90 degrees (the easier version, which suits you now).
+    - Lie on your side with your elbow directly under your shoulder and knees bent at 90 degrees (the easier version, and the starting point in this guide).
     - Lift your hips until shoulder, hip and knee form one straight line.
-    - Keep the top hand on your hip and your ribs stacked, without letting the hips roll back.
+    - Keep the top hand on your hip, your ribs stacked and your hips forward, without letting the hips roll back.
+    - Keep your shoulder directly above your elbow.
     - Hold, breathing steadily. Lower, then repeat on the other side.
-  mistakes: hips sagging, hips pushed forward, holding your breath.
+    - Start at 20 seconds per side and add about 5 seconds a week, moving on at 30 seconds. Stop if it hurts, whatever the clock says.
+  mistakes: hips sagging, hips rolling backwards, shoulder drifting ahead of the elbow, holding your breath.
 - id: bird-dog
   order: 3
   phase: 1
   name: Bird dog
-  dose: 3 sets of 8 reps per side, 5-second hold each rep
+  dose: 3 sets of 8 reps per side, holding each rep 2 to 5 seconds and building to 5 seconds
   muscles: Spinal erectors, multifidus, glutes
   glow:
     - torso
@@ -135,13 +137,13 @@
     - Start on hands and knees, hands under shoulders and knees under hips.
     - Brace your abdomen and keep your back flat, as if a glass of water sat on it.
     - Reach one arm forward and the opposite leg straight back at the same time, and stop at hip height.
-    - Hold 5 seconds, return with control, then switch sides.
+    - Hold 2 to 5 seconds, building to 5 seconds, return with control, then switch sides.
   mistakes: arching the lower back, lifting the leg above hip height, rotating the hips.
 - id: glute-bridge
   order: 4
   phase: 1
   name: Glute bridge
-  dose: 3 sets of 12 reps with a 2-second squeeze at the top
+  dose: 3 sets of 12 reps with a 1-second squeeze at the top
   muscles: Gluteus maximus, hamstrings
   glow:
     - hips
@@ -166,10 +168,10 @@
       ankle: [190, 134]
       toe: [204, 136]
   steps:
-    - Lie on your back with knees bent and feet flat, hip-width apart.
+    - Lie on your back with knees bent and feet flat, hip-width apart, with your heels about 25 to 30 centimetres from your hips (a practical starting point, not a sourced figure). If your hamstrings cramp, move your feet closer.
     - Press through your heels and squeeze your glutes to lift your hips.
     - Stop when shoulders, hips and knees form a straight line, without arching your lower back.
-    - Hold 2 seconds and lower slowly.
+    - Hold 1 second and lower slowly.
   mistakes: pushing up with the lower back, feet too far away, hamstring cramping (move your feet closer).
 - id: cat-cow
   order: 5
@@ -257,9 +259,9 @@
       farToe: [206, 136]
   steps:
     - Lie on your back, arms straight up, hips and knees at 90 degrees.
-    - Press your lower back lightly toward the floor and keep it there.
+    - Press your lower back lightly towards the floor. If that hurts, keep it comfortable and reduce the range.
     - Slowly lower one arm overhead and the opposite leg toward the floor.
-    - Return and switch sides. If your back arches, reduce the range.
+    - Return and switch sides.
   mistakes: letting the lower back lift off the floor, rushing, holding your breath.
 - id: goblet-squat
   order: 7

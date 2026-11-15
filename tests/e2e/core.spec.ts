@@ -59,6 +59,8 @@ test.describe('core guide', () => {
 
     await pause.click();
     await expect(pause).toHaveAttribute('aria-pressed', 'false');
+    // Clicking the sticky toolbar can scroll the card out of view, and off-screen figures are not drawn.
+    await canvas.scrollIntoViewIfNeeded();
     await expect.poll(() => snapshot(canvas), { timeout: 5000 }).not.toBe(frozen);
   });
 

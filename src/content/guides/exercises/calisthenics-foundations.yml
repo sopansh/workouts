@@ -53,6 +53,8 @@
   regression: Do it on your hands and knees, or with your hands on a wall.
   progression: Move on to the push ladder.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-wall-slide
   order: 3
@@ -90,7 +92,7 @@
   equipment:
     - counter, sturdy table or the wall
   muscles: Chest, front of the shoulders, back of the arms
-  setup: Place your hands on a stable counter or table edge, slightly wider than shoulder-width, and walk your feet back until your body forms a straight line. Check that the support cannot slide.
+  setup: Place your hands on a stable counter or table edge, slightly wider than shoulder-width, and walk your feet back until your body forms a straight line. Use a surface that cannot move, such as a fixed kitchen counter, a heavy table or a sturdy bench. Lean on it to check before you start. If nothing passes that check, do the push-up against a wall instead.
   steps:
     - Lower your chest towards the edge, keeping your elbows at about 45 degrees from your sides.
     - Pause briefly, then press back to straight arms.
@@ -99,15 +101,18 @@
     - Squeeze the glutes
     - Elbows angled back, not flared
   mistakes:
+    - using a surface that can slide or tip
     - sagging at the hips
     - elbows flared out
     - head dropping forwards
   contraindications:
-    - a current shoulder, elbow or wrist injury
+    - a current shoulder, elbow or wrist injury, or pain there that is not yet assessed
     - pain when the hands bear weight
   regression: Use a higher surface, or push-ups against the wall.
   progression: Lower the surface a little at a time. Move to the push-up when 12 clean reps feel easy.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-push-up
   order: 5
@@ -120,7 +125,7 @@
   muscles: Chest, front of the shoulders, back of the arms
   setup: Place your hands under or slightly wider than your shoulders. Straighten your legs behind you, balanced on your toes, so your body is one straight line.
   steps:
-    - Lower your whole body together until your chest is a hand-width from the floor.
+    - Lower your whole body together until your chest is a hand-width above the floor, or as far as you can keep your body in one line.
     - Press back up to straight arms.
     - Keep your abdomen and glutes braced so the hips do not sag or lift.
   cues:
@@ -130,12 +135,15 @@
     - hips sagging or piking
     - partial range
     - elbows flaring wide
+    - head dropping forwards
   contraindications:
-    - a current shoulder, elbow or wrist injury
+    - a current shoulder, elbow or wrist injury, or pain there that is not yet assessed
     - pain on the back of the wrist when the hands bear weight
-  regression: Go back to the incline push-up, or do the push-up from the knees.
+  regression: Go back to the incline push-up, or do the push-up from the knees. If your wrist aches, use the incline push-up or the wall push-up instead.
   progression: Add a 2 second pause at the bottom (level 3) when 12 clean reps feel easy.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-pause-push-up
   order: 6
@@ -149,7 +157,7 @@
   setup: Take the push-up position, with a straight line from head to heels.
   steps:
     - Lower slowly over 2 seconds.
-    - Hold 2 seconds with the chest a hand-width off the floor, without resting on it.
+    - Hold 2 seconds with the chest a hand-width above the floor, or as low as you can keep your body in one line, without resting on it.
     - Press up smoothly to straight arms.
   cues:
     - Stay tight in the pause
@@ -158,11 +166,13 @@
     - hips sagging in the pause
     - holding the breath
   contraindications:
-    - a current shoulder, elbow or wrist injury
+    - a current shoulder, elbow or wrist injury, or pain there that is not yet assessed
     - pain on the back of the wrist when the hands bear weight
-  regression: Shorten the pause to 1 second, or go back to the push-up.
+  regression: Shorten the pause to 1 second, or go back to the push-up. If your wrist aches, use the incline push-up instead.
   progression: Lengthen the pause, or move on to the pike push-up for the handstand path.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-pike-push-up
   order: 7
@@ -191,6 +201,8 @@
   regression: Place your hands on a low step, or use a smaller range.
   progression: Use a lower hand position or raise the feet slightly. Treat the handstand ladder as a separate step with its own checks.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-prone-y-raise
   order: 8
@@ -306,6 +318,8 @@
   regression: Keep your toes on the floor or a step to take some of the weight, or hold for fewer seconds.
   progression: Move on to the slow lowering when you can hold 30 seconds.
   painRule: shoulder
+  alsoPainRules:
+    - wrist
   status: draft
 - id: cal-negative-pull-up
   order: 12
@@ -364,7 +378,7 @@
     - a current shoulder or elbow injury
     - a bar that has not been checked as secure
   regression: Go back to the slow lowering, or use a band for assistance.
-  progression: Add a rep or a pause. Wider grips, weight and other pull-up variations are beyond this guide.
+  progression: Add a rep or a pause. 3 clean reps with a controlled lowering is the figure the tuck front lever gate uses. Wider grips, weight and other pull-up variations are beyond this guide.
   painRule: shoulder
   status: draft
 - id: cal-bodyweight-squat
@@ -378,7 +392,7 @@
   muscles: Quadriceps, glutes
   setup: Stand with your feet about shoulder-width apart and your toes turned out slightly. Hold your hands in front of you for balance.
   steps:
-    - Push your hips back and bend your knees, lowering as far as you can with your heels down and your back flat.
+    - Push your hips back and bend your knees, lowering to a depth you can control, heels down, back neutral.
     - Pause for a second.
     - Stand up through the whole foot.
   cues:
@@ -388,6 +402,7 @@
     - heels lifting
     - knees falling inwards
     - rounding the lower back at the bottom
+    - going deeper than you can control
   contraindications:
     - knee or hip pain that has not been assessed
     - dizziness on standing up
@@ -488,7 +503,7 @@
   equipment:
     - mat or soft floor
   muscles: Glutes, back of the thighs
-  setup: Lie on your back with your knees bent and feet flat, hip-width apart, about 25 to 30 centimetres from your hips. Rest your arms by your sides.
+  setup: Lie on your back with your knees bent and feet flat, hip-width apart, heels about 25 to 30 centimetres from your hips; if your hamstrings cramp, move your feet closer. Rest your arms by your sides.
   steps:
     - Press through your heels and lift your hips until your body forms a straight line from knees to shoulders.
     - Pause for a second, squeezing your glutes.
@@ -501,9 +516,10 @@
     - pushing through the toes
     - raising the hips too high
   contraindications:
-    - back pain when lying on your back
+    - back pain when lying on your back, or back pain that is not yet assessed
     - acute hamstring pain
-  regression: Lift only a few centimetres, or pause for less time.
+    - repeated hamstring cramping
+  regression: Lift a smaller height.
   progression: Move on to the single-leg bridge when 12 reps with a 1 second pause feel easy.
   painRule: lower-back
   status: draft
@@ -569,22 +585,23 @@
   equipment:
     - mat or soft floor
   muscles: Abdominal wall, hip flexors
-  setup: Lie on your back with your arms pointing to the ceiling and your hips and knees bent to 90 degrees. Press your lower back lightly into the floor.
+  setup: Lie on your back with your arms pointing to the ceiling and your hips and knees bent to 90 degrees.
   steps:
-    - Slowly straighten one leg and lower the opposite arm overhead, keeping the lower back flat.
+    - Press your lower back lightly towards the floor. If that hurts, keep it comfortable and reduce the range.
+    - Slowly straighten one leg and lower the opposite arm overhead, keeping your lower back where you set it.
     - Return to the start and swap sides.
   cues:
-    - Back stays flat
+    - Lower back stays where you set it
     - Move slowly
   mistakes:
-    - the lower back arching
+    - the lower back arching off the floor
     - moving too fast
     - holding the breath
   contraindications:
-    - back pain when lying on your back
+    - back pain when lying on your back, or back pain that is not yet assessed
     - a current abdominal or hip injury
-  regression: Move only the legs, with the arms held up.
-  progression: Move on to the hollow tuck hold when you can do 20 seconds of continuous slow reps.
+  regression: Move only the legs, with the arms held up, tapping a heel to the floor.
+  progression: Slow each rep to 5 seconds, or extend the arm and leg further. Move on to the hollow tuck hold when you can do 20 seconds of continuous slow reps.
   painRule: lower-back
   status: draft
 - id: cal-hollow-tuck
@@ -598,11 +615,11 @@
   muscles: Abdominal wall, hip flexors
   setup: Lie on your back with your knees bent to your chest and your arms by your sides.
   steps:
-    - Press your lower back into the floor and lift your head and shoulders slightly.
-    - Hold with your knees tucked and your lower back flat.
+    - Press your lower back lightly towards the floor. If that hurts, keep it comfortable and reduce the range.
+    - Lift your head and shoulders slightly and hold with your knees tucked.
     - Breathe steadily, then lower.
   cues:
-    - Lower back stays in contact with the floor
+    - Lower back stays where you set it
     - Chin tucked
   mistakes:
     - the lower back lifting off the floor
@@ -612,7 +629,7 @@
     - back pain when lying on your back
     - neck pain or strain
   regression: Go back to the dead bug, or keep the head down.
-  progression: Move on to the hollow hold when you can hold 30 seconds with the lower back flat.
+  progression: Move on to the hollow hold when you can hold 30 seconds with your lower back staying down.
   painRule: lower-back
   status: draft
 - id: cal-hollow-hold
@@ -626,12 +643,12 @@
   muscles: Abdominal wall, hip flexors
   setup: Lie on your back with your arms by your sides and your legs straight.
   steps:
-    - Press your lower back into the floor.
+    - Press your lower back lightly towards the floor. If that hurts, keep it comfortable and reduce the range.
     - Lift your shoulders and your straight legs a little off the floor, making a shallow banana shape.
-    - Hold with a flat lower back and steady breathing, then lower.
+    - Hold with your lower back down and steady breathing, then lower.
   cues:
-    - Lower back flat
-    - Legs lower only as far as the lower back allows
+    - Lower back stays where you set it
+    - Lower your legs only as far as your lower back stays down
   mistakes:
     - the lower back arching off the floor
     - holding the breath
@@ -734,23 +751,25 @@
   equipment:
     - mat or soft floor
   muscles: Sides of the trunk, outer hip
+  dose: Hold 20 seconds on each side to start, adding about 5 seconds a week
   setup: Lie on your side with your knees bent and your forearm on the floor under your shoulder. Stack your hips and knees.
   steps:
     - Lift your hips until your body forms a line from knees to shoulders.
     - Hold, breathing steadily, then lower slowly. Do both sides.
   cues:
-    - Hips forward
+    - Ribs stacked, hips forward
     - Shoulder stays above the elbow
   mistakes:
     - hips sagging or rolling back
     - shoulder collapsing into the ear
     - holding the breath
   contraindications:
-    - a current shoulder injury
-    - pain in the lower back while holding
+    - shoulder or lower-back pain in the position, or a shoulder or back condition not yet assessed
   regression: Lift the hips only a short way.
-  progression: Move on to the side plank when you can hold 20 seconds on each side.
-  painRule: lower-back
+  progression: Move on to the side plank when you can hold 30 seconds on each side. That timing is a progression cue, not a safety limit, and the pain rule applies whatever the clock says.
+  painRule: shoulder
+  alsoPainRules:
+    - lower-back
   status: draft
 - id: cal-side-plank-full
   order: 28
@@ -761,21 +780,23 @@
   equipment:
     - mat or soft floor
   muscles: Sides of the trunk, outer hip
+  dose: Hold 20 seconds on each side to start, adding about 5 seconds a week
   setup: Lie on your side with your legs straight and your forearm under your shoulder. Stack or stagger your feet.
   steps:
     - Lift your hips until your body forms a straight line from head to feet.
     - Hold, breathing steadily, then lower slowly. Do both sides.
   cues:
-    - Hips forward
-    - Push the floor away with the forearm
+    - Ribs stacked, hips forward
+    - Shoulder stays above the elbow
   mistakes:
     - hips sagging
     - rolling the body backwards
     - holding the breath
   contraindications:
-    - a current shoulder injury
-    - pain in the lower back while holding
+    - shoulder or lower-back pain in the position, or a shoulder or back condition not yet assessed
   regression: Go back to the side plank from the knees, or stagger the feet for a wider base.
-  progression: Hold for longer. Lifting the top leg or the arm is beyond this guide.
-  painRule: lower-back
+  progression: Add about 5 seconds a week. Thirty seconds on each side is the move-on point, and no gate in this guide asks for more. That timing is a progression cue, not a safety limit, and the pain rule applies whatever the clock says. Lifting the top leg or the arm is beyond this guide.
+  painRule: shoulder
+  alsoPainRules:
+    - lower-back
   status: draft

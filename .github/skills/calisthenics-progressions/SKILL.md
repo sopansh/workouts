@@ -7,7 +7,7 @@ description: How the calisthenics section is built and extended on workouts.ther
 
 ## What exists
 
-`/calisthenics/` has eight pages and two eight-week plans (`cal-foundations`, `cal-first-skills` in `guides/plans.yml`). Groups, exercises and plans use the `cal-` prefix because guide ids are global.
+`/calisthenics/` has eight pages and two eight-week plans (`cal-foundations`, `cal-first-skills` in `guides/plans/calisthenics.yml`). Groups, exercises and plans use the `cal-` prefix because guide ids are global.
 
 - **Foundations (phase `foundations`):** wrist and shoulder preparation (wrist rocks, scapular push-up, wall slide), then ladders for push (incline to pike push-up), pull (prone Y raise, backpack row, then inverted row, active hang, slow lowering and pull-up that need a table or bar), squat and single-leg, hip extension, hollow body, plank and side plank.
 - **First skills (phase `first-skills`):** L-sit, wall handstand, planche lean and tuck front lever. All flagged `convention: true`, each with at least two `gates`.

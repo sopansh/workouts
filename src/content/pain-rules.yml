@@ -81,3 +81,20 @@
     - Numbness or tingling in the fingers, or a weak grip
     - Swelling, a lump, or a sudden pop followed by pain
     - Pain that is not improving after 2 to 3 weeks
+- id: trunk-rotation
+  title: Trunk rotation and twisting pain rule
+  rule: Stay at 2/10 or lower, and no worse the next morning. Pain in the lower back, ribs or side during a turn or a throw, a pinch or catch on one side of the back, or pain that builds from rep to rep means stop the set, go back to the previous level and keep the feet still and the turn smaller. Do not push through a sharp or pinching pain, and do not add speed or a heavier ball to get past it.
+  seeClinician:
+    - Back pain with leg weakness or numbness, numbness around the saddle area, or any new bladder or bowel change (urgent, same day)
+    - A sudden sharp pain or a pop in the back, ribs or side
+    - Back pain that keeps returning on the same movement, especially in a bowler
+    - Night pain that does not ease, or pain that is not improving after 2 to 3 weeks
+- id: overhead-throwing
+  title: Throwing and overhead pain rule
+  rule: Stay at 2/10 or lower, and no worse the next morning. Pain in the shoulder or elbow when you throw, bowl or reach overhead, a pinch at the front or top of the shoulder, clicking with pain, or pain that is still there the next day means stop throwing or bowling for that session and go back to easier work. Do not throw through pain, and do not add more throws to test whether it has settled.
+  seeClinician:
+    - Sudden loss of strength, a pop followed by pain or bruising, or being unable to lift the arm
+    - Numbness or tingling down the arm or into the hand
+    - Shoulder pain that disturbs sleep, builds across sessions or stops you training
+    - Swelling, bruising or a visible deformity after a fall or a blow
+    - Pain that is not improving after 2 to 3 weeks

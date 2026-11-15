@@ -25,11 +25,13 @@ const next = pages[index + 1];
     <p class="eyebrow">Cricket · {entry.data.researched ? 'Researched' : 'Stub'}</p>
     <h1>{entry.data.title}</h1>
     <p class="lede">{entry.data.summary}</p>
-    <div class="badges">{!entry.data.researched && <span class="badge" data-tone="warn">Stub</span>}<StatusBadge status={entry.data.status} /></div>
+    <div class="badges">{entry.data.researched ? <span class="badge" data-tone="info">Researched, abstracts only</span> : <span class="badge" data-tone="warn">Stub</span>}<StatusBadge status={entry.data.status} /></div>
   </section>
 
   <aside class="note note--warn" role="note">
-    <p><b>Stub page.</b> The demands below are working hypotheses, not sourced findings. There are no prescriptions. Youth bowlers need qualified supervision.</p>
+    {entry.data.researched
+      ? <p><b>Draft, researched from abstracts.</b> The demands below are working hypotheses unless a graded claim is linked. The exercise selection is a labelled convention, not a programme shown to work. Youth bowlers need qualified supervision.</p>
+      : <p><b>Stub page.</b> The demands below are working hypotheses, not sourced findings. There are no prescriptions. Youth bowlers need qualified supervision.</p>}
   </aside>
 
   <div class="cols">

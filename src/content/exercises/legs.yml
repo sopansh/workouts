@@ -8,7 +8,7 @@
   level: intermediate
   spinalLoad: high
   summary: The standard heavy squat. High-bar position, to a depth you control, for quadriceps, glute and adductor loading.
-  setup: Set the bar on the upper traps (high bar) with a full grip, elbows down. Unrack, step back and set the feet about shoulder width apart with the toes turned out 10 to 30 degrees. Take a breath and brace before each rep.
+  setup: Set the bar on the upper traps (high bar) with a full grip, elbows down. Unrack, step back and set the feet about shoulder width apart with the toes turned out 10 to 30 degrees. Take a breath and brace before each rep. Only use a rack that is fixed, cannot tip and is rated for you plus the bar. Use the rack's safety arms or pins, set below the lowest bar position, as is usual practice.
   steps:
     - Sit down and slightly back, with the knees tracking over the toes and the trunk leaning only as much as needed to stay balanced.
     - Descend to the depth you can control with a neutral spine, ideally with the hips at or below the knees.
@@ -26,7 +26,7 @@
     - Acute low-back pain, or a back injury not cleared for loaded spinal work
     - Knee pain at depth
     - Unresolved hip impingement symptoms at depth
-  regression: Goblet squat or box squat with a lighter load (both are foundation-level options).
+  regression: Goblet squat or box squat with a lighter load (both are foundation-level options). With no equipment, a bodyweight squat to a depth you control.
   progression: Add load; add a pause at the bottom; move to a low-bar or safety-bar variation if shoulder mobility limits the bar position.
   painRule: lower-back
   variations:
@@ -54,7 +54,7 @@
   level: advanced
   spinalLoad: moderate
   summary: A squat with the bar on the front of the shoulders. The upright trunk keeps spinal loading lower than a low-bar squat at equal depth.
-  setup: Rest the bar on the front delts with the elbows high, in a clean grip or crossed arms. Feet about shoulder width, toes slightly turned out.
+  setup: Rest the bar on the front delts with the elbows high, in a clean grip or crossed arms. Feet about shoulder width, toes slightly turned out. Only use a rack that is fixed, cannot tip and is rated for you plus the bar. Use the rack's safety arms or pins, set below the lowest bar position, as is usual practice.
   steps:
     - Brace, then sit straight down with the elbows high and the trunk upright.
     - Descend to a controllable depth, then stand by driving the floor away.
@@ -64,7 +64,7 @@
   contraindications:
     - Wrist, shoulder or elbow pain in the rack position
     - Back or knee pain not cleared for loading
-  regression: Goblet squat or a heels-elevated back squat with a lighter load.
+  regression: Goblet squat or a heels-elevated back squat with a lighter load. With no equipment, a bodyweight squat to a depth you control.
   progression: More load, pause reps, or tempo.
   painRule: knee
   variations: []
@@ -91,12 +91,12 @@
     - Heels lifting off the floor
   contraindications:
     - Acute low-back or knee pain not cleared for loading
-  regression: Squat to a box or a counterbalanced squat holding a support.
+  regression: Squat to a box or a counterbalanced squat holding a support, only if the box or support is stable and cannot slide or tip (press down on it first). With no equipment, a bodyweight squat to a depth you control.
   progression: Heavier dumbbell, pause at the bottom, or move to a barbell squat.
   painRule: knee
   variations:
     - name: Heels elevated
-      change: Heels on a small plate.
+      change: Heels on a small, flat, non-slip plate or board.
       emphasis: Lets more depth be reached with an upright trunk if ankle mobility is limited.
   dose: 2 to 3 sets of 8 to 12 reps as a warm-up or back-off work
   alternatives: [box-squat]
@@ -111,7 +111,7 @@
   level: foundation
   spinalLoad: moderate
   summary: A squat to a box at a set depth. It teaches control at the bottom and limits depth when loading is being re-introduced.
-  setup: Place a box behind you at a height that lets the hips reach about parallel. Set the bar as for a back squat and feet about shoulder width.
+  setup: Place a box behind you at a height that lets the hips reach about parallel. Only use a box that is stable and cannot slide or tip, ideally set against a wall, and test it before the bar is on your back. With your feet on the floor, press down on it with your hands and your body weight. Set the bar as for a back squat and feet about shoulder width. Only use a rack that is fixed, cannot tip and is rated for you plus the bar. Use the rack's safety arms or pins, set below the lowest bar position, as is usual practice.
   steps:
     - Brace, sit back to the box under control, with the shins close to vertical.
     - Touch the box lightly without relaxing the trunk, then drive up.
@@ -121,7 +121,7 @@
   contraindications:
     - Acute low-back pain
     - Knee pain at the box height
-  regression: Bodyweight box squat, or a goblet squat to a box.
+  regression: Bodyweight box squat, or a goblet squat to a box. With no box, a bodyweight squat to a depth you control.
   progression: Lower the box height, add load, or move to a free squat.
   painRule: lower-back
   variations: []
@@ -205,7 +205,7 @@
   level: intermediate
   spinalLoad: low
   summary: A rear-foot-elevated single-leg squat with a long range. It loads the front leg heavily with a small spinal load.
-  setup: Place the back foot on a bench behind you. Take a long stance so the front shin is near vertical at the bottom. Hold dumbbells at the sides.
+  setup: Only use a bench that is stable, cannot slide or tip (set it against a wall) and is rated for your weight plus the dumbbells. Press down on it with your hands first. Place the back foot on the bench behind you. Take a long stance so the front shin is near vertical at the bottom. Hold dumbbells at the sides.
   steps:
     - Lower straight down until the back knee approaches the floor and the front thigh is about parallel.
     - Drive through the front foot to stand, keeping the pelvis level.
@@ -214,7 +214,7 @@
     - Leaning and twisting the trunk
   contraindications:
     - Knee or hip-flexor pain in the stretched position of the back leg
-  regression: Split squat with the back foot on the floor, bodyweight only.
+  regression: Split squat with the back foot on the floor, bodyweight only (no equipment).
   progression: Heavier dumbbells, a barbell, or a deficit.
   painRule: knee
   variations:
@@ -337,7 +337,7 @@
   level: foundation
   spinalLoad: low
   summary: A floor-based hip extension that teaches the glutes to do the work of extending the hips without arching the lower back.
-  setup: Lie on your back with the knees bent and feet flat, about hip width. Ribs down and a gentle brace.
+  setup: Lie on your back with the knees bent and feet flat, hip-width apart, with the heels about 25 to 30 centimetres from the hips. This is a practical starting point, not a sourced figure. If your hamstrings cramp, move your feet closer. Ribs down and a gentle brace.
   steps:
     - Drive through the feet and lift the hips until the body forms a line from the shoulders to the knees.
     - Pause for a second at the top, then lower under control.
@@ -345,8 +345,10 @@
     - Arching the lower back to get the hips higher
     - Pushing through the toes so the quads take over
   contraindications:
-    - Acute low-back pain provoked by the bridge position
-  regression: Smaller range or both feet closer to the glutes.
+    - Back pain that is not yet assessed
+    - Acute hamstring pain
+    - Repeated hamstring cramping
+  regression: Lift a smaller height.
   progression: Single-leg bridge, a barbell across the hips, or the hip thrust.
   painRule: lower-back
   variations:
@@ -367,7 +369,7 @@
   level: intermediate
   spinalLoad: low
   summary: A heavily loaded hip extension with the upper back on a bench. High glute loading at the shortened end of the range.
-  setup: Sit with the upper back against the edge of a bench and the barbell across the hips with a pad. Plant the feet about hip width.
+  setup: Sit with the upper back against the edge of a bench and the barbell across the hips with a pad. Plant the feet about hip width. Only use a bench that is stable, cannot slide or tip (set it against a wall) and is rated for your weight plus the bar. Press down on it with your hands first.
   steps:
     - Drive through the feet to lift the hips until the thighs are parallel to the floor.
     - Pause with the ribs down and the chin tucked, then lower under control.
@@ -436,7 +438,7 @@
     - Squatting rather than pushing the hips back
   contraindications:
     - Pain that builds during the hinge
-  regression: Hands on a wall or a support while hinging.
+  regression: Hands on a wall, or on a support only if it is fixed and cannot slide or tip, while hinging.
   progression: Light dumbbell Romanian deadlift.
   painRule: lower-back
   variations: []
@@ -513,7 +515,7 @@
   level: advanced
   spinalLoad: low
   summary: A bodyweight eccentric knee-flexion exercise with a large hamstring load. Also used in injury-prevention programmes.
-  setup: Kneel on a pad with the ankles anchored, hips and trunk in a straight line from the knees to the head.
+  setup: Only use a pad and ankle anchor that are fixed and cannot slide or lift. Test them with a gentle lean before the first rep. Kneel on a pad with the ankles anchored, hips and trunk in a straight line from the knees to the head.
   steps:
     - Lower the trunk slowly forwards as far as you can control, keeping the hips extended.
     - Catch with the hands and push back up, or use a band to assist the return.
@@ -578,7 +580,7 @@
     - Bending the knees to cheat
   contraindications:
     - Achilles tendon pain not cleared for loading
-  regression: Bodyweight calf raise on a step.
+  regression: Bodyweight calf raise on the floor, or on a low step only if it is stable and cannot slide, with a hand on a wall for balance.
   progression: Slower tempo, pauses at the stretch, or single-leg versions.
   painRule: general
   variations:

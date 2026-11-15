@@ -116,7 +116,7 @@
 - id: push-pull-legs
   name: Push / Pull / Legs, six days
   summary: Each muscle is trained twice a week across six sessions, with the push, pull and leg days built differently so the same lift is not repeated back to back. Written for an experienced lifter with a full gym and about 90 minutes per session.
-  level: Upper-intermediate to advanced (10+ years of training)
+  level: Upper-intermediate to advanced (many years of training)
   daysPerWeek: 6
   sessionMinutes: 90
   status: draft
@@ -255,7 +255,7 @@
 - id: upper-lower
   name: Upper / Lower, four days
   summary: A shorter alternative for weeks with less time or when you want fewer, longer recovery gaps. Each muscle is still trained twice a week.
-  level: Upper-intermediate to advanced (10+ years of training)
+  level: Upper-intermediate to advanced (many years of training)
   daysPerWeek: 4
   sessionMinutes: 80
   status: draft

@@ -4,10 +4,10 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import GuideExerciseCard from '../../../components/GuideExerciseCard.astro';
 import PainRule from '../../../components/PainRule.astro';
 import PlyometricsSafety from '../../../components/PlyometricsSafety.astro';
-import { exercisesInGroup, loadGuide } from '../../../lib/guide';
+import { exercisesInGroup, loadGuide, painRuleLinks, usedPainRuleIds } from '../../../lib/guide';
 
-const data = await loadGuide('plyometrics');
-const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRule.id))];
+const data = await loadGuide('plyometrics', { phase: 'base' });
+const painIds = usedPainRuleIds(data);
 ---
 <Base section="plyometrics" title="Exercises" description="Setup, steps, mistakes, contraindications and a regression for every plyometrics, calf and balance exercise.">
   <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Exercises' }]} />
@@ -28,8 +28,7 @@ const painIds = [...new Set(data.exercises.map(exercise => exercise.data.painRul
       <p class="prose">{group.data.summary}</p>
       <div class="guide-list">
         {exercisesInGroup(data, group.id).map(exercise => {
-          const pain = data.painById.get(exercise.data.painRule.id)!;
-          return <GuideExerciseCard exercise={exercise} painRuleTitle={pain.data.title} painRuleHref={`#pain-${pain.id}`} />;
+          return <GuideExerciseCard exercise={exercise} painRules={painRuleLinks(data, exercise)} />;
         })}
       </div>
     </section>

@@ -1,0 +1,129 @@
+---
+import Base from '../../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import ClaimList from '../../../../../components/ClaimList.astro';
+import PlyometricsSafety from '../../../../../components/PlyometricsSafety.astro';
+import SourceList from '../../../../../components/SourceList.astro';
+import StatusBadge from '../../../../../components/StatusBadge.astro';
+import { loadGuide } from '../../../../../lib/guide';
+
+const data = await loadGuide('plyometrics', { phase: 'cricket' });
+const here = '/plyometrics/sports/cricket/';
+const evidenceHref = `${here}evidence/`;
+
+// Claims graded for the strength section's cricket stubs, reused here by id and not graded again.
+const reusedIds = ['cricket-back-injuries', 'cricket-workload-spikes', 'cricket-workload-low-and-high', 'acwr-contested', 'youth-training-consensus', 'nordic-hamstring-injury'];
+const reused = reusedIds.map(id => data.claimById.get(id)!);
+const everyClaim = [...data.claims, ...reused];
+const sources = [...new Set(everyClaim.flatMap(claim => claim.data.sources.map(source => source.id)))].map(id => data.sourceById.get(id)!);
+
+const topics = [
+  { id: 'injury', title: 'Cricket injuries and workload', ids: ['plyo-cricket-injury-sites', 'plyo-cricket-bowling-overs', 'plyo-cricket-boundary-fence', 'plyo-cricket-lumbar-stress-professional', 'plyo-cricket-side-strain', 'plyo-cricket-community-injuries', 'plyo-cricket-community-evidence'] },
+  { id: 'power', title: 'Power, landing and throwing', ids: ['plyo-cricket-throw-correlates', 'plyo-cricket-plyometric-bowlers', 'plyo-cricket-plyometric-adults', 'plyo-cricket-landing-instruction', 'plyo-cricket-medicine-ball-trial', 'plyo-cricket-core-limits'] },
+  { id: 'prevention', title: 'Prevention programmes', ids: ['plyo-cricket-ipp-risk-factors', 'plyo-cricket-ipp-kinematics', 'plyo-cricket-ipp-review', 'plyo-cricket-shoulder-programmes', 'plyo-cricket-strength-training-injuries', 'plyo-cricket-acl-programmes'] },
+];
+const listed = new Set(topics.flatMap(topic => topic.ids));
+const other = data.claims.map(claim => claim.id).filter(id => !listed.has(id));
+
+const gaps = [
+  'No trial of any power, rotation, landing or injury-prevention programme in adult recreational or club cricketers was found. The cricket-specific trials are in adolescent community pace bowlers (measuring strength, endurance and joint angles, not injuries) and in professional fast bowlers (measuring strength and jump tests, not injuries).',
+  'Most community-level cricket injury research is in juniors and adolescent bowlers, and its data are patchy. No injury rate for adult club cricketers was found.',
+  'Nothing was found on batting rotation, running between the wickets, spin bowling, wicketkeeping or women\'s cricket. The searches were not exhaustive: only the first results of each, sorted by how often they are cited, were screened.',
+  'No study of rotational power or medicine-ball training in cricketers was found. The nearest tested example is a six-week trial in women handball players, so rotational throws are a hypothesis and a coaching convention here.',
+  'No source was found for a safe throwing or bowling build-up at club level. The delivery counts in the bowler studies describe professional samples. They are not limits and are not offered as limits.',
+  'The injury-outcome evidence for strength, plyometric and landing training comes from other sports or mixed groups, and the programmes had several parts. Which part helps is not known, and whether it applies to cricket is not shown. The Nordic claim (reused) is mostly football.',
+  'Shoulder prevention programmes in overhead athletes gave mixed results, and the review itself concluded that no conclusions can be made. The abstract does not name the sports, so it is not confirmed that cricket is included.',
+  'No cricket-specific knee or ankle injury rate was found in what was searched. Case reports of a fielding slide were seen by title only and not read.',
+  'Not searched or not read: concussion and head-injury consensus statements, which protective-equipment standard applies, eye injury, heat illness and hydration, masters players, and women\'s cricket. The head-injury text on these pages is a general red flag and not guidance.',
+  'Seen by title only and not read: the protocol paper for a cricket injury-prevention trial (a protocol is not a result), a study of hamstring risk factors in Australian professional cricketers, and a survey of how often professional teams in the United Kingdom use the Nordic hamstring exercise.',
+  'Every source was read by abstract only. No full text was read, so programme content, doses, risk of bias beyond what the abstract states, and any figure not in an abstract are unverified. No exercise on these pages was copied from a studied programme.',
+  'Reviewers: none are named. A physiotherapist, a strength and conditioning coach and a cricket-experienced reviewer are needed, and every page stays labelled draft until they sign off.',
+];
+
+const conventions = [
+  'The gates (for example 8 slow squats, 10 single-leg calf raises on each side, 30 seconds on one leg, 20 seconds in a side plank, two weeks pain-free before a new level).',
+  'Every dose: sets, reps, distances, the step height of about 15 to 20 cm, the "about half effort" and "about three quarters pace" levels, the rests and the eight-week blocks.',
+  'The order of the ladders, and the match-week layout (early in the week, never the day before a match, never on consecutive days).',
+  'The estimated session times, which come from the plan\'s own timing assumptions and are not measured.',
+  'Which existing cards go in the anti-rotation block, and their order.',
+];
+---
+<Base section="plyometrics" title="Cricket evidence" description="Every graded claim and source behind the cricket pages, with the population and limits of each, the claims withheld, and the gaps in the evidence. Draft.">
+  <Breadcrumbs items={[{ label: 'Plyometrics', href: '/plyometrics/' }, { label: 'Cricket', href: here }, { label: 'Evidence' }]} />
+  <section class="hero page-head">
+    <p class="eyebrow">Cricket · Evidence</p>
+    <h1>What the cricket pages rest on</h1>
+    <p class="lede">Each claim has a grade, the population studied and its limits. The grades follow the <a href="/strength/evidence/">strength section's rubric</a>. Every source had its abstract read, and its DOI, title, year and retraction status checked on Crossref. That shows the paper exists. It does not show that the claim fits a recreational or club cricketer, so the limits are stated.</p>
+    <div class="badges">
+      <span class="badge" data-tone="info">Abstracts only</span>
+      <span class="badge" data-tone="warn">No adult club evidence found</span>
+      <StatusBadge status={data.plan.data.status} />
+    </div>
+  </section>
+
+  <PlyometricsSafety />
+
+  <section aria-labelledby="gaps">
+    <h2 id="gaps">What the evidence does not cover</h2>
+    <ul class="prose">{gaps.map(gap => <li>{gap}</li>)}</ul>
+  </section>
+
+  <section aria-labelledby="withheld">
+    <h2 id="withheld">Unresolved: read but not published</h2>
+    <p class="prose">A claim is not published when its abstract does not give the population or a number needed to apply it. These two were read and are not in the source list. Neither is relied on anywhere on these pages. Both need the full text.</p>
+    <ul class="prose">
+      <li>
+        <b>Bowling-speed correlates.</b> A systematic review and meta-analysis of correlational data on ball release speed in cricket (Ramachandran and colleagues, <a href="https://doi.org/10.1080/14763141.2020.1858152" rel="noopener">doi:10.1080/14763141.2020.1858152</a>; Crossref issued year 2021, print year 2024). The abstract reports correlations with run-up speed, front-knee angle, shoulder strength and arm length across 18 studies. It does not say the level, age or sex of the bowlers in those studies, so it is not possible to say whom the correlations apply to. Not published.
+      </li>
+      <li>
+        <b>Plyometric training in cricketers.</b> A controlled trial of 8 weeks of plyometric training against usual pre-season training (Houghton and colleagues, <a href="https://doi.org/10.1519/jsc.0b013e3182651e7a" rel="noopener">doi:10.1519/jsc.0b013e3182651e7a</a>, 2013, 7 and 8 participants). The abstract does not say the sex, age or level of the 15 cricketers or how they were allocated, and the shuttle-running times did not change significantly. Not published.
+      </li>
+      <li>
+        <b>One sentence not used.</b> The abstract of the trial in 42 professional fast bowlers ends by saying that plyometric training reduces injury risk. Injuries were not measured, so only the jump and knee-strength results are published (<a href={`${evidenceHref}#claim-plyo-cricket-plyometric-bowlers`}>claim</a>).
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="claims">
+    <h2 id="claims">Claims and grades</h2>
+    {topics.map(topic => (
+      <section aria-labelledby={`claims-${topic.id}`}>
+        <h3 id={`claims-${topic.id}`}>{topic.title}</h3>
+        <ClaimList claims={topic.ids} claimById={data.claimById} sourceById={data.sourceById} sourcesHref="" />
+      </section>
+    ))}
+    {other.length > 0 && (
+      <section aria-labelledby="claims-other">
+        <h3 id="claims-other">Other</h3>
+        <ClaimList claims={other} claimById={data.claimById} sourceById={data.sourceById} sourcesHref="" />
+      </section>
+    )}
+  </section>
+
+  <section aria-labelledby="reused">
+    <h2 id="reused">Reused from the strength section's cricket claims</h2>
+    <p class="prose">These were graded for the strength section and are cited here by id, not graded again. They are listed so each cricket page's links land on a claim with its limits. The youth-consensus claim shows only that a statement exists, and this site does not programme for under-18s.</p>
+    <ClaimList claims={reusedIds} claimById={data.claimById} sourceById={data.sourceById} sourcesHref="" />
+  </section>
+
+  <section aria-labelledby="conventions">
+    <h2 id="conventions">What is a coaching convention</h2>
+    <p class="prose">No source supports these. They are cautious choices, flagged for review by a physiotherapist and a strength and conditioning coach.</p>
+    <ul class="prose">{conventions.map(item => <li>{item}</li>)}</ul>
+  </section>
+
+  <section aria-labelledby="method">
+    <h2 id="method">How this was checked</h2>
+    <ul class="prose">
+      <li>Found with the Europe PMC search service on 2026-11-15, searching titles and abstracts for cricket together with injury, prevention, throwing, plyometric, community and club terms, plus cross-sport strength, landing, trunk, medicine-ball and shoulder reviews. Results were sorted by how often they are cited and only the first few were screened.</li>
+      <li>Each abstract was read in full before a claim was written, and claims paraphrase the abstract. A figure appears only where the abstract states it with its population.</li>
+      <li>Each DOI, title and year was checked on Crossref and checked for retraction notices. Years are the Crossref issued year, which can differ from the print year: the trunk-strength review is 2015 online and 2016 in print.</li>
+      <li>Grades: A for a systematic review or meta-analysis of trials, B for a trial, C for observational, biomechanical or surrogate-outcome evidence, D for a narrative review, Mixed where results disagree.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="sources">
+    <h2 id="sources">All sources</h2>
+    <SourceList sources={sources} claims={everyClaim} evidenceHref={evidenceHref} />
+  </section>
+</Base>

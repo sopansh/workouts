@@ -12,7 +12,7 @@ The site is Astro over YAML and Markdown collections. Content is data; pages onl
 | Content | Files |
 |---|---|
 | Strength exercises, muscles, programmes, principles, cricket | `src/content/exercises/*.yml`, `muscles/`, `programs.yml`, `principles/*.md`, `cricket/*.md` |
-| Getting started, calisthenics, plyometrics (guides) | `src/content/guides/groups.yml`, `plans.yml`, `exercises/*.yml` |
+| Getting started, calisthenics, plyometrics (guides) | `src/content/guides/groups/<section>.yml`, `plans/<section>.yml`, `exercises/*.yml` |
 | Back-safe core guide with 3D figures | `src/content/core/phases.yml`, `exercises.yml` |
 | Claims and sources (one registry, filtered by `section`) | `src/content/claims/*.yml`, `sources.yml` |
 | Pain rules (one per body area, shared) | `src/content/pain-rules.yml` |

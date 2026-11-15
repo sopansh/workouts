@@ -26,11 +26,11 @@ independent of any other repo or site (it is **not** the `prep.theroningamer.com
 | `/core/` Isometrics (Core): back-safe core, glute and power guide, 3D exercise demos | **Live** (8 exercises, 3 phases). Now an Astro page; the 3D rig is in `src/scripts/core/` |
 | `/strength/` Strength / Hypertrophy | Drafts: weekly plans, 3 programs with a page per session, 68 exercises, 30 muscles, 10 principles, evidence and source registers, cricket stubs. Chest and legs are the detailed groups |
 | `/getting-started/` Getting started with strength | **First slice built as a draft**: overview, 8-week plan, exercises (10 ladders, 20 exercises), progression, evidence. Home tile is **live** |
-| `/plyometrics/` | **Built as a draft**: overview, weekly plan, exercises, progression, fascia and tendons. Personal plan, to follow once cleared to jump |
+| `/plyometrics/` | **Built as a draft**: overview, weekly plan, exercises, progression, fascia and tendons. Two-session base plan; for adults with no current injury who have been cleared to exercise |
 | `/calisthenics/` | **First build as a draft, tile live**: hub, start-here, foundations, first-skills, weekly-plan, exercises (41 in 12 ladders), progression, evidence. Two 8-week plans. Skills are gated and flagged as coaching convention. See the plan doc |
 | `/nutrition/` Health & Nutrition | Not started (tile "Coming soon") |
 | Cricket-specific tracks | Stubs in `/strength/cricket/`; planned for plyometrics and isometrics (hypertrophy plan section 12) |
-| Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). No CI yet. `npm run test:e2e` runs the browser tests |
+| Checks | `npm run check` (content, standards, tests) runs the first two before every build. `npm run verify:sources` (Crossref). `npm run check:links` crawls `dist/` after a build (also run by `test:e2e`). No CI yet. `npm run test:e2e` runs the browser tests |
 
 ## 3. Repo layout
 
@@ -64,7 +64,7 @@ src/
 |---|---|---|
 | `sections` | `sections.yml` | home tiles, each section's nav and footer links, page titles. `status: live` needs an `href` |
 | `groups`, `muscles`, `exercises`, `programs`, `principles`, `cricket`, `glossary`, `painRules` | `groups.yml`, `muscles/`, `exercises/`, `programs.yml`, `principles/*.md`, `cricket/*.md`, ... | strength |
-| `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups.yml`, `guides/exercises/*.yml`, `guides/plans.yml` | getting-started, calisthenics and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises. Optional `phase` (groups and plans, so one section can have two plans), `gates` (prerequisites), `requires` (kit the whole ladder needs) and `convention` (no training-outcome evidence). Guide ids are global, so calisthenics ids start `cal-` |
+| `guideGroups`, `guideExercises`, `guidePlans` | `guides/groups/<section>.yml`, `guides/exercises/*.yml`, `guides/plans/<section>.yml` | getting-started, calisthenics and plyometrics. A **ladder** group runs level 1 (easier) to N; a plan names groups (ladders) or exercises. Optional `phase` (groups, plans, and also claims and sources, so one section can hold independent stages; `loadGuide(section, { phase })` filters all of them, and the plyometrics base plan is phase `base`), `gates` (prerequisites), `requires` (kit the whole ladder needs) and `convention` (no training-outcome evidence). Guide ids are global, so calisthenics ids start `cal-` |
 | `corePhases`, `coreExercises` | `core/phases.yml`, `core/exercises.yml` | `/core/`. `poses` drive the 3D figures |
 | `sources`, `claims` | `sources.yml`, `claims/*.yml` | **every section**. Each entry has a `section` (default `strength`). Pages filter by section |
 
@@ -82,10 +82,9 @@ cricket, evidence, sources, glossary), and for each of `/getting-started/` and `
 `#<exercise-id>`, groups use `#group-<id>`, pain rules `#pain-<id>`, claims `#claim-<id>`.
 `/strength/programs/push-pull-legs/week/` redirects to `/strength/weekly-plan/`.
 
-User-provided context: 10+ years training, with beginner options limited to squats, glutes and lower-back work (strength
-only). Full gym access, training days, session length and lower-back recovery are unconfirmed assumptions. The plyometrics plan
-is personal (two sessions, floor first, box optional) and to be started only after a clinician clears jumping; the repo is
-public, so no health details are published.
+Audience assumption: an experienced lifter with full gym access, with beginner options limited to squats, glutes and lower-back
+work (strength only). Training days and session length are unconfirmed assumptions. The base plyometrics plan is two sessions,
+floor first, box optional. The repo is public, so no personal or health details are published.
 
 ## 4. Architecture and the reasoning behind it
 
@@ -183,7 +182,7 @@ contraindications, regression, progression, a `painRule` id). Muscles and claims
 `regression`, `progression`, `painRule`, and a `dose` or a `schedule`. Level 1 of a ladder must need no optional kit. Then make
 sure the plan uses it: a ladder group must appear in a session, other exercises must be listed in a session or the warm-up.
 
-**Change a guide plan.** Edit `src/content/guides/plans.yml` (sessions, weeks, timing). The validator checks spacing and time.
+**Change a guide plan.** Edit `src/content/guides/plans/<section>.yml` (sessions, weeks, timing). The validator checks spacing and time.
 
 **Add a claim.** Find the paper, add it to `src/content/sources.yml` with a `section`, run `npm run verify:sources -- --write`,
 read the abstract, then add the claim to `src/content/claims/<section>.yml` with a grade from the rubric on `/strength/evidence/`.

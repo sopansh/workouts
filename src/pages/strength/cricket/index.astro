@@ -11,17 +11,19 @@ const overview = d.cricket.find(c => c.id === 'overview')!;
 const pages = d.cricket.filter(c => c.id !== 'overview');
 const { Content } = await render(overview);
 ---
-<Base section="strength" title="Cricket" description="The cricket strength track: role pages and the evidence found so far. Stubs with no prescriptions until they are sourced." accent="p3">
+<Base section="strength" title="Cricket" description="The cricket strength track: researched draft pages where evidence was found, honest stubs where it was not, and the evidence found so far. Education, not a programme." accent="p3">
   <Breadcrumbs items={[{ label: 'Strength', href: url.hub }, { label: 'Cricket' }]} />
   <section class="hero page-head">
     <p class="eyebrow">Cricket</p>
     <h1>Strength for cricket</h1>
     <p class="lede">{overview.data.summary}</p>
-    <div class="badges"><span class="badge" data-tone="warn">Stub</span><StatusBadge status={overview.data.status} /></div>
+    <div class="badges">{overview.data.researched ? <span class="badge" data-tone="info">Researched, abstracts only</span> : <span class="badge" data-tone="warn">Stub</span>}<StatusBadge status={overview.data.status} /></div>
   </section>
 
   <aside class="note note--warn" role="note">
-    <p><b>Not for use as a programme yet.</b> Nothing here prescribes exercises, loads or workloads. Youth bowlers need qualified supervision.</p>
+    {overview.data.researched
+      ? <p><b>Education, not a programme.</b> Pages marked Researched cite graded evidence read from abstracts, and their exercise selection is a labelled convention. Stub pages have no prescriptions. Nothing here sets loads or workloads. Youth bowlers need qualified supervision.</p>
+      : <p><b>Not for use as a programme yet.</b> Nothing here prescribes exercises, loads or workloads. Youth bowlers need qualified supervision.</p>}
   </aside>
 
   <h2>Role and topic pages</h2>
@@ -31,7 +33,7 @@ const { Content } = await render(overview);
         <a class="card" href={url.cricketPage(page.id)} data-accent="p3">
           <h3>{page.data.title}</h3>
           <p>{page.data.summary}</p>
-          <span class="card__meta">{page.data.questions.length} open questions</span>
+          <span class="card__meta">{page.data.researched ? 'Researched draft' : `Stub, ${page.data.questions.length} open questions`}</span>
         </a>
       </li>
     ))}

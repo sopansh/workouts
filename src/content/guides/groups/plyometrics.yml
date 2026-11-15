@@ -1,0 +1,87 @@
+# Groups for the plyometrics section. Guide ids are global across sections.
+- id: plyo-warmup
+  title: Warm-up
+  summary: Easy and unhurried. If anything hurts during the warm-up, do not continue to the jumps.
+  section: plyometrics
+  phase: base
+  order: 1
+  ladder: false
+- id: plyo-jumps
+  title: Jumps
+  summary: Small, rhythmic jumps repeated with patient increases. Everything starts on the floor.
+  section: plyometrics
+  phase: base
+  order: 2
+  ladder: false
+- id: plyo-calf
+  title: Calf work
+  summary: Slow, controlled calf raises with the knee straight and bent.
+  section: plyometrics
+  phase: base
+  order: 3
+  ladder: false
+- id: plyo-balance
+  title: Balance
+  summary: Single-leg standing, with no impact.
+  section: plyometrics
+  phase: base
+  order: 4
+  ladder: false
+# Cricket phase: gated, convention-level ladders that replace the two base sessions with a cricket selection. Ids start cricket-.
+- id: cricket-landing
+  title: Landing
+  summary: Learn to land softly and quietly before any repeated hopping. The first two levels have no impact. Levels 3 and 4 need one low, solid step; without one, stay on level 2.
+  section: plyometrics
+  phase: cricket
+  order: 5
+  ladder: true
+  test: A 3 second hold at the level, 5 times (each leg for the single-leg level), with the knee steady over the middle of the foot, a quiet landing and no pain on the day or the next morning.
+  convention: true
+  gates:
+    - You have completed the eight weeks of the base plan, or equivalent jumping, with quiet landings and no pain the next day.
+    - You can do 8 slow squats with a 3 second lowering, heels down and knees steady.
+    - You can do 10 single-leg calf raises on each side to full height with no pain.
+    - You can stand on one leg for 30 seconds on each side with your eyes open and without holding on.
+    - If you have had any lower-limb or back problem, a doctor or physiotherapist has said that jumping is appropriate for you.
+- id: cricket-hops
+  title: Hops and sticks
+  summary: Small hops on one leg that end in a held landing, in place first, then forward, then sideways. Every hop is landed and held, never bounced. Reps count landings in total, split evenly between the legs.
+  section: plyometrics
+  phase: cricket
+  order: 6
+  ladder: true
+  test: 6 landings in a row at the level (3 on each leg), each quiet and held for 2 seconds, with no wobble, extra hop or pain.
+  convention: true
+  gates:
+    - You pass the landing test at level 2 or above (level 3 or 4 if you have a step).
+    - You have completed the eight weeks of the base plan, including the side-to-side hop, with no pain the next day.
+    - You can do 10 single-leg calf raises on each side to full height with no pain.
+    - You have a clear, flat, non-slip surface and flat supportive shoes.
+- id: cricket-decelerate
+  title: Slowing down and stopping
+  summary: Learn to slow down and stop under control, building from a walk to a brisk run. Stopping loads the thigh, hamstring, knee and ankle, so it comes after landing and hops and is never done at full speed.
+  section: plyometrics
+  phase: cricket
+  order: 7
+  ladder: true
+  test: 4 stops in a row at the level, each finished within the planned distance and balanced in a split stance for 2 seconds, with quiet footsteps, no skidding and no pain.
+  convention: true
+  gates:
+    - You pass the hops test at levels 1 and 2 and the split-stance landing hold test on both legs.
+    - You have no hamstring, calf, groin, knee or ankle pain now, and nothing there that was strained recently or has not been assessed.
+    - You have about 10 metres of clear, flat, dry, non-slip ground with a clear run-off at the far end.
+    - You are not within a day of a match.
+- id: cricket-rotation
+  title: Hip-led rotation and throws
+  summary: "Turning with the hips and chest together, then adding a light ball. Rotational power comes last, after the anti-rotation work and the back-safe core guide. It is a coaching convention: no study of rotational power training in cricketers was found."
+  section: plyometrics
+  phase: cricket
+  order: 8
+  ladder: true
+  test: 8 slow turns each way (or 5 throws each side) at the level with the feet still, the hips leading and the ribs staying over the pelvis, with no back, rib or side pain and no pain the next morning.
+  convention: true
+  gates:
+    - You have worked through the back-safe core guide at /core/ to the end of Phase 2 (its own move-on rule is 0/10 pain at rest and in daily life for about 7 days), and your back has no pain now.
+    - In the anti-rotation block you can do 8 slow dead bugs on each side without the lower back arching, hold a side plank for 20 seconds on each side, and do 8 slow Pallof presses (or the no-kit alternative) on each side without the trunk turning.
+    - You have been free of back, rib and side pain during the anti-rotation block for at least two weeks.
+    - You have no shoulder or elbow pain with throwing now.
